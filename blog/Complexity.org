@@ -1,0 +1,12 @@
+#+TITLE:       Complexity is easy, Simplicity is hard
+#+AUTHOR:      Kasim Tuman
+#+EMAIL:       kasim@x220
+#+DATE:        2016-10-29 Sat
+#+URI:         /blog/%y/%m/%d/complexity-is-easy,-simplicity-is-hard
+#+KEYWORDS:    simplicity, complexity
+#+TAGS:        code, design
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: Advice for aspiring programmers
+
+Just testing org-page with github pages.

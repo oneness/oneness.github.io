@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Oneness philosophy</title>
+    <link>http://oneness.github.io/</link>
+    <description>Data, Code and Transport</description>
+    <pubDate>Sat, 29 Oct 2016 22:43:07 PDT</pubDate>
+    <lastBuildDate>Sat, 29 Oct 2016 22:43:07 PDT</lastBuildDate>
+    <docs>http://www.rssboard.org/rss-specification</docs>
+    <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
+  </channel>
+</rss>
