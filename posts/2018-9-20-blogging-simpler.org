@@ -2,7 +2,7 @@
 #+DATE: <2018-09-20 Thu>
 
 After taking some time off from work to focus on projects that I like
-to take on, I set out to find a way to use git and emacs workflow to
+to take on, I set out to find a simple way to use git and emacs workflow to
 start blogging again. Among plethora of options on the web, I came
 across this project - [[https://github.com/bastibe/org-static-blog][Org Static Blog]] - that I resonated with. It took
 me no time to set it up and start blogging. Below is my setup:
@@ -16,9 +16,9 @@ me no time to set it up and start blogging. Below is my setup:
 
     (setq org-static-blog-publish-title "BirkeyCo")
     (setq org-static-blog-publish-url "https://www.birkey.co/")
-    (setq org-static-blog-publish-directory "~/github/oneness.github.io/blog/")
-    (setq org-static-blog-posts-directory "~/github/oneness.github.io/blog/posts/")
-    (setq org-static-blog-drafts-directory "~/github/oneness.github.io/blog/drafts/")
+    (setq org-static-blog-publish-directory "~/github/oneness.github.io/")
+    (setq org-static-blog-posts-directory "~/github/oneness.github.io/posts/")
+    (setq org-static-blog-drafts-directory "~/github/oneness.github.io/drafts/")
     ;;(setq org-static-blog-enable-tags t)
     (setq org-export-with-toc nil)
     (setq org-export-with-section-numbers nil)
@@ -54,7 +54,6 @@ me no time to set it up and start blogging. Below is my setup:
 
     ;; This slows down org-publish to a crawl, and it is not needed since
     ;; I use magit anyway.
-    (remove-hook 'find-file-hooks 'vc-find-file-hook)
-    )
+    (remove-hook 'find-file-hooks 'vc-find-file-hook))
 #+END_SRC
 
