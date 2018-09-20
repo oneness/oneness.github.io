@@ -1,0 +1,60 @@
+#+TITLE: Blogging Made Simple
+#+DATE: <2018-09-20 Thu>
+
+After taking some time off from work to focus on projects that I like
+to take on, I set out to find a way to use git and emacs workflow to
+start blogging again. Among plethora of options on the web, I came
+across this project - [[https://github.com/bastibe/org-static-blog][Org Static Blog]] - that I resonated with. It took
+me no time to set it up and start blogging. Below is my setup:
+#+BEGIN_SRC emacs-lisp
+  (use-package org-static-blog
+    :straight t
+    :config
+    ;; -----------------------------------------------------------------------------
+    ;; Set up blogging in Emacs
+    ;; -----------------------------------------------------------------------------
+
+    (setq org-static-blog-publish-title "BirkeyCo")
+    (setq org-static-blog-publish-url "https://www.birkey.co/")
+    (setq org-static-blog-publish-directory "~/github/oneness.github.io/blog/")
+    (setq org-static-blog-posts-directory "~/github/oneness.github.io/blog/posts/")
+    (setq org-static-blog-drafts-directory "~/github/oneness.github.io/blog/drafts/")
+    ;;(setq org-static-blog-enable-tags t)
+    (setq org-export-with-toc nil)
+    (setq org-export-with-section-numbers nil)
+
+    (setq org-static-blog-page-header
+	  "<meta name=\"author\" content=\"Kasim Tuman\">
+  <meta name=\"referrer\" content=\"no-referrer\">
+  <link href= \"static/style.css\" rel=\"stylesheet\" type=\"text/css\" />
+  <link rel=\"icon\" href=\"static/favicon.ico\">
+  <link rel=\"apple-touch-icon-precomposed\" href=\"static/birkey_logo.png\">
+  <link rel=\"msapplication-TitleImage\" href=\"static/birkey_logo.png\">
+  <link rel=\"msapplication-TitleColor\" href=\"#0141ff\">
+  <script src=\"static/katex.min.js\"></script>
+  <script src=\"static/auto-render.min.js\"></script>
+  <link rel=\"stylesheet\" href=\"static/katex.min.css\">
+  <script>document.addEventListener(\"DOMContentLoaded\", function() { renderMathInElement(document.body); });</script>
+  <meta http-equiv=\"content-type\" content=\"application/xhtml+xml; charset=UTF-8\">
+  <meta name=\"viewport\" content=\"initial-scale=1,width=device-width,minimum-scale=1\">")
+
+    (setq org-static-blog-page-preamble
+	  "<div class=\"header\">
+    <a href=\"https://birkey.co\">Code, Data and Network</a>
+    <div class=\"sitelinks\">
+      <a href=\"https://twitter.com/KasimTuman\">Twitter</a> | <a href=\"https://github.com/oneness\">Github</a>
+    </div>
+  </div>")
+
+    (setq org-static-blog-page-postamble
+	  "<div id=\"archive\">
+    <a href=\"https://wwww.birkey.co/archive.html\">Other posts</a>
+  </div>
+  <center><a rel=\"license\" href=\"https://creativecommons.org/licenses/by-sa/3.0/\"><img alt=\"Creative Commons License\" style=\"border-width:0\" src=\"https://i.creativecommons.org/l/by-sa/3.0/88x31.png\" /></a><br /><span xmlns:dct=\"https://purl.org/dc/terms/\" href=\"https://purl.org/dc/dcmitype/Text\" property=\"dct:title\" rel=\"dct:type\">birkey.co</span> by <a xmlns:cc=\"https://creativecommons.org/ns#\" href=\"https://www.birkey.co\" property=\"cc:attributionName\" rel=\"cc:attributionURL\">Kasim Tuman</a> is licensed under a <a rel=\"license\" href=\"https://creativecommons.org/licenses/by-sa/3.0/\">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</center>")
+
+    ;; This slows down org-publish to a crawl, and it is not needed since
+    ;; I use magit anyway.
+    (remove-hook 'find-file-hooks 'vc-find-file-hook)
+    )
+#+END_SRC
+
