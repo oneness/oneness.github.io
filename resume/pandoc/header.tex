@@ -1,0 +1,40 @@
+% English font settings
+\defaultfontfeatures{Ligatures=TeX}
+\setmainfont[Ligatures={Common}, Numbers={OldStyle}, Variant=01]{LinLibertine}
+\setsansfont{DroidSansMono}
+\setmonofont[Scale=0.8]{CMU Typewriter Text}
+
+% page layout/margin control
+\usepackage[scale=0.8, marginparsep=10pt]{geometry}
+% \geometry{a4paper, textwidth=5.5in, textheight=8.5in, marginparsep=7pt, marginparwidth=.6in}
+
+% renew quote environment based on framed package
+% Thanks http://www.jevon.org/wiki/Fancy_Quotation_Boxes_in_Latex
+
+% for adjustwidth environment
+\usepackage[strict]{changepage}
+
+\usepackage{framed}
+\usepackage{xcolor}
+
+% environment derived from framed.sty: see leftbar environment definition
+\definecolor{quoteshade}{rgb}{0.95,0.95,0.95}
+
+\renewenvironment{quote}{%
+  \setlength{\parskip}{0.2\baselineskip}
+  \def\FrameCommand{%
+    \hspace{1pt}%
+    {\color{gray}\vrule width 2pt}%
+    {\color{quoteshade}\vrule width 4pt}%
+    \colorbox{quoteshade}%
+  }%
+  \MakeFramed{\advance\hsize-\width\FrameRestore}%
+  \noindent\hspace{-4.55pt}% disable indenting first paragraph
+  \begin{adjustwidth}{}{7pt}%
+  \vspace{2pt}\vspace{2pt}%
+}
+{%
+  \vspace{2pt}\end{adjustwidth}\endMakeFramed%
+}
+
+% BEGIN DOCUMENT
