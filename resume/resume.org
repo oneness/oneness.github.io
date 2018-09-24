@@ -2,9 +2,9 @@
 #+AUTHOR: [[mailto:ktuman@acm.org][ktuman@acm.org]] \textbar{} [[https://github.com/oneness][oneness@github]] \textbar{} [[https://www.birkey.co][https://www.birkey.co]]
 
 * Summary
-  Software craftsman loves solving challenging problems using
-  functional paradigm. Prefer working with data intensive
-  projects. Currently available for short/long term consulting
+  Software craftsman who prefer working with data intensive
+  projects, who loves solving challenging problems by using
+  functional paradigm. Currently available for short/long term consulting
   only. Might consider full time remote engagement.
 * Work Experience
 - 2017/02 - 2018/09: Omnyway Inc
