@@ -32,5 +32,8 @@
   - Started as Software Engineer then promoted to Team
     Lead. Responsible for developing Web Application that manages IoT printer fleets.
   - Tech Stack: Java, Spring/Hibernate, PostgreSQL, and OSGi.
+* Currently evaluating:
+- [[https://elixir-lang.org][Elixir]] for HA and IoT system projects
+- [[https://elm-lang.org][Elm]] for front-end applications
 * Education
 - Post Graduate Computer Science with Software Engineering focus at California State University East Bay - CSUEB.
