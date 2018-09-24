@@ -1,5 +1,5 @@
 #+TITLE: Kasim Tuman
-#+AUTHOR: [[mailto:ktuman@acm.org][ktuman@acm.org]] \textbar{} [[https://github.com/oneness][oneness@github]] \textbar{} [[https://www.birkey.co][http://www.birkey.co]]
+#+AUTHOR: [[mailto:ktuman@acm.org][ktuman@acm.org]] \textbar{} [[https://github.com/oneness][oneness@github]] \textbar{} [[https://www.birkey.co][https://www.birkey.co]]
 
 * Summary
   Software craftsman loves solving challenging problems using
