@@ -7,6 +7,8 @@
   functional paradigm. Currently available for short/long term consulting
   only. Might consider full time remote engagement.
 * Work Experience
+- 2016/02 - Present: Owner of [[https://www.birkey.co][Birkey Consulting]]
+  - Open source clojure development and consulting.
 - 2017/02 - 2018/09: Omnyway Inc
   - Senior Full Stack Clojure Engineer as an early member of core
     Engineering Team responsible for Core e-commerce platform and API
