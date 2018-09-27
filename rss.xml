@@ -4,7 +4,7 @@
 <title>BirkeyCo</title>
 <description>BirkeyCo</description>
 <link>https://www.birkey.co/</link>
-<lastBuildDate>Wed, 26 Sep 2018 11:25:24 -0700</lastBuildDate>
+<lastBuildDate>Thu, 27 Sep 2018 10:11:25 -0700</lastBuildDate>
 <item>
   <title>Blogging Made Simple</title>
   <description><![CDATA[
@@ -66,7 +66,9 @@ me no time to set it up and start blogging. Below is my setup:
   <span style="color: #7f7f7f;">(</span>remove-hook 'find-file-hooks 'vc-find-file-hook<span style="color: #7f7f7f;">))</span>
 </pre>
 </div>
-]]></description>
+<div class="taglist"><a href="tags.html">Tags:</a> <a href="tag-emacs.html">emacs</a> <a href="tag-blogging.html">blogging</a> </div>]]></description>
+  <category>emacs</category>
+  <category>blogging</category>
   <link>https://www.birkey.co/2018-9-20-blogging-simpler.html</link>
   <pubDate>Wed, 19 Sep 2018 17:00:00 -0700</pubDate>
 </item>

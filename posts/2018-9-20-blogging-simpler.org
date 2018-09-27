@@ -1,5 +1,6 @@
 #+TITLE: Blogging Made Simple
 #+DATE: <2018-09-20 Thu>
+#+filetags: emacs blogging
 
 After taking some time off from work to focus on projects that I like
 to take on, I set out to find a simple way to use git and emacs workflow to
