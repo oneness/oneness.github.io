@@ -4,7 +4,38 @@
 <title>BirkeyCo</title>
 <description>BirkeyCo</description>
 <link>https://www.birkey.co/</link>
-<lastBuildDate>Thu, 27 Sep 2018 10:11:25 -0700</lastBuildDate>
+<lastBuildDate>Wed, 03 Oct 2018 12:38:46 -0700</lastBuildDate>
+<item>
+  <title>VM flags from running JVM</title>
+  <description><![CDATA[
+<p>
+While I was doing some JVM GC analysis recently, I got curious about the vm flags that `java` command uses by default if you do not specify it when starting your JVM.
+Reading up JDK docs, I found <b>jcmd</b> is exactly what you need:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">jcmd
+</pre>
+</div>
+<p>
+That will list all jvm instances running on your system beginning with
+its pids, which you can pass into <b>jcmd</b> with options to print VM flags like this:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">jcmd &lt;pid&gt; VM.flags
+</pre>
+</div>
+<p>
+There are many options you can use other than `VM.flags`, which you can get a full list by:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">jcmd &lt;pid&gt; help
+</pre>
+</div>
+<div class="taglist"><a href="tags.html">Tags:</a> <a href="tag-jvm.html">jvm</a> </div>]]></description>
+  <category>jvm</category>
+  <link>https://www.birkey.co/2018-10-03-vm-flags-from-running-jvm.html</link>
+  <pubDate>Wed, 03 Oct 2018 12:03:00 -0700</pubDate>
+</item>
 <item>
   <title>Blogging Made Simple</title>
   <description><![CDATA[

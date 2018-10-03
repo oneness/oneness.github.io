@@ -5,7 +5,7 @@
 <link rel="alternate"
       type="application/rss+xml"
       href="https://www.birkey.co/rss.xml"
-      title="RSS feed for https://www.birkey.co/">
+      title="RSS feed for https://www.birkey.co/"/>
 <title>BirkeyCo</title>
 <meta name="author" content="Kasim Tuman">
   <meta name="referrer" content="no-referrer">
@@ -21,16 +21,41 @@
   <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8">
   <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1"></head>
 <body>
-<div id="preamble" class="status">
-<div class="header">
+<div id="preamble" class="status"><div class="header">
     <a href="https://www.birkey.co">Code, Data and Network</a>
     <div class="sitelinks">
       <a href="https://twitter.com/KasimTuman">Twitter</a> | <a href="https://github.com/oneness">Github</a> | <a href="https://www.birkey.co/resume/resume.pdf">About</a>
     </div>
   </div></div>
 <div id="content">
-<h1 class="title">Archive</h1>
-<div class="post-date">03 Oct 2018</div><h2 class="post-title"><a href="2018-10-03-vm-flags-from-running-jvm.html">VM flags from running JVM</a></h2>
-<div class="post-date">19 Sep 2018</div><h2 class="post-title"><a href="2018-9-20-blogging-simpler.html">Blogging Made Simple</a></h2>
+<h1 class="title">Posts tagged "jvm":</h1>
+<div class="post-date">03 Oct 2018</div><h1 class="post-title"><a href="2018-10-03-vm-flags-from-running-jvm.html">VM flags from running JVM</a></h1>
+<p>
+While I was doing some JVM GC analysis recently, I got curious about the vm flags that `java` command uses by default if you do not specify it when starting your JVM.
+Reading up JDK docs, I found <b>jcmd</b> is exactly what you need:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">jcmd
+</pre>
+</div>
+<p>
+That will list all jvm instances running on your system beginning with
+its pids, which you can pass into <b>jcmd</b> with options to print VM flags like this:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">jcmd &lt;pid&gt; VM.flags
+</pre>
+</div>
+<p>
+There are many options you can use other than `VM.flags`, which you can get a full list by:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">jcmd &lt;pid&gt; help
+</pre>
+</div>
+<div class="taglist"><a href="tags.html">Tags:</a> <a href="tag-jvm.html">jvm</a> </div><div id="archive">
+<a href="archive.html">Other posts</a>
+</div>
+</div>
 </body>
- </html>
+</html>

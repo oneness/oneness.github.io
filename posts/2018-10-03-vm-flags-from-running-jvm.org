@@ -1,0 +1,18 @@
+#+title: VM flags from running JVM
+#+date: <2018-10-03 12:03>
+#+filetags: jvm
+
+While I was doing some JVM GC analysis recently, I got curious about the vm flags that `java` command uses by default if you do not specify it when starting your JVM.
+Reading up JDK docs, I found *jcmd* is exactly what you need:
+#+BEGIN_SRC shell
+jcmd
+#+END_SRC
+That will list all jvm instances running on your system beginning with
+its pids, which you can pass into *jcmd* with options to print VM flags like this:
+#+BEGIN_SRC shell
+jcmd <pid> VM.flags
+#+END_SRC
+There are many options you can use other than `VM.flags`, which you can get a full list by:
+#+BEGIN_SRC shell
+jcmd <pid> help
+#+END_SRC
