@@ -4,7 +4,38 @@
 <title>BirkeyCo</title>
 <description>BirkeyCo</description>
 <link>https://www.birkey.co/</link>
-<lastBuildDate>Wed, 03 Oct 2018 12:38:46 -0700</lastBuildDate>
+<lastBuildDate>Thu, 04 Oct 2018 12:19:04 -0700</lastBuildDate>
+<item>
+  <title>Visualize Google search results from Clojure REPL</title>
+  <description><![CDATA[
+<p>
+While back when I was learning Clojure, I have written a small lib
+that allows me directly generate bar chart out of google search
+results from Clojure. I updated it with latest deps and added a fn to
+save the bar-chart to a png file. You can checkout the project here:
+<a href="https://github.com/oneness/gcount">https://github.com/oneness/gcount</a>.  Here is a one liner to get you
+going:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">git clone git@github.com:oneness/gcount.git &amp;&amp; <span style="color: #483d8b;">cd</span> gcount &amp;&amp; lein repl
+</pre>
+</div>
+<p>
+Once you are in repl, you can type following:
+</p>
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #7f7f7f;">(</span>search-view-terms <span style="color: #7f7f7f;">[</span><span style="color: #8b2252;">"Clojure Programming"</span> <span style="color: #8b2252;">"Elixir Programming"</span> <span style="color: #8b2252;">"Elm Programming"</span><span style="color: #7f7f7f;">])</span>
+</pre>
+</div>
+<p>
+Above will produce something like this:
+<img src="https://www.birkey.co/images/google-search-result.png" alt="google-search-result.png">
+</p>
+<div class="taglist"><a href="tags.html">Tags:</a> <a href="tag-clojure.html">clojure</a> </div>]]></description>
+  <category>clojure</category>
+  <link>https://www.birkey.co/2018-10-04-visualize-google-search-results-from-clojure-repl.html</link>
+  <pubDate>Thu, 04 Oct 2018 11:21:00 -0700</pubDate>
+</item>
 <item>
   <title>VM flags from running JVM</title>
   <description><![CDATA[

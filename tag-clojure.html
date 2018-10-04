@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="alternate"
+      type="application/rss+xml"
+      href="https://www.birkey.co/rss.xml"
+      title="RSS feed for https://www.birkey.co/"/>
+<title>BirkeyCo</title>
+<meta name="author" content="Kasim Tuman">
+  <meta name="referrer" content="no-referrer">
+  <link href= "static/style.css" rel="stylesheet" type="text/css" />
+  <link rel="icon" href="static/favicon.ico">
+  <link rel="apple-touch-icon-precomposed" href="static/birkey_logo.png">
+  <link rel="msapplication-TitleImage" href="static/birkey_logo.png">
+  <link rel="msapplication-TitleColor" href="#0141ff">
+  <script src="static/katex.min.js"></script>
+  <script src="static/auto-render.min.js"></script>
+  <link rel="stylesheet" href="static/katex.min.css">
+  <script>document.addEventListener("DOMContentLoaded", function() { renderMathInElement(document.body); });</script>
+  <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8">
+  <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1"></head>
+<body>
+<div id="preamble" class="status"><div class="header">
+    <a href="https://www.birkey.co">Code, Data and Network</a>
+    <div class="sitelinks">
+      <a href="https://twitter.com/KasimTuman">Twitter</a> | <a href="https://github.com/oneness">Github</a> | <a href="https://www.birkey.co/resume/resume.pdf">About</a>
+    </div>
+  </div></div>
+<div id="content">
+<h1 class="title">Posts tagged "clojure":</h1>
+<div class="post-date">04 Oct 2018</div><h1 class="post-title"><a href="2018-10-04-visualize-google-search-results-from-clojure-repl.html">Visualize Google search results from Clojure REPL</a></h1>
+<p>
+While back when I was learning Clojure, I have written a small lib
+that allows me directly generate bar chart out of google search
+results from Clojure. I updated it with latest deps and added a fn to
+save the bar-chart to a png file. You can checkout the project here:
+<a href="https://github.com/oneness/gcount">https://github.com/oneness/gcount</a>.  Here is a one liner to get you
+going:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">git clone git@github.com:oneness/gcount.git &amp;&amp; <span style="color: #483d8b;">cd</span> gcount &amp;&amp; lein repl
+</pre>
+</div>
+<p>
+Once you are in repl, you can type following:
+</p>
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #7f7f7f;">(</span>search-view-terms <span style="color: #7f7f7f;">[</span><span style="color: #8b2252;">"Clojure Programming"</span> <span style="color: #8b2252;">"Elixir Programming"</span> <span style="color: #8b2252;">"Elm Programming"</span><span style="color: #7f7f7f;">])</span>
+</pre>
+</div>
+<p>
+Above will produce something like this:
+<img src="https://www.birkey.co/images/google-search-result.png" alt="google-search-result.png">
+</p>
+<div class="taglist"><a href="tags.html">Tags:</a> <a href="tag-clojure.html">clojure</a> </div><div id="archive">
+<a href="archive.html">Other posts</a>
+</div>
+</div>
+</body>
+</html>

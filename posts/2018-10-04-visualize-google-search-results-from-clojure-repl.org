@@ -1,0 +1,19 @@
+#+title: Visualize Google search results from Clojure REPL
+#+date: <2018-10-04 11:21>
+#+filetags: clojure
+
+While back when I was learning Clojure, I have written a small lib
+that allows me directly generate bar chart out of google search
+results from Clojure. I updated it with latest deps and added a fn to
+save the bar-chart to a png file. You can checkout the project here:
+[[https://github.com/oneness/gcount][https://github.com/oneness/gcount]].  Here is a one liner to get you
+going:
+#+BEGIN_SRC shell
+git clone git@github.com:oneness/gcount.git && cd gcount && lein repl
+#+END_SRC
+Once you are in repl, you can type following:
+#+BEGIN_SRC clojure
+(search-view-terms ["Clojure Programming" "Elixir Programming" "Elm Programming"])
+#+END_SRC
+Above will produce something like this:
+[[https://www.birkey.co/images/google-search-result.png]]
