@@ -1,0 +1,62 @@
+#+title: Debug VoidLinux unresolvable lib issue
+#+date: <2018-10-20 13:53>
+#+filetags: VoidLinux
+
+I have been a happy user of *[[https://voidlinux.org/][VoidLinux]]* for about a year now and so
+far have had almost no glitches whatsoever except for updating a year
+old version of it installed on one of my spare laptop. The issue started as following:
+#+BEGIN_SRC shell
+xbps-install -Su
+# resulted in following:
+# mozjs: broken, unresolvable shlib `libicu.so'
+# Transaction aborted due to unresolved shlibs.
+#+END_SRC
+I do not now about you but I usually start with a google search of
+what I think is somewhat general terms in my error message, which is
+/*"Transaction aborted due to unresolved shlibs"*/ in my case. Searching
+with the above term came up with number of results and all point to
+the build system is still running. You can check the status of it
+here: [[https://build.voidlinux.eu/waterfall][Void Build Status]], which I did find that all is green and
+idle. So it did not help me resolve my issue. Then, I decided to do
+one more search with /*"mozjs: broken, unresolvable shlib
+`libicu.so'"*/, which is more specific to the state of my box only but
+that did not help me go anywhere. Then I decided to debug it
+myself. Following is my commandline session how I resolved it:
+#+BEGIN_SRC shell
+  # Ran the command again to make sure I have above issue 
+  xbps-install -Su
+  # again resulted in following:
+  # mozjs: broken, unresolvable shlib `libicu.so'
+  # Transaction aborted due to unresolved shlibs.
+  # Notice the /*mozjs*/, which is my clue. Then I did:
+  xbps-query -Rs mozjs
+  # from the output, I confirmed that it was not installed on my box,
+  # which is my second clue to check if my repos url are
+  # up-to-date. Remember it is a year old version of VoidLinux.  I
+  # noticed from the output of xpbs-install -u, that the
+  # void-repo-nonfree url does indeed point to an old url. So, I did:
+  xbps-remove void-repo-nonfree && xbps-install void-repo-nonfree
+  # to make sure my repo url is up-to-date. Then it is time to clean my
+  # repo cache and remove any packages that might be orphened since my
+  # repo url is pointing to a different url now. Using manpages for
+  # xpbs-remove, I can do above with:
+  xbps-remove -Oo
+  # Then I ran:
+  xbps-install -Su
+  # Voila!, My one year old box is up-to-date without any issues now.
+  # After all of this, I just made an one liner alias in my shell config:
+  alias c='xbps-remove void-repo-nonfree && xbps-install void-repo-nonfree && xbps-install -Su 
+#+END_SRC
+
+So no love lost for VoidLinux and it is still as awesome as ever. Just
+to recap steps that I took to solve the issue:
+1. Start using more general term to do a google search then narrow it
+   to specific ones. If it works, you save time and unneeded effort.
+2. Check for the problem package reported. Is it installed? If yes,
+   try removing or updating it to see if it resolves your issue.
+3. If you do not see the package installed, it might be repo url +
+   orphaned package issue. So update the repo url, remove orphan
+   packages and rebuild the cache. 
+
+If you tried all of the above and your issue still did not get
+resolved, you might want to post it in VoidLinux forum for help. 

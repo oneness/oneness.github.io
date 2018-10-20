@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="alternate"
+      type="application/rss+xml"
+      href="https://www.birkey.co/rss.xml"
+      title="RSS feed for https://www.birkey.co/"/>
+<title>Debug VoidLinux unresolvable lib issue</title>
+<meta name="author" content="Kasim Tuman">
+  <meta name="referrer" content="no-referrer">
+  <link href= "static/style.css" rel="stylesheet" type="text/css" />
+  <link rel="icon" href="static/favicon.ico">
+  <link rel="apple-touch-icon-precomposed" href="static/birkey_logo.png">
+  <link rel="msapplication-TitleImage" href="static/birkey_logo.png">
+  <link rel="msapplication-TitleColor" href="#0141ff">
+  <script src="static/katex.min.js"></script>
+  <script src="static/auto-render.min.js"></script>
+  <link rel="stylesheet" href="static/katex.min.css">
+  <script>document.addEventListener("DOMContentLoaded", function() { renderMathInElement(document.body); });</script>
+  <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8">
+  <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1"></head>
+<body>
+<div id="preamble" class="status">
+<div class="header">
+    <a href="https://www.birkey.co">Code, Data and Network</a>
+    <div class="sitelinks">
+      <a href="https://twitter.com/KasimTuman">Twitter</a> | <a href="https://github.com/oneness">Github</a> | <a href="https://www.birkey.co/resume/resume.pdf">About</a>
+    </div>
+  </div></div>
+<div id="content">
+<div class="post-date">20 Oct 2018</div><h1 class="post-title"><a href="2018-10-20-debug-voidlinux-unresolvable-lib-issue.html">Debug VoidLinux unresolvable lib issue</a></h1>
+<p>
+I have been a happy user of <b><a href="https://voidlinux.org/">VoidLinux</a></b> for about a year now and so
+far have had almost no glitches whatsoever except for updating a year
+old version of it installed on one of my spare laptop. The issue started as following:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">xbps-install -Su
+<span style="color: #b22222;"># </span><span style="color: #b22222;">resulted in following:</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">mozjs: broken, unresolvable shlib `libicu.so'</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">Transaction aborted due to unresolved shlibs.</span>
+</pre>
+</div>
+<p>
+I do not now about you but I usually start with a google search of
+what I think is somewhat general terms in my error message, which is
+<i><b>&ldquo;Transaction aborted due to unresolved shlibs&rdquo;</b></i> in my case. Searching
+with the above term came up with number of results and all point to
+the build system is still running. You can check the status of it
+here: <a href="https://build.voidlinux.eu/waterfall">Void Build Status</a>, which I did find that all is green and
+idle. So it did not help me resolve my issue. Then, I decided to do
+one more search with <i><b>&ldquo;mozjs: broken, unresolvable shlib
+`libicu.so&rsquo;&rdquo;</b></i>, which is more specific to the state of my box only but
+that did not help me go anywhere. Then I decided to debug it
+myself. Following is my commandline session how I resolved it:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #b22222;"># </span><span style="color: #b22222;">Ran the command again to make sure I have above issue </span>
+xbps-install -Su
+<span style="color: #b22222;"># </span><span style="color: #b22222;">again resulted in following:</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">mozjs: broken, unresolvable shlib `libicu.so'</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">Transaction aborted due to unresolved shlibs.</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">Notice the /*mozjs*/, which is my clue. Then I did:</span>
+xbps-query -Rs mozjs
+<span style="color: #b22222;"># </span><span style="color: #b22222;">from the output, I confirmed that it was not installed on my box,</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">which is my second clue to check if my repos url are</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">up-to-date. Remember it is a year old version of VoidLinux.  I</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">noticed from the output of xpbs-install -u, that the</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">void-repo-nonfree url does indeed point to an old url. So, I did:</span>
+xbps-remove void-repo-nonfree &amp;&amp; xbps-install void-repo-nonfree
+<span style="color: #b22222;"># </span><span style="color: #b22222;">to make sure my repo url is up-to-date. Then it is time to clean my</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">repo cache and remove any packages that might be orphened since my</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">repo url is pointing to a different url now. Using manpages for</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">xpbs-remove, I can do above with:</span>
+xbps-remove -Oo
+<span style="color: #b22222;"># </span><span style="color: #b22222;">Then I ran:</span>
+xbps-install -Su
+<span style="color: #b22222;"># </span><span style="color: #b22222;">Voila!, My one year old box is up-to-date without any issues now.</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">After all of this, I just made an one liner alias in my shell config:</span>
+<span style="color: #483d8b;">alias</span> <span style="color: #a0522d;">c</span>=<span style="color: #8b2252;">'xbps-remove void-repo-nonfree &amp;&amp; xbps-install void-repo-nonfree &amp;&amp; xbps-install -Su </span>
+</pre>
+</div>
+
+<p>
+So no love lost for VoidLinux and it is still as awesome as ever. Just
+to recap steps that I took to solve the issue:
+</p>
+<ol class="org-ol">
+<li>Start using more general term to do a google search then narrow it
+to specific ones. If it works, you save time and unneeded effort.</li>
+<li>Check for the problem package reported. Is it installed? If yes,
+try removing or updating it to see if it resolves your issue.</li>
+<li>If you do not see the package installed, it might be repo url +
+orphaned package issue. So update the repo url, remove orphan
+packages and rebuild the cache.</li>
+</ol>
+
+<p>
+If you tried all of the above and your issue still did not get
+resolved, you might want to post it in VoidLinux forum for help. 
+</p>
+<div class="taglist"><a href="tags.html">Tags:</a> <a href="tag-voidlinux.html">VoidLinux</a> </div></div>
+<div id="postamble" class="status"><div id="archive">
+    <a href="https://www.birkey.co/archive.html">Other posts</a>
+  </div>
+  <div id="wpac-comment"></div>
+<script type="text/javascript">
+wpac_init = window.wpac_init || [];
+wpac_init.push({widget: 'Comment', id: 14053});
+(function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = 'https://embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+})();
+</script>
+  <center><a rel="license" href="https://creativecommons.org/licenses/by-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a><br /><span xmlns:dct="https://purl.org/dc/terms/" href="https://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">birkey.co</span> by <a xmlns:cc="https://creativecommons.org/ns#" href="https://www.birkey.co" property="cc:attributionName" rel="cc:attributionURL">Kasim Tuman</a> is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</center></div>
+</body>
+</html>
