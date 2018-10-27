@@ -1,0 +1,87 @@
+#+title: Datafy and tap> in Clojure 1.10
+#+date: <2018-10-26 11:19>
+#+filetags: Clojure
+
+I noticed couple of new features being added to Clojure 1.10. One is
+*tap*, which is added to the core ns, and the other is *datafy*, which
+is added to clojure.datafy ns.  
+
+*tap* essentially is an atom holding set of fns of single arity, which
+will be asynchronously called on any value you you send via
+*tap>*. You can add a single arity fn to the *tap* via *(add-tap f)*
+and remove the fn via *(remove-tap f*).  Note that you have to
+remember the fn you added so you can remove it. Otherwise, you have no
+way of removing the fn, which is an inconvenience but there might be a
+reason why it is the way it is. I am not sure about its intended use
+cases but I know it comes handy when you have a set of transformation
+(*important: order of those transformation should not matter*) that you
+would like to apply to any value asynchronously. I can think of
+following uses cases for tap:
+- Collecting some sort of diagnostic information about running system.
+- Streaming serious of values to be processed and routed to a sink somewhere.
+- May be used (rather abused) to execute some code? hope not.
+Enough being said, let us see with a simple example to cover first
+uses case I said above. 
+#+BEGIN_SRC clojure
+  (def context (StringBuilder.))
+
+  (defn ->context [x]
+    (doto context
+      (.append x)))
+
+  ;; Then let us add above fn to the tapset
+  (add-tap ->context)
+  ;; Then from any where of our running code, we can do:
+  (tap> "******* tap start ********\n ")
+  (tap> "runing.......................\n")
+  (tap> "******* tap end **********\n ")
+
+  ;; It will be executed in a separate dedicated thread and will not
+  ;; block or interfere with our running code. Then we print out the context:
+  (str context)
+  ;; which results in:
+  ;;******* tap start ********
+  ;; runing.......................
+  ;;******* tap end **********
+
+  ;; Remember to remove the ->context fn once you are done with that session:
+  (remove-tap ->context)
+  ;; If there is no fn added to the tap, any values you send to tap will be discarded.
+  (tap> "your magic") ;; your magic will be discarded.
+
+#+END_SRC
+
+The other one I noticed is *datafy*, which I am more excited about. I
+am already using it to find out about java classes members, methods
+and its object graph. Let us take a java class *String* as an example.
+#+BEGIN_SRC clojure
+  (require '[clojure.datafy :as d])
+  (d/datafy String) ;; which will print all about its members in a nice clojure ds
+
+  ;; let us write an fn to give use any member that we would like to find more about:
+  (defn member-lookup [class member]
+    (->> class
+	 d/datafy
+	 :members
+	 (filter (fn [[k v]] (= (symbol member) k)))))
+  ;; then use it to find about "intern"
+  (member-lookup String "intern")
+  ;; returns:
+  ([intern
+    [{:name intern,
+      :return-type java.lang.String,
+      :declaring-class java.lang.String,
+      :parameter-types [],
+      :exception-types [],
+      :flags #{:public :native}}]])
+
+  ;; One can learn a lot about this method from above ds. "intern" is a
+  ;; public native method that takes no argument, called on string object
+  ;; and returns string like this:
+  (.intern "test") ;; => "test"
+
+#+END_SRC
+
+This means we can use above information to create Clojure fns on the
+fly for java inter-op. One great use case would be to generate Clojure
+fns out of AWS Java SDK, which I might do if time permits.

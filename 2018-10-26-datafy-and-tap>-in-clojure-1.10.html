@@ -6,7 +6,7 @@
       type="application/rss+xml"
       href="https://www.birkey.co/rss.xml"
       title="RSS feed for https://www.birkey.co/"/>
-<title>BirkeyCo</title>
+<title>Datafy and tap> in Clojure 1.10</title>
 <meta name="author" content="Kasim Tuman">
   <meta name="referrer" content="no-referrer">
   <link href= "static/style.css" rel="stylesheet" type="text/css" />
@@ -21,14 +21,14 @@
   <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8">
   <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1"></head>
 <body>
-<div id="preamble" class="status"><div class="header">
+<div id="preamble" class="status">
+<div class="header">
     <a href="https://www.birkey.co">Code, Data and Network</a>
     <div class="sitelinks">
       <a href="https://twitter.com/KasimTuman">Twitter</a> | <a href="https://github.com/oneness">Github</a> | <a href="https://www.birkey.co/resume/resume.pdf">About</a>
     </div>
   </div></div>
 <div id="content">
-<h1 class="title">Posts tagged "clojure":</h1>
 <div class="post-date">26 Oct 2018</div><h1 class="post-title"><a href="2018-10-26-datafy-and-tap>-in-clojure-1.10.html">Datafy and tap> in Clojure 1.10</a></h1>
 <p>
 I noticed couple of new features being added to Clojure 1.10. One is
@@ -127,34 +127,24 @@ This means we can use above information to create Clojure fns on the
 fly for java inter-op. One great use case would be to generate Clojure
 fns out of AWS Java SDK, which I might do if time permits.
 </p>
-<div class="taglist"><a href="tags.html">Tags:</a> <a href="tag-clojure.html">Clojure</a> </div>
-<div class="post-date">04 Oct 2018</div><h1 class="post-title"><a href="2018-10-04-visualize-google-search-results-from-clojure-repl.html">Visualize Google search results from Clojure REPL</a></h1>
-<p>
-While back when I was learning Clojure, I have written a small lib
-that allows me directly generate bar chart out of google search
-results from Clojure. I updated it with latest deps and added a fn to
-save the bar-chart to a png file. You can checkout the project here:
-<a href="https://github.com/oneness/gcount">https://github.com/oneness/gcount</a>.  Here is a one liner to get you
-going:
-</p>
-<div class="org-src-container">
-<pre class="src src-shell">git clone git@github.com:oneness/gcount.git &amp;&amp; <span style="color: #483d8b;">cd</span> gcount &amp;&amp; lein repl
-</pre>
-</div>
-<p>
-Once you are in repl, you can type following:
-</p>
-<div class="org-src-container">
-<pre class="src src-clojure"><span style="color: #7f7f7f;">(</span>search-view-terms <span style="color: #7f7f7f;">[</span><span style="color: #8b2252;">"Clojure Programming"</span> <span style="color: #8b2252;">"Elixir Programming"</span> <span style="color: #8b2252;">"Elm Programming"</span><span style="color: #7f7f7f;">])</span>
-</pre>
-</div>
-<p>
-Above will produce something like this:
-<img src="https://www.birkey.co/images/google-search-result.png" alt="google-search-result.png">
-</p>
-<div class="taglist"><a href="tags.html">Tags:</a> <a href="tag-clojure.html">clojure</a> </div><div id="archive">
-<a href="archive.html">Other posts</a>
-</div>
-</div>
+<div class="taglist"><a href="tags.html">Tags:</a> <a href="tag-clojure.html">Clojure</a> </div></div>
+<div id="postamble" class="status"><div id="archive">
+    <a href="https://www.birkey.co/archive.html">Other posts</a>
+  </div>
+  <div id="wpac-comment"></div>
+<script type="text/javascript">
+wpac_init = window.wpac_init || [];
+wpac_init.push({widget: 'Comment', id: 14053});
+(function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = 'https://embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+})();
+</script>
+  <center><a rel="license" href="https://creativecommons.org/licenses/by-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a><br /><span xmlns:dct="https://purl.org/dc/terms/" href="https://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">birkey.co</span> by <a xmlns:cc="https://creativecommons.org/ns#" href="https://www.birkey.co" property="cc:attributionName" rel="cc:attributionURL">Kasim Tuman</a> is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</center></div>
 </body>
 </html>

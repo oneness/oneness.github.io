@@ -29,6 +29,105 @@
   </div></div>
 <div id="content">
 
+<div class="post-date">26 Oct 2018</div><h1 class="post-title"><a href="2018-10-26-datafy-and-tap>-in-clojure-1.10.html">Datafy and tap> in Clojure 1.10</a></h1>
+<p>
+I noticed couple of new features being added to Clojure 1.10. One is
+<b>tap</b>, which is added to the core ns, and the other is <b>datafy</b>, which
+is added to clojure.datafy ns.  
+</p>
+
+<p>
+<b>tap</b> essentially is an atom holding set of fns of single arity, which
+will be asynchronously called on any value you you send via
+<b>tap&gt;</b>. You can add a single arity fn to the <b>tap</b> via <b>(add-tap f)</b>
+and remove the fn via <b>(remove-tap f</b>).  Note that you have to
+remember the fn you added so you can remove it. Otherwise, you have no
+way of removing the fn, which is an inconvenience but there might be a
+reason why it is the way it is. I am not sure about its intended use
+cases but I know it comes handy when you have a set of transformation
+(<b>important: order of those transformation should not matter</b>) that you
+would like to apply to any value asynchronously. I can think of
+following uses cases for tap:
+</p>
+<ul class="org-ul">
+<li>Collecting some sort of diagnostic information about running system.</li>
+<li>Streaming serious of values to be processed and routed to a sink somewhere.</li>
+<li>May be used (rather abused) to execute some code? hope not.</li>
+</ul>
+<p>
+Enough being said, let us see with a simple example to cover first
+uses case I said above. 
+</p>
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">def</span> <span style="color: #a0522d;">context</span> <span style="color: #7f7f7f;">(</span>StringBuilder.<span style="color: #7f7f7f;">))</span>
+
+<span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">defn</span> <span style="color: #0000ff;">-&gt;context</span> <span style="color: #7f7f7f;">[</span>x<span style="color: #7f7f7f;">]</span>
+  <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">doto</span> context
+    <span style="color: #7f7f7f;">(</span>.append x<span style="color: #7f7f7f;">)))</span>
+
+<span style="color: #b22222;">;; </span><span style="color: #b22222;">Then let us add above fn to the tapset</span>
+<span style="color: #7f7f7f;">(</span>add-tap -&gt;context<span style="color: #7f7f7f;">)</span>
+<span style="color: #b22222;">;; </span><span style="color: #b22222;">Then from any where of our running code, we can do:</span>
+<span style="color: #7f7f7f;">(</span>tap&gt; <span style="color: #8b2252;">"******* tap start ********</span><span style="color: #8b2252; font-weight: bold;">\n</span><span style="color: #8b2252;"> "</span><span style="color: #7f7f7f;">)</span>
+<span style="color: #7f7f7f;">(</span>tap&gt; <span style="color: #8b2252;">"runing.......................</span><span style="color: #8b2252; font-weight: bold;">\n</span><span style="color: #8b2252;">"</span><span style="color: #7f7f7f;">)</span>
+<span style="color: #7f7f7f;">(</span>tap&gt; <span style="color: #8b2252;">"******* tap end **********</span><span style="color: #8b2252; font-weight: bold;">\n</span><span style="color: #8b2252;"> "</span><span style="color: #7f7f7f;">)</span>
+
+<span style="color: #b22222;">;; </span><span style="color: #b22222;">It will be executed in a separate dedicated thread and will not</span>
+<span style="color: #b22222;">;; </span><span style="color: #b22222;">block or interfere with our running code. Then we print out the context:</span>
+<span style="color: #7f7f7f;">(</span>str context<span style="color: #7f7f7f;">)</span>
+<span style="color: #b22222;">;; </span><span style="color: #b22222;">which results in:</span>
+<span style="color: #b22222;">;;</span><span style="color: #b22222;">******* tap start ********</span>
+<span style="color: #b22222;">;; </span><span style="color: #b22222;">runing.......................</span>
+<span style="color: #b22222;">;;</span><span style="color: #b22222;">******* tap end **********</span>
+
+<span style="color: #b22222;">;; </span><span style="color: #b22222;">Remember to remove the -&gt;context fn once you are done with that session:</span>
+<span style="color: #7f7f7f;">(</span>remove-tap -&gt;context<span style="color: #7f7f7f;">)</span>
+<span style="color: #b22222;">;; </span><span style="color: #b22222;">If there is no fn added to the tap, any values you send to tap will be discarded.</span>
+<span style="color: #7f7f7f;">(</span>tap&gt; <span style="color: #8b2252;">"your magic"</span><span style="color: #7f7f7f;">)</span> <span style="color: #b22222;">;; </span><span style="color: #b22222;">your magic will be discarded.</span>
+
+</pre>
+</div>
+
+<p>
+The other one I noticed is <b>datafy</b>, which I am more excited about. I
+am already using it to find out about java classes members, methods
+and its object graph. Let us take a java class <b>String</b> as an example.
+</p>
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #7f7f7f;">(</span>require '<span style="color: #7f7f7f;">[</span>clojure.datafy <span style="color: #008b8b;">:as</span> d<span style="color: #7f7f7f;">])</span>
+<span style="color: #7f7f7f;">(</span><span style="color: #228b22;">d</span>/datafy String<span style="color: #7f7f7f;">)</span> <span style="color: #b22222;">;; </span><span style="color: #b22222;">which will print all about its members in a nice clojure ds</span>
+
+<span style="color: #b22222;">;; </span><span style="color: #b22222;">let us write an fn to give use any member that we would like to find more about:</span>
+<span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">defn</span> <span style="color: #0000ff;">member-lookup</span> <span style="color: #7f7f7f;">[</span>class member<span style="color: #7f7f7f;">]</span>
+  <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">-&gt;&gt;</span> class
+       <span style="color: #228b22;">d</span>/datafy
+       <span style="color: #008b8b;">:members</span>
+       <span style="color: #7f7f7f;">(</span>filter <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">fn</span> <span style="color: #7f7f7f;">[[</span>k v<span style="color: #7f7f7f;">]]</span> <span style="color: #7f7f7f;">(</span>= <span style="color: #7f7f7f;">(</span>symbol member<span style="color: #7f7f7f;">)</span> k<span style="color: #7f7f7f;">)))))</span>
+<span style="color: #b22222;">;; </span><span style="color: #b22222;">then use it to find about "intern"</span>
+<span style="color: #7f7f7f;">(</span>member-lookup String <span style="color: #8b2252;">"intern"</span><span style="color: #7f7f7f;">)</span>
+<span style="color: #b22222;">;; </span><span style="color: #b22222;">returns:</span>
+<span style="color: #7f7f7f;">([</span>intern
+  <span style="color: #7f7f7f;">[</span>{<span style="color: #008b8b;">:name</span> intern,
+    <span style="color: #008b8b;">:return-type</span> java.lang.String,
+    <span style="color: #008b8b;">:declaring-class</span> java.lang.String,
+    <span style="color: #008b8b;">:parameter-types</span> <span style="color: #7f7f7f;">[]</span>,
+    <span style="color: #008b8b;">:exception-types</span> <span style="color: #7f7f7f;">[]</span>,
+    <span style="color: #008b8b;">:flags</span> #{<span style="color: #008b8b;">:public</span> <span style="color: #008b8b;">:native</span>}}<span style="color: #7f7f7f;">]])</span>
+
+<span style="color: #b22222;">;; </span><span style="color: #b22222;">One can learn a lot about this method from above ds. "intern" is a</span>
+<span style="color: #b22222;">;; </span><span style="color: #b22222;">public native method that takes no argument, called on string object</span>
+<span style="color: #b22222;">;; </span><span style="color: #b22222;">and returns string like this:</span>
+<span style="color: #7f7f7f;">(</span>.intern <span style="color: #8b2252;">"test"</span><span style="color: #7f7f7f;">)</span> <span style="color: #b22222;">;; </span><span style="color: #b22222;">=&gt; "test"</span>
+
+</pre>
+</div>
+
+<p>
+This means we can use above information to create Clojure fns on the
+fly for java inter-op. One great use case would be to generate Clojure
+fns out of AWS Java SDK, which I might do if time permits.
+</p>
+<div class="taglist"><a href="tags.html">Tags:</a> <a href="tag-clojure.html">Clojure</a> </div>
 <div class="post-date">20 Oct 2018</div><h1 class="post-title"><a href="2018-10-20-debug-voidlinux-unresolvable-lib-issue.html">Debug VoidLinux unresolvable lib issue</a></h1>
 <p>
 I have been a happy user of <b><a href="https://voidlinux.org/">VoidLinux</a></b> for about a year now and so
