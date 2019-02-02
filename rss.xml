@@ -4,7 +4,7 @@
 <title>BirkeyCo</title>
 <description>BirkeyCo</description>
 <link>https://www.birkey.co/</link>
-<lastBuildDate>Sat, 02 Feb 2019 12:38:18 -0800</lastBuildDate>
+<lastBuildDate>Sat, 02 Feb 2019 12:55:51 -0800</lastBuildDate>
 <item>
   <title>Thoughts on Elixir Community by a Clojure Developer</title>
   <description><![CDATA[
@@ -73,7 +73,7 @@ and agreed upon such as <b>mix format</b></li>
 </ul>
 
 <p>
-I home someone from both community find above helpful.
+I hope someone from both community find above helpful.
 </p>
 <div class="taglist"><a href="tags.html">Tags:</a> <a href="tag-clojure.html">clojure</a> <a href="tag-elixir.html">elixir</a> </div>]]></description>
   <category>clojure</category>

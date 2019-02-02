@@ -55,4 +55,4 @@ Elixir community that Clojure Community might benefit:
   happiness by having great tooling and convention that they all love
   and agreed upon such as *mix format*
 
-I home someone from both community find above helpful.
+I hope someone from both community find above helpful.
