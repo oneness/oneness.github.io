@@ -1,6 +1,6 @@
 #+title: Datafy and tap> in Clojure 1.10
 #+date: <2018-10-26 11:19>
-#+filetags: Clojure
+#+filetags: clojure
 
 I noticed couple of new features being added to Clojure 1.10. One is
 *tap*, which is added to the core ns, and the other is *datafy*, which

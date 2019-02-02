@@ -29,6 +29,75 @@
   </div></div>
 <div id="content">
 <h1 class="title">Posts tagged "clojure":</h1>
+<div class="post-date">02 Feb 2019</div><h1 class="post-title"><a href="2019-02-02-clojure-and-elixir.html">Thoughts on Elixir Community by a Clojure Developer</a></h1>
+<p>
+I have been building systems in Clojure/ClojureScript for the the last
+7 years or so. I enjoy using it to solve day to day problems. It is
+still my go-to language of choice and I love the fact that it guides me
+to think about problem at hand with very data centric way. As a tiny
+example of this, consider a feature where you need to toggle the sort
+ordering:
+</p>
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">defn</span> <span style="color: #0000ff;">toggle-order</span> <span style="color: #7f7f7f;">[</span>order<span style="color: #7f7f7f;">]</span>
+  <span style="color: #7f7f7f;">(</span>order {<span style="color: #008b8b;">:asc</span> <span style="color: #008b8b;">:desc</span>
+          <span style="color: #008b8b;">:desc</span> <span style="color: #008b8b;">:asc</span>}<span style="color: #7f7f7f;">))</span>
+</pre>
+</div>
+<p>
+It is tiny but mighty. There is no if/else/case etc and it is easy to
+read, which is extremely important as your program grows due to needed
+complexity. Speaking of being <b>easy to read</b>, I could not help but to
+quote following from SICP book:
+</p>
+<blockquote>
+<p>
+Our design of this introductory computer-science subject reﬂects two
+major concerns. First, we want to establish the idea that a computer
+language is not just a way of gettng a computer to perform operations
+but rather that it is a novel formal medium for expressing ideas about
+methodology. <b>Thus, programs must be written for people to read, and
+only incidentally for machines to execute.</b> Second, we believe that
+the essential material to be addressed by a subject at this level is
+not the syntax of particular programming-language constructs, nor
+clever algorithms for computing particular functions efficiently, nor
+even the mathematical analysis of algorithms and the foundations of
+computing, but rather the techniques used to control the intellectual
+complexity of large software systems.
+</p>
+</blockquote>
+
+<p>
+For me, Using Clojure and Datomic professionally has been a game
+changer not only in terms of being more problem solving focused but
+more importantly a paradigm shift for taming domain complexity. It has
+helped me deliver robust, high performance systems within time and
+budget. However, having bitten by half baked distributed systems made
+up of tiny services done as afterthoughts, I have always been on the
+lookout for more robust distributed system development story. Then I
+found <b>Elixir</b>, a functional language running on Erlang VM called
+<b>BEAM</b>. After spending some time attending ElixirConf US and couple of
+meetups in <b>ErlangElixirSF</b>, I am posting what I really liked about
+Elixir community that Clojure Community might benefit:
+</p>
+
+<ul class="org-ul">
+<li>Elixir community has a strong focus on few important projects in
+their ecosystem, namely <b>Elixir the language and its build tool-
+Mix</b>, <b>Pheonix Framework</b>, <b>Nerve</b>, <b>Ecto</b>, and <b>absinthe - The
+GraphQL toolkit for Elixir</b>.</li>
+<li>Elixir community is pretty mature in terms of keeping the core
+language small and extensible, which is abundantly clear from the
+creator of Elixir, Jose Valim&rsquo;s 2018 ElixirConf US keynote.</li>
+<li>Elixir community is super focused on Documentation and Developer
+happiness by having great tooling and convention that they all love
+and agreed upon such as <b>mix format</b></li>
+</ul>
+
+<p>
+I home someone from both community find above helpful.
+</p>
+<div class="taglist"><a href="tags.html">Tags:</a> <a href="tag-clojure.html">clojure</a> <a href="tag-elixir.html">elixir</a> </div>
 <div class="post-date">26 Oct 2018</div><h1 class="post-title"><a href="2018-10-26-datafy-and-tap>-in-clojure-1.10.html">Datafy and tap> in Clojure 1.10</a></h1>
 <p>
 I noticed couple of new features being added to Clojure 1.10. One is
@@ -127,7 +196,7 @@ This means we can use above information to create Clojure fns on the
 fly for java inter-op. One great use case would be to generate Clojure
 fns out of AWS Java SDK, which I might do if time permits.
 </p>
-<div class="taglist"><a href="tags.html">Tags:</a> <a href="tag-clojure.html">Clojure</a> </div>
+<div class="taglist"><a href="tags.html">Tags:</a> <a href="tag-clojure.html">clojure</a> </div>
 <div class="post-date">04 Oct 2018</div><h1 class="post-title"><a href="2018-10-04-visualize-google-search-results-from-clojure-repl.html">Visualize Google search results from Clojure REPL</a></h1>
 <p>
 While back when I was learning Clojure, I have written a small lib

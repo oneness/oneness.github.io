@@ -1,0 +1,58 @@
+#+title: Thoughts on Elixir Community by a Clojure Developer
+#+date: <2019-02-02 10:29>
+#+filetags: clojure elixir
+
+I have been building systems in Clojure/ClojureScript for the the last
+7 years or so. I enjoy using it to solve day to day problems. It is
+still my go-to language of choice and I love the fact that it guides me
+to think about problem at hand with very data centric way. As a tiny
+example of this, consider a feature where you need to toggle the sort
+ordering:
+#+BEGIN_SRC clojure
+  (defn toggle-order [order]
+    (order {:asc :desc
+	    :desc :asc}))
+#+END_SRC
+It is tiny but mighty. There is no if/else/case etc and it is easy to
+read, which is extremely important as your program grows due to needed
+complexity. Speaking of being *easy to read*, I could not help but to
+quote following from SICP book:
+#+BEGIN_QUOTE
+Our design of this introductory computer-science subject reﬂects two
+major concerns. First, we want to establish the idea that a computer
+language is not just a way of gettng a computer to perform operations
+but rather that it is a novel formal medium for expressing ideas about
+methodology. *Thus, programs must be written for people to read, and
+only incidentally for machines to execute.* Second, we believe that
+the essential material to be addressed by a subject at this level is
+not the syntax of particular programming-language constructs, nor
+clever algorithms for computing particular functions efficiently, nor
+even the mathematical analysis of algorithms and the foundations of
+computing, but rather the techniques used to control the intellectual
+complexity of large software systems.
+#+END_QUOTE
+
+For me, Using Clojure and Datomic professionally has been a game
+changer not only in terms of being more problem solving focused but
+more importantly a paradigm shift for taming domain complexity. It has
+helped me deliver robust, high performance systems within time and
+budget. However, having bitten by half baked distributed systems made
+up of tiny services done as afterthoughts, I have always been on the
+lookout for more robust distributed system development story. Then I
+found *Elixir*, a functional language running on Erlang VM called
+*BEAM*. After spending some time attending ElixirConf US and couple of
+meetups in *ErlangElixirSF*, I am posting what I really liked about
+Elixir community that Clojure Community might benefit:
+
+- Elixir community has a strong focus on few important projects in
+  their ecosystem, namely *Elixir the language and its build tool-
+  Mix*, *Pheonix Framework*, *Nerve*, *Ecto*, and *absinthe - The
+  GraphQL toolkit for Elixir*.
+- Elixir community is pretty mature in terms of keeping the core
+  language small and extensible, which is abundantly clear from the
+  creator of Elixir, Jose Valim's 2018 ElixirConf US keynote.
+- Elixir community is super focused on Documentation and Developer
+  happiness by having great tooling and convention that they all love
+  and agreed upon such as *mix format*
+
+I home someone from both community find above helpful.

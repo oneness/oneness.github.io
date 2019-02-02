@@ -29,6 +29,75 @@
   </div></div>
 <div id="content">
 
+<div class="post-date">02 Feb 2019</div><h1 class="post-title"><a href="2019-02-02-clojure-and-elixir.html">Thoughts on Elixir Community by a Clojure Developer</a></h1>
+<p>
+I have been building systems in Clojure/ClojureScript for the the last
+7 years or so. I enjoy using it to solve day to day problems. It is
+still my go-to language of choice and I love the fact that it guides me
+to think about problem at hand with very data centric way. As a tiny
+example of this, consider a feature where you need to toggle the sort
+ordering:
+</p>
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">defn</span> <span style="color: #0000ff;">toggle-order</span> <span style="color: #7f7f7f;">[</span>order<span style="color: #7f7f7f;">]</span>
+  <span style="color: #7f7f7f;">(</span>order {<span style="color: #008b8b;">:asc</span> <span style="color: #008b8b;">:desc</span>
+          <span style="color: #008b8b;">:desc</span> <span style="color: #008b8b;">:asc</span>}<span style="color: #7f7f7f;">))</span>
+</pre>
+</div>
+<p>
+It is tiny but mighty. There is no if/else/case etc and it is easy to
+read, which is extremely important as your program grows due to needed
+complexity. Speaking of being <b>easy to read</b>, I could not help but to
+quote following from SICP book:
+</p>
+<blockquote>
+<p>
+Our design of this introductory computer-science subject reﬂects two
+major concerns. First, we want to establish the idea that a computer
+language is not just a way of gettng a computer to perform operations
+but rather that it is a novel formal medium for expressing ideas about
+methodology. <b>Thus, programs must be written for people to read, and
+only incidentally for machines to execute.</b> Second, we believe that
+the essential material to be addressed by a subject at this level is
+not the syntax of particular programming-language constructs, nor
+clever algorithms for computing particular functions efficiently, nor
+even the mathematical analysis of algorithms and the foundations of
+computing, but rather the techniques used to control the intellectual
+complexity of large software systems.
+</p>
+</blockquote>
+
+<p>
+For me, Using Clojure and Datomic professionally has been a game
+changer not only in terms of being more problem solving focused but
+more importantly a paradigm shift for taming domain complexity. It has
+helped me deliver robust, high performance systems within time and
+budget. However, having bitten by half baked distributed systems made
+up of tiny services done as afterthoughts, I have always been on the
+lookout for more robust distributed system development story. Then I
+found <b>Elixir</b>, a functional language running on Erlang VM called
+<b>BEAM</b>. After spending some time attending ElixirConf US and couple of
+meetups in <b>ErlangElixirSF</b>, I am posting what I really liked about
+Elixir community that Clojure Community might benefit:
+</p>
+
+<ul class="org-ul">
+<li>Elixir community has a strong focus on few important projects in
+their ecosystem, namely <b>Elixir the language and its build tool-
+Mix</b>, <b>Pheonix Framework</b>, <b>Nerve</b>, <b>Ecto</b>, and <b>absinthe - The
+GraphQL toolkit for Elixir</b>.</li>
+<li>Elixir community is pretty mature in terms of keeping the core
+language small and extensible, which is abundantly clear from the
+creator of Elixir, Jose Valim&rsquo;s 2018 ElixirConf US keynote.</li>
+<li>Elixir community is super focused on Documentation and Developer
+happiness by having great tooling and convention that they all love
+and agreed upon such as <b>mix format</b></li>
+</ul>
+
+<p>
+I home someone from both community find above helpful.
+</p>
+<div class="taglist"><a href="tags.html">Tags:</a> <a href="tag-clojure.html">clojure</a> <a href="tag-elixir.html">elixir</a> </div>
 <div class="post-date">26 Oct 2018</div><h1 class="post-title"><a href="2018-10-26-datafy-and-tap>-in-clojure-1.10.html">Datafy and tap> in Clojure 1.10</a></h1>
 <p>
 I noticed couple of new features being added to Clojure 1.10. One is
@@ -127,7 +196,7 @@ This means we can use above information to create Clojure fns on the
 fly for java inter-op. One great use case would be to generate Clojure
 fns out of AWS Java SDK, which I might do if time permits.
 </p>
-<div class="taglist"><a href="tags.html">Tags:</a> <a href="tag-clojure.html">Clojure</a> </div>
+<div class="taglist"><a href="tags.html">Tags:</a> <a href="tag-clojure.html">clojure</a> </div>
 <div class="post-date">20 Oct 2018</div><h1 class="post-title"><a href="2018-10-20-debug-voidlinux-unresolvable-lib-issue.html">Debug VoidLinux unresolvable lib issue</a></h1>
 <p>
 I have been a happy user of <b><a href="https://voidlinux.org/">VoidLinux</a></b> for about a year now and so
@@ -249,67 +318,7 @@ There are many options you can use other than `VM.flags`, which you can get a fu
 <pre class="src src-shell">jcmd &lt;pid&gt; help
 </pre>
 </div>
-<div class="taglist"><a href="tags.html">Tags:</a> <a href="tag-jvm.html">jvm</a> </div>
-<div class="post-date">19 Sep 2018</div><h1 class="post-title"><a href="2018-9-20-blogging-simpler.html">Blogging Made Simple</a></h1>
-<p>
-After taking some time off from work to focus on projects that I like
-to take on, I set out to find a simple way to use git and emacs workflow to
-start blogging again. Among plethora of options on the web, I came
-across this project - <a href="https://github.com/bastibe/org-static-blog">Org Static Blog</a> - that I resonated with. It took
-me no time to set it up and start blogging. Below is my setup:
-</p>
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">use-package</span> <span style="color: #008b8b;">org-static-blog</span>
-  <span style="color: #483d8b;">:straight</span> t
-  <span style="color: #483d8b;">:config</span>
-  <span style="color: #b22222;">;; </span><span style="color: #b22222;">-----------------------------------------------------------------------------</span>
-  <span style="color: #b22222;">;; </span><span style="color: #b22222;">Set up blogging in Emacs</span>
-  <span style="color: #b22222;">;; </span><span style="color: #b22222;">-----------------------------------------------------------------------------</span>
-
-  <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">setq</span> org-static-blog-publish-title <span style="color: #8b2252;">"BirkeyCo"</span><span style="color: #7f7f7f;">)</span>
-  <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">setq</span> org-static-blog-publish-url <span style="color: #8b2252;">"https://www.birkey.co/"</span><span style="color: #7f7f7f;">)</span>
-  <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">setq</span> org-static-blog-publish-directory <span style="color: #8b2252;">"~/github/oneness.github.io/"</span><span style="color: #7f7f7f;">)</span>
-  <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">setq</span> org-static-blog-posts-directory <span style="color: #8b2252;">"~/github/oneness.github.io/posts/"</span><span style="color: #7f7f7f;">)</span>
-  <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">setq</span> org-static-blog-drafts-directory <span style="color: #8b2252;">"~/github/oneness.github.io/drafts/"</span><span style="color: #7f7f7f;">)</span>
-  <span style="color: #b22222;">;;</span><span style="color: #b22222;">(setq org-static-blog-enable-tags t)</span>
-  <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">setq</span> org-export-with-toc nil<span style="color: #7f7f7f;">)</span>
-  <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">setq</span> org-export-with-section-numbers nil<span style="color: #7f7f7f;">)</span>
-
-  <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">setq</span> org-static-blog-page-header
-        <span style="color: #8b2252;">"&lt;meta name=\"author\" content=\"Kasim Tuman\"&gt;</span>
-<span style="color: #8b2252;">&lt;meta name=\"referrer\" content=\"no-referrer\"&gt;</span>
-<span style="color: #8b2252;">&lt;link href= \"static/style.css\" rel=\"stylesheet\" type=\"text/css\" /&gt;</span>
-<span style="color: #8b2252;">&lt;link rel=\"icon\" href=\"static/favicon.ico\"&gt;</span>
-<span style="color: #8b2252;">&lt;link rel=\"apple-touch-icon-precomposed\" href=\"static/birkey_logo.png\"&gt;</span>
-<span style="color: #8b2252;">&lt;link rel=\"msapplication-TitleImage\" href=\"static/birkey_logo.png\"&gt;</span>
-<span style="color: #8b2252;">&lt;link rel=\"msapplication-TitleColor\" href=\"#0141ff\"&gt;</span>
-<span style="color: #8b2252;">&lt;script src=\"static/katex.min.js\"&gt;&lt;/script&gt;</span>
-<span style="color: #8b2252;">&lt;script src=\"static/auto-render.min.js\"&gt;&lt;/script&gt;</span>
-<span style="color: #8b2252;">&lt;link rel=\"stylesheet\" href=\"static/katex.min.css\"&gt;</span>
-<span style="color: #8b2252;">&lt;script&gt;document.addEventListener(\"DOMContentLoaded\", function() { renderMathInElement(document.body); });&lt;/script&gt;</span>
-<span style="color: #8b2252;">&lt;meta http-equiv=\"content-type\" content=\"application/xhtml+xml; charset=UTF-8\"&gt;</span>
-<span style="color: #8b2252;">&lt;meta name=\"viewport\" content=\"initial-scale=1,width=device-width,minimum-scale=1\"&gt;"</span><span style="color: #7f7f7f;">)</span>
-
-  <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">setq</span> org-static-blog-page-preamble
-        <span style="color: #8b2252;">"&lt;div class=\"header\"&gt;</span>
-<span style="color: #8b2252;">  &lt;a href=\"https://birkey.co\"&gt;Code, Data and Network&lt;/a&gt;</span>
-<span style="color: #8b2252;">  &lt;div class=\"sitelinks\"&gt;</span>
-<span style="color: #8b2252;">    &lt;a href=\"https://twitter.com/KasimTuman\"&gt;Twitter&lt;/a&gt; | &lt;a href=\"https://github.com/oneness\"&gt;Github&lt;/a&gt;</span>
-<span style="color: #8b2252;">  &lt;/div&gt;</span>
-<span style="color: #8b2252;">&lt;/div&gt;"</span><span style="color: #7f7f7f;">)</span>
-
-  <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">setq</span> org-static-blog-page-postamble
-        <span style="color: #8b2252;">"&lt;div id=\"archive\"&gt;</span>
-<span style="color: #8b2252;">  &lt;a href=\"https://www.birkey.co/archive.html\"&gt;Other posts&lt;/a&gt;</span>
-<span style="color: #8b2252;">&lt;/div&gt;</span>
-<span style="color: #8b2252;">&lt;center&gt;&lt;a rel=\"license\" href=\"https://creativecommons.org/licenses/by-sa/3.0/\"&gt;&lt;img alt=\"Creative Commons License\" style=\"border-width:0\" src=\"https://i.creativecommons.org/l/by-sa/3.0/88x31.png\" /&gt;&lt;/a&gt;&lt;br /&gt;&lt;span xmlns:dct=\"https://purl.org/dc/terms/\" href=\"https://purl.org/dc/dcmitype/Text\" property=\"dct:title\" rel=\"dct:type\"&gt;birkey.co&lt;/span&gt; by &lt;a xmlns:cc=\"https://creativecommons.org/ns#\" href=\"https://www.birkey.co\" property=\"cc:attributionName\" rel=\"cc:attributionURL\"&gt;Kasim Tuman&lt;/a&gt; is licensed under a &lt;a rel=\"license\" href=\"https://creativecommons.org/licenses/by-sa/3.0/\"&gt;Creative Commons Attribution-ShareAlike 3.0 Unported License&lt;/a&gt;.&lt;/center&gt;"</span><span style="color: #7f7f7f;">)</span>
-
-  <span style="color: #b22222;">;; </span><span style="color: #b22222;">This slows down org-publish to a crawl, and it is not needed since</span>
-  <span style="color: #b22222;">;; </span><span style="color: #b22222;">I use magit anyway.</span>
-  <span style="color: #7f7f7f;">(</span>remove-hook 'find-file-hooks 'vc-find-file-hook<span style="color: #7f7f7f;">))</span>
-</pre>
-</div>
-<div class="taglist"><a href="tags.html">Tags:</a> <a href="tag-emacs.html">emacs</a> <a href="tag-blogging.html">blogging</a> </div><div id="archive">
+<div class="taglist"><a href="tags.html">Tags:</a> <a href="tag-jvm.html">jvm</a> </div><div id="archive">
 <a href="archive.html">Other posts</a>
 </div>
 </div>

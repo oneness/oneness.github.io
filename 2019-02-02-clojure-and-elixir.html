@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="alternate"
+      type="application/rss+xml"
+      href="https://www.birkey.co/rss.xml"
+      title="RSS feed for https://www.birkey.co/"/>
+<title>Thoughts on Elixir Community by a Clojure Developer</title>
+<meta name="author" content="Kasim Tuman">
+  <meta name="referrer" content="no-referrer">
+  <link href= "static/style.css" rel="stylesheet" type="text/css" />
+  <link rel="icon" href="static/favicon.ico">
+  <link rel="apple-touch-icon-precomposed" href="static/birkey_logo.png">
+  <link rel="msapplication-TitleImage" href="static/birkey_logo.png">
+  <link rel="msapplication-TitleColor" href="#0141ff">
+  <script src="static/katex.min.js"></script>
+  <script src="static/auto-render.min.js"></script>
+  <link rel="stylesheet" href="static/katex.min.css">
+  <script>document.addEventListener("DOMContentLoaded", function() { renderMathInElement(document.body); });</script>
+  <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8">
+  <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1"></head>
+<body>
+<div id="preamble" class="status">
+<div class="header">
+    <a href="https://www.birkey.co">Code, Data and Network</a>
+    <div class="sitelinks">
+      <a href="https://twitter.com/KasimTuman">Twitter</a> | <a href="https://github.com/oneness">Github</a> | <a href="https://www.birkey.co/resume/resume.pdf">About</a>
+    </div>
+  </div></div>
+<div id="content">
+<div class="post-date">02 Feb 2019</div><h1 class="post-title"><a href="2019-02-02-clojure-and-elixir.html">Thoughts on Elixir Community by a Clojure Developer</a></h1>
+<p>
+I have been building systems in Clojure/ClojureScript for the the last
+7 years or so. I enjoy using it to solve day to day problems. It is
+still my go-to language of choice and I love the fact that it guides me
+to think about problem at hand with very data centric way. As a tiny
+example of this, consider a feature where you need to toggle the sort
+ordering:
+</p>
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">defn</span> <span style="color: #0000ff;">toggle-order</span> <span style="color: #7f7f7f;">[</span>order<span style="color: #7f7f7f;">]</span>
+  <span style="color: #7f7f7f;">(</span>order {<span style="color: #008b8b;">:asc</span> <span style="color: #008b8b;">:desc</span>
+          <span style="color: #008b8b;">:desc</span> <span style="color: #008b8b;">:asc</span>}<span style="color: #7f7f7f;">))</span>
+</pre>
+</div>
+<p>
+It is tiny but mighty. There is no if/else/case etc and it is easy to
+read, which is extremely important as your program grows due to needed
+complexity. Speaking of being <b>easy to read</b>, I could not help but to
+quote following from SICP book:
+</p>
+<blockquote>
+<p>
+Our design of this introductory computer-science subject reﬂects two
+major concerns. First, we want to establish the idea that a computer
+language is not just a way of gettng a computer to perform operations
+but rather that it is a novel formal medium for expressing ideas about
+methodology. <b>Thus, programs must be written for people to read, and
+only incidentally for machines to execute.</b> Second, we believe that
+the essential material to be addressed by a subject at this level is
+not the syntax of particular programming-language constructs, nor
+clever algorithms for computing particular functions efficiently, nor
+even the mathematical analysis of algorithms and the foundations of
+computing, but rather the techniques used to control the intellectual
+complexity of large software systems.
+</p>
+</blockquote>
+
+<p>
+For me, Using Clojure and Datomic professionally has been a game
+changer not only in terms of being more problem solving focused but
+more importantly a paradigm shift for taming domain complexity. It has
+helped me deliver robust, high performance systems within time and
+budget. However, having bitten by half baked distributed systems made
+up of tiny services done as afterthoughts, I have always been on the
+lookout for more robust distributed system development story. Then I
+found <b>Elixir</b>, a functional language running on Erlang VM called
+<b>BEAM</b>. After spending some time attending ElixirConf US and couple of
+meetups in <b>ErlangElixirSF</b>, I am posting what I really liked about
+Elixir community that Clojure Community might benefit:
+</p>
+
+<ul class="org-ul">
+<li>Elixir community has a strong focus on few important projects in
+their ecosystem, namely <b>Elixir the language and its build tool-
+Mix</b>, <b>Pheonix Framework</b>, <b>Nerve</b>, <b>Ecto</b>, and <b>absinthe - The
+GraphQL toolkit for Elixir</b>.</li>
+<li>Elixir community is pretty mature in terms of keeping the core
+language small and extensible, which is abundantly clear from the
+creator of Elixir, Jose Valim&rsquo;s 2018 ElixirConf US keynote.</li>
+<li>Elixir community is super focused on Documentation and Developer
+happiness by having great tooling and convention that they all love
+and agreed upon such as <b>mix format</b></li>
+</ul>
+
+<p>
+I home someone from both community find above helpful.
+</p>
+<div class="taglist"><a href="tags.html">Tags:</a> <a href="tag-clojure.html">clojure</a> <a href="tag-elixir.html">elixir</a> </div></div>
+<div id="postamble" class="status"><div id="archive">
+    <a href="https://www.birkey.co/archive.html">Other posts</a>
+  </div>
+  <div id="wpac-comment"></div>
+<script type="text/javascript">
+wpac_init = window.wpac_init || [];
+wpac_init.push({widget: 'Comment', id: 14053});
+(function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = 'https://embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+})();
+</script>
+  <center><a rel="license" href="https://creativecommons.org/licenses/by-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a><br /><span xmlns:dct="https://purl.org/dc/terms/" href="https://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">birkey.co</span> by <a xmlns:cc="https://creativecommons.org/ns#" href="https://www.birkey.co" property="cc:attributionName" rel="cc:attributionURL">Kasim Tuman</a> is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</center></div>
+</body>
+</html>
