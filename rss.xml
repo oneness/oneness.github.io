@@ -4,7 +4,7 @@
 <title>BirkeyCo</title>
 <description>BirkeyCo</description>
 <link>https://www.birkey.co/</link>
-<lastBuildDate>Sun, 04 Aug 2019 19:57:05 -0700</lastBuildDate>
+<lastBuildDate>Sun, 04 Aug 2019 20:02:08 -0700</lastBuildDate>
 <item>
   <title>Why Emacs</title>
   <description><![CDATA[
@@ -24,9 +24,9 @@ So I am not going to repeat what he said about Emacs and why he still
 loves to use it to get things done. I am going to add following points
 on top of what he wrote there:
 </p>
-<div id="outline-container-orge351499" class="outline-2">
-<h2 id="orge351499">Emacs is a great workbench</h2>
-<div class="outline-text-2" id="text-orge351499">
+<div id="outline-container-org76ab2ee" class="outline-2">
+<h2 id="org76ab2ee">Emacs is a great workbench</h2>
+<div class="outline-text-2" id="text-org76ab2ee">
 <p>
 I see Emacs as an extremely well designed workbench that will evolve
 with you as your work environment, technology and paradigms
@@ -42,9 +42,9 @@ which is an Window Manager, is a great example.
 </p>
 </div>
 </div>
-<div id="outline-container-org41c9f83" class="outline-2">
-<h2 id="org41c9f83">Emacs is a great structured and unstructured text manipulation library</h2>
-<div class="outline-text-2" id="text-org41c9f83">
+<div id="outline-container-orgb061723" class="outline-2">
+<h2 id="orgb061723">Emacs is a great structured and unstructured text manipulation library</h2>
+<div class="outline-text-2" id="text-orgb061723">
 <p>
 This is what I personally like a lot about Emacs. As a programmer, we
 work with manipulating text all the time. Yes, there are great text
@@ -57,9 +57,9 @@ editing of Clojure code.
 </p>
 </div>
 </div>
-<div id="outline-container-orgbd9421b" class="outline-2">
-<h2 id="orgbd9421b">Emacs helps you focus</h2>
-<div class="outline-text-2" id="text-orgbd9421b">
+<div id="outline-container-org136f8b6" class="outline-2">
+<h2 id="org136f8b6">Emacs helps you focus</h2>
+<div class="outline-text-2" id="text-org136f8b6">
 <p>
 In this day of our age where everything tries to grab your constant
 attention, Emacs stands out as the most distraction free environment
@@ -77,9 +77,9 @@ what matters the most to you and have a lot of fun along the way.
 </p>
 </div>
 </div>
-<div id="outline-container-org17f782e" class="outline-2">
-<h2 id="org17f782e">Emacs has a learning curve</h2>
-<div class="outline-text-2" id="text-org17f782e">
+<div id="outline-container-org6c0aa05" class="outline-2">
+<h2 id="org6c0aa05">Emacs has a learning curve</h2>
+<div class="outline-text-2" id="text-org6c0aa05">
 <p>
 Yes, I do acknowledge that Emacs has a learning curve. However, most
 of it is due to the wrong approach we tend to take when encountering an
@@ -158,7 +158,7 @@ so you can starting using it in your git projects. Once you can find
 your way around Emacs, you can start your journey of how best
 organize your config/customization as you go along. I use just one
 org file for it and you might or might not like it. Here is the file
-in its entirety if you are interested: <a href="file:///home/kasim/github/oneness.github.io/static/config.html">My config snapshot</a>
+in its entirety if you are interested: <a href="./static/config.html">My config snapshot</a>
 </p>
 </div>
 </div>

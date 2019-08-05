@@ -122,4 +122,4 @@ all the time:
   your way around Emacs, you can start your journey of how best
   organize your config/customization as you go along. I use just one
   org file for it and you might or might not like it. Here is the file
-  in its entirety if you are interested: [[/home/kasim/github/oneness.github.io/static/config.html][My config snapshot]]
+  in its entirety if you are interested: [[./static/config.html][My config snapshot]]
