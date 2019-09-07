@@ -1,0 +1,57 @@
+#+title: Atreus62 - Best portable mechanical keyboard
+#+date: <2019-09-07 13:49>
+#+filetags: keyboard
+
+As a professional programmer, we spend a lot of time with our
+keyboards. Having a good ergonomic keyboard is extremely important to
+avoid RSI. Since I started learning more about mechanical and
+ergonomic keyboards couple of years ago, I have experimented with many
+of them - different models, layouts, and switches. Finally, I settled
+down with following two: 
+- [[https://kinesis-ergo.com/shop/advantage2/][Kinesis Advantage2]]
+- [[https://shop.profetkeyboards.com/product/atreus62-keyboard][Profet Atreus62]]
+
+Kinesis one needs couple of weeks to get used as apposed to the Profet
+Atreus62 one, which took me few hours. They both uses brown switches,
+Kinesis uses Cherry brown, Atreus62 uses Gateron brown. While there
+are differences in terms of the point of actuation, peak and tactile
+noise based on their spec, I personally did not feel strongly enough
+to tell the difference so your mileage may vary. Both of them are very
+easy to configure to your liking. Kinesis have done a great job when
+it comes to how key mapping is done. Here is how you do it:
+- Just press both `progm` + F12 together to have it enter remap mode
+- Then, press the source key you want to move, release it, then press the
+  destination key that you want to have the source key moved. 
+- Press `progm` to return to normal mode (exits from remap mode).
+
+Atreus62 is a bit involved but it is a joy to hack on it. It uses open
+source firmware called `QMK` and you can read more about it here:
+https://docs.qmk.fm/#/. The documentation is great and strongly
+recommend you check them out. It is a bit overwhelming and you could
+get lost among so much details. The easiest way to start configuring
+are to follow these steps:
+- Go to https://config.qmk.fm/#/atreus62/LAYOUT and shuffle keys
+  around to your liking.
+- Then download `KEYMAP ONLY`, which gives you `keymap.c`,
+  `layers.json` and `readme.md`.
+- Unzip them to a folder say `MyAtreus62Layout`.
+- Clone QMK Firmware: <https://github.com/qmk/qmk_firmware/>
+- Once cloned, run `./util/qmk-install.sh` from within cloned folder.
+- Copy `MyAtreus62Layout` folder into `/keyboards/atreus62/keymaps/`
+  folder within the cloned folder.
+- Run `make atreus62:MyAtreus62Layout`.
+- It will generate `atreus62_MyAtreus62Layout.hex` firmware file.
+- Use qmk-toolbox GUI found here:
+  <https://github.com/qmk/qmk_toolbox/releases/> to flash the firmware.
+
+*NOTE:* Remember to put your keyboard in flash mode by pressing a thin
+paper clip through a tiny hole on the back of the keyboard. 
+
+One you go through, above process, you will easily find that editing
+the `keymap.c` file is the easiest way to arrange keys. All you need
+is the key codes that you can find on the online GUI layout
+editor. Once you edit keymap files using your favorite editor, save it
+and run the above make command to generate the firmware to flash
+it. You can also version control the keymap files in case you want to
+share or change it later. Here is my layout if you are curious:
+https://drive.google.com/open?id=1M6x73xg2kAfkL8AvSM31X8MpW3pPlXcX

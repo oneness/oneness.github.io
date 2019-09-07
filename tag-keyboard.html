@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="alternate"
+      type="application/rss+xml"
+      href="https://www.birkey.co/rss.xml"
+      title="RSS feed for https://www.birkey.co/"/>
+<title>BirkeyCo</title>
+<meta name="author" content="Kasim Tuman">
+  <meta name="referrer" content="no-referrer">
+  <link href= "static/style.css" rel="stylesheet" type="text/css" />
+  <link rel="icon" href="static/favicon.ico">
+  <link rel="apple-touch-icon-precomposed" href="static/birkey_logo.png">
+  <link rel="msapplication-TitleImage" href="static/birkey_logo.png">
+  <link rel="msapplication-TitleColor" href="#0141ff">
+  <script src="static/katex.min.js"></script>
+  <script src="static/auto-render.min.js"></script>
+  <link rel="stylesheet" href="static/katex.min.css">
+  <script>document.addEventListener("DOMContentLoaded", function() { renderMathInElement(document.body); });</script>
+  <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8">
+  <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1"></head>
+<body>
+<div id="preamble" class="status"><div class="header">
+    <a href="https://www.birkey.co">Code, Data and Network</a>
+    <div class="sitelinks">
+      <a href="https://twitter.com/KasimTuman">Twitter</a> | <a href="https://github.com/oneness">Github</a> | <a href="https://www.birkey.co/resume/resume.pdf">About</a>
+    </div>
+  </div></div>
+<div id="content">
+<h1 class="title">Posts tagged "keyboard":</h1>
+<div class="post-date">07 Sep 2019</div><h1 class="post-title"><a href="2019-09-07-atreus62---best-portable-mechanical-keyboard.html">Atreus62 - Best portable mechanical keyboard</a></h1>
+<p>
+As a professional programmer, we spend a lot of time with our
+keyboards. Having a good ergonomic keyboard is extremely important to
+avoid RSI. Since I started learning more about mechanical and
+ergonomic keyboards couple of years ago, I have experimented with many
+of them - different models, layouts, and switches. Finally, I settled
+down with following two: 
+</p>
+<ul class="org-ul">
+<li><a href="https://kinesis-ergo.com/shop/advantage2/">Kinesis Advantage2</a></li>
+<li><a href="https://shop.profetkeyboards.com/product/atreus62-keyboard">Profet Atreus62</a></li>
+</ul>
+
+<p>
+Kinesis one needs couple of weeks to get used as apposed to the Profet
+Atreus62 one, which took me few hours. They both uses brown switches,
+Kinesis uses Cherry brown, Atreus62 uses Gateron brown. While there
+are differences in terms of the point of actuation, peak and tactile
+noise based on their spec, I personally did not feel strongly enough
+to tell the difference so your mileage may vary. Both of them are very
+easy to configure to your liking. Kinesis have done a great job when
+it comes to how key mapping is done. Here is how you do it:
+</p>
+<ul class="org-ul">
+<li>Just press both `progm` + F12 together to have it enter remap mode</li>
+<li>Then, press the source key you want to move, release it, then press the
+  destination key that you want to have the source key moved.</li>
+<li>Press `progm` to return to normal mode (exits from remap mode).</li>
+</ul>
+
+<p>
+Atreus62 is a bit involved but it is a joy to hack on it. It uses open
+source firmware called `QMK` and you can read more about it here:
+<a href="https://docs.qmk.fm/#/">https://docs.qmk.fm/#/</a>. The documentation is great and strongly
+recommend you check them out. It is a bit overwhelming and you could
+get lost among so much details. The easiest way to start configuring
+are to follow these steps:
+</p>
+<ul class="org-ul">
+<li>Go to <a href="https://config.qmk.fm/#/atreus62/LAYOUT">https://config.qmk.fm/#/atreus62/LAYOUT</a> and shuffle keys
+  around to your liking.</li>
+<li>Then download `KEYMAP ONLY`, which gives you `keymap.c`,
+  `layers.json` and `readme.md`.</li>
+<li>Unzip them to a folder say `MyAtreus62Layout`.</li>
+<li>Clone QMK Firmware: <a href="https://github.com/qmk/qmk_firmware/">https://github.com/qmk/qmk_firmware/</a></li>
+<li>Once cloned, run `./util/qmk-install.sh` from within cloned folder.</li>
+<li>Copy `MyAtreus62Layout` folder into `/keyboards/atreus62/keymaps/`
+  folder within the cloned folder.</li>
+<li>Run `make atreus62:MyAtreus62Layout`.</li>
+<li>It will generate `atreus62<sub>MyAtreus62Layout.hex</sub>` firmware file.</li>
+<li>Use qmk-toolbox GUI found here:
+  <a href="https://github.com/qmk/qmk_toolbox/releases/">https://github.com/qmk/qmk_toolbox/releases/</a> to flash the firmware.</li>
+</ul>
+
+<p>
+<b>NOTE:</b> Remember to put your keyboard in flash mode by pressing a thin
+paper clip through a tiny hole on the back of the keyboard. 
+</p>
+
+<p>
+One you go through, above process, you will easily find that editing
+the `keymap.c` file is the easiest way to arrange keys. All you need
+is the key codes that you can find on the online GUI layout
+editor. Once you edit keymap files using your favorite editor, save it
+and run the above make command to generate the firmware to flash
+it. You can also version control the keymap files in case you want to
+share or change it later. Here is my layout if you are curious:
+<a href="https://drive.google.com/open?id=1M6x73xg2kAfkL8AvSM31X8MpW3pPlXcX">https://drive.google.com/open?id=1M6x73xg2kAfkL8AvSM31X8MpW3pPlXcX</a>
+</p>
+<div class="taglist"><a href="tags.html">Tags</a>: <a href="tag-keyboard.html">keyboard</a> </div><div id="archive">
+<a href="archive.html">Other posts</a>
+</div>
+</div>
+</body>
+</html>
