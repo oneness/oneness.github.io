@@ -11,6 +11,16 @@
 - *2016/02 - Present:* Owner of [[https://www.birkey.co][Birkey Consulting]]
   - Open and closed source system development and consulting in Clojure.\newline
 
+- *2018/11 - Present:* Senior Engineer [[https://adstage.io][AdStage Inc]]
+  - Led development on the AdStage for Google Sheets product, enabling
+    customers to see all of their cross-network marketing data in
+    spreadsheets
+  - Implemented high availability as well as improved monitoring and
+    scalability for the Report product
+  - Implemented automated PDF exports of scheduled reports
+  - Tech Stack: Clojure, ClojureScript, Elixir/Phoenix, Ruby on Rails,
+    PostgreSQL and All things AWS.\newline
+
 - *2017/02 - 2018/09:* Omnyway Inc
   - Senior Full Stack Clojure Engineer as an early member of core
     Engineering Team responsible for Core e-commerce platform and API
