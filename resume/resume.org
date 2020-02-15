@@ -1,15 +1,17 @@
-#+TITLE: Kasim Tuman
-#+AUTHOR: [[mailto:ktuman@acm.org][ktuman@acm.org]] \textbar{} [[https://github.com/oneness][oneness@github]] \textbar{} [[https://www.birkey.co][https://www.birkey.co]]
-
+#+OPTIONS: timestamp:nil
+#+OPTIONS: author:nil
+* 
+#+ATTR_HTML: :style text-align:center
+[[mailto:ktuman@acm.org][email]]          [[https://github.com/oneness][github]]          [[https://www.birkey.co][blog]]
 * Summary
   Software craftsman who prefers working with *data centric*
   projects, who loves solving challenging problems by using
   functional paradigm. Currently available for short/long term consulting
-  only. Might consider full time remote engagement.
+  only.
 
 * Work Experience
 - *2016/02 - Present:* Owner of [[https://www.birkey.co][Birkey Consulting]]
-  - Open and closed source system development and consulting in Clojure.\newline
+  - Open and closed source system development and consulting in Clojure.
 
 - *2018/11 - Present:* Senior Engineer [[https://adstage.io][AdStage Inc]]
   - Led development on the AdStage for Google Sheets product, enabling
@@ -19,13 +21,13 @@
     scalability for the Report product
   - Implemented automated PDF exports of scheduled reports
   - Tech Stack: Clojure, ClojureScript, Elixir/Phoenix, Ruby on Rails,
-    PostgreSQL and All things AWS.\newline
+    PostgreSQL and All things AWS.
 
 - *2017/02 - 2018/09:* Omnyway Inc
   - Senior Full Stack Clojure Engineer as an early member of core
     Engineering Team responsible for Core e-commerce platform and API
     development.
-  - Tech Stack: Clojure/ClojureScript, PostgreSQL, Kafka, and All things AWS.\newline
+  - Tech Stack: Clojure/ClojureScript, PostgreSQL, Kafka, and All things AWS.
 
 - *2012/08 - 2017/02:* Runa Inc (Acquired by Staples Inc as Staples Labs)
   - Started as Clojure Engineer. Promoted to Engineering Lead,
@@ -33,11 +35,11 @@
     SLA critical web services such as recommendation system, shipping
     prediction engine, etc.
   - Tech Stack: Clojure (with some Java where performance is
-    critical), PostgreSQL/Redis, RabbitMQ (replaced by Kafka), Protobuf, and All things AWS.\newline
+    critical), PostgreSQL/Redis, RabbitMQ (replaced by Kafka), Protobuf, and All things AWS.
 
 - *2011/08 - 2012/08:* The Climate Corporation
   - Java/Clojure Engineer as a member of Risk Management Team.
-  - Tech Stack: Java (with Clojure sneaked in as jars), Thrift, and Spring/Hibernate.\newline
+  - Tech Stack: Java (with Clojure sneaked in as jars), Thrift, and Spring/Hibernate.
 
 - *2005/10 - 2011/08:* Kyocera Document Solution USA
   - Started as Software Engineer then promoted to Team

@@ -29,7 +29,7 @@
   </div></div>
 <div id="content">
 <h1 class="title">Posts tagged "blogging":</h1>
-<div class="post-date">19 Sep 2018</div><h1 class="post-title"><a href="2018-9-20-blogging-simpler.html">Blogging Made Simple</a></h1>
+<div class="post-date">19 Sep 2018</div><h1 class="post-title"><a href="https://www.birkey.co/2018-9-20-blogging-simpler.html">Blogging Made Simple</a></h1>
 <p>
 After taking some time off from work to focus on projects that I like
 to take on, I set out to find a simple way to use git and emacs workflow to
@@ -38,58 +38,58 @@ across this project - <a href="https://github.com/bastibe/org-static-blog">Org S
 me no time to set it up and start blogging. Below is my setup:
 </p>
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code><span style="color: #7f7f7f;">(</span>use-package org-static-blog</code>
-<code>  <span style="color: #483d8b;">:straight</span> t</code>
-<code>  <span style="color: #483d8b;">:config</span></code>
-<code>  <span style="color: #b22222;">;; </span><span style="color: #b22222;">-----------------------------------------------------------------------------</span></code>
-<code>  <span style="color: #b22222;">;; </span><span style="color: #b22222;">Set up blogging in Emacs</span></code>
-<code>  <span style="color: #b22222;">;; </span><span style="color: #b22222;">-----------------------------------------------------------------------------</span></code>
-<code></code>
-<code>  <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">setq</span> org-static-blog-publish-title <span style="color: #8b2252;">"BirkeyCo"</span><span style="color: #7f7f7f;">)</span></code>
-<code>  <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">setq</span> org-static-blog-publish-url <span style="color: #8b2252;">"https://www.birkey.co/"</span><span style="color: #7f7f7f;">)</span></code>
-<code>  <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">setq</span> org-static-blog-publish-directory <span style="color: #8b2252;">"~/github/oneness.github.io/"</span><span style="color: #7f7f7f;">)</span></code>
-<code>  <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">setq</span> org-static-blog-posts-directory <span style="color: #8b2252;">"~/github/oneness.github.io/posts/"</span><span style="color: #7f7f7f;">)</span></code>
-<code>  <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">setq</span> org-static-blog-drafts-directory <span style="color: #8b2252;">"~/github/oneness.github.io/drafts/"</span><span style="color: #7f7f7f;">)</span></code>
-<code>  <span style="color: #b22222;">;;</span><span style="color: #b22222;">(setq org-static-blog-enable-tags t)</span></code>
-<code>  <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">setq</span> org-export-with-toc nil<span style="color: #7f7f7f;">)</span></code>
-<code>  <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">setq</span> org-export-with-section-numbers nil<span style="color: #7f7f7f;">)</span></code>
-<code></code>
-<code>  <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">setq</span> org-static-blog-page-header</code>
-<code>        <span style="color: #8b2252;">"&lt;meta name=\"author\" content=\"Kasim Tuman\"&gt;</span></code>
-<code><span style="color: #8b2252;">&lt;meta name=\"referrer\" content=\"no-referrer\"&gt;</span></code>
-<code><span style="color: #8b2252;">&lt;link href= \"static/style.css\" rel=\"stylesheet\" type=\"text/css\" /&gt;</span></code>
-<code><span style="color: #8b2252;">&lt;link rel=\"icon\" href=\"static/favicon.ico\"&gt;</span></code>
-<code><span style="color: #8b2252;">&lt;link rel=\"apple-touch-icon-precomposed\" href=\"static/birkey_logo.png\"&gt;</span></code>
-<code><span style="color: #8b2252;">&lt;link rel=\"msapplication-TitleImage\" href=\"static/birkey_logo.png\"&gt;</span></code>
-<code><span style="color: #8b2252;">&lt;link rel=\"msapplication-TitleColor\" href=\"#0141ff\"&gt;</span></code>
-<code><span style="color: #8b2252;">&lt;script src=\"static/katex.min.js\"&gt;&lt;/script&gt;</span></code>
-<code><span style="color: #8b2252;">&lt;script src=\"static/auto-render.min.js\"&gt;&lt;/script&gt;</span></code>
-<code><span style="color: #8b2252;">&lt;link rel=\"stylesheet\" href=\"static/katex.min.css\"&gt;</span></code>
-<code><span style="color: #8b2252;">&lt;script&gt;document.addEventListener(\"DOMContentLoaded\", function() { renderMathInElement(document.body); });&lt;/script&gt;</span></code>
-<code><span style="color: #8b2252;">&lt;meta http-equiv=\"content-type\" content=\"application/xhtml+xml; charset=UTF-8\"&gt;</span></code>
-<code><span style="color: #8b2252;">&lt;meta name=\"viewport\" content=\"initial-scale=1,width=device-width,minimum-scale=1\"&gt;"</span><span style="color: #7f7f7f;">)</span></code>
-<code></code>
-<code>  <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">setq</span> org-static-blog-page-preamble</code>
-<code>        <span style="color: #8b2252;">"&lt;div class=\"header\"&gt;</span></code>
-<code><span style="color: #8b2252;">  &lt;a href=\"https://birkey.co\"&gt;Code, Data and Network&lt;/a&gt;</span></code>
-<code><span style="color: #8b2252;">  &lt;div class=\"sitelinks\"&gt;</span></code>
-<code><span style="color: #8b2252;">    &lt;a href=\"https://twitter.com/KasimTuman\"&gt;Twitter&lt;/a&gt; | &lt;a href=\"https://github.com/oneness\"&gt;Github&lt;/a&gt;</span></code>
-<code><span style="color: #8b2252;">  &lt;/div&gt;</span></code>
-<code><span style="color: #8b2252;">&lt;/div&gt;"</span><span style="color: #7f7f7f;">)</span></code>
-<code></code>
-<code>  <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">setq</span> org-static-blog-page-postamble</code>
-<code>        <span style="color: #8b2252;">"&lt;div id=\"archive\"&gt;</span></code>
-<code><span style="color: #8b2252;">  &lt;a href=\"https://www.birkey.co/archive.html\"&gt;Other posts&lt;/a&gt;</span></code>
-<code><span style="color: #8b2252;">&lt;/div&gt;</span></code>
-<code><span style="color: #8b2252;">&lt;center&gt;&lt;a rel=\"license\" href=\"https://creativecommons.org/licenses/by-sa/3.0/\"&gt;&lt;img alt=\"Creative Commons License\" style=\"border-width:0\" src=\"https://i.creativecommons.org/l/by-sa/3.0/88x31.png\" /&gt;&lt;/a&gt;&lt;br /&gt;&lt;span xmlns:dct=\"https://purl.org/dc/terms/\" href=\"https://purl.org/dc/dcmitype/Text\" property=\"dct:title\" rel=\"dct:type\"&gt;birkey.co&lt;/span&gt; by &lt;a xmlns:cc=\"https://creativecommons.org/ns#\" href=\"https://www.birkey.co\" property=\"cc:attributionName\" rel=\"cc:attributionURL\"&gt;Kasim Tuman&lt;/a&gt; is licensed under a &lt;a rel=\"license\" href=\"https://creativecommons.org/licenses/by-sa/3.0/\"&gt;Creative Commons Attribution-ShareAlike 3.0 Unported License&lt;/a&gt;.&lt;/center&gt;"</span><span style="color: #7f7f7f;">)</span></code>
-<code></code>
-<code>  <span style="color: #b22222;">;; </span><span style="color: #b22222;">This slows down org-publish to a crawl, and it is not needed since</span></code>
-<code>  <span style="color: #b22222;">;; </span><span style="color: #b22222;">I use magit anyway.</span></code>
-<code>  <span style="color: #7f7f7f;">(</span>remove-hook 'find-file-hooks 'vc-find-file-hook<span style="color: #7f7f7f;">))</span></code>
+<pre class="src src-emacs-lisp"><span style="color: #7f7f7f;">(</span>use-package org-static-blog
+  <span style="color: #483d8b;">:straight</span> t
+  <span style="color: #483d8b;">:config</span>
+  <span style="color: #b22222;">;; </span><span style="color: #b22222;">-----------------------------------------------------------------------------</span>
+  <span style="color: #b22222;">;; </span><span style="color: #b22222;">Set up blogging in Emacs</span>
+  <span style="color: #b22222;">;; </span><span style="color: #b22222;">-----------------------------------------------------------------------------</span>
+
+  <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">setq</span> org-static-blog-publish-title <span style="color: #8b2252;">"BirkeyCo"</span><span style="color: #7f7f7f;">)</span>
+  <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">setq</span> org-static-blog-publish-url <span style="color: #8b2252;">"https://www.birkey.co/"</span><span style="color: #7f7f7f;">)</span>
+  <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">setq</span> org-static-blog-publish-directory <span style="color: #8b2252;">"~/github/oneness.github.io/"</span><span style="color: #7f7f7f;">)</span>
+  <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">setq</span> org-static-blog-posts-directory <span style="color: #8b2252;">"~/github/oneness.github.io/posts/"</span><span style="color: #7f7f7f;">)</span>
+  <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">setq</span> org-static-blog-drafts-directory <span style="color: #8b2252;">"~/github/oneness.github.io/drafts/"</span><span style="color: #7f7f7f;">)</span>
+  <span style="color: #b22222;">;;</span><span style="color: #b22222;">(setq org-static-blog-enable-tags t)</span>
+  <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">setq</span> org-export-with-toc nil<span style="color: #7f7f7f;">)</span>
+  <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">setq</span> org-export-with-section-numbers nil<span style="color: #7f7f7f;">)</span>
+
+  <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">setq</span> org-static-blog-page-header
+        <span style="color: #8b2252;">"&lt;meta name=\"author\" content=\"Kasim Tuman\"&gt;</span>
+<span style="color: #8b2252;">&lt;meta name=\"referrer\" content=\"no-referrer\"&gt;</span>
+<span style="color: #8b2252;">&lt;link href= \"static/style.css\" rel=\"stylesheet\" type=\"text/css\" /&gt;</span>
+<span style="color: #8b2252;">&lt;link rel=\"icon\" href=\"static/favicon.ico\"&gt;</span>
+<span style="color: #8b2252;">&lt;link rel=\"apple-touch-icon-precomposed\" href=\"static/birkey_logo.png\"&gt;</span>
+<span style="color: #8b2252;">&lt;link rel=\"msapplication-TitleImage\" href=\"static/birkey_logo.png\"&gt;</span>
+<span style="color: #8b2252;">&lt;link rel=\"msapplication-TitleColor\" href=\"#0141ff\"&gt;</span>
+<span style="color: #8b2252;">&lt;script src=\"static/katex.min.js\"&gt;&lt;/script&gt;</span>
+<span style="color: #8b2252;">&lt;script src=\"static/auto-render.min.js\"&gt;&lt;/script&gt;</span>
+<span style="color: #8b2252;">&lt;link rel=\"stylesheet\" href=\"static/katex.min.css\"&gt;</span>
+<span style="color: #8b2252;">&lt;script&gt;document.addEventListener(\"DOMContentLoaded\", function() { renderMathInElement(document.body); });&lt;/script&gt;</span>
+<span style="color: #8b2252;">&lt;meta http-equiv=\"content-type\" content=\"application/xhtml+xml; charset=UTF-8\"&gt;</span>
+<span style="color: #8b2252;">&lt;meta name=\"viewport\" content=\"initial-scale=1,width=device-width,minimum-scale=1\"&gt;"</span><span style="color: #7f7f7f;">)</span>
+
+  <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">setq</span> org-static-blog-page-preamble
+        <span style="color: #8b2252;">"&lt;div class=\"header\"&gt;</span>
+<span style="color: #8b2252;">  &lt;a href=\"https://birkey.co\"&gt;Code, Data and Network&lt;/a&gt;</span>
+<span style="color: #8b2252;">  &lt;div class=\"sitelinks\"&gt;</span>
+<span style="color: #8b2252;">    &lt;a href=\"https://twitter.com/KasimTuman\"&gt;Twitter&lt;/a&gt; | &lt;a href=\"https://github.com/oneness\"&gt;Github&lt;/a&gt;</span>
+<span style="color: #8b2252;">  &lt;/div&gt;</span>
+<span style="color: #8b2252;">&lt;/div&gt;"</span><span style="color: #7f7f7f;">)</span>
+
+  <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">setq</span> org-static-blog-page-postamble
+        <span style="color: #8b2252;">"&lt;div id=\"archive\"&gt;</span>
+<span style="color: #8b2252;">  &lt;a href=\"https://www.birkey.co/archive.html\"&gt;Other posts&lt;/a&gt;</span>
+<span style="color: #8b2252;">&lt;/div&gt;</span>
+<span style="color: #8b2252;">&lt;center&gt;&lt;a rel=\"license\" href=\"https://creativecommons.org/licenses/by-sa/3.0/\"&gt;&lt;img alt=\"Creative Commons License\" style=\"border-width:0\" src=\"https://i.creativecommons.org/l/by-sa/3.0/88x31.png\" /&gt;&lt;/a&gt;&lt;br /&gt;&lt;span xmlns:dct=\"https://purl.org/dc/terms/\" href=\"https://purl.org/dc/dcmitype/Text\" property=\"dct:title\" rel=\"dct:type\"&gt;birkey.co&lt;/span&gt; by &lt;a xmlns:cc=\"https://creativecommons.org/ns#\" href=\"https://www.birkey.co\" property=\"cc:attributionName\" rel=\"cc:attributionURL\"&gt;Kasim Tuman&lt;/a&gt; is licensed under a &lt;a rel=\"license\" href=\"https://creativecommons.org/licenses/by-sa/3.0/\"&gt;Creative Commons Attribution-ShareAlike 3.0 Unported License&lt;/a&gt;.&lt;/center&gt;"</span><span style="color: #7f7f7f;">)</span>
+
+  <span style="color: #b22222;">;; </span><span style="color: #b22222;">This slows down org-publish to a crawl, and it is not needed since</span>
+  <span style="color: #b22222;">;; </span><span style="color: #b22222;">I use magit anyway.</span>
+  <span style="color: #7f7f7f;">(</span>remove-hook 'find-file-hooks 'vc-find-file-hook<span style="color: #7f7f7f;">))</span>
 </pre>
 </div>
-<div class="taglist"><a href="tags.html">Tags</a>: <a href="tag-emacs.html">emacs</a> <a href="tag-blogging.html">blogging</a> </div><div id="archive">
-<a href="archive.html">Other posts</a>
+<div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-emacs.html">emacs</a> <a href="https://www.birkey.co/tag-blogging.html">blogging</a> </div><div id="archive">
+<a href="https://www.birkey.co/archive.html">Other posts</a>
 </div>
 </div>
 </body>

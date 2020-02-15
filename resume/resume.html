@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title></title>
+<meta name="author" content="(Kasim Tuman)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="./reveal.js/css/reveal.css"/>
+
+<link rel="stylesheet" href="./reveal.js/css/theme/moon.css" id="theme"/>
+
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = './reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide">
+</section>
+<section>
+<section id="slide-org67e07a7">
+<h2 id="org67e07a7"></h2>
+<p style="text-align:center">
+<a href="mailto:ktuman@acm.org" style="text-align:center">email</a>          <a href="https://github.com/oneness">github</a>          <a href="https://www.birkey.co">blog</a>
+</p>
+</section>
+</section>
+<section>
+<section id="slide-org62f5b4f">
+<h2 id="org62f5b4f">Summary</h2>
+<p>
+Software craftsman who prefers working with <b>data centric</b>
+projects, who loves solving challenging problems by using
+functional paradigm. Currently available for short/long term consulting
+only.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orgb162096">
+<h2 id="orgb162096">Work Experience</h2>
+<ul>
+<li><b>2016/02 - Present:</b> Owner of <a href="https://www.birkey.co">Birkey Consulting</a>
+<ul>
+<li>Open and closed source system development and consulting in Clojure.</li>
+
+</ul></li>
+
+<li><b>2018/11 - Present:</b> Senior Engineer <a href="https://adstage.io">AdStage Inc</a>
+<ul>
+<li>Led development on the AdStage for Google Sheets product, enabling
+customers to see all of their cross-network marketing data in
+spreadsheets</li>
+<li>Implemented high availability as well as improved monitoring and
+scalability for the Report product</li>
+<li>Implemented automated PDF exports of scheduled reports</li>
+<li>Tech Stack: Clojure, ClojureScript, Elixir/Phoenix, Ruby on Rails,
+PostgreSQL and All things AWS.</li>
+
+</ul></li>
+
+<li><b>2017/02 - 2018/09:</b> Omnyway Inc
+<ul>
+<li>Senior Full Stack Clojure Engineer as an early member of core
+Engineering Team responsible for Core e-commerce platform and API
+development.</li>
+<li>Tech Stack: Clojure/ClojureScript, PostgreSQL, Kafka, and All things AWS.</li>
+
+</ul></li>
+
+<li><b>2012/08 - 2017/02:</b> Runa Inc (Acquired by Staples Inc as Staples Labs)
+<ul>
+<li>Started as Clojure Engineer. Promoted to Engineering Lead,
+Engineering Manager and Director of Engineering. Responsible for
+SLA critical web services such as recommendation system, shipping
+prediction engine, etc.</li>
+<li>Tech Stack: Clojure (with some Java where performance is
+critical), PostgreSQL/Redis, RabbitMQ (replaced by Kafka), Protobuf, and All things AWS.</li>
+
+</ul></li>
+
+<li><b>2011/08 - 2012/08:</b> The Climate Corporation
+<ul>
+<li>Java/Clojure Engineer as a member of Risk Management Team.</li>
+<li>Tech Stack: Java (with Clojure sneaked in as jars), Thrift, and Spring/Hibernate.</li>
+
+</ul></li>
+
+<li><b>2005/10 - 2011/08:</b> Kyocera Document Solution USA
+<ul>
+<li>Started as Software Engineer then promoted to Team
+Lead. Responsible for developing Web Application that manages IoT printer fleets.</li>
+<li>Tech Stack: Java, Spring/Hibernate, PostgreSQL, and OSGi.</li>
+
+</ul></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org9037b64">
+<h2 id="org9037b64">Education</h2>
+<ul>
+<li>Post Graduate Computer Science with Software Engineering focus at California State University East Bay - CSUEB.</li>
+
+</ul>
+</section>
+</section>
+</div>
+</div>
+<script src="./reveal.js/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: './reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: './reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: './reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: './reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: './reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
+</script>
+</body>
+</html>

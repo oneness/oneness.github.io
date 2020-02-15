@@ -29,17 +29,17 @@
   </div></div>
 <div id="content">
 <h1 class="title">Posts tagged "VoidLinux":</h1>
-<div class="post-date">20 Oct 2018</div><h1 class="post-title"><a href="2018-10-20-debug-voidlinux-unresolvable-lib-issue.html">Debug VoidLinux unresolvable lib issue</a></h1>
+<div class="post-date">20 Oct 2018</div><h1 class="post-title"><a href="https://www.birkey.co/2018-10-20-debug-voidlinux-unresolvable-lib-issue.html">Debug VoidLinux unresolvable lib issue</a></h1>
 <p>
 I have been a happy user of <b><a href="https://voidlinux.org/">VoidLinux</a></b> for about a year now and so
 far have had almost no glitches whatsoever except for updating a year
 old version of it installed on one of my spare laptop. The issue started as following:
 </p>
 <div class="org-src-container">
-<pre class="src src-shell"><code>xbps-install -Su</code>
-<code><span style="color: #b22222;"># </span><span style="color: #b22222;">resulted in following:</span></code>
-<code><span style="color: #b22222;"># </span><span style="color: #b22222;">mozjs: broken, unresolvable shlib `libicu.so'</span></code>
-<code><span style="color: #b22222;"># </span><span style="color: #b22222;">Transaction aborted due to unresolved shlibs.</span></code>
+<pre class="src src-shell">xbps-install -Su
+<span style="color: #b22222;"># </span><span style="color: #b22222;">resulted in following:</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">mozjs: broken, unresolvable shlib `libicu.so'</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">Transaction aborted due to unresolved shlibs.</span>
 </pre>
 </div>
 <p>
@@ -56,29 +56,29 @@ that did not help me go anywhere. Then I decided to debug it
 myself. Following is my commandline session how I resolved it:
 </p>
 <div class="org-src-container">
-<pre class="src src-shell"><code><span style="color: #b22222;"># </span><span style="color: #b22222;">Ran the command again to make sure I have above issue </span></code>
-<code>xbps-install -Su</code>
-<code><span style="color: #b22222;"># </span><span style="color: #b22222;">again resulted in following:</span></code>
-<code><span style="color: #b22222;"># </span><span style="color: #b22222;">mozjs: broken, unresolvable shlib `libicu.so'</span></code>
-<code><span style="color: #b22222;"># </span><span style="color: #b22222;">Transaction aborted due to unresolved shlibs.</span></code>
-<code><span style="color: #b22222;"># </span><span style="color: #b22222;">Notice the /*mozjs*/, which is my clue. Then I did:</span></code>
-<code>xbps-query -Rs mozjs</code>
-<code><span style="color: #b22222;"># </span><span style="color: #b22222;">from the output, I confirmed that it was not installed on my box,</span></code>
-<code><span style="color: #b22222;"># </span><span style="color: #b22222;">which is my second clue to check if my repos url are</span></code>
-<code><span style="color: #b22222;"># </span><span style="color: #b22222;">up-to-date. Remember it is a year old version of VoidLinux.  I</span></code>
-<code><span style="color: #b22222;"># </span><span style="color: #b22222;">noticed from the output of xpbs-install -u, that the</span></code>
-<code><span style="color: #b22222;"># </span><span style="color: #b22222;">void-repo-nonfree url does indeed point to an old url. So, I did:</span></code>
-<code>xbps-remove void-repo-nonfree &amp;&amp; xbps-install void-repo-nonfree</code>
-<code><span style="color: #b22222;"># </span><span style="color: #b22222;">to make sure my repo url is up-to-date. Then it is time to clean my</span></code>
-<code><span style="color: #b22222;"># </span><span style="color: #b22222;">repo cache and remove any packages that might be orphened since my</span></code>
-<code><span style="color: #b22222;"># </span><span style="color: #b22222;">repo url is pointing to a different url now. Using manpages for</span></code>
-<code><span style="color: #b22222;"># </span><span style="color: #b22222;">xpbs-remove, I can do above with:</span></code>
-<code>xbps-remove -Oo</code>
-<code><span style="color: #b22222;"># </span><span style="color: #b22222;">Then I ran:</span></code>
-<code>xbps-install -Su</code>
-<code><span style="color: #b22222;"># </span><span style="color: #b22222;">Voila!, My one year old box is up-to-date without any issues now.</span></code>
-<code><span style="color: #b22222;"># </span><span style="color: #b22222;">After all of this, I just made an one liner alias in my shell config:</span></code>
-<code><span style="color: #483d8b;">alias</span> <span style="color: #a0522d;">c</span>=<span style="color: #8b2252;">'xbps-remove void-repo-nonfree &amp;&amp; xbps-install void-repo-nonfree &amp;&amp; xbps-install -Su </span></code>
+<pre class="src src-shell"><span style="color: #b22222;"># </span><span style="color: #b22222;">Ran the command again to make sure I have above issue </span>
+xbps-install -Su
+<span style="color: #b22222;"># </span><span style="color: #b22222;">again resulted in following:</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">mozjs: broken, unresolvable shlib `libicu.so'</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">Transaction aborted due to unresolved shlibs.</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">Notice the /*mozjs*/, which is my clue. Then I did:</span>
+xbps-query -Rs mozjs
+<span style="color: #b22222;"># </span><span style="color: #b22222;">from the output, I confirmed that it was not installed on my box,</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">which is my second clue to check if my repos url are</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">up-to-date. Remember it is a year old version of VoidLinux.  I</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">noticed from the output of xpbs-install -u, that the</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">void-repo-nonfree url does indeed point to an old url. So, I did:</span>
+xbps-remove void-repo-nonfree &amp;&amp; xbps-install void-repo-nonfree
+<span style="color: #b22222;"># </span><span style="color: #b22222;">to make sure my repo url is up-to-date. Then it is time to clean my</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">repo cache and remove any packages that might be orphened since my</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">repo url is pointing to a different url now. Using manpages for</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">xpbs-remove, I can do above with:</span>
+xbps-remove -Oo
+<span style="color: #b22222;"># </span><span style="color: #b22222;">Then I ran:</span>
+xbps-install -Su
+<span style="color: #b22222;"># </span><span style="color: #b22222;">Voila!, My one year old box is up-to-date without any issues now.</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">After all of this, I just made an one liner alias in my shell config:</span>
+<span style="color: #483d8b;">alias</span> <span style="color: #a0522d;">c</span>=<span style="color: #8b2252;">'xbps-remove void-repo-nonfree &amp;&amp; xbps-install void-repo-nonfree &amp;&amp; xbps-install -Su </span>
 </pre>
 </div>
 
@@ -88,20 +88,20 @@ to recap steps that I took to solve the issue:
 </p>
 <ol class="org-ol">
 <li>Start using more general term to do a google search then narrow it
-   to specific ones. If it works, you save time and unneeded effort.</li>
+to specific ones. If it works, you save time and unneeded effort.</li>
 <li>Check for the problem package reported. Is it installed? If yes,
-   try removing or updating it to see if it resolves your issue.</li>
+try removing or updating it to see if it resolves your issue.</li>
 <li>If you do not see the package installed, it might be repo url +
-   orphaned package issue. So update the repo url, remove orphan
-   packages and rebuild the cache.</li>
+orphaned package issue. So update the repo url, remove orphan
+packages and rebuild the cache.</li>
 </ol>
 
 <p>
 If you tried all of the above and your issue still did not get
 resolved, you might want to post it in VoidLinux forum for help. 
 </p>
-<div class="taglist"><a href="tags.html">Tags</a>: <a href="tag-voidlinux.html">VoidLinux</a> </div><div id="archive">
-<a href="archive.html">Other posts</a>
+<div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-voidlinux.html">VoidLinux</a> </div><div id="archive">
+<a href="https://www.birkey.co/archive.html">Other posts</a>
 </div>
 </div>
 </body>

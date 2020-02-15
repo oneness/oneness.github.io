@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0">
 <channel>
-<title>BirkeyCo</title>
-<description>BirkeyCo</description>
+<title><![CDATA[BirkeyCo]]></title>
+<description><![CDATA[BirkeyCo]]></description>
 <link>https://www.birkey.co/</link>
-<lastBuildDate>Sat, 07 Sep 2019 15:56:34 -0700</lastBuildDate>
+<lastBuildDate>Sat, 15 Feb 2020 15:57:01 -0800</lastBuildDate>
 <item>
-  <title>Atreus62 - Best portable mechanical keyboard</title>
+  <title><![CDATA[Atreus62 - Best portable mechanical keyboard]]></title>
   <description><![CDATA[
 <p>
 As a professional programmer, we spend a lot of time with our
@@ -34,7 +34,7 @@ it comes to how key mapping is done. Here is how you do it:
 <ul class="org-ul">
 <li>Just press both `progm` + F12 together to have it enter remap mode</li>
 <li>Then, press the source key you want to move, release it, then press the
-  destination key that you want to have the source key moved.</li>
+destination key that you want to have the source key moved.</li>
 <li>Press `progm` to return to normal mode (exits from remap mode).</li>
 </ul>
 
@@ -48,18 +48,18 @@ are to follow these steps:
 </p>
 <ul class="org-ul">
 <li>Go to <a href="https://config.qmk.fm/#/atreus62/LAYOUT">https://config.qmk.fm/#/atreus62/LAYOUT</a> and shuffle keys
-  around to your liking.</li>
+around to your liking.</li>
 <li>Then download `KEYMAP ONLY`, which gives you `keymap.c`,
-  `layers.json` and `readme.md`.</li>
+`layers.json` and `readme.md`.</li>
 <li>Unzip them to a folder say `MyAtreus62Layout`.</li>
 <li>Clone QMK Firmware: <a href="https://github.com/qmk/qmk_firmware/">https://github.com/qmk/qmk_firmware/</a></li>
 <li>Once cloned, run `./util/qmk-install.sh` from within cloned folder.</li>
 <li>Copy `MyAtreus62Layout` folder into `/keyboards/atreus62/keymaps/`
-  folder within the cloned folder.</li>
+folder within the cloned folder.</li>
 <li>Run `make atreus62:MyAtreus62Layout`.</li>
 <li>It will generate `atreus62<sub>MyAtreus62Layout.hex</sub>` firmware file.</li>
 <li>Use qmk-toolbox GUI found here:
-  <a href="https://github.com/qmk/qmk_toolbox/releases/">https://github.com/qmk/qmk_toolbox/releases/</a> to flash the firmware.</li>
+<a href="https://github.com/qmk/qmk_toolbox/releases/">https://github.com/qmk/qmk_toolbox/releases/</a> to flash the firmware.</li>
 </ul>
 
 <p>
@@ -77,13 +77,13 @@ it. You can also version control the keymap files in case you want to
 share or change it later. Here is my layout if you are curious:
 <a href="https://drive.google.com/open?id=1M6x73xg2kAfkL8AvSM31X8MpW3pPlXcX">https://drive.google.com/open?id=1M6x73xg2kAfkL8AvSM31X8MpW3pPlXcX</a>
 </p>
-<div class="taglist"><a href="tags.html">Tags</a>: <a href="tag-keyboard.html">keyboard</a> </div>]]></description>
-  <category>keyboard</category>
+<div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-keyboard.html">keyboard</a> </div>]]></description>
+  <category><![CDATA[keyboard]]></category>
   <link>https://www.birkey.co/2019-09-07-atreus62---best-portable-mechanical-keyboard.html</link>
   <pubDate>Sat, 07 Sep 2019 13:49:00 -0700</pubDate>
 </item>
 <item>
-  <title>Why Emacs</title>
+  <title><![CDATA[Why Emacs]]></title>
   <description><![CDATA[
 <p>
 I have been thinking about writing up my experience of using Emacs and
@@ -240,12 +240,12 @@ in its entirety if you are interested: <a href="./static/config.html">My config 
 </div>
 </div>
 <div class="taglist"><a href="tags.html">Tags</a>: <a href="tag-emacs.html">emacs</a> </div>]]></description>
-  <category>emacs</category>
+  <category><![CDATA[emacs]]></category>
   <link>https://www.birkey.co/2019-08-04-why-emacs.html</link>
   <pubDate>Sun, 04 Aug 2019 12:43:00 -0700</pubDate>
 </item>
 <item>
-  <title>Thoughts on Elixir Community by a Clojure Developer</title>
+  <title><![CDATA[Thoughts on Elixir Community by a Clojure Developer]]></title>
   <description><![CDATA[
 <p>
 I have been building systems in Clojure/ClojureScript for the the last
@@ -256,9 +256,9 @@ example of this, consider a feature where you need to toggle the sort
 ordering:
 </p>
 <div class="org-src-container">
-<pre class="src src-clojure"><code><span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">defn</span> <span style="color: #0000ff;">toggle-order</span> <span style="color: #7f7f7f;">[</span>order<span style="color: #7f7f7f;">]</span></code>
-<code>  <span style="color: #7f7f7f;">(</span>order {<span style="color: #008b8b;">:asc</span> <span style="color: #008b8b;">:desc</span></code>
-<code>          <span style="color: #008b8b;">:desc</span> <span style="color: #008b8b;">:asc</span>}<span style="color: #7f7f7f;">))</span></code>
+<pre class="src src-clojure"><span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">defn</span> <span style="color: #0000ff;">toggle-order</span> <span style="color: #7f7f7f;">[</span>order<span style="color: #7f7f7f;">]</span>
+  <span style="color: #7f7f7f;">(</span>order {<span style="color: #008b8b;">:asc</span> <span style="color: #008b8b;">:desc</span>
+          <span style="color: #008b8b;">:desc</span> <span style="color: #008b8b;">:asc</span>}<span style="color: #7f7f7f;">))</span>
 </pre>
 </div>
 <p>
@@ -300,28 +300,28 @@ Elixir community that Clojure Community might benefit:
 
 <ul class="org-ul">
 <li>Elixir community has a strong focus on few important projects in
-  their ecosystem, namely <b>Elixir the language and its build tool-
-  Mix</b>, <b>Pheonix Framework</b>, <b>Nerve</b>, <b>Ecto</b>, and <b>absinthe - The
-  GraphQL toolkit for Elixir</b>.</li>
+their ecosystem, namely <b>Elixir the language and its build tool-
+Mix</b>, <b>Pheonix Framework</b>, <b>Nerve</b>, <b>Ecto</b>, and <b>absinthe - The
+GraphQL toolkit for Elixir</b>.</li>
 <li>Elixir community is pretty mature in terms of keeping the core
-  language small and extensible, which is abundantly clear from the
-  creator of Elixir, Jose Valim&rsquo;s 2018 ElixirConf US keynote.</li>
+language small and extensible, which is abundantly clear from the
+creator of Elixir, Jose Valim&rsquo;s 2018 ElixirConf US keynote.</li>
 <li>Elixir community is super focused on Documentation and Developer
-  happiness by having great tooling and convention that they all love
-  and agreed upon such as <b>mix format</b></li>
+happiness by having great tooling and convention that they all love
+and agreed upon such as <b>mix format</b></li>
 </ul>
 
 <p>
 I hope someone from both community find above helpful.
 </p>
-<div class="taglist"><a href="tags.html">Tags</a>: <a href="tag-clojure.html">clojure</a> <a href="tag-elixir.html">elixir</a> </div>]]></description>
-  <category>clojure</category>
-  <category>elixir</category>
+<div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-clojure.html">clojure</a> <a href="https://www.birkey.co/tag-elixir.html">elixir</a> </div>]]></description>
+  <category><![CDATA[clojure]]></category>
+  <category><![CDATA[elixir]]></category>
   <link>https://www.birkey.co/2019-02-02-clojure-and-elixir.html</link>
   <pubDate>Sat, 02 Feb 2019 10:29:00 -0800</pubDate>
 </item>
 <item>
-  <title>Datafy and tap> in Clojure 1.10</title>
+  <title><![CDATA[Datafy and tap> in Clojure 1.10]]></title>
   <description><![CDATA[
 <p>
 I noticed couple of new features being added to Clojure 1.10. One is
@@ -352,32 +352,32 @@ Enough being said, let us see with a simple example to cover first
 uses case I said above. 
 </p>
 <div class="org-src-container">
-<pre class="src src-clojure"><code><span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">def</span> <span style="color: #a0522d;">context</span> <span style="color: #7f7f7f;">(</span>StringBuilder.<span style="color: #7f7f7f;">))</span></code>
-<code></code>
-<code><span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">defn</span> <span style="color: #0000ff;">-&gt;context</span> <span style="color: #7f7f7f;">[</span>x<span style="color: #7f7f7f;">]</span></code>
-<code>  <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">doto</span> context</code>
-<code>    <span style="color: #7f7f7f;">(</span>.append x<span style="color: #7f7f7f;">)))</span></code>
-<code></code>
-<code><span style="color: #b22222;">;; </span><span style="color: #b22222;">Then let us add above fn to the tapset</span></code>
-<code><span style="color: #7f7f7f;">(</span>add-tap -&gt;context<span style="color: #7f7f7f;">)</span></code>
-<code><span style="color: #b22222;">;; </span><span style="color: #b22222;">Then from any where of our running code, we can do:</span></code>
-<code><span style="color: #7f7f7f;">(</span>tap&gt; <span style="color: #8b2252;">"******* tap start ********</span><span style="color: #8b2252; font-weight: bold;">\n</span><span style="color: #8b2252;"> "</span><span style="color: #7f7f7f;">)</span></code>
-<code><span style="color: #7f7f7f;">(</span>tap&gt; <span style="color: #8b2252;">"runing.......................</span><span style="color: #8b2252; font-weight: bold;">\n</span><span style="color: #8b2252;">"</span><span style="color: #7f7f7f;">)</span></code>
-<code><span style="color: #7f7f7f;">(</span>tap&gt; <span style="color: #8b2252;">"******* tap end **********</span><span style="color: #8b2252; font-weight: bold;">\n</span><span style="color: #8b2252;"> "</span><span style="color: #7f7f7f;">)</span></code>
-<code></code>
-<code><span style="color: #b22222;">;; </span><span style="color: #b22222;">It will be executed in a separate dedicated thread and will not</span></code>
-<code><span style="color: #b22222;">;; </span><span style="color: #b22222;">block or interfere with our running code. Then we print out the context:</span></code>
-<code><span style="color: #7f7f7f;">(</span>str context<span style="color: #7f7f7f;">)</span></code>
-<code><span style="color: #b22222;">;; </span><span style="color: #b22222;">which results in:</span></code>
-<code><span style="color: #b22222;">;;</span><span style="color: #b22222;">******* tap start ********</span></code>
-<code><span style="color: #b22222;">;; </span><span style="color: #b22222;">runing.......................</span></code>
-<code><span style="color: #b22222;">;;</span><span style="color: #b22222;">******* tap end **********</span></code>
-<code></code>
-<code><span style="color: #b22222;">;; </span><span style="color: #b22222;">Remember to remove the -&gt;context fn once you are done with that session:</span></code>
-<code><span style="color: #7f7f7f;">(</span>remove-tap -&gt;context<span style="color: #7f7f7f;">)</span></code>
-<code><span style="color: #b22222;">;; </span><span style="color: #b22222;">If there is no fn added to the tap, any values you send to tap will be discarded.</span></code>
-<code><span style="color: #7f7f7f;">(</span>tap&gt; <span style="color: #8b2252;">"your magic"</span><span style="color: #7f7f7f;">)</span> <span style="color: #b22222;">;; </span><span style="color: #b22222;">your magic will be discarded.</span></code>
-<code></code>
+<pre class="src src-clojure"><span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">def</span> <span style="color: #a0522d;">context</span> <span style="color: #7f7f7f;">(</span>StringBuilder.<span style="color: #7f7f7f;">))</span>
+
+<span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">defn</span> <span style="color: #0000ff;">-&gt;context</span> <span style="color: #7f7f7f;">[</span>x<span style="color: #7f7f7f;">]</span>
+  <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">doto</span> context
+    <span style="color: #7f7f7f;">(</span>.append x<span style="color: #7f7f7f;">)))</span>
+
+<span style="color: #b22222;">;; </span><span style="color: #b22222;">Then let us add above fn to the tapset</span>
+<span style="color: #7f7f7f;">(</span>add-tap -&gt;context<span style="color: #7f7f7f;">)</span>
+<span style="color: #b22222;">;; </span><span style="color: #b22222;">Then from any where of our running code, we can do:</span>
+<span style="color: #7f7f7f;">(</span>tap&gt; <span style="color: #8b2252;">"******* tap start ********</span><span style="color: #8b2252; font-weight: bold;">\n</span><span style="color: #8b2252;"> "</span><span style="color: #7f7f7f;">)</span>
+<span style="color: #7f7f7f;">(</span>tap&gt; <span style="color: #8b2252;">"runing.......................</span><span style="color: #8b2252; font-weight: bold;">\n</span><span style="color: #8b2252;">"</span><span style="color: #7f7f7f;">)</span>
+<span style="color: #7f7f7f;">(</span>tap&gt; <span style="color: #8b2252;">"******* tap end **********</span><span style="color: #8b2252; font-weight: bold;">\n</span><span style="color: #8b2252;"> "</span><span style="color: #7f7f7f;">)</span>
+
+<span style="color: #b22222;">;; </span><span style="color: #b22222;">It will be executed in a separate dedicated thread and will not</span>
+<span style="color: #b22222;">;; </span><span style="color: #b22222;">block or interfere with our running code. Then we print out the context:</span>
+<span style="color: #7f7f7f;">(</span>str context<span style="color: #7f7f7f;">)</span>
+<span style="color: #b22222;">;; </span><span style="color: #b22222;">which results in:</span>
+<span style="color: #b22222;">;;</span><span style="color: #b22222;">******* tap start ********</span>
+<span style="color: #b22222;">;; </span><span style="color: #b22222;">runing.......................</span>
+<span style="color: #b22222;">;;</span><span style="color: #b22222;">******* tap end **********</span>
+
+<span style="color: #b22222;">;; </span><span style="color: #b22222;">Remember to remove the -&gt;context fn once you are done with that session:</span>
+<span style="color: #7f7f7f;">(</span>remove-tap -&gt;context<span style="color: #7f7f7f;">)</span>
+<span style="color: #b22222;">;; </span><span style="color: #b22222;">If there is no fn added to the tap, any values you send to tap will be discarded.</span>
+<span style="color: #7f7f7f;">(</span>tap&gt; <span style="color: #8b2252;">"your magic"</span><span style="color: #7f7f7f;">)</span> <span style="color: #b22222;">;; </span><span style="color: #b22222;">your magic will be discarded.</span>
+
 </pre>
 </div>
 
@@ -387,31 +387,31 @@ am already using it to find out about java classes members, methods
 and its object graph. Let us take a java class <b>String</b> as an example.
 </p>
 <div class="org-src-container">
-<pre class="src src-clojure"><code><span style="color: #7f7f7f;">(</span>require '<span style="color: #7f7f7f;">[</span>clojure.datafy <span style="color: #008b8b;">:as</span> d<span style="color: #7f7f7f;">])</span></code>
-<code><span style="color: #7f7f7f;">(</span><span style="color: #228b22;">d</span>/datafy String<span style="color: #7f7f7f;">)</span> <span style="color: #b22222;">;; </span><span style="color: #b22222;">which will print all about its members in a nice clojure ds</span></code>
-<code></code>
-<code><span style="color: #b22222;">;; </span><span style="color: #b22222;">let us write an fn to give use any member that we would like to find more about:</span></code>
-<code><span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">defn</span> <span style="color: #0000ff;">member-lookup</span> <span style="color: #7f7f7f;">[</span>class member<span style="color: #7f7f7f;">]</span></code>
-<code>  <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">-&gt;&gt;</span> class</code>
-<code>       <span style="color: #228b22;">d</span>/datafy</code>
-<code>       <span style="color: #008b8b;">:members</span></code>
-<code>       <span style="color: #7f7f7f;">(</span>filter <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">fn</span> <span style="color: #7f7f7f;">[[</span>k v<span style="color: #7f7f7f;">]]</span> <span style="color: #7f7f7f;">(</span>= <span style="color: #7f7f7f;">(</span>symbol member<span style="color: #7f7f7f;">)</span> k<span style="color: #7f7f7f;">)))))</span></code>
-<code><span style="color: #b22222;">;; </span><span style="color: #b22222;">then use it to find about "intern"</span></code>
-<code><span style="color: #7f7f7f;">(</span>member-lookup String <span style="color: #8b2252;">"intern"</span><span style="color: #7f7f7f;">)</span></code>
-<code><span style="color: #b22222;">;; </span><span style="color: #b22222;">returns:</span></code>
-<code><span style="color: #7f7f7f;">([</span>intern</code>
-<code>  <span style="color: #7f7f7f;">[</span>{<span style="color: #008b8b;">:name</span> intern,</code>
-<code>    <span style="color: #008b8b;">:return-type</span> java.lang.String,</code>
-<code>    <span style="color: #008b8b;">:declaring-class</span> java.lang.String,</code>
-<code>    <span style="color: #008b8b;">:parameter-types</span> <span style="color: #7f7f7f;">[]</span>,</code>
-<code>    <span style="color: #008b8b;">:exception-types</span> <span style="color: #7f7f7f;">[]</span>,</code>
-<code>    <span style="color: #008b8b;">:flags</span> #{<span style="color: #008b8b;">:public</span> <span style="color: #008b8b;">:native</span>}}<span style="color: #7f7f7f;">]])</span></code>
-<code></code>
-<code><span style="color: #b22222;">;; </span><span style="color: #b22222;">One can learn a lot about this method from above ds. "intern" is a</span></code>
-<code><span style="color: #b22222;">;; </span><span style="color: #b22222;">public native method that takes no argument, called on string object</span></code>
-<code><span style="color: #b22222;">;; </span><span style="color: #b22222;">and returns string like this:</span></code>
-<code><span style="color: #7f7f7f;">(</span>.intern <span style="color: #8b2252;">"test"</span><span style="color: #7f7f7f;">)</span> <span style="color: #b22222;">;; </span><span style="color: #b22222;">=&gt; "test"</span></code>
-<code></code>
+<pre class="src src-clojure"><span style="color: #7f7f7f;">(</span>require '<span style="color: #7f7f7f;">[</span>clojure.datafy <span style="color: #008b8b;">:as</span> d<span style="color: #7f7f7f;">])</span>
+<span style="color: #7f7f7f;">(</span><span style="color: #228b22;">d</span>/datafy String<span style="color: #7f7f7f;">)</span> <span style="color: #b22222;">;; </span><span style="color: #b22222;">which will print all about its members in a nice clojure ds</span>
+
+<span style="color: #b22222;">;; </span><span style="color: #b22222;">let us write an fn to give use any member that we would like to find more about:</span>
+<span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">defn</span> <span style="color: #0000ff;">member-lookup</span> <span style="color: #7f7f7f;">[</span>class member<span style="color: #7f7f7f;">]</span>
+  <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">-&gt;&gt;</span> class
+       <span style="color: #228b22;">d</span>/datafy
+       <span style="color: #008b8b;">:members</span>
+       <span style="color: #7f7f7f;">(</span>filter <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">fn</span> <span style="color: #7f7f7f;">[[</span>k v<span style="color: #7f7f7f;">]]</span> <span style="color: #7f7f7f;">(</span>= <span style="color: #7f7f7f;">(</span>symbol member<span style="color: #7f7f7f;">)</span> k<span style="color: #7f7f7f;">)))))</span>
+<span style="color: #b22222;">;; </span><span style="color: #b22222;">then use it to find about "intern"</span>
+<span style="color: #7f7f7f;">(</span>member-lookup String <span style="color: #8b2252;">"intern"</span><span style="color: #7f7f7f;">)</span>
+<span style="color: #b22222;">;; </span><span style="color: #b22222;">returns:</span>
+<span style="color: #7f7f7f;">([</span>intern
+  <span style="color: #7f7f7f;">[</span>{<span style="color: #008b8b;">:name</span> intern,
+    <span style="color: #008b8b;">:return-type</span> java.lang.String,
+    <span style="color: #008b8b;">:declaring-class</span> java.lang.String,
+    <span style="color: #008b8b;">:parameter-types</span> <span style="color: #7f7f7f;">[]</span>,
+    <span style="color: #008b8b;">:exception-types</span> <span style="color: #7f7f7f;">[]</span>,
+    <span style="color: #008b8b;">:flags</span> #{<span style="color: #008b8b;">:public</span> <span style="color: #008b8b;">:native</span>}}<span style="color: #7f7f7f;">]])</span>
+
+<span style="color: #b22222;">;; </span><span style="color: #b22222;">One can learn a lot about this method from above ds. "intern" is a</span>
+<span style="color: #b22222;">;; </span><span style="color: #b22222;">public native method that takes no argument, called on string object</span>
+<span style="color: #b22222;">;; </span><span style="color: #b22222;">and returns string like this:</span>
+<span style="color: #7f7f7f;">(</span>.intern <span style="color: #8b2252;">"test"</span><span style="color: #7f7f7f;">)</span> <span style="color: #b22222;">;; </span><span style="color: #b22222;">=&gt; "test"</span>
+
 </pre>
 </div>
 
@@ -420,13 +420,13 @@ This means we can use above information to create Clojure fns on the
 fly for java inter-op. One great use case would be to generate Clojure
 fns out of AWS Java SDK, which I might do if time permits.
 </p>
-<div class="taglist"><a href="tags.html">Tags</a>: <a href="tag-clojure.html">clojure</a> </div>]]></description>
-  <category>clojure</category>
+<div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-clojure.html">clojure</a> </div>]]></description>
+  <category><![CDATA[clojure]]></category>
   <link>https://www.birkey.co/2018-10-26-datafy-and-tap>-in-clojure-1.10.html</link>
   <pubDate>Fri, 26 Oct 2018 11:19:00 -0700</pubDate>
 </item>
 <item>
-  <title>Debug VoidLinux unresolvable lib issue</title>
+  <title><![CDATA[Debug VoidLinux unresolvable lib issue]]></title>
   <description><![CDATA[
 <p>
 I have been a happy user of <b><a href="https://voidlinux.org/">VoidLinux</a></b> for about a year now and so
@@ -434,10 +434,10 @@ far have had almost no glitches whatsoever except for updating a year
 old version of it installed on one of my spare laptop. The issue started as following:
 </p>
 <div class="org-src-container">
-<pre class="src src-shell"><code>xbps-install -Su</code>
-<code><span style="color: #b22222;"># </span><span style="color: #b22222;">resulted in following:</span></code>
-<code><span style="color: #b22222;"># </span><span style="color: #b22222;">mozjs: broken, unresolvable shlib `libicu.so'</span></code>
-<code><span style="color: #b22222;"># </span><span style="color: #b22222;">Transaction aborted due to unresolved shlibs.</span></code>
+<pre class="src src-shell">xbps-install -Su
+<span style="color: #b22222;"># </span><span style="color: #b22222;">resulted in following:</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">mozjs: broken, unresolvable shlib `libicu.so'</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">Transaction aborted due to unresolved shlibs.</span>
 </pre>
 </div>
 <p>
@@ -454,29 +454,29 @@ that did not help me go anywhere. Then I decided to debug it
 myself. Following is my commandline session how I resolved it:
 </p>
 <div class="org-src-container">
-<pre class="src src-shell"><code><span style="color: #b22222;"># </span><span style="color: #b22222;">Ran the command again to make sure I have above issue </span></code>
-<code>xbps-install -Su</code>
-<code><span style="color: #b22222;"># </span><span style="color: #b22222;">again resulted in following:</span></code>
-<code><span style="color: #b22222;"># </span><span style="color: #b22222;">mozjs: broken, unresolvable shlib `libicu.so'</span></code>
-<code><span style="color: #b22222;"># </span><span style="color: #b22222;">Transaction aborted due to unresolved shlibs.</span></code>
-<code><span style="color: #b22222;"># </span><span style="color: #b22222;">Notice the /*mozjs*/, which is my clue. Then I did:</span></code>
-<code>xbps-query -Rs mozjs</code>
-<code><span style="color: #b22222;"># </span><span style="color: #b22222;">from the output, I confirmed that it was not installed on my box,</span></code>
-<code><span style="color: #b22222;"># </span><span style="color: #b22222;">which is my second clue to check if my repos url are</span></code>
-<code><span style="color: #b22222;"># </span><span style="color: #b22222;">up-to-date. Remember it is a year old version of VoidLinux.  I</span></code>
-<code><span style="color: #b22222;"># </span><span style="color: #b22222;">noticed from the output of xpbs-install -u, that the</span></code>
-<code><span style="color: #b22222;"># </span><span style="color: #b22222;">void-repo-nonfree url does indeed point to an old url. So, I did:</span></code>
-<code>xbps-remove void-repo-nonfree &amp;&amp; xbps-install void-repo-nonfree</code>
-<code><span style="color: #b22222;"># </span><span style="color: #b22222;">to make sure my repo url is up-to-date. Then it is time to clean my</span></code>
-<code><span style="color: #b22222;"># </span><span style="color: #b22222;">repo cache and remove any packages that might be orphened since my</span></code>
-<code><span style="color: #b22222;"># </span><span style="color: #b22222;">repo url is pointing to a different url now. Using manpages for</span></code>
-<code><span style="color: #b22222;"># </span><span style="color: #b22222;">xpbs-remove, I can do above with:</span></code>
-<code>xbps-remove -Oo</code>
-<code><span style="color: #b22222;"># </span><span style="color: #b22222;">Then I ran:</span></code>
-<code>xbps-install -Su</code>
-<code><span style="color: #b22222;"># </span><span style="color: #b22222;">Voila!, My one year old box is up-to-date without any issues now.</span></code>
-<code><span style="color: #b22222;"># </span><span style="color: #b22222;">After all of this, I just made an one liner alias in my shell config:</span></code>
-<code><span style="color: #483d8b;">alias</span> <span style="color: #a0522d;">c</span>=<span style="color: #8b2252;">'xbps-remove void-repo-nonfree &amp;&amp; xbps-install void-repo-nonfree &amp;&amp; xbps-install -Su </span></code>
+<pre class="src src-shell"><span style="color: #b22222;"># </span><span style="color: #b22222;">Ran the command again to make sure I have above issue </span>
+xbps-install -Su
+<span style="color: #b22222;"># </span><span style="color: #b22222;">again resulted in following:</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">mozjs: broken, unresolvable shlib `libicu.so'</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">Transaction aborted due to unresolved shlibs.</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">Notice the /*mozjs*/, which is my clue. Then I did:</span>
+xbps-query -Rs mozjs
+<span style="color: #b22222;"># </span><span style="color: #b22222;">from the output, I confirmed that it was not installed on my box,</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">which is my second clue to check if my repos url are</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">up-to-date. Remember it is a year old version of VoidLinux.  I</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">noticed from the output of xpbs-install -u, that the</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">void-repo-nonfree url does indeed point to an old url. So, I did:</span>
+xbps-remove void-repo-nonfree &amp;&amp; xbps-install void-repo-nonfree
+<span style="color: #b22222;"># </span><span style="color: #b22222;">to make sure my repo url is up-to-date. Then it is time to clean my</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">repo cache and remove any packages that might be orphened since my</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">repo url is pointing to a different url now. Using manpages for</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">xpbs-remove, I can do above with:</span>
+xbps-remove -Oo
+<span style="color: #b22222;"># </span><span style="color: #b22222;">Then I ran:</span>
+xbps-install -Su
+<span style="color: #b22222;"># </span><span style="color: #b22222;">Voila!, My one year old box is up-to-date without any issues now.</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">After all of this, I just made an one liner alias in my shell config:</span>
+<span style="color: #483d8b;">alias</span> <span style="color: #a0522d;">c</span>=<span style="color: #8b2252;">'xbps-remove void-repo-nonfree &amp;&amp; xbps-install void-repo-nonfree &amp;&amp; xbps-install -Su </span>
 </pre>
 </div>
 
@@ -486,25 +486,25 @@ to recap steps that I took to solve the issue:
 </p>
 <ol class="org-ol">
 <li>Start using more general term to do a google search then narrow it
-   to specific ones. If it works, you save time and unneeded effort.</li>
+to specific ones. If it works, you save time and unneeded effort.</li>
 <li>Check for the problem package reported. Is it installed? If yes,
-   try removing or updating it to see if it resolves your issue.</li>
+try removing or updating it to see if it resolves your issue.</li>
 <li>If you do not see the package installed, it might be repo url +
-   orphaned package issue. So update the repo url, remove orphan
-   packages and rebuild the cache.</li>
+orphaned package issue. So update the repo url, remove orphan
+packages and rebuild the cache.</li>
 </ol>
 
 <p>
 If you tried all of the above and your issue still did not get
 resolved, you might want to post it in VoidLinux forum for help. 
 </p>
-<div class="taglist"><a href="tags.html">Tags</a>: <a href="tag-voidlinux.html">VoidLinux</a> </div>]]></description>
-  <category>VoidLinux</category>
+<div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-voidlinux.html">VoidLinux</a> </div>]]></description>
+  <category><![CDATA[VoidLinux]]></category>
   <link>https://www.birkey.co/2018-10-20-debug-voidlinux-unresolvable-lib-issue.html</link>
   <pubDate>Sat, 20 Oct 2018 13:53:00 -0700</pubDate>
 </item>
 <item>
-  <title>Visualize Google search results from Clojure REPL</title>
+  <title><![CDATA[Visualize Google search results from Clojure REPL]]></title>
   <description><![CDATA[
 <p>
 While back when I was learning Clojure, I have written a small lib
@@ -515,34 +515,34 @@ save the bar-chart to a png file. You can checkout the project here:
 going:
 </p>
 <div class="org-src-container">
-<pre class="src src-shell"><code>git clone git@github.com/oneness/gcount.git &amp;&amp; <span style="color: #483d8b;">cd</span> gcount &amp;&amp; lein repl</code>
+<pre class="src src-shell">git clone git@github.com/oneness/gcount.git &amp;&amp; <span style="color: #483d8b;">cd</span> gcount &amp;&amp; lein repl
 </pre>
 </div>
 <p>
 Once you are in repl, you can type following:
 </p>
 <div class="org-src-container">
-<pre class="src src-clojure"><code><span style="color: #7f7f7f;">(</span>search-view-terms <span style="color: #7f7f7f;">[</span><span style="color: #8b2252;">"Clojure Programming"</span> <span style="color: #8b2252;">"Elixir Programming"</span> <span style="color: #8b2252;">"Elm Programming"</span><span style="color: #7f7f7f;">])</span></code>
+<pre class="src src-clojure"><span style="color: #7f7f7f;">(</span>search-view-terms <span style="color: #7f7f7f;">[</span><span style="color: #8b2252;">"Clojure Programming"</span> <span style="color: #8b2252;">"Elixir Programming"</span> <span style="color: #8b2252;">"Elm Programming"</span><span style="color: #7f7f7f;">])</span>
 </pre>
 </div>
 <p>
 Above will produce something like this:
 <img src="https://www.birkey.co/images/google-search-result.png" alt="google-search-result.png">
 </p>
-<div class="taglist"><a href="tags.html">Tags</a>: <a href="tag-clojure.html">clojure</a> </div>]]></description>
-  <category>clojure</category>
+<div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-clojure.html">clojure</a> </div>]]></description>
+  <category><![CDATA[clojure]]></category>
   <link>https://www.birkey.co/2018-10-04-visualize-google-search-results-from-clojure-repl.html</link>
   <pubDate>Thu, 04 Oct 2018 11:21:00 -0700</pubDate>
 </item>
 <item>
-  <title>VM flags from running JVM</title>
+  <title><![CDATA[VM flags from running JVM]]></title>
   <description><![CDATA[
 <p>
 While I was doing some JVM GC analysis recently, I got curious about the vm flags that `java` command uses by default if you do not specify it when starting your JVM.
 Reading up JDK docs, I found <b>jcmd</b> is exactly what you need:
 </p>
 <div class="org-src-container">
-<pre class="src src-shell"><code>jcmd</code>
+<pre class="src src-shell">jcmd
 </pre>
 </div>
 <p>
@@ -550,23 +550,23 @@ That will list all jvm instances running on your system beginning with
 its pids, which you can pass into <b>jcmd</b> with options to print VM flags like this:
 </p>
 <div class="org-src-container">
-<pre class="src src-shell"><code>jcmd &lt;pid&gt; VM.flags</code>
+<pre class="src src-shell">jcmd &lt;pid&gt; VM.flags
 </pre>
 </div>
 <p>
 There are many options you can use other than `VM.flags`, which you can get a full list by:
 </p>
 <div class="org-src-container">
-<pre class="src src-shell"><code>jcmd &lt;pid&gt; help</code>
+<pre class="src src-shell">jcmd &lt;pid&gt; help
 </pre>
 </div>
-<div class="taglist"><a href="tags.html">Tags</a>: <a href="tag-jvm.html">jvm</a> </div>]]></description>
-  <category>jvm</category>
+<div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-jvm.html">jvm</a> </div>]]></description>
+  <category><![CDATA[jvm]]></category>
   <link>https://www.birkey.co/2018-10-03-vm-flags-from-running-jvm.html</link>
   <pubDate>Wed, 03 Oct 2018 12:03:00 -0700</pubDate>
 </item>
 <item>
-  <title>Blogging Made Simple</title>
+  <title><![CDATA[Blogging Made Simple]]></title>
   <description><![CDATA[
 <p>
 After taking some time off from work to focus on projects that I like
@@ -576,59 +576,59 @@ across this project - <a href="https://github.com/bastibe/org-static-blog">Org S
 me no time to set it up and start blogging. Below is my setup:
 </p>
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code><span style="color: #7f7f7f;">(</span>use-package org-static-blog</code>
-<code>  <span style="color: #483d8b;">:straight</span> t</code>
-<code>  <span style="color: #483d8b;">:config</span></code>
-<code>  <span style="color: #b22222;">;; </span><span style="color: #b22222;">-----------------------------------------------------------------------------</span></code>
-<code>  <span style="color: #b22222;">;; </span><span style="color: #b22222;">Set up blogging in Emacs</span></code>
-<code>  <span style="color: #b22222;">;; </span><span style="color: #b22222;">-----------------------------------------------------------------------------</span></code>
-<code></code>
-<code>  <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">setq</span> org-static-blog-publish-title <span style="color: #8b2252;">"BirkeyCo"</span><span style="color: #7f7f7f;">)</span></code>
-<code>  <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">setq</span> org-static-blog-publish-url <span style="color: #8b2252;">"https://www.birkey.co/"</span><span style="color: #7f7f7f;">)</span></code>
-<code>  <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">setq</span> org-static-blog-publish-directory <span style="color: #8b2252;">"~/github/oneness.github.io/"</span><span style="color: #7f7f7f;">)</span></code>
-<code>  <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">setq</span> org-static-blog-posts-directory <span style="color: #8b2252;">"~/github/oneness.github.io/posts/"</span><span style="color: #7f7f7f;">)</span></code>
-<code>  <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">setq</span> org-static-blog-drafts-directory <span style="color: #8b2252;">"~/github/oneness.github.io/drafts/"</span><span style="color: #7f7f7f;">)</span></code>
-<code>  <span style="color: #b22222;">;;</span><span style="color: #b22222;">(setq org-static-blog-enable-tags t)</span></code>
-<code>  <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">setq</span> org-export-with-toc nil<span style="color: #7f7f7f;">)</span></code>
-<code>  <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">setq</span> org-export-with-section-numbers nil<span style="color: #7f7f7f;">)</span></code>
-<code></code>
-<code>  <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">setq</span> org-static-blog-page-header</code>
-<code>        <span style="color: #8b2252;">"&lt;meta name=\"author\" content=\"Kasim Tuman\"&gt;</span></code>
-<code><span style="color: #8b2252;">&lt;meta name=\"referrer\" content=\"no-referrer\"&gt;</span></code>
-<code><span style="color: #8b2252;">&lt;link href= \"static/style.css\" rel=\"stylesheet\" type=\"text/css\" /&gt;</span></code>
-<code><span style="color: #8b2252;">&lt;link rel=\"icon\" href=\"static/favicon.ico\"&gt;</span></code>
-<code><span style="color: #8b2252;">&lt;link rel=\"apple-touch-icon-precomposed\" href=\"static/birkey_logo.png\"&gt;</span></code>
-<code><span style="color: #8b2252;">&lt;link rel=\"msapplication-TitleImage\" href=\"static/birkey_logo.png\"&gt;</span></code>
-<code><span style="color: #8b2252;">&lt;link rel=\"msapplication-TitleColor\" href=\"#0141ff\"&gt;</span></code>
-<code><span style="color: #8b2252;">&lt;script src=\"static/katex.min.js\"&gt;&lt;/script&gt;</span></code>
-<code><span style="color: #8b2252;">&lt;script src=\"static/auto-render.min.js\"&gt;&lt;/script&gt;</span></code>
-<code><span style="color: #8b2252;">&lt;link rel=\"stylesheet\" href=\"static/katex.min.css\"&gt;</span></code>
-<code><span style="color: #8b2252;">&lt;script&gt;document.addEventListener(\"DOMContentLoaded\", function() { renderMathInElement(document.body); });&lt;/script&gt;</span></code>
-<code><span style="color: #8b2252;">&lt;meta http-equiv=\"content-type\" content=\"application/xhtml+xml; charset=UTF-8\"&gt;</span></code>
-<code><span style="color: #8b2252;">&lt;meta name=\"viewport\" content=\"initial-scale=1,width=device-width,minimum-scale=1\"&gt;"</span><span style="color: #7f7f7f;">)</span></code>
-<code></code>
-<code>  <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">setq</span> org-static-blog-page-preamble</code>
-<code>        <span style="color: #8b2252;">"&lt;div class=\"header\"&gt;</span></code>
-<code><span style="color: #8b2252;">  &lt;a href=\"https://birkey.co\"&gt;Code, Data and Network&lt;/a&gt;</span></code>
-<code><span style="color: #8b2252;">  &lt;div class=\"sitelinks\"&gt;</span></code>
-<code><span style="color: #8b2252;">    &lt;a href=\"https://twitter.com/KasimTuman\"&gt;Twitter&lt;/a&gt; | &lt;a href=\"https://github.com/oneness\"&gt;Github&lt;/a&gt;</span></code>
-<code><span style="color: #8b2252;">  &lt;/div&gt;</span></code>
-<code><span style="color: #8b2252;">&lt;/div&gt;"</span><span style="color: #7f7f7f;">)</span></code>
-<code></code>
-<code>  <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">setq</span> org-static-blog-page-postamble</code>
-<code>        <span style="color: #8b2252;">"&lt;div id=\"archive\"&gt;</span></code>
-<code><span style="color: #8b2252;">  &lt;a href=\"https://www.birkey.co/archive.html\"&gt;Other posts&lt;/a&gt;</span></code>
-<code><span style="color: #8b2252;">&lt;/div&gt;</span></code>
-<code><span style="color: #8b2252;">&lt;center&gt;&lt;a rel=\"license\" href=\"https://creativecommons.org/licenses/by-sa/3.0/\"&gt;&lt;img alt=\"Creative Commons License\" style=\"border-width:0\" src=\"https://i.creativecommons.org/l/by-sa/3.0/88x31.png\" /&gt;&lt;/a&gt;&lt;br /&gt;&lt;span xmlns:dct=\"https://purl.org/dc/terms/\" href=\"https://purl.org/dc/dcmitype/Text\" property=\"dct:title\" rel=\"dct:type\"&gt;birkey.co&lt;/span&gt; by &lt;a xmlns:cc=\"https://creativecommons.org/ns#\" href=\"https://www.birkey.co\" property=\"cc:attributionName\" rel=\"cc:attributionURL\"&gt;Kasim Tuman&lt;/a&gt; is licensed under a &lt;a rel=\"license\" href=\"https://creativecommons.org/licenses/by-sa/3.0/\"&gt;Creative Commons Attribution-ShareAlike 3.0 Unported License&lt;/a&gt;.&lt;/center&gt;"</span><span style="color: #7f7f7f;">)</span></code>
-<code></code>
-<code>  <span style="color: #b22222;">;; </span><span style="color: #b22222;">This slows down org-publish to a crawl, and it is not needed since</span></code>
-<code>  <span style="color: #b22222;">;; </span><span style="color: #b22222;">I use magit anyway.</span></code>
-<code>  <span style="color: #7f7f7f;">(</span>remove-hook 'find-file-hooks 'vc-find-file-hook<span style="color: #7f7f7f;">))</span></code>
+<pre class="src src-emacs-lisp"><span style="color: #7f7f7f;">(</span>use-package org-static-blog
+  <span style="color: #483d8b;">:straight</span> t
+  <span style="color: #483d8b;">:config</span>
+  <span style="color: #b22222;">;; </span><span style="color: #b22222;">-----------------------------------------------------------------------------</span>
+  <span style="color: #b22222;">;; </span><span style="color: #b22222;">Set up blogging in Emacs</span>
+  <span style="color: #b22222;">;; </span><span style="color: #b22222;">-----------------------------------------------------------------------------</span>
+
+  <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">setq</span> org-static-blog-publish-title <span style="color: #8b2252;">"BirkeyCo"</span><span style="color: #7f7f7f;">)</span>
+  <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">setq</span> org-static-blog-publish-url <span style="color: #8b2252;">"https://www.birkey.co/"</span><span style="color: #7f7f7f;">)</span>
+  <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">setq</span> org-static-blog-publish-directory <span style="color: #8b2252;">"~/github/oneness.github.io/"</span><span style="color: #7f7f7f;">)</span>
+  <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">setq</span> org-static-blog-posts-directory <span style="color: #8b2252;">"~/github/oneness.github.io/posts/"</span><span style="color: #7f7f7f;">)</span>
+  <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">setq</span> org-static-blog-drafts-directory <span style="color: #8b2252;">"~/github/oneness.github.io/drafts/"</span><span style="color: #7f7f7f;">)</span>
+  <span style="color: #b22222;">;;</span><span style="color: #b22222;">(setq org-static-blog-enable-tags t)</span>
+  <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">setq</span> org-export-with-toc nil<span style="color: #7f7f7f;">)</span>
+  <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">setq</span> org-export-with-section-numbers nil<span style="color: #7f7f7f;">)</span>
+
+  <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">setq</span> org-static-blog-page-header
+        <span style="color: #8b2252;">"&lt;meta name=\"author\" content=\"Kasim Tuman\"&gt;</span>
+<span style="color: #8b2252;">&lt;meta name=\"referrer\" content=\"no-referrer\"&gt;</span>
+<span style="color: #8b2252;">&lt;link href= \"static/style.css\" rel=\"stylesheet\" type=\"text/css\" /&gt;</span>
+<span style="color: #8b2252;">&lt;link rel=\"icon\" href=\"static/favicon.ico\"&gt;</span>
+<span style="color: #8b2252;">&lt;link rel=\"apple-touch-icon-precomposed\" href=\"static/birkey_logo.png\"&gt;</span>
+<span style="color: #8b2252;">&lt;link rel=\"msapplication-TitleImage\" href=\"static/birkey_logo.png\"&gt;</span>
+<span style="color: #8b2252;">&lt;link rel=\"msapplication-TitleColor\" href=\"#0141ff\"&gt;</span>
+<span style="color: #8b2252;">&lt;script src=\"static/katex.min.js\"&gt;&lt;/script&gt;</span>
+<span style="color: #8b2252;">&lt;script src=\"static/auto-render.min.js\"&gt;&lt;/script&gt;</span>
+<span style="color: #8b2252;">&lt;link rel=\"stylesheet\" href=\"static/katex.min.css\"&gt;</span>
+<span style="color: #8b2252;">&lt;script&gt;document.addEventListener(\"DOMContentLoaded\", function() { renderMathInElement(document.body); });&lt;/script&gt;</span>
+<span style="color: #8b2252;">&lt;meta http-equiv=\"content-type\" content=\"application/xhtml+xml; charset=UTF-8\"&gt;</span>
+<span style="color: #8b2252;">&lt;meta name=\"viewport\" content=\"initial-scale=1,width=device-width,minimum-scale=1\"&gt;"</span><span style="color: #7f7f7f;">)</span>
+
+  <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">setq</span> org-static-blog-page-preamble
+        <span style="color: #8b2252;">"&lt;div class=\"header\"&gt;</span>
+<span style="color: #8b2252;">  &lt;a href=\"https://birkey.co\"&gt;Code, Data and Network&lt;/a&gt;</span>
+<span style="color: #8b2252;">  &lt;div class=\"sitelinks\"&gt;</span>
+<span style="color: #8b2252;">    &lt;a href=\"https://twitter.com/KasimTuman\"&gt;Twitter&lt;/a&gt; | &lt;a href=\"https://github.com/oneness\"&gt;Github&lt;/a&gt;</span>
+<span style="color: #8b2252;">  &lt;/div&gt;</span>
+<span style="color: #8b2252;">&lt;/div&gt;"</span><span style="color: #7f7f7f;">)</span>
+
+  <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">setq</span> org-static-blog-page-postamble
+        <span style="color: #8b2252;">"&lt;div id=\"archive\"&gt;</span>
+<span style="color: #8b2252;">  &lt;a href=\"https://www.birkey.co/archive.html\"&gt;Other posts&lt;/a&gt;</span>
+<span style="color: #8b2252;">&lt;/div&gt;</span>
+<span style="color: #8b2252;">&lt;center&gt;&lt;a rel=\"license\" href=\"https://creativecommons.org/licenses/by-sa/3.0/\"&gt;&lt;img alt=\"Creative Commons License\" style=\"border-width:0\" src=\"https://i.creativecommons.org/l/by-sa/3.0/88x31.png\" /&gt;&lt;/a&gt;&lt;br /&gt;&lt;span xmlns:dct=\"https://purl.org/dc/terms/\" href=\"https://purl.org/dc/dcmitype/Text\" property=\"dct:title\" rel=\"dct:type\"&gt;birkey.co&lt;/span&gt; by &lt;a xmlns:cc=\"https://creativecommons.org/ns#\" href=\"https://www.birkey.co\" property=\"cc:attributionName\" rel=\"cc:attributionURL\"&gt;Kasim Tuman&lt;/a&gt; is licensed under a &lt;a rel=\"license\" href=\"https://creativecommons.org/licenses/by-sa/3.0/\"&gt;Creative Commons Attribution-ShareAlike 3.0 Unported License&lt;/a&gt;.&lt;/center&gt;"</span><span style="color: #7f7f7f;">)</span>
+
+  <span style="color: #b22222;">;; </span><span style="color: #b22222;">This slows down org-publish to a crawl, and it is not needed since</span>
+  <span style="color: #b22222;">;; </span><span style="color: #b22222;">I use magit anyway.</span>
+  <span style="color: #7f7f7f;">(</span>remove-hook 'find-file-hooks 'vc-find-file-hook<span style="color: #7f7f7f;">))</span>
 </pre>
 </div>
-<div class="taglist"><a href="tags.html">Tags</a>: <a href="tag-emacs.html">emacs</a> <a href="tag-blogging.html">blogging</a> </div>]]></description>
-  <category>emacs</category>
-  <category>blogging</category>
+<div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-emacs.html">emacs</a> <a href="https://www.birkey.co/tag-blogging.html">blogging</a> </div>]]></description>
+  <category><![CDATA[emacs]]></category>
+  <category><![CDATA[blogging]]></category>
   <link>https://www.birkey.co/2018-9-20-blogging-simpler.html</link>
   <pubDate>Wed, 19 Sep 2018 17:00:00 -0700</pubDate>
 </item>
