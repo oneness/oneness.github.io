@@ -1,0 +1,20 @@
+#+title: OpenBSD laptop for the paranoid
+#+date: <2020-02-15 18:12>
+#+filetags: OpenBSD
+
+*Disclaimer*: This is not a post about UNIX variants flame war. It is not my intention to recruit OpenBSD converts either as no one has influenced me to switch to it after 10 years of distro hopping. The main reasons I am using OpenBSD as my daily driver on both of my laptops (Thinkpad X220 and XPS 13 9365) are: *Security*, *Stability*, and *Frugality*.
+* Security
+  I am software generalist who knows enough about system (OS,Network and Application) security to be paranoid not just about online systems, which is far from enough to keep ourselves secure, but also on-prem system such as Operating Systems we all rely on for keeping us safe. While Linux could be made as secure as OpenBSD after much tinkering and tweaking, OpenBSD is more secure by default installation. Following quote from https://www.openbsd.org/ is very telling:
+#+BEGIN_QUOTE
+Only two remote holes in the default install, in a heck of a long time!
+#+END_QUOTE
+That quote is for what OpenBSD team calls base file set that includes the kernel and base system. Security is the utmost priority for packages being included in the port tree as well. For example, Chromium comes with `--enable-unveil` support, which means that it can only access `~/Downloads` folder to mitigate the attack surface if your browser ever gets hijacked.
+* Stability
+  OpenBSD favors stability over new features. Once installed and configured to your liking, it just stays out of your way allowing you focus on your task at hand. You will not see nagging notifications demanding you to click on installing updates. You can just setup a cron to run `syspatch` to bring in security fixes whenever and however you like. Releases are scheduled for every 6 months in a predictable way so you are in control to plan it ahead. I am running 6.6 release and following errata proves my point: https://www.openbsd.org/errata66.html
+* Frugality
+  Wikipedia has the best definition for this and I believe it genuinely applies to the Philosophy of OpenBSD project. `Less is more` is a pretty well known Unix tradition and the command `less` (which is a replacement of early UNIX command `more`) is seen in every UNIX variants. OpenBSD is not the most user friendly Unix out there not even among BSD flavors. It is targeted towards security and resource savvy power users who wants have control over every piece of software running on their system. Every line of code is audited for frugality and not needed code is removed. Development is not driven by any cooperate or financial interest as apposed to the Operating System development from big Corporations such as Microsoft, Apple and Google. You can use your old hardware as long as it meets your needs and will not find yourself at the mercy of them nagging you upgrade your hardware let alone your system so often.
+
+All in all, it gives you a piece of mind compared to any OS out there when it comes to knowing you are safe by default. If you would like to know more about why OpenBSD, you can visit this site for technical details:
+https://why-openbsd.rocks/fact/
+
+I am currently running OpenBSD 6.6 on Thinkpad X220 (everything work out of the box) and Dell XPS 13 2 in 1 9365 (all works except for suspend - same as some leading Linux distros). The installation process is not that complicated (mostly you just except the default prompt by hitting enter) but does need some config to make it to your liking. I might blog about the installation process and list my configs for `X` and `cwm` in the future.
