@@ -1,0 +1,1 @@
+/home/kasim/.dotfiles/bin/set_up.sh
