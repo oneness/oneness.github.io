@@ -29,13 +29,79 @@
   </div></div>
 <div id="content">
 
+<div class="post-date">05 Mar 2020</div><h1 class="post-title"><a href="https://www.birkey.co/2020-03-05-self-documenting-makefile.html">Self documenting Makefile</a></h1>
+<p>
+One of the pain points of starting a new project or even hacking on existing project is to know where to start. One can start with documentation, test cases or even running it to see the logs and stacktraces (Stracktrace way is one of my favourite and you can tell a lot about code flow, organzation and you can even find un-handled bugs that way, which is a topic of its own for a blog post). Each language brings in its own set of tools that you need to know before you getting familiar with the code base. You might add `README` or some other documents to ease the pain but it might get stale overtime. One convention that I have been using, which has paid off with any project or teams that I have collaborated, are following simple conventions:
+</p>
+<ul class="org-ul">
+<li>Each Project Should have a `Makefile` with following targets:
+<ul class="org-ul">
+<li><b>setup</b> : Should take care of env configs</li>
+<li><b>deps</b>  : Should take care of handling all the project dependencies</li>
+<li><b>unit-test</b> : Should have local tests</li>
+<li><b>integration-test</b> : Should have non local tests</li>
+</ul></li>
+<li>This Makefile should be self documenting:
+<ul class="org-ul">
+<li>It should have <b>help</b> as the default target that explains what the project is about and how to run it</li>
+<li>It should be self documenting, meaning each target should have it is own description as to what it does and possible why it does it the way it is.</li>
+</ul></li>
+</ul>
+
+<p>
+Above might sound a lot to ask but it is really trivial to do those with just following make file:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-Shell">.PHONY: help
+help: ## This is a cool project. It does great things to help humanity move forward.
+	@echo 'usage: make [target] ...'
+	@echo
+	@echo 'Targets Depends Description' | column -t -s ' '
+	@echo '------- ------- -----------' | column -t -s ' '
+	@egrep '^(.+)\:?.+\ ##\ (.+)' ${MAKEFILE_LIST} \
+	| column -t -s ':#' | sed 's/Makefile  //'
+
+setup: ## Sets up all that are needed start working on the project.
+	@echo Setting up...
+	# Put you logic here
+	@echo Setting up done.
+
+deps: setup ## Pulls in all required dependencies
+	@echo Pulling all project dependencies
+
+unit-test: deps ## Runs local tests
+	@echo Running unit-tests...
+	# Put your run unit-tests logic here
+	@echo unit-tests done.
+
+integration-test: deps ## Runs non local tests
+	@echo Running integration-tests...
+	# Put your run integration-tests logic here
+	@echo integration-tests done.
+</pre>
+</div>
+
+<p>
+The presence of above Makefile should not be underestimated. It will allow yourself and your fellow developers to dive into any project with just one liner like this:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-Shell">git clone &lt;project&gt; &amp;&amp; cd project &amp;&amp; make deps
+</pre>
+</div>
+
+<p>
+Would not that be wonderful if every project just follow simple conventions like this so you have less obstacle to start or dive into a project? It has benefited me and my team over the years and hope you see the benefit for yourself.
+</p>
+<div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-makefile.html">Makefile</a> </div>
 <div class="post-date">15 Feb 2020</div><h1 class="post-title"><a href="https://www.birkey.co/2020-02-15-openbsd-laptop-for-the-paranoid.html">OpenBSD laptop for the paranoid</a></h1>
 <p>
 <b>Disclaimer</b>: This is not a post about UNIX variants flame war. It is not my intention to recruit OpenBSD converts either as no one has influenced me to switch to it after 10 years of distro hopping. The main reasons I am using OpenBSD as my daily driver on both of my laptops (Thinkpad X220 and XPS 13 9365) are: <b>Security</b>, <b>Stability</b>, and <b>Frugality</b>.
 </p>
-<div id="outline-container-org6107d5d" class="outline-2">
-<h2 id="org6107d5d">Security</h2>
-<div class="outline-text-2" id="text-org6107d5d">
+<div id="outline-container-org6c10823" class="outline-2">
+<h2 id="org6c10823">Security</h2>
+<div class="outline-text-2" id="text-org6c10823">
 <p>
 I am software generalist who knows enough about system (OS,Network and Application) security to be paranoid not just about online systems, which is far from enough to keep ourselves secure, but also on-prem system such as Operating Systems we all rely on for keeping us safe. While Linux could be made as secure as OpenBSD after much tinkering and tweaking, OpenBSD is more secure by default installation. Following quote from <a href="https://www.openbsd.org/">https://www.openbsd.org/</a> is very telling:
 </p>
@@ -49,17 +115,17 @@ That quote is for what OpenBSD team calls base file set that includes the kernel
 </p>
 </div>
 </div>
-<div id="outline-container-org0bae7fd" class="outline-2">
-<h2 id="org0bae7fd">Stability</h2>
-<div class="outline-text-2" id="text-org0bae7fd">
+<div id="outline-container-orgffd1de6" class="outline-2">
+<h2 id="orgffd1de6">Stability</h2>
+<div class="outline-text-2" id="text-orgffd1de6">
 <p>
 OpenBSD favors stability over new features. Once installed and configured to your liking, it just stays out of your way allowing you focus on your task at hand. You will not see nagging notifications demanding you to click on installing updates. You can just setup a cron to run `syspatch` to bring in security fixes whenever and however you like. Releases are scheduled for every 6 months in a predictable way so you are in control to plan it ahead. I am running 6.6 release and following errata proves my point: <a href="https://www.openbsd.org/errata66.html">https://www.openbsd.org/errata66.html</a>
 </p>
 </div>
 </div>
-<div id="outline-container-org61328e9" class="outline-2">
-<h2 id="org61328e9">Frugality</h2>
-<div class="outline-text-2" id="text-org61328e9">
+<div id="outline-container-org28e825f" class="outline-2">
+<h2 id="org28e825f">Frugality</h2>
+<div class="outline-text-2" id="text-org28e825f">
 <p>
 Wikipedia has the best definition for this and I believe it genuinely applies to the Philosophy of OpenBSD project. `Less is more` is a pretty well known Unix tradition and the command `less` (which is a replacement of early UNIX command `more`) is seen in every UNIX variants. OpenBSD is not the most user friendly Unix out there not even among BSD flavors. It is targeted towards security and resource savvy power users who wants have control over every piece of software running on their system. Every line of code is audited for frugality and not needed code is removed. Development is not driven by any cooperate or financial interest as apposed to the Operating System development from big Corporations such as Microsoft, Apple and Google. You can use your old hardware as long as it meets your needs and will not find yourself at the mercy of them nagging you upgrade your hardware let alone your system so often.
 </p>
@@ -370,106 +436,7 @@ and agreed upon such as <b>mix format</b></li>
 <p>
 I hope someone from both community find above helpful.
 </p>
-<div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-clojure.html">clojure</a> <a href="https://www.birkey.co/tag-elixir.html">elixir</a> </div>
-<div class="post-date">26 Oct 2018</div><h1 class="post-title"><a href="https://www.birkey.co/2018-10-26-datafy-and-tap>-in-clojure-1.10.html">Datafy and tap> in Clojure 1.10</a></h1>
-<p>
-I noticed couple of new features being added to Clojure 1.10. One is
-<b>tap</b>, which is added to the core ns, and the other is <b>datafy</b>, which
-is added to clojure.datafy ns.  
-</p>
-
-<p>
-<b>tap</b> essentially is an atom holding set of fns of single arity, which
-will be asynchronously called on any value you you send via
-<b>tap&gt;</b>. You can add a single arity fn to the <b>tap</b> via <b>(add-tap f)</b>
-and remove the fn via <b>(remove-tap f</b>).  Note that you have to
-remember the fn you added so you can remove it. Otherwise, you have no
-way of removing the fn, which is an inconvenience but there might be a
-reason why it is the way it is. I am not sure about its intended use
-cases but I know it comes handy when you have a set of transformation
-(<b>important: order of those transformation should not matter</b>) that you
-would like to apply to any value asynchronously. I can think of
-following uses cases for tap:
-</p>
-<ul class="org-ul">
-<li>Collecting some sort of diagnostic information about running system.</li>
-<li>Streaming serious of values to be processed and routed to a sink somewhere.</li>
-<li>May be used (rather abused) to execute some code? hope not.</li>
-</ul>
-<p>
-Enough being said, let us see with a simple example to cover first
-uses case I said above. 
-</p>
-<div class="org-src-container">
-<pre class="src src-clojure"><span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">def</span> <span style="color: #a0522d;">context</span> <span style="color: #7f7f7f;">(</span>StringBuilder.<span style="color: #7f7f7f;">))</span>
-
-<span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">defn</span> <span style="color: #0000ff;">-&gt;context</span> <span style="color: #7f7f7f;">[</span>x<span style="color: #7f7f7f;">]</span>
-  <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">doto</span> context
-    <span style="color: #7f7f7f;">(</span>.append x<span style="color: #7f7f7f;">)))</span>
-
-<span style="color: #b22222;">;; </span><span style="color: #b22222;">Then let us add above fn to the tapset</span>
-<span style="color: #7f7f7f;">(</span>add-tap -&gt;context<span style="color: #7f7f7f;">)</span>
-<span style="color: #b22222;">;; </span><span style="color: #b22222;">Then from any where of our running code, we can do:</span>
-<span style="color: #7f7f7f;">(</span>tap&gt; <span style="color: #8b2252;">"******* tap start ********</span><span style="color: #8b2252; font-weight: bold;">\n</span><span style="color: #8b2252;"> "</span><span style="color: #7f7f7f;">)</span>
-<span style="color: #7f7f7f;">(</span>tap&gt; <span style="color: #8b2252;">"runing.......................</span><span style="color: #8b2252; font-weight: bold;">\n</span><span style="color: #8b2252;">"</span><span style="color: #7f7f7f;">)</span>
-<span style="color: #7f7f7f;">(</span>tap&gt; <span style="color: #8b2252;">"******* tap end **********</span><span style="color: #8b2252; font-weight: bold;">\n</span><span style="color: #8b2252;"> "</span><span style="color: #7f7f7f;">)</span>
-
-<span style="color: #b22222;">;; </span><span style="color: #b22222;">It will be executed in a separate dedicated thread and will not</span>
-<span style="color: #b22222;">;; </span><span style="color: #b22222;">block or interfere with our running code. Then we print out the context:</span>
-<span style="color: #7f7f7f;">(</span>str context<span style="color: #7f7f7f;">)</span>
-<span style="color: #b22222;">;; </span><span style="color: #b22222;">which results in:</span>
-<span style="color: #b22222;">;;</span><span style="color: #b22222;">******* tap start ********</span>
-<span style="color: #b22222;">;; </span><span style="color: #b22222;">runing.......................</span>
-<span style="color: #b22222;">;;</span><span style="color: #b22222;">******* tap end **********</span>
-
-<span style="color: #b22222;">;; </span><span style="color: #b22222;">Remember to remove the -&gt;context fn once you are done with that session:</span>
-<span style="color: #7f7f7f;">(</span>remove-tap -&gt;context<span style="color: #7f7f7f;">)</span>
-<span style="color: #b22222;">;; </span><span style="color: #b22222;">If there is no fn added to the tap, any values you send to tap will be discarded.</span>
-<span style="color: #7f7f7f;">(</span>tap&gt; <span style="color: #8b2252;">"your magic"</span><span style="color: #7f7f7f;">)</span> <span style="color: #b22222;">;; </span><span style="color: #b22222;">your magic will be discarded.</span>
-
-</pre>
-</div>
-
-<p>
-The other one I noticed is <b>datafy</b>, which I am more excited about. I
-am already using it to find out about java classes members, methods
-and its object graph. Let us take a java class <b>String</b> as an example.
-</p>
-<div class="org-src-container">
-<pre class="src src-clojure"><span style="color: #7f7f7f;">(</span>require '<span style="color: #7f7f7f;">[</span>clojure.datafy <span style="color: #008b8b;">:as</span> d<span style="color: #7f7f7f;">])</span>
-<span style="color: #7f7f7f;">(</span><span style="color: #228b22;">d</span>/datafy String<span style="color: #7f7f7f;">)</span> <span style="color: #b22222;">;; </span><span style="color: #b22222;">which will print all about its members in a nice clojure ds</span>
-
-<span style="color: #b22222;">;; </span><span style="color: #b22222;">let us write an fn to give use any member that we would like to find more about:</span>
-<span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">defn</span> <span style="color: #0000ff;">member-lookup</span> <span style="color: #7f7f7f;">[</span>class member<span style="color: #7f7f7f;">]</span>
-  <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">-&gt;&gt;</span> class
-       <span style="color: #228b22;">d</span>/datafy
-       <span style="color: #008b8b;">:members</span>
-       <span style="color: #7f7f7f;">(</span>filter <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">fn</span> <span style="color: #7f7f7f;">[[</span>k v<span style="color: #7f7f7f;">]]</span> <span style="color: #7f7f7f;">(</span>= <span style="color: #7f7f7f;">(</span>symbol member<span style="color: #7f7f7f;">)</span> k<span style="color: #7f7f7f;">)))))</span>
-<span style="color: #b22222;">;; </span><span style="color: #b22222;">then use it to find about "intern"</span>
-<span style="color: #7f7f7f;">(</span>member-lookup String <span style="color: #8b2252;">"intern"</span><span style="color: #7f7f7f;">)</span>
-<span style="color: #b22222;">;; </span><span style="color: #b22222;">returns:</span>
-<span style="color: #7f7f7f;">([</span>intern
-  <span style="color: #7f7f7f;">[</span>{<span style="color: #008b8b;">:name</span> intern,
-    <span style="color: #008b8b;">:return-type</span> java.lang.String,
-    <span style="color: #008b8b;">:declaring-class</span> java.lang.String,
-    <span style="color: #008b8b;">:parameter-types</span> <span style="color: #7f7f7f;">[]</span>,
-    <span style="color: #008b8b;">:exception-types</span> <span style="color: #7f7f7f;">[]</span>,
-    <span style="color: #008b8b;">:flags</span> #{<span style="color: #008b8b;">:public</span> <span style="color: #008b8b;">:native</span>}}<span style="color: #7f7f7f;">]])</span>
-
-<span style="color: #b22222;">;; </span><span style="color: #b22222;">One can learn a lot about this method from above ds. "intern" is a</span>
-<span style="color: #b22222;">;; </span><span style="color: #b22222;">public native method that takes no argument, called on string object</span>
-<span style="color: #b22222;">;; </span><span style="color: #b22222;">and returns string like this:</span>
-<span style="color: #7f7f7f;">(</span>.intern <span style="color: #8b2252;">"test"</span><span style="color: #7f7f7f;">)</span> <span style="color: #b22222;">;; </span><span style="color: #b22222;">=&gt; "test"</span>
-
-</pre>
-</div>
-
-<p>
-This means we can use above information to create Clojure fns on the
-fly for java inter-op. One great use case would be to generate Clojure
-fns out of AWS Java SDK, which I might do if time permits.
-</p>
-<div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-clojure.html">clojure</a> </div><div id="archive">
+<div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-clojure.html">clojure</a> <a href="https://www.birkey.co/tag-elixir.html">elixir</a> </div><div id="archive">
 <a href="https://www.birkey.co/archive.html">Other posts</a>
 </div>
 </div>

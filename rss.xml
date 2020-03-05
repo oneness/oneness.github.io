@@ -4,16 +4,88 @@
 <title><![CDATA[BirkeyCo]]></title>
 <description><![CDATA[BirkeyCo]]></description>
 <link>https://www.birkey.co/</link>
-<lastBuildDate>Sat, 15 Feb 2020 20:48:46 -0800</lastBuildDate>
+<lastBuildDate>Thu, 05 Mar 2020 12:03:36 -0800</lastBuildDate>
+<item>
+  <title><![CDATA[Self documenting Makefile]]></title>
+  <description><![CDATA[
+<p>
+One of the pain points of starting a new project or even hacking on existing project is to know where to start. One can start with documentation, test cases or even running it to see the logs and stacktraces (Stracktrace way is one of my favourite and you can tell a lot about code flow, organzation and you can even find un-handled bugs that way, which is a topic of its own for a blog post). Each language brings in its own set of tools that you need to know before you getting familiar with the code base. You might add `README` or some other documents to ease the pain but it might get stale overtime. One convention that I have been using, which has paid off with any project or teams that I have collaborated, are following simple conventions:
+</p>
+<ul class="org-ul">
+<li>Each Project Should have a `Makefile` with following targets:
+<ul class="org-ul">
+<li><b>setup</b> : Should take care of env configs</li>
+<li><b>deps</b>  : Should take care of handling all the project dependencies</li>
+<li><b>unit-test</b> : Should have local tests</li>
+<li><b>integration-test</b> : Should have non local tests</li>
+</ul></li>
+<li>This Makefile should be self documenting:
+<ul class="org-ul">
+<li>It should have <b>help</b> as the default target that explains what the project is about and how to run it</li>
+<li>It should be self documenting, meaning each target should have it is own description as to what it does and possible why it does it the way it is.</li>
+</ul></li>
+</ul>
+
+<p>
+Above might sound a lot to ask but it is really trivial to do those with just following make file:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-Shell">.PHONY: help
+help: ## This is a cool project. It does great things to help humanity move forward.
+	@echo 'usage: make [target] ...'
+	@echo
+	@echo 'Targets Depends Description' | column -t -s ' '
+	@echo '------- ------- -----------' | column -t -s ' '
+	@egrep '^(.+)\:?.+\ ##\ (.+)' ${MAKEFILE_LIST} \
+	| column -t -s ':#' | sed 's/Makefile  //'
+
+setup: ## Sets up all that are needed start working on the project.
+	@echo Setting up...
+	# Put you logic here
+	@echo Setting up done.
+
+deps: setup ## Pulls in all required dependencies
+	@echo Pulling all project dependencies
+
+unit-test: deps ## Runs local tests
+	@echo Running unit-tests...
+	# Put your run unit-tests logic here
+	@echo unit-tests done.
+
+integration-test: deps ## Runs non local tests
+	@echo Running integration-tests...
+	# Put your run integration-tests logic here
+	@echo integration-tests done.
+</pre>
+</div>
+
+<p>
+The presence of above Makefile should not be underestimated. It will allow yourself and your fellow developers to dive into any project with just one liner like this:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-Shell">git clone &lt;project&gt; &amp;&amp; cd project &amp;&amp; make deps
+</pre>
+</div>
+
+<p>
+Would not that be wonderful if every project just follow simple conventions like this so you have less obstacle to start or dive into a project? It has benefited me and my team over the years and hope you see the benefit for yourself.
+</p>
+<div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-makefile.html">Makefile</a> </div>]]></description>
+  <category><![CDATA[Makefile]]></category>
+  <link>https://www.birkey.co/2020-03-05-self-documenting-makefile.html</link>
+  <pubDate>Thu, 05 Mar 2020 10:52:00 -0800</pubDate>
+</item>
 <item>
   <title><![CDATA[OpenBSD laptop for the paranoid]]></title>
   <description><![CDATA[
 <p>
 <b>Disclaimer</b>: This is not a post about UNIX variants flame war. It is not my intention to recruit OpenBSD converts either as no one has influenced me to switch to it after 10 years of distro hopping. The main reasons I am using OpenBSD as my daily driver on both of my laptops (Thinkpad X220 and XPS 13 9365) are: <b>Security</b>, <b>Stability</b>, and <b>Frugality</b>.
 </p>
-<div id="outline-container-org6107d5d" class="outline-2">
-<h2 id="org6107d5d">Security</h2>
-<div class="outline-text-2" id="text-org6107d5d">
+<div id="outline-container-org6c10823" class="outline-2">
+<h2 id="org6c10823">Security</h2>
+<div class="outline-text-2" id="text-org6c10823">
 <p>
 I am software generalist who knows enough about system (OS,Network and Application) security to be paranoid not just about online systems, which is far from enough to keep ourselves secure, but also on-prem system such as Operating Systems we all rely on for keeping us safe. While Linux could be made as secure as OpenBSD after much tinkering and tweaking, OpenBSD is more secure by default installation. Following quote from <a href="https://www.openbsd.org/">https://www.openbsd.org/</a> is very telling:
 </p>
@@ -27,17 +99,17 @@ That quote is for what OpenBSD team calls base file set that includes the kernel
 </p>
 </div>
 </div>
-<div id="outline-container-org0bae7fd" class="outline-2">
-<h2 id="org0bae7fd">Stability</h2>
-<div class="outline-text-2" id="text-org0bae7fd">
+<div id="outline-container-orgffd1de6" class="outline-2">
+<h2 id="orgffd1de6">Stability</h2>
+<div class="outline-text-2" id="text-orgffd1de6">
 <p>
 OpenBSD favors stability over new features. Once installed and configured to your liking, it just stays out of your way allowing you focus on your task at hand. You will not see nagging notifications demanding you to click on installing updates. You can just setup a cron to run `syspatch` to bring in security fixes whenever and however you like. Releases are scheduled for every 6 months in a predictable way so you are in control to plan it ahead. I am running 6.6 release and following errata proves my point: <a href="https://www.openbsd.org/errata66.html">https://www.openbsd.org/errata66.html</a>
 </p>
 </div>
 </div>
-<div id="outline-container-org61328e9" class="outline-2">
-<h2 id="org61328e9">Frugality</h2>
-<div class="outline-text-2" id="text-org61328e9">
+<div id="outline-container-org28e825f" class="outline-2">
+<h2 id="org28e825f">Frugality</h2>
+<div class="outline-text-2" id="text-org28e825f">
 <p>
 Wikipedia has the best definition for this and I believe it genuinely applies to the Philosophy of OpenBSD project. `Less is more` is a pretty well known Unix tradition and the command `less` (which is a replacement of early UNIX command `more`) is seen in every UNIX variants. OpenBSD is not the most user friendly Unix out there not even among BSD flavors. It is targeted towards security and resource savvy power users who wants have control over every piece of software running on their system. Every line of code is audited for frugality and not needed code is removed. Development is not driven by any cooperate or financial interest as apposed to the Operating System development from big Corporations such as Microsoft, Apple and Google. You can use your old hardware as long as it meets your needs and will not find yourself at the mercy of them nagging you upgrade your hardware let alone your system so often.
 </p>

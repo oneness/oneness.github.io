@@ -1,0 +1,53 @@
+#+title: Self documenting Makefile
+#+date: <2020-03-05 10:52>
+#+filetags: Makefile
+
+One of the pain points of starting a new project or even hacking on existing project is to know where to start. One can start with documentation, test cases or even running it to see the logs and stacktraces (Stracktrace way is one of my favourite and you can tell a lot about code flow, organzation and you can even find un-handled bugs that way, which is a topic of its own for a blog post). Each language brings in its own set of tools that you need to know before you getting familiar with the code base. You might add `README` or some other documents to ease the pain but it might get stale overtime. One convention that I have been using, which has paid off with any project or teams that I have collaborated, are following simple conventions:
+- Each Project Should have a `Makefile` with following targets:
+  - *setup* : Should take care of env configs
+  - *deps*  : Should take care of handling all the project dependencies
+  - *unit-test* : Should have local tests
+  - *integration-test* : Should have non local tests
+- This Makefile should be self documenting:
+  - It should have *help* as the default target that explains what the project is about and how to run it
+  - It should be self documenting, meaning each target should have it is own description as to what it does and possible why it does it the way it is.
+
+Above might sound a lot to ask but it is really trivial to do those with just following make file:
+
+#+BEGIN_SRC Shell
+.PHONY: help
+help: ## This is a cool project. It does great things to help humanity move forward.
+	@echo 'usage: make [target] ...'
+	@echo
+	@echo 'Targets Depends Description' | column -t -s ' '
+	@echo '------- ------- -----------' | column -t -s ' '
+	@egrep '^(.+)\:?.+\ ##\ (.+)' ${MAKEFILE_LIST} \
+	| column -t -s ':#' | sed 's/Makefile  //'
+
+setup: ## Sets up all that are needed start working on the project.
+	@echo Setting up...
+        # Put you logic here
+	@echo Setting up done.
+
+deps: setup ## Pulls in all required dependencies
+	@echo Pulling all project dependencies
+
+unit-test: deps ## Runs local tests
+	@echo Running unit-tests...
+        # Put your run unit-tests logic here
+	@echo unit-tests done.
+
+integration-test: deps ## Runs non local tests
+	@echo Running integration-tests...
+        # Put your run integration-tests logic here
+	@echo integration-tests done.
+#+END_SRC
+
+The presence of above Makefile should not be underestimated. It will allow yourself and your fellow developers to dive into any project with just one liner like this:
+
+#+BEGIN_SRC Shell
+git clone <project> && cd project && make deps
+#+END_SRC
+
+Would not that be wonderful if every project just follow simple conventions like this so you have less obstacle to start or dive into a project? It has benefited me and my team over the years and hope you see the benefit for yourself.
+

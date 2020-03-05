@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="alternate"
+      type="application/rss+xml"
+      href="https://www.birkey.co/rss.xml"
+      title="RSS feed for https://www.birkey.co/"/>
+<title>BirkeyCo</title>
+<meta name="author" content="Kasim Tuman">
+  <meta name="referrer" content="no-referrer">
+  <link href= "static/style.css" rel="stylesheet" type="text/css" />
+  <link rel="icon" href="static/favicon.ico">
+  <link rel="apple-touch-icon-precomposed" href="static/birkey_logo.png">
+  <link rel="msapplication-TitleImage" href="static/birkey_logo.png">
+  <link rel="msapplication-TitleColor" href="#0141ff">
+  <script src="static/katex.min.js"></script>
+  <script src="static/auto-render.min.js"></script>
+  <link rel="stylesheet" href="static/katex.min.css">
+  <script>document.addEventListener("DOMContentLoaded", function() { renderMathInElement(document.body); });</script>
+  <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8">
+  <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1"></head>
+<body>
+<div id="preamble" class="status"><div class="header">
+    <a href="https://www.birkey.co">Code, Data and Network</a>
+    <div class="sitelinks">
+      <a href="https://twitter.com/KasimTuman">Twitter</a> | <a href="https://github.com/oneness">Github</a> | <a href="https://www.birkey.co/resume/resume.html">About</a>
+    </div>
+  </div></div>
+<div id="content">
+<h1 class="title">Posts tagged "Makefile":</h1>
+<div class="post-date">05 Mar 2020</div><h1 class="post-title"><a href="https://www.birkey.co/2020-03-05-self-documenting-makefile.html">Self documenting Makefile</a></h1>
+<p>
+One of the pain points of starting a new project or even hacking on existing project is to know where to start. One can start with documentation, test cases or even running it to see the logs and stacktraces (Stracktrace way is one of my favourite and you can tell a lot about code flow, organzation and you can even find un-handled bugs that way, which is a topic of its own for a blog post). Each language brings in its own set of tools that you need to know before you getting familiar with the code base. You might add `README` or some other documents to ease the pain but it might get stale overtime. One convention that I have been using, which has paid off with any project or teams that I have collaborated, are following simple conventions:
+</p>
+<ul class="org-ul">
+<li>Each Project Should have a `Makefile` with following targets:
+<ul class="org-ul">
+<li><b>setup</b> : Should take care of env configs</li>
+<li><b>deps</b>  : Should take care of handling all the project dependencies</li>
+<li><b>unit-test</b> : Should have local tests</li>
+<li><b>integration-test</b> : Should have non local tests</li>
+</ul></li>
+<li>This Makefile should be self documenting:
+<ul class="org-ul">
+<li>It should have <b>help</b> as the default target that explains what the project is about and how to run it</li>
+<li>It should be self documenting, meaning each target should have it is own description as to what it does and possible why it does it the way it is.</li>
+</ul></li>
+</ul>
+
+<p>
+Above might sound a lot to ask but it is really trivial to do those with just following make file:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-Shell">.PHONY: help
+help: ## This is a cool project. It does great things to help humanity move forward.
+	@echo 'usage: make [target] ...'
+	@echo
+	@echo 'Targets Depends Description' | column -t -s ' '
+	@echo '------- ------- -----------' | column -t -s ' '
+	@egrep '^(.+)\:?.+\ ##\ (.+)' ${MAKEFILE_LIST} \
+	| column -t -s ':#' | sed 's/Makefile  //'
+
+setup: ## Sets up all that are needed start working on the project.
+	@echo Setting up...
+	# Put you logic here
+	@echo Setting up done.
+
+deps: setup ## Pulls in all required dependencies
+	@echo Pulling all project dependencies
+
+unit-test: deps ## Runs local tests
+	@echo Running unit-tests...
+	# Put your run unit-tests logic here
+	@echo unit-tests done.
+
+integration-test: deps ## Runs non local tests
+	@echo Running integration-tests...
+	# Put your run integration-tests logic here
+	@echo integration-tests done.
+</pre>
+</div>
+
+<p>
+The presence of above Makefile should not be underestimated. It will allow yourself and your fellow developers to dive into any project with just one liner like this:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-Shell">git clone &lt;project&gt; &amp;&amp; cd project &amp;&amp; make deps
+</pre>
+</div>
+
+<p>
+Would not that be wonderful if every project just follow simple conventions like this so you have less obstacle to start or dive into a project? It has benefited me and my team over the years and hope you see the benefit for yourself.
+</p>
+<div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-makefile.html">Makefile</a> </div><div id="archive">
+<a href="https://www.birkey.co/archive.html">Other posts</a>
+</div>
+</div>
+</body>
+</html>
