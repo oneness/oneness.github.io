@@ -4,7 +4,7 @@
 <title><![CDATA[BirkeyCo]]></title>
 <description><![CDATA[BirkeyCo]]></description>
 <link>https://www.birkey.co/</link>
-<lastBuildDate>Tue, 10 Mar 2020 10:15:31 -0700</lastBuildDate>
+<lastBuildDate>Tue, 10 Mar 2020 10:17:48 -0700</lastBuildDate>
 <item>
   <title><![CDATA[One command to drive all]]></title>
   <description><![CDATA[
@@ -174,7 +174,7 @@ If you happen to use Emacs and Eshell, you can just use following alias to get g
 </pre>
 </div>
 <p>
-Eshell aliases are great. You can pass arguments to them just prefixing aliases with &rsquo;$*&rsquo; as I did above. Try doing same with bash alias, you are out of luck and you have to write shell functions be able to just that. Enjoy!
+Eshell aliases are great. You can pass arguments to them just prefixing aliases with &rsquo;$*&rsquo; as I did above. Try doing same with bash alias, you are out of luck and you have to write shell functions be able to do that. Enjoy!
 </p>
 <div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-shell.html">shell</a> </div>]]></description>
   <category><![CDATA[shell]]></category>
