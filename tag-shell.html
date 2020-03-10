@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="alternate"
+      type="application/rss+xml"
+      href="https://www.birkey.co/rss.xml"
+      title="RSS feed for https://www.birkey.co/"/>
+<title>BirkeyCo</title>
+<meta name="author" content="Kasim Tuman">
+  <meta name="referrer" content="no-referrer">
+  <link href= "static/style.css" rel="stylesheet" type="text/css" />
+  <link rel="icon" href="static/favicon.ico">
+  <link rel="apple-touch-icon-precomposed" href="static/birkey_logo.png">
+  <link rel="msapplication-TitleImage" href="static/birkey_logo.png">
+  <link rel="msapplication-TitleColor" href="#0141ff">
+  <script src="static/katex.min.js"></script>
+  <script src="static/auto-render.min.js"></script>
+  <link rel="stylesheet" href="static/katex.min.css">
+  <script>document.addEventListener("DOMContentLoaded", function() { renderMathInElement(document.body); });</script>
+  <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8">
+  <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1"></head>
+<body>
+<div id="preamble" class="status"><div class="header">
+    <a href="https://www.birkey.co">Code, Data and Network</a>
+    <div class="sitelinks">
+      <a href="https://twitter.com/KasimTuman">Twitter</a> | <a href="https://github.com/oneness">Github</a> | <a href="https://www.birkey.co/resume/resume.html">About</a>
+    </div>
+  </div></div>
+<div id="content">
+<h1 class="title">Posts tagged "shell":</h1>
+<div class="post-date">10 Mar 2020</div><h1 class="post-title"><a href="https://www.birkey.co/2020-03-10-one-command-to-drive-all.html">One command to drive all</a></h1>
+<p>
+Over the years, I got to learn various package managers either due to tinkering with work or home infrastructure. I need to keep remembering if I am on Ubuntu, OSX or on OpenBSD if I want to install/remove/list/update packages. wouldn&rsquo;t it be nice if all I need to remember is just one command <b>pkg</b> with following neumonic options?
+</p>
+<ul class="org-ul">
+<li><b>s</b> for searching for a package</li>
+<li><b>i</b> for install a package</li>
+<li><b>r</b> for removing a package</li>
+<li><b>l</b> for listing installed packages</li>
+<li><b>c</b> for checking/cleaning packages</li>
+</ul>
+
+<p>
+Following shell script does exactly that. And it could also serve as your reference to all unix package managers as an added benefit.
+</p>
+<div class="org-src-container">
+<pre class="src src-Shell">#!/bin/sh
+# One pkg command to rule them all
+if [ -z "$1" ]
+then
+    echo "Usage: pkg &lt;i(nstall)|r(emove)|s(earch)|u(pdate)|l(ist)&gt;"
+else
+    os=$([[ -f /etc/os-release ]] &amp;&amp; grep ^ID= /etc/os-release | cut -d = -f 2 || echo `uname`)
+    echo --------------------- $os --------------------
+    command=$1
+    shift
+    case $os in
+	*OpenBSD*)
+	    case $command in
+		i)
+		    pkg_add $@
+		    ;;
+		r)
+		    pkg_delete $@
+		    ;;
+		s)
+		    pkg_info -Q $@
+		    ;;
+		u)
+		    pkg_add -u $@
+		    ;;
+		l)
+		    pkg_info -mz
+		    ;;
+		c)
+		    pkg_check
+		    ;;
+	    esac
+	    ;;
+	*Arch)
+	    case $command in
+		i)
+		    yay -S $@
+		    ;;
+		r)
+		    yay -Rs $@
+		    ;;
+		s)
+		    yay -Ss $@
+		    ;;
+		u)
+		    yay -Syyu $@
+		    ;;
+		l)
+		    yay -Q $@
+	    esac
+	    ;;
+	*solus*)
+
+	    case $command in
+		i)
+		    sudo eopkg it $@
+		    ;;
+		r)
+		    sudo eopkg remove $@
+		    ;;
+		s)
+		    sudo eopkg search $@
+		    ;;
+		u)
+		    sudo eopkg up
+		    ;;
+		l)
+		    sudo eopkg list-installed
+	    esac
+	    ;;
+	VoidLinux)
+	    case $command in
+		i)
+		    sudo xbps-install $@
+		    ;;
+		r)
+		    sudo xbps-remove -R $@
+		    ;;
+		s)
+		    sudo xbps-query -Rs $@
+		    ;;
+		u)
+		    sudo xbps-install -Su
+		    ;;
+		l)
+		    sudo xbps-query -l
+		    ;;
+		c)
+		    sudo xbps-remove -Oo
+		    ;;
+	    esac
+	    ;;
+	pureos|PureOS|debian|Ubuntu)
+	    case $command in
+		i)
+		    sudo apt-get install $@
+		    ;;
+		r)
+		    sudo apt-get remove $@
+		    ;;
+		s)
+		    apt-cache search $@
+		    ;;
+		u)
+		    sudo apt-get update &amp;&amp; sudo apt-get upgrade
+		    ;;
+		l)
+		    sudo apt list --installed
+		    ;;
+		c)
+		    sudo apt-get autoremove
+		    ;;
+	    esac
+	    ;;
+	darwin*|Darwin*)
+	    case $command in
+		i)
+		    brew install $@
+		    ;;
+		r)
+		    brew remove $@
+		    ;;
+		s)
+		    brew search $@
+		    ;;
+		u)
+		    brew update
+		    ;;
+		l)
+		    brew list
+		    ;;
+		c)
+		    brew cleanup
+		    ;;
+	    esac
+	    ;;
+	*)
+	    echo "Unknown OS. Please add it to $(basename "$0") pkg function"
+    esac
+fi
+</pre>
+</div>
+
+<p>
+If you happen to use Emacs and Eshell, you can just use following alias to get going:
+</p>
+<div class="org-src-container">
+<pre class="src src-Shell">alias alias pkg /home/kasim/.dotfiles/bin/pkg '$*'
+</pre>
+</div>
+<p>
+Eshell aliases are great. You can pass arguments to them just prefixing aliases with &rsquo;$*&rsquo; as I did above. Try doing same with bash alias, you are out of luck and you have to write shell functions be able to just that. Enjoy!
+</p>
+<div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-shell.html">shell</a> </div><div id="archive">
+<a href="https://www.birkey.co/archive.html">Other posts</a>
+</div>
+</div>
+</body>
+</html>
