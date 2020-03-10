@@ -4,7 +4,7 @@
 <title><![CDATA[BirkeyCo]]></title>
 <description><![CDATA[BirkeyCo]]></description>
 <link>https://www.birkey.co/</link>
-<lastBuildDate>Tue, 10 Mar 2020 10:12:06 -0700</lastBuildDate>
+<lastBuildDate>Tue, 10 Mar 2020 10:15:31 -0700</lastBuildDate>
 <item>
   <title><![CDATA[One command to drive all]]></title>
   <description><![CDATA[
@@ -170,7 +170,7 @@ fi
 If you happen to use Emacs and Eshell, you can just use following alias to get going:
 </p>
 <div class="org-src-container">
-<pre class="src src-Shell">alias alias pkg /home/kasim/.dotfiles/bin/pkg '$*'
+<pre class="src src-Shell">alias alias pkg ./pkg '$*'
 </pre>
 </div>
 <p>
