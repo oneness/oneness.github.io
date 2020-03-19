@@ -2,8 +2,28 @@
 
 set -e
 
+os=$([ -f /etc/os-release ] && grep ^ID= /etc/os-release | cut -d = -f 2 || echo `uname`)
+
+echo $os
+
+# pkg_info -mz > pkgs to keep installed pkgs up to date
+if [ -f ~/.dotfiles/pkgs ] && echo $os | grep "OpenBSD"; then
+    echo You are on OpenBSD. Installing pkgs...
+    doas pkg_add -l ~/.dotfiles/pkgs
+    echo Your pkgs are installed!
+fi
+
+# Make home accessible to no one except for me
 chmod 700 ~
 
+# setup fonts
+if [ -d ~/.dotfiles/fonts ]; then
+    mkdir -p ~/.local/share
+    ln -sf ~/.dotfiles/fonts ~/.local/share/
+    fc-cache -v
+fi
+
+# Clone or pull dotfiles repo
 if [ -d ~/.dotfiles ]; then
 	cd ~/.dotfiles
 	git pull --ff-only
@@ -11,8 +31,11 @@ else
 	git clone https://github.com/oneness/dotfiles ~/.dotfiles
 fi
 
+# Symlink dotfiles
 cd ~/.dotfiles
 for f in .???*; do
 	rm -f ~/$f
-	(cd ~/; ln -s .dotfiles/$f $f)
+	if [ $f != ".git" ]; then
+	   (cd ~/; ln -s .dotfiles/$f $f)
+	fi
 done
