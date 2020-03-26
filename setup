@@ -39,3 +39,6 @@ for f in .???*; do
 	   (cd ~/; ln -s .dotfiles/$f $f)
 	fi
 done
+
+# setup background jobs using vdcron
+doas ln -fs ~/.dotfiles/vdcron.conf /etc/vdcron.conf
