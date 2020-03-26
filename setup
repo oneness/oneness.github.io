@@ -2,6 +2,21 @@
 
 set -e
 
+# setup doas
+su - root -c "echo 'permit persist keepenv kasim' > /etc/doas.conf"
+
+# Disable xconsole and beep
+doas sed -i 's/xconsole/#xconsole/' /etc/X11/xenodm/Xsetup_0
+doas echo 'xset b off' >> /etc/X11/xenodm/Xsetup_0
+
+# Clone or pull dotfiles repo
+if [ -d ~/.dotfiles ]; then
+	cd ~/.dotfiles
+	git pull --ff-only
+else
+	git clone https://github.com/oneness/dotfiles ~/.dotfiles
+fi
+
 os=$([ -f /etc/os-release ] && grep ^ID= /etc/os-release | cut -d = -f 2 || echo `uname`)
 
 echo $os
@@ -23,13 +38,6 @@ if [ -d ~/.dotfiles/fonts ]; then
     fc-cache -v
 fi
 
-# Clone or pull dotfiles repo
-if [ -d ~/.dotfiles ]; then
-	cd ~/.dotfiles
-	git pull --ff-only
-else
-	git clone https://github.com/oneness/dotfiles ~/.dotfiles
-fi
 
 # Symlink dotfiles
 cd ~/.dotfiles
