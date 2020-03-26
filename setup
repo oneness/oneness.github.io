@@ -6,8 +6,8 @@ set -e
 su - root -c "echo 'permit persist keepenv kasim' > /etc/doas.conf"
 
 # Disable xconsole and beep
-doas sed -i 's/xconsole/#xconsole/' /etc/X11/xenodm/Xsetup_0
-doas echo 'xset b off' >> /etc/X11/xenodm/Xsetup_0
+su - root -c "sed -i 's/xconsole/#xconsole/' /etc/X11/xenodm/Xsetup_0"
+su - root -c "echo 'xset b off' >> /etc/X11/xenodm/Xsetup_0"
 
 # Clone or pull dotfiles repo
 if [ -d ~/.dotfiles ]; then
