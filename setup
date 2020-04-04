@@ -2,15 +2,15 @@
 
 set -e
 
-# setup doas
-su - root -c "echo 'permit persist keepenv kasim' > /etc/doas.conf"
-echo Set up doas.
+# # setup doas
+# su - root -c "echo 'permit persist keepenv kasim' > /etc/doas.conf"
+# echo Set up doas.
 
-# Disable xconsole and beep
-su - root -c "sed -i 's/xconsole/#xconsole/' /etc/X11/xenodm/Xsetup_0"
-echo Disabled xconsole.
-su - root -c "echo 'xset b off' >> /etc/X11/xenodm/Xsetup_0"
-echo Disabled beeping.
+# # Disable xconsole and beep
+# su - root -c "sed -i 's/xconsole/#xconsole/' /etc/X11/xenodm/Xsetup_0"
+# echo Disabled xconsole.
+# su - root -c "echo 'xset b off' >> /etc/X11/xenodm/Xsetup_0"
+# echo Disabled beeping.
 
 # Clone or pull dotfiles repo
 if [ -d ~/.dotfiles ]; then
@@ -38,7 +38,6 @@ chmod 700 ~
 if [ -d ~/.dotfiles/fonts ]; then
     mkdir -p ~/.local/share
     ln -sf ~/.dotfiles/fonts ~/.local/share/
-    fc-cache -v
 fi
 
 
@@ -52,4 +51,4 @@ for f in .???*; do
 done
 
 # setup background jobs using vdcron
-doas ln -fs ~/.dotfiles/vdcron.conf /etc/vdcron.conf
+# doas ln -fs ~/.dotfiles/vdcron.conf /etc/vdcron.conf
