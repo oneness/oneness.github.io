@@ -2,16 +2,18 @@
 #+OPTIONS: author:nil
 * 
 #+ATTR_HTML: :style text-align:center
-[[mailto:ktuman@acm.org][email]]          [[https://github.com/oneness][github]]          [[https://www.birkey.co][blog]]
-* Summary
-  Software craftsman who prefers working with *data centric*
-  projects, who loves solving challenging problems by using
-  functional paradigm. Currently available for short/long term consulting
-  only.
+[[mailto:ktuman@acm.org][Email]]          [[https://github.com/oneness][Github]]          [[https://www.birkey.co][Blog]]
+
+* Personal Statement
+  I am interested in impactful work that makes use of and contributes
+  to the open-source world, especially in the field of
+  infrastructure/system correctness, integrity, security and performance.
+  *I am not currently available for hire and do not respond to third-party recruiters.*
 
 * Work Experience
 - *2016/02 - Present:* Owner of [[https://www.birkey.co][Birkey Consulting]]
-  - Open and closed source system development and consulting in Clojure.
+  - Coaching, Mentoring and Leading Engineering teams to design,
+    develop and deliver.
 
 - *2018/11 - Present:* Senior Engineer [[https://adstage.io][AdStage Inc]]
   - Led development on the AdStage for Google Sheets product, enabling
