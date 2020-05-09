@@ -61,27 +61,27 @@ uses case I said above.
 <div class="org-src-container">
 <pre class="src src-clojure"><span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">def</span> <span style="color: #a0522d;">context</span> <span style="color: #7f7f7f;">(</span>StringBuilder.<span style="color: #7f7f7f;">))</span>
 
-<span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">defn</span> <span style="color: #0000ff;">-&gt;context</span> <span style="color: #7f7f7f;">[</span>x<span style="color: #7f7f7f;">]</span>
+<span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">defn</span>  <span style="color: #0000ff;">&#59780;context</span> <span style="color: #7f7f7f;">[</span>x<span style="color: #7f7f7f;">]</span>
   <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">doto</span> context
     <span style="color: #7f7f7f;">(</span>.append x<span style="color: #7f7f7f;">)))</span>
 
 <span style="color: #b22222;">;; </span><span style="color: #b22222;">Then let us add above fn to the tapset</span>
-<span style="color: #7f7f7f;">(</span>add-tap -&gt;context<span style="color: #7f7f7f;">)</span>
+<span style="color: #7f7f7f;">(</span>add-tap  &#59780;context<span style="color: #7f7f7f;">)</span>
 <span style="color: #b22222;">;; </span><span style="color: #b22222;">Then from any where of our running code, we can do:</span>
-<span style="color: #7f7f7f;">(</span>tap&gt; <span style="color: #8b2252;">"******* tap start ********</span><span style="color: #8b2252; font-weight: bold;">\n</span><span style="color: #8b2252;"> "</span><span style="color: #7f7f7f;">)</span>
-<span style="color: #7f7f7f;">(</span>tap&gt; <span style="color: #8b2252;">"runing.......................</span><span style="color: #8b2252; font-weight: bold;">\n</span><span style="color: #8b2252;">"</span><span style="color: #7f7f7f;">)</span>
-<span style="color: #7f7f7f;">(</span>tap&gt; <span style="color: #8b2252;">"******* tap end **********</span><span style="color: #8b2252; font-weight: bold;">\n</span><span style="color: #8b2252;"> "</span><span style="color: #7f7f7f;">)</span>
+<span style="color: #7f7f7f;">(</span>tap&gt; <span style="color: #8b2252;">"  &#59744;  &#59744;* tap start   &#59744;  &#59744;**</span><span style="color: #8b2252; font-weight: bold;">\n</span><span style="color: #8b2252;"> "</span><span style="color: #7f7f7f;">)</span>
+<span style="color: #7f7f7f;">(</span>tap&gt; <span style="color: #8b2252;">"runing  &#59793;  &#59793;  &#59793;  &#59793;  &#59793;  &#59793;  &#59793; &#59792;</span><span style="color: #8b2252; font-weight: bold;">\n</span><span style="color: #8b2252;">"</span><span style="color: #7f7f7f;">)</span>
+<span style="color: #7f7f7f;">(</span>tap&gt; <span style="color: #8b2252;">"  &#59744;  &#59744;* tap end   &#59744;  &#59744;  &#59744;*</span><span style="color: #8b2252; font-weight: bold;">\n</span><span style="color: #8b2252;"> "</span><span style="color: #7f7f7f;">)</span>
 
 <span style="color: #b22222;">;; </span><span style="color: #b22222;">It will be executed in a separate dedicated thread and will not</span>
 <span style="color: #b22222;">;; </span><span style="color: #b22222;">block or interfere with our running code. Then we print out the context:</span>
 <span style="color: #7f7f7f;">(</span>str context<span style="color: #7f7f7f;">)</span>
 <span style="color: #b22222;">;; </span><span style="color: #b22222;">which results in:</span>
-<span style="color: #b22222;">;;</span><span style="color: #b22222;">******* tap start ********</span>
-<span style="color: #b22222;">;; </span><span style="color: #b22222;">runing.......................</span>
-<span style="color: #b22222;">;;</span><span style="color: #b22222;">******* tap end **********</span>
+<span style="color: #b22222;">;; </span><span style="color: #b22222;"> &#59744;  &#59744;* tap start   &#59744;  &#59744;**</span>
+<span style="color: #b22222;">;; </span><span style="color: #b22222;">runing  &#59793;  &#59793;  &#59793;  &#59793;  &#59793;  &#59793;  &#59793; &#59792;</span>
+<span style="color: #b22222;">;; </span><span style="color: #b22222;"> &#59744;  &#59744;* tap end   &#59744;  &#59744;  &#59744;*</span>
 
-<span style="color: #b22222;">;; </span><span style="color: #b22222;">Remember to remove the -&gt;context fn once you are done with that session:</span>
-<span style="color: #7f7f7f;">(</span>remove-tap -&gt;context<span style="color: #7f7f7f;">)</span>
+<span style="color: #b22222;">;; </span><span style="color: #b22222;">Remember to remove the  &#59780;context fn once you are done with that session:</span>
+<span style="color: #7f7f7f;">(</span>remove-tap  &#59780;context<span style="color: #7f7f7f;">)</span>
 <span style="color: #b22222;">;; </span><span style="color: #b22222;">If there is no fn added to the tap, any values you send to tap will be discarded.</span>
 <span style="color: #7f7f7f;">(</span>tap&gt; <span style="color: #8b2252;">"your magic"</span><span style="color: #7f7f7f;">)</span> <span style="color: #b22222;">;; </span><span style="color: #b22222;">your magic will be discarded.</span>
 
@@ -99,10 +99,10 @@ and its object graph. Let us take a java class <b>String</b> as an example.
 
 <span style="color: #b22222;">;; </span><span style="color: #b22222;">let us write an fn to give use any member that we would like to find more about:</span>
 <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">defn</span> <span style="color: #0000ff;">member-lookup</span> <span style="color: #7f7f7f;">[</span>class member<span style="color: #7f7f7f;">]</span>
-  <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">-&gt;&gt;</span> class
+  <span style="color: #7f7f7f;">( </span><span style="color: #a020f0;"> &#59781;</span> class
        <span style="color: #228b22;">d</span>/datafy
        <span style="color: #008b8b;">:members</span>
-       <span style="color: #7f7f7f;">(</span>filter <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">fn</span> <span style="color: #7f7f7f;">[[</span>k v<span style="color: #7f7f7f;">]]</span> <span style="color: #7f7f7f;">(</span>= <span style="color: #7f7f7f;">(</span>symbol member<span style="color: #7f7f7f;">)</span> k<span style="color: #7f7f7f;">)))))</span>
+       <span style="color: #7f7f7f;">(</span>filter <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">fn</span>  <span style="color: #7f7f7f;">&#60032;</span>k v <span style="color: #7f7f7f;">&#60033;</span> <span style="color: #7f7f7f;">(</span>= <span style="color: #7f7f7f;">(</span>symbol member<span style="color: #7f7f7f;">)</span> k<span style="color: #7f7f7f;">)))))</span>
 <span style="color: #b22222;">;; </span><span style="color: #b22222;">then use it to find about "intern"</span>
 <span style="color: #7f7f7f;">(</span>member-lookup String <span style="color: #8b2252;">"intern"</span><span style="color: #7f7f7f;">)</span>
 <span style="color: #b22222;">;; </span><span style="color: #b22222;">returns:</span>
@@ -112,12 +112,12 @@ and its object graph. Let us take a java class <b>String</b> as an example.
     <span style="color: #008b8b;">:declaring-class</span> java.lang.String,
     <span style="color: #008b8b;">:parameter-types</span> <span style="color: #7f7f7f;">[]</span>,
     <span style="color: #008b8b;">:exception-types</span> <span style="color: #7f7f7f;">[]</span>,
-    <span style="color: #008b8b;">:flags</span> #{<span style="color: #008b8b;">:public</span> <span style="color: #008b8b;">:native</span>}}<span style="color: #7f7f7f;">]])</span>
+    <span style="color: #008b8b;">:flags</span>  &#59682;<span style="color: #008b8b;">:public</span> <span style="color: #008b8b;">:native</span>}} <span style="color: #7f7f7f;">&#60033;)</span>
 
 <span style="color: #b22222;">;; </span><span style="color: #b22222;">One can learn a lot about this method from above ds. "intern" is a</span>
 <span style="color: #b22222;">;; </span><span style="color: #b22222;">public native method that takes no argument, called on string object</span>
 <span style="color: #b22222;">;; </span><span style="color: #b22222;">and returns string like this:</span>
-<span style="color: #7f7f7f;">(</span>.intern <span style="color: #8b2252;">"test"</span><span style="color: #7f7f7f;">)</span> <span style="color: #b22222;">;; </span><span style="color: #b22222;">=&gt; "test"</span>
+<span style="color: #7f7f7f;">(</span>.intern <span style="color: #8b2252;">"test"</span><span style="color: #7f7f7f;">)</span> <span style="color: #b22222;">;;  </span><span style="color: #b22222;">&#59908; "test"</span>
 
 </pre>
 </div>

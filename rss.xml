@@ -4,7 +4,7 @@
 <title><![CDATA[BirkeyCo]]></title>
 <description><![CDATA[BirkeyCo]]></description>
 <link>https://www.birkey.co/</link>
-<lastBuildDate>Tue, 10 Mar 2020 10:17:48 -0700</lastBuildDate>
+<lastBuildDate>Sat, 09 May 2020 14:36:34 -0700</lastBuildDate>
 <item>
   <title><![CDATA[One command to drive all]]></title>
   <description><![CDATA[
@@ -259,9 +259,9 @@ Would not that be wonderful if every project just follow simple conventions like
 <p>
 <b>Disclaimer</b>: This is not a post about UNIX variants flame war. It is not my intention to recruit OpenBSD converts either as no one has influenced me to switch to it after 10 years of distro hopping. The main reasons I am using OpenBSD as my daily driver on both of my laptops (Thinkpad X220 and XPS 13 9365) are: <b>Security</b>, <b>Stability</b>, and <b>Frugality</b>.
 </p>
-<div id="outline-container-org6c10823" class="outline-2">
-<h2 id="org6c10823">Security</h2>
-<div class="outline-text-2" id="text-org6c10823">
+<div id="outline-container-org83ee921" class="outline-2">
+<h2 id="org83ee921">Security</h2>
+<div class="outline-text-2" id="text-org83ee921">
 <p>
 I am software generalist who knows enough about system (OS,Network and Application) security to be paranoid not just about online systems, which is far from enough to keep ourselves secure, but also on-prem system such as Operating Systems we all rely on for keeping us safe. While Linux could be made as secure as OpenBSD after much tinkering and tweaking, OpenBSD is more secure by default installation. Following quote from <a href="https://www.openbsd.org/">https://www.openbsd.org/</a> is very telling:
 </p>
@@ -275,17 +275,17 @@ That quote is for what OpenBSD team calls base file set that includes the kernel
 </p>
 </div>
 </div>
-<div id="outline-container-orgffd1de6" class="outline-2">
-<h2 id="orgffd1de6">Stability</h2>
-<div class="outline-text-2" id="text-orgffd1de6">
+<div id="outline-container-org1e7754c" class="outline-2">
+<h2 id="org1e7754c">Stability</h2>
+<div class="outline-text-2" id="text-org1e7754c">
 <p>
 OpenBSD favors stability over new features. Once installed and configured to your liking, it just stays out of your way allowing you focus on your task at hand. You will not see nagging notifications demanding you to click on installing updates. You can just setup a cron to run `syspatch` to bring in security fixes whenever and however you like. Releases are scheduled for every 6 months in a predictable way so you are in control to plan it ahead. I am running 6.6 release and following errata proves my point: <a href="https://www.openbsd.org/errata66.html">https://www.openbsd.org/errata66.html</a>
 </p>
 </div>
 </div>
-<div id="outline-container-org28e825f" class="outline-2">
-<h2 id="org28e825f">Frugality</h2>
-<div class="outline-text-2" id="text-org28e825f">
+<div id="outline-container-orge7ce4b4" class="outline-2">
+<h2 id="orge7ce4b4">Frugality</h2>
+<div class="outline-text-2" id="text-orge7ce4b4">
 <p>
 Wikipedia has the best definition for this and I believe it genuinely applies to the Philosophy of OpenBSD project. `Less is more` is a pretty well known Unix tradition and the command `less` (which is a replacement of early UNIX command `more`) is seen in every UNIX variants. OpenBSD is not the most user friendly Unix out there not even among BSD flavors. It is targeted towards security and resource savvy power users who wants have control over every piece of software running on their system. Every line of code is audited for frugality and not needed code is removed. Development is not driven by any cooperate or financial interest as apposed to the Operating System development from big Corporations such as Microsoft, Apple and Google. You can use your old hardware as long as it meets your needs and will not find yourself at the mercy of them nagging you upgrade your hardware let alone your system so often.
 </p>
@@ -401,9 +401,9 @@ So I am not going to repeat what he said about Emacs and why he still
 loves to use it to get things done. I am going to add following points
 on top of what he wrote there:
 </p>
-<div id="outline-container-org5cdd35a" class="outline-2">
-<h2 id="org5cdd35a">Emacs is a great workbench</h2>
-<div class="outline-text-2" id="text-org5cdd35a">
+<div id="outline-container-org06daab8" class="outline-2">
+<h2 id="org06daab8">Emacs is a great workbench</h2>
+<div class="outline-text-2" id="text-org06daab8">
 <p>
 I see Emacs as an extremely well designed workbench that will evolve
 with you as your work environment, technology and paradigms
@@ -419,9 +419,9 @@ which is an Window Manager, is a great example.
 </p>
 </div>
 </div>
-<div id="outline-container-org39be123" class="outline-2">
-<h2 id="org39be123">Emacs is a great structured and unstructured text manipulation library</h2>
-<div class="outline-text-2" id="text-org39be123">
+<div id="outline-container-orgb43e633" class="outline-2">
+<h2 id="orgb43e633">Emacs is a great structured and unstructured text manipulation library</h2>
+<div class="outline-text-2" id="text-orgb43e633">
 <p>
 This is what I personally like a lot about Emacs. As a programmer, we
 work with manipulating text all the time. Yes, there are great text
@@ -434,9 +434,9 @@ editing of Clojure code.
 </p>
 </div>
 </div>
-<div id="outline-container-org8ef981e" class="outline-2">
-<h2 id="org8ef981e">Emacs helps you focus</h2>
-<div class="outline-text-2" id="text-org8ef981e">
+<div id="outline-container-orgfa62c6c" class="outline-2">
+<h2 id="orgfa62c6c">Emacs helps you focus</h2>
+<div class="outline-text-2" id="text-orgfa62c6c">
 <p>
 In this day of our age where everything tries to grab your constant
 attention, Emacs stands out as the most distraction free environment
@@ -454,9 +454,9 @@ what matters the most to you and have a lot of fun along the way.
 </p>
 </div>
 </div>
-<div id="outline-container-org0d8f6cd" class="outline-2">
-<h2 id="org0d8f6cd">Emacs has a learning curve</h2>
-<div class="outline-text-2" id="text-org0d8f6cd">
+<div id="outline-container-orgfec266b" class="outline-2">
+<h2 id="orgfec266b">Emacs has a learning curve</h2>
+<div class="outline-text-2" id="text-orgfec266b">
 <p>
 Yes, I do acknowledge that Emacs has a learning curve. However, most
 of it is due to the wrong approach we tend to take when encountering an
@@ -510,7 +510,7 @@ fit. For example:</li>
 <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">unless</span> <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">require</span> '<span style="color: #008b8b;">el-get</span> nil 'noerror<span style="color: #7f7f7f;">)</span>
   <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">with-current-buffer</span>
       <span style="color: #7f7f7f;">(</span>url-retrieve-synchronously
-       <span style="color: #8b2252;">"https://raw.githubusercontent.com/dimitri/el-get/master/el-get-install.el"</span><span style="color: #7f7f7f;">)</span>
+       <span style="color: #8b2252;">"https &#59833;/raw.githubusercontent.com/dimitri/el-get/master/el-get-install.el"</span><span style="color: #7f7f7f;">)</span>
     <span style="color: #7f7f7f;">(</span>goto-char <span style="color: #7f7f7f;">(</span>point-max<span style="color: #7f7f7f;">))</span>
     <span style="color: #7f7f7f;">(</span>eval-print-last-sexp<span style="color: #7f7f7f;">)))</span>
 
@@ -654,27 +654,27 @@ uses case I said above.
 <div class="org-src-container">
 <pre class="src src-clojure"><span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">def</span> <span style="color: #a0522d;">context</span> <span style="color: #7f7f7f;">(</span>StringBuilder.<span style="color: #7f7f7f;">))</span>
 
-<span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">defn</span> <span style="color: #0000ff;">-&gt;context</span> <span style="color: #7f7f7f;">[</span>x<span style="color: #7f7f7f;">]</span>
+<span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">defn</span>  <span style="color: #0000ff;">&#59780;context</span> <span style="color: #7f7f7f;">[</span>x<span style="color: #7f7f7f;">]</span>
   <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">doto</span> context
     <span style="color: #7f7f7f;">(</span>.append x<span style="color: #7f7f7f;">)))</span>
 
 <span style="color: #b22222;">;; </span><span style="color: #b22222;">Then let us add above fn to the tapset</span>
-<span style="color: #7f7f7f;">(</span>add-tap -&gt;context<span style="color: #7f7f7f;">)</span>
+<span style="color: #7f7f7f;">(</span>add-tap  &#59780;context<span style="color: #7f7f7f;">)</span>
 <span style="color: #b22222;">;; </span><span style="color: #b22222;">Then from any where of our running code, we can do:</span>
-<span style="color: #7f7f7f;">(</span>tap&gt; <span style="color: #8b2252;">"******* tap start ********</span><span style="color: #8b2252; font-weight: bold;">\n</span><span style="color: #8b2252;"> "</span><span style="color: #7f7f7f;">)</span>
-<span style="color: #7f7f7f;">(</span>tap&gt; <span style="color: #8b2252;">"runing.......................</span><span style="color: #8b2252; font-weight: bold;">\n</span><span style="color: #8b2252;">"</span><span style="color: #7f7f7f;">)</span>
-<span style="color: #7f7f7f;">(</span>tap&gt; <span style="color: #8b2252;">"******* tap end **********</span><span style="color: #8b2252; font-weight: bold;">\n</span><span style="color: #8b2252;"> "</span><span style="color: #7f7f7f;">)</span>
+<span style="color: #7f7f7f;">(</span>tap&gt; <span style="color: #8b2252;">"  &#59744;  &#59744;* tap start   &#59744;  &#59744;**</span><span style="color: #8b2252; font-weight: bold;">\n</span><span style="color: #8b2252;"> "</span><span style="color: #7f7f7f;">)</span>
+<span style="color: #7f7f7f;">(</span>tap&gt; <span style="color: #8b2252;">"runing  &#59793;  &#59793;  &#59793;  &#59793;  &#59793;  &#59793;  &#59793; &#59792;</span><span style="color: #8b2252; font-weight: bold;">\n</span><span style="color: #8b2252;">"</span><span style="color: #7f7f7f;">)</span>
+<span style="color: #7f7f7f;">(</span>tap&gt; <span style="color: #8b2252;">"  &#59744;  &#59744;* tap end   &#59744;  &#59744;  &#59744;*</span><span style="color: #8b2252; font-weight: bold;">\n</span><span style="color: #8b2252;"> "</span><span style="color: #7f7f7f;">)</span>
 
 <span style="color: #b22222;">;; </span><span style="color: #b22222;">It will be executed in a separate dedicated thread and will not</span>
 <span style="color: #b22222;">;; </span><span style="color: #b22222;">block or interfere with our running code. Then we print out the context:</span>
 <span style="color: #7f7f7f;">(</span>str context<span style="color: #7f7f7f;">)</span>
 <span style="color: #b22222;">;; </span><span style="color: #b22222;">which results in:</span>
-<span style="color: #b22222;">;;</span><span style="color: #b22222;">******* tap start ********</span>
-<span style="color: #b22222;">;; </span><span style="color: #b22222;">runing.......................</span>
-<span style="color: #b22222;">;;</span><span style="color: #b22222;">******* tap end **********</span>
+<span style="color: #b22222;">;; </span><span style="color: #b22222;"> &#59744;  &#59744;* tap start   &#59744;  &#59744;**</span>
+<span style="color: #b22222;">;; </span><span style="color: #b22222;">runing  &#59793;  &#59793;  &#59793;  &#59793;  &#59793;  &#59793;  &#59793; &#59792;</span>
+<span style="color: #b22222;">;; </span><span style="color: #b22222;"> &#59744;  &#59744;* tap end   &#59744;  &#59744;  &#59744;*</span>
 
-<span style="color: #b22222;">;; </span><span style="color: #b22222;">Remember to remove the -&gt;context fn once you are done with that session:</span>
-<span style="color: #7f7f7f;">(</span>remove-tap -&gt;context<span style="color: #7f7f7f;">)</span>
+<span style="color: #b22222;">;; </span><span style="color: #b22222;">Remember to remove the  &#59780;context fn once you are done with that session:</span>
+<span style="color: #7f7f7f;">(</span>remove-tap  &#59780;context<span style="color: #7f7f7f;">)</span>
 <span style="color: #b22222;">;; </span><span style="color: #b22222;">If there is no fn added to the tap, any values you send to tap will be discarded.</span>
 <span style="color: #7f7f7f;">(</span>tap&gt; <span style="color: #8b2252;">"your magic"</span><span style="color: #7f7f7f;">)</span> <span style="color: #b22222;">;; </span><span style="color: #b22222;">your magic will be discarded.</span>
 
@@ -692,10 +692,10 @@ and its object graph. Let us take a java class <b>String</b> as an example.
 
 <span style="color: #b22222;">;; </span><span style="color: #b22222;">let us write an fn to give use any member that we would like to find more about:</span>
 <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">defn</span> <span style="color: #0000ff;">member-lookup</span> <span style="color: #7f7f7f;">[</span>class member<span style="color: #7f7f7f;">]</span>
-  <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">-&gt;&gt;</span> class
+  <span style="color: #7f7f7f;">( </span><span style="color: #a020f0;"> &#59781;</span> class
        <span style="color: #228b22;">d</span>/datafy
        <span style="color: #008b8b;">:members</span>
-       <span style="color: #7f7f7f;">(</span>filter <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">fn</span> <span style="color: #7f7f7f;">[[</span>k v<span style="color: #7f7f7f;">]]</span> <span style="color: #7f7f7f;">(</span>= <span style="color: #7f7f7f;">(</span>symbol member<span style="color: #7f7f7f;">)</span> k<span style="color: #7f7f7f;">)))))</span>
+       <span style="color: #7f7f7f;">(</span>filter <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">fn</span>  <span style="color: #7f7f7f;">&#60032;</span>k v <span style="color: #7f7f7f;">&#60033;</span> <span style="color: #7f7f7f;">(</span>= <span style="color: #7f7f7f;">(</span>symbol member<span style="color: #7f7f7f;">)</span> k<span style="color: #7f7f7f;">)))))</span>
 <span style="color: #b22222;">;; </span><span style="color: #b22222;">then use it to find about "intern"</span>
 <span style="color: #7f7f7f;">(</span>member-lookup String <span style="color: #8b2252;">"intern"</span><span style="color: #7f7f7f;">)</span>
 <span style="color: #b22222;">;; </span><span style="color: #b22222;">returns:</span>
@@ -705,12 +705,12 @@ and its object graph. Let us take a java class <b>String</b> as an example.
     <span style="color: #008b8b;">:declaring-class</span> java.lang.String,
     <span style="color: #008b8b;">:parameter-types</span> <span style="color: #7f7f7f;">[]</span>,
     <span style="color: #008b8b;">:exception-types</span> <span style="color: #7f7f7f;">[]</span>,
-    <span style="color: #008b8b;">:flags</span> #{<span style="color: #008b8b;">:public</span> <span style="color: #008b8b;">:native</span>}}<span style="color: #7f7f7f;">]])</span>
+    <span style="color: #008b8b;">:flags</span>  &#59682;<span style="color: #008b8b;">:public</span> <span style="color: #008b8b;">:native</span>}} <span style="color: #7f7f7f;">&#60033;)</span>
 
 <span style="color: #b22222;">;; </span><span style="color: #b22222;">One can learn a lot about this method from above ds. "intern" is a</span>
 <span style="color: #b22222;">;; </span><span style="color: #b22222;">public native method that takes no argument, called on string object</span>
 <span style="color: #b22222;">;; </span><span style="color: #b22222;">and returns string like this:</span>
-<span style="color: #7f7f7f;">(</span>.intern <span style="color: #8b2252;">"test"</span><span style="color: #7f7f7f;">)</span> <span style="color: #b22222;">;; </span><span style="color: #b22222;">=&gt; "test"</span>
+<span style="color: #7f7f7f;">(</span>.intern <span style="color: #8b2252;">"test"</span><span style="color: #7f7f7f;">)</span> <span style="color: #b22222;">;;  </span><span style="color: #b22222;">&#59908; "test"</span>
 
 </pre>
 </div>
@@ -759,14 +759,14 @@ xbps-install -Su
 <span style="color: #b22222;"># </span><span style="color: #b22222;">again resulted in following:</span>
 <span style="color: #b22222;"># </span><span style="color: #b22222;">mozjs: broken, unresolvable shlib `libicu.so'</span>
 <span style="color: #b22222;"># </span><span style="color: #b22222;">Transaction aborted due to unresolved shlibs.</span>
-<span style="color: #b22222;"># </span><span style="color: #b22222;">Notice the /*mozjs*/, which is my clue. Then I did:</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">Notice the  &#59808;mozjs &#59746;, which is my clue. Then I did:</span>
 xbps-query -Rs mozjs
 <span style="color: #b22222;"># </span><span style="color: #b22222;">from the output, I confirmed that it was not installed on my box,</span>
 <span style="color: #b22222;"># </span><span style="color: #b22222;">which is my second clue to check if my repos url are</span>
 <span style="color: #b22222;"># </span><span style="color: #b22222;">up-to-date. Remember it is a year old version of VoidLinux.  I</span>
 <span style="color: #b22222;"># </span><span style="color: #b22222;">noticed from the output of xpbs-install -u, that the</span>
 <span style="color: #b22222;"># </span><span style="color: #b22222;">void-repo-nonfree url does indeed point to an old url. So, I did:</span>
-xbps-remove void-repo-nonfree &amp;&amp; xbps-install void-repo-nonfree
+xbps-remove void-repo-nonfree  &#59713; xbps-install void-repo-nonfree
 <span style="color: #b22222;"># </span><span style="color: #b22222;">to make sure my repo url is up-to-date. Then it is time to clean my</span>
 <span style="color: #b22222;"># </span><span style="color: #b22222;">repo cache and remove any packages that might be orphened since my</span>
 <span style="color: #b22222;"># </span><span style="color: #b22222;">repo url is pointing to a different url now. Using manpages for</span>
@@ -776,7 +776,7 @@ xbps-remove -Oo
 xbps-install -Su
 <span style="color: #b22222;"># </span><span style="color: #b22222;">Voila!, My one year old box is up-to-date without any issues now.</span>
 <span style="color: #b22222;"># </span><span style="color: #b22222;">After all of this, I just made an one liner alias in my shell config:</span>
-<span style="color: #483d8b;">alias</span> <span style="color: #a0522d;">c</span>=<span style="color: #8b2252;">'xbps-remove void-repo-nonfree &amp;&amp; xbps-install void-repo-nonfree &amp;&amp; xbps-install -Su </span>
+<span style="color: #483d8b;">alias</span> <span style="color: #a0522d;">c</span>=<span style="color: #8b2252;">'xbps-remove void-repo-nonfree  &#59713; xbps-install void-repo-nonfree  &#59713; xbps-install -Su </span>
 </pre>
 </div>
 
@@ -815,7 +815,7 @@ save the bar-chart to a png file. You can checkout the project here:
 going:
 </p>
 <div class="org-src-container">
-<pre class="src src-shell">git clone git@github.com/oneness/gcount.git &amp;&amp; <span style="color: #483d8b;">cd</span> gcount &amp;&amp; lein repl
+<pre class="src src-shell">git clone git@github.com/oneness/gcount.git  &#59713; <span style="color: #483d8b;">cd</span> gcount  &#59713; lein repl
 </pre>
 </div>
 <p>
@@ -879,12 +879,12 @@ me no time to set it up and start blogging. Below is my setup:
 <pre class="src src-emacs-lisp"><span style="color: #7f7f7f;">(</span>use-package org-static-blog
   <span style="color: #483d8b;">:straight</span> t
   <span style="color: #483d8b;">:config</span>
-  <span style="color: #b22222;">;; </span><span style="color: #b22222;">-----------------------------------------------------------------------------</span>
+  <span style="color: #b22222;">;;  </span><span style="color: #b22222;"> &#59782;  &#59782;  &#59782;  &#59782;  &#59782;  &#59782;  &#59782;  &#59782;  &#59782;  &#59782;  &#59782;  &#59782;  &#59782;  &#59782;  &#59782;  &#59782;  &#59782;  &#59782;  &#59782;  &#59782;  &#59782;  &#59782;  &#59782;  &#59782;  &#59782; &#59776;</span>
   <span style="color: #b22222;">;; </span><span style="color: #b22222;">Set up blogging in Emacs</span>
-  <span style="color: #b22222;">;; </span><span style="color: #b22222;">-----------------------------------------------------------------------------</span>
+  <span style="color: #b22222;">;;  </span><span style="color: #b22222;"> &#59782;  &#59782;  &#59782;  &#59782;  &#59782;  &#59782;  &#59782;  &#59782;  &#59782;  &#59782;  &#59782;  &#59782;  &#59782;  &#59782;  &#59782;  &#59782;  &#59782;  &#59782;  &#59782;  &#59782;  &#59782;  &#59782;  &#59782;  &#59782;  &#59782; &#59776;</span>
 
   <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">setq</span> org-static-blog-publish-title <span style="color: #8b2252;">"BirkeyCo"</span><span style="color: #7f7f7f;">)</span>
-  <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">setq</span> org-static-blog-publish-url <span style="color: #8b2252;">"https://www.birkey.co/"</span><span style="color: #7f7f7f;">)</span>
+  <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">setq</span> org-static-blog-publish-url <span style="color: #8b2252;">"https &#59833;/www.birkey.co/"</span><span style="color: #7f7f7f;">)</span>
   <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">setq</span> org-static-blog-publish-directory <span style="color: #8b2252;">"~/github/oneness.github.io/"</span><span style="color: #7f7f7f;">)</span>
   <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">setq</span> org-static-blog-posts-directory <span style="color: #8b2252;">"~/github/oneness.github.io/posts/"</span><span style="color: #7f7f7f;">)</span>
   <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">setq</span> org-static-blog-drafts-directory <span style="color: #8b2252;">"~/github/oneness.github.io/drafts/"</span><span style="color: #7f7f7f;">)</span>
@@ -893,33 +893,33 @@ me no time to set it up and start blogging. Below is my setup:
   <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">setq</span> org-export-with-section-numbers nil<span style="color: #7f7f7f;">)</span>
 
   <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">setq</span> org-static-blog-page-header
-        <span style="color: #8b2252;">"&lt;meta name=\"author\" content=\"Kasim Tuman\"&gt;</span>
-<span style="color: #8b2252;">&lt;meta name=\"referrer\" content=\"no-referrer\"&gt;</span>
-<span style="color: #8b2252;">&lt;link href= \"static/style.css\" rel=\"stylesheet\" type=\"text/css\" /&gt;</span>
-<span style="color: #8b2252;">&lt;link rel=\"icon\" href=\"static/favicon.ico\"&gt;</span>
-<span style="color: #8b2252;">&lt;link rel=\"apple-touch-icon-precomposed\" href=\"static/birkey_logo.png\"&gt;</span>
-<span style="color: #8b2252;">&lt;link rel=\"msapplication-TitleImage\" href=\"static/birkey_logo.png\"&gt;</span>
-<span style="color: #8b2252;">&lt;link rel=\"msapplication-TitleColor\" href=\"#0141ff\"&gt;</span>
-<span style="color: #8b2252;">&lt;script src=\"static/katex.min.js\"&gt;&lt;/script&gt;</span>
-<span style="color: #8b2252;">&lt;script src=\"static/auto-render.min.js\"&gt;&lt;/script&gt;</span>
-<span style="color: #8b2252;">&lt;link rel=\"stylesheet\" href=\"static/katex.min.css\"&gt;</span>
-<span style="color: #8b2252;">&lt;script&gt;document.addEventListener(\"DOMContentLoaded\", function() { renderMathInElement(document.body); });&lt;/script&gt;</span>
-<span style="color: #8b2252;">&lt;meta http-equiv=\"content-type\" content=\"application/xhtml+xml; charset=UTF-8\"&gt;</span>
-<span style="color: #8b2252;">&lt;meta name=\"viewport\" content=\"initial-scale=1,width=device-width,minimum-scale=1\"&gt;"</span><span style="color: #7f7f7f;">)</span>
+        <span style="color: #8b2252;">"&lt;meta name=\"author\" content=\"Kasim Tuman\ &#60048;</span>
+<span style="color: #8b2252;">&lt;meta name=\"referrer\" content=\"no-referrer\ &#60048;</span>
+<span style="color: #8b2252;">&lt;link href= \"static/style.css\" rel=\"stylesheet\" type=\"text/css\"  &#59810;</span>
+<span style="color: #8b2252;">&lt;link rel=\"icon\" href=\"static/favicon.ico\ &#60048;</span>
+<span style="color: #8b2252;">&lt;link rel=\"apple-touch-icon-precomposed\" href=\"static/birkey_logo.png\ &#60048;</span>
+<span style="color: #8b2252;">&lt;link rel=\"msapplication-TitleImage\" href=\"static/birkey_logo.png\ &#60048;</span>
+<span style="color: #8b2252;">&lt;link rel=\"msapplication-TitleColor\" href=\"#0141ff\ &#60048;</span>
+<span style="color: #8b2252;">&lt;script src=\"static/katex.min.js\ &#60048; &#59883;script&gt;</span>
+<span style="color: #8b2252;">&lt;script src=\"static/auto-render.min.js\ &#60048; &#59883;script&gt;</span>
+<span style="color: #8b2252;">&lt;link rel=\"stylesheet\" href=\"static/katex.min.css\ &#60048;</span>
+<span style="color: #8b2252;">&lt;script&gt;document.addEventListener(\"DOMContentLoaded\", function() { renderMathInElement(document.body); }); &#59883;script&gt;</span>
+<span style="color: #8b2252;">&lt;meta http-equiv=\"content-type\" content=\"application/xhtml+xml; charset=UTF-8\ &#60048;</span>
+<span style="color: #8b2252;">&lt;meta name=\"viewport\" content=\"initial-scale=1,width=device-width,minimum-scale=1\ &#60048;"</span><span style="color: #7f7f7f;">)</span>
 
   <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">setq</span> org-static-blog-page-preamble
-        <span style="color: #8b2252;">"&lt;div class=\"header\"&gt;</span>
-<span style="color: #8b2252;">  &lt;a href=\"https://birkey.co\"&gt;Code, Data and Network&lt;/a&gt;</span>
-<span style="color: #8b2252;">  &lt;div class=\"sitelinks\"&gt;</span>
-<span style="color: #8b2252;">    &lt;a href=\"https://twitter.com/KasimTuman\"&gt;Twitter&lt;/a&gt; | &lt;a href=\"https://github.com/oneness\"&gt;Github&lt;/a&gt;</span>
-<span style="color: #8b2252;">  &lt;/div&gt;</span>
-<span style="color: #8b2252;">&lt;/div&gt;"</span><span style="color: #7f7f7f;">)</span>
+        <span style="color: #8b2252;">"&lt;div class=\"header\ &#60048;</span>
+<span style="color: #8b2252;">  &lt;a href=\"https &#59833;/birkey.co\ &#60048;Code, Data and Network &#59883;a&gt;</span>
+<span style="color: #8b2252;">  &lt;div class=\"sitelinks\ &#60048;</span>
+<span style="color: #8b2252;">    &lt;a href=\"https &#59833;/twitter.com/KasimTuman\ &#60048;Twitter &#59883;a&gt; | &lt;a href=\"https &#59833;/github.com/oneness\ &#60048;Github &#59883;a&gt;</span>
+<span style="color: #8b2252;">   &#59883;div&gt;</span>
+ <span style="color: #8b2252;">&#59883;div&gt;"</span><span style="color: #7f7f7f;">)</span>
 
   <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">setq</span> org-static-blog-page-postamble
-        <span style="color: #8b2252;">"&lt;div id=\"archive\"&gt;</span>
-<span style="color: #8b2252;">  &lt;a href=\"https://www.birkey.co/archive.html\"&gt;Other posts&lt;/a&gt;</span>
-<span style="color: #8b2252;">&lt;/div&gt;</span>
-<span style="color: #8b2252;">&lt;center&gt;&lt;a rel=\"license\" href=\"https://creativecommons.org/licenses/by-sa/3.0/\"&gt;&lt;img alt=\"Creative Commons License\" style=\"border-width:0\" src=\"https://i.creativecommons.org/l/by-sa/3.0/88x31.png\" /&gt;&lt;/a&gt;&lt;br /&gt;&lt;span xmlns:dct=\"https://purl.org/dc/terms/\" href=\"https://purl.org/dc/dcmitype/Text\" property=\"dct:title\" rel=\"dct:type\"&gt;birkey.co&lt;/span&gt; by &lt;a xmlns:cc=\"https://creativecommons.org/ns#\" href=\"https://www.birkey.co\" property=\"cc:attributionName\" rel=\"cc:attributionURL\"&gt;Kasim Tuman&lt;/a&gt; is licensed under a &lt;a rel=\"license\" href=\"https://creativecommons.org/licenses/by-sa/3.0/\"&gt;Creative Commons Attribution-ShareAlike 3.0 Unported License&lt;/a&gt;.&lt;/center&gt;"</span><span style="color: #7f7f7f;">)</span>
+        <span style="color: #8b2252;">"&lt;div id=\"archive\ &#60048;</span>
+<span style="color: #8b2252;">  &lt;a href=\"https &#59833;/www.birkey.co/archive.html\ &#60048;Other posts &#59883;a&gt;</span>
+ <span style="color: #8b2252;">&#59883;div&gt;</span>
+<span style="color: #8b2252;">&lt;center&gt;&lt;a rel=\"license\" href=\"https &#59833;/creativecommons.org/licenses/by-sa/3.0/\ &#60048;&lt;img alt=\"Creative Commons License\" style=\"border-width:0\" src=\"https &#59833;/i.creativecommons.org/l/by-sa/3.0/88x31.png\"  &#59810; &#59883;a&gt;&lt;br  &#59810;&lt;span xmlns:dct=\"https &#59833;/purl.org/dc/terms/\" href=\"https &#59833;/purl.org/dc/dcmitype/Text\" property=\"dct:title\" rel=\"dct:type\ &#60048;birkey.co &#59883;span&gt; by &lt;a xmlns:cc=\"https &#59833;/creativecommons.org/ns#\" href=\"https &#59833;/www.birkey.co\" property=\"cc:attributionName\" rel=\"cc:attributionURL\ &#60048;Kasim Tuman &#59883;a&gt; is licensed under a &lt;a rel=\"license\" href=\"https &#59833;/creativecommons.org/licenses/by-sa/3.0/\ &#60048;Creative Commons Attribution-ShareAlike 3.0 Unported License &#59883;a&gt;. &#59883;center&gt;"</span><span style="color: #7f7f7f;">)</span>
 
   <span style="color: #b22222;">;; </span><span style="color: #b22222;">This slows down org-publish to a crawl, and it is not needed since</span>
   <span style="color: #b22222;">;; </span><span style="color: #b22222;">I use magit anyway.</span>
