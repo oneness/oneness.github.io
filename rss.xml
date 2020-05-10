@@ -4,7 +4,7 @@
 <title><![CDATA[BirkeyCo]]></title>
 <description><![CDATA[BirkeyCo]]></description>
 <link>https://www.birkey.co/</link>
-<lastBuildDate>Sat, 09 May 2020 15:17:21 -0700</lastBuildDate>
+<lastBuildDate>Sun, 10 May 2020 00:22:34 -0700</lastBuildDate>
 <item>
   <title><![CDATA[One command to drive all]]></title>
   <description><![CDATA[
@@ -170,7 +170,7 @@ fi
 If you happen to use Emacs and Eshell, you can just use following alias to get going:
 </p>
 <div class="org-src-container">
-<pre class="src src-Shell">alias alias pkg ./pkg '$*'
+<pre class="src src-Shell">alias pkg ./pkg '$*'
 </pre>
 </div>
 <p>
@@ -259,9 +259,9 @@ Would not that be wonderful if every project just follow simple conventions like
 <p>
 <b>Disclaimer</b>: This is not a post about UNIX variants flame war. It is not my intention to recruit OpenBSD converts either as no one has influenced me to switch to it after 10 years of distro hopping. The main reasons I am using OpenBSD as my daily driver on both of my laptops (Thinkpad X220 and XPS 13 9365) are: <b>Security</b>, <b>Stability</b>, and <b>Frugality</b>.
 </p>
-<div id="outline-container-org83ee921" class="outline-2">
-<h2 id="org83ee921">Security</h2>
-<div class="outline-text-2" id="text-org83ee921">
+<div id="outline-container-org1d64a75" class="outline-2">
+<h2 id="org1d64a75">Security</h2>
+<div class="outline-text-2" id="text-org1d64a75">
 <p>
 I am software generalist who knows enough about system (OS,Network and Application) security to be paranoid not just about online systems, which is far from enough to keep ourselves secure, but also on-prem system such as Operating Systems we all rely on for keeping us safe. While Linux could be made as secure as OpenBSD after much tinkering and tweaking, OpenBSD is more secure by default installation. Following quote from <a href="https://www.openbsd.org/">https://www.openbsd.org/</a> is very telling:
 </p>
@@ -275,17 +275,17 @@ That quote is for what OpenBSD team calls base file set that includes the kernel
 </p>
 </div>
 </div>
-<div id="outline-container-org1e7754c" class="outline-2">
-<h2 id="org1e7754c">Stability</h2>
-<div class="outline-text-2" id="text-org1e7754c">
+<div id="outline-container-orgef236bd" class="outline-2">
+<h2 id="orgef236bd">Stability</h2>
+<div class="outline-text-2" id="text-orgef236bd">
 <p>
 OpenBSD favors stability over new features. Once installed and configured to your liking, it just stays out of your way allowing you focus on your task at hand. You will not see nagging notifications demanding you to click on installing updates. You can just setup a cron to run `syspatch` to bring in security fixes whenever and however you like. Releases are scheduled for every 6 months in a predictable way so you are in control to plan it ahead. I am running 6.6 release and following errata proves my point: <a href="https://www.openbsd.org/errata66.html">https://www.openbsd.org/errata66.html</a>
 </p>
 </div>
 </div>
-<div id="outline-container-orge7ce4b4" class="outline-2">
-<h2 id="orge7ce4b4">Frugality</h2>
-<div class="outline-text-2" id="text-orge7ce4b4">
+<div id="outline-container-org2b9bb12" class="outline-2">
+<h2 id="org2b9bb12">Frugality</h2>
+<div class="outline-text-2" id="text-org2b9bb12">
 <p>
 Wikipedia has the best definition for this and I believe it genuinely applies to the Philosophy of OpenBSD project. `Less is more` is a pretty well known Unix tradition and the command `less` (which is a replacement of early UNIX command `more`) is seen in every UNIX variants. OpenBSD is not the most user friendly Unix out there not even among BSD flavors. It is targeted towards security and resource savvy power users who wants have control over every piece of software running on their system. Every line of code is audited for frugality and not needed code is removed. Development is not driven by any cooperate or financial interest as apposed to the Operating System development from big Corporations such as Microsoft, Apple and Google. You can use your old hardware as long as it meets your needs and will not find yourself at the mercy of them nagging you upgrade your hardware let alone your system so often.
 </p>
@@ -401,9 +401,9 @@ So I am not going to repeat what he said about Emacs and why he still
 loves to use it to get things done. I am going to add following points
 on top of what he wrote there:
 </p>
-<div id="outline-container-org06daab8" class="outline-2">
-<h2 id="org06daab8">Emacs is a great workbench</h2>
-<div class="outline-text-2" id="text-org06daab8">
+<div id="outline-container-org772d81f" class="outline-2">
+<h2 id="org772d81f">Emacs is a great workbench</h2>
+<div class="outline-text-2" id="text-org772d81f">
 <p>
 I see Emacs as an extremely well designed workbench that will evolve
 with you as your work environment, technology and paradigms
@@ -419,9 +419,9 @@ which is an Window Manager, is a great example.
 </p>
 </div>
 </div>
-<div id="outline-container-orgb43e633" class="outline-2">
-<h2 id="orgb43e633">Emacs is a great structured and unstructured text manipulation library</h2>
-<div class="outline-text-2" id="text-orgb43e633">
+<div id="outline-container-orgbd986d6" class="outline-2">
+<h2 id="orgbd986d6">Emacs is a great structured and unstructured text manipulation library</h2>
+<div class="outline-text-2" id="text-orgbd986d6">
 <p>
 This is what I personally like a lot about Emacs. As a programmer, we
 work with manipulating text all the time. Yes, there are great text
@@ -434,9 +434,9 @@ editing of Clojure code.
 </p>
 </div>
 </div>
-<div id="outline-container-orgfa62c6c" class="outline-2">
-<h2 id="orgfa62c6c">Emacs helps you focus</h2>
-<div class="outline-text-2" id="text-orgfa62c6c">
+<div id="outline-container-org61747c1" class="outline-2">
+<h2 id="org61747c1">Emacs helps you focus</h2>
+<div class="outline-text-2" id="text-org61747c1">
 <p>
 In this day of our age where everything tries to grab your constant
 attention, Emacs stands out as the most distraction free environment
@@ -454,9 +454,9 @@ what matters the most to you and have a lot of fun along the way.
 </p>
 </div>
 </div>
-<div id="outline-container-orgfec266b" class="outline-2">
-<h2 id="orgfec266b">Emacs has a learning curve</h2>
-<div class="outline-text-2" id="text-orgfec266b">
+<div id="outline-container-org76e90eb" class="outline-2">
+<h2 id="org76e90eb">Emacs has a learning curve</h2>
+<div class="outline-text-2" id="text-org76e90eb">
 <p>
 Yes, I do acknowledge that Emacs has a learning curve. However, most
 of it is due to the wrong approach we tend to take when encountering an
