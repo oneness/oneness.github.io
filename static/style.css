@@ -36,12 +36,12 @@ pre {
 		 Monospace, /* Linux = DejaVu Sans Mono */
 		 Courier;   /* MacOSX & Windows = Courier */
     font-size: 16;
-    background-color: white;
+    background-color: #eeeeff;
     border: 1px solid Black;
     padding-left: 2%;
     padding-top: 1ch;
     padding-bottom: 1ch;
-    overflow: scroll;
+    overflow: auto;
 }
 
 div.heading {
