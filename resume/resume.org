@@ -1,22 +1,24 @@
 #+OPTIONS: timestamp:nil
 #+OPTIONS: author:nil
-* 
 #+ATTR_HTML: :style text-align:center
 [[mailto:ktuman@acm.org][Email]]          [[https://github.com/oneness][Github]]          [[https://www.birkey.co][Blog]]
 
 * Personal Statement
-  I am interested in impactful work that makes use of and contributes
-  to the open-source world, especially in the field of
-  infrastructure/system correctness, integrity, security and performance.
-  *I am not currently available for hire and do not respond to third-party recruiters.*
+  I enjoy engineering information systems optimized for end user and
+  developer productivity, which can only be achieved by being vigilant
+  about keeping IT as simple as IT possibly can be. If you are into
+  Clojure, Haskell or other Programming Languages that I should check
+  out, drop me a line via ktuman at acm dot org.
+  *Note: I am NOT currently available for hire and do NOT respond to third-party
+  recruiters.*
 
 * Work Experience
 - *2016/02 - Present:* Owner of [[https://www.birkey.co][Birkey Consulting]]
   - Coaching, Mentoring and Leading Engineering teams to design,
     develop and deliver.
 
-- *2018/11 - Present:* Senior Engineer [[https://adstage.io][AdStage Inc]]
-  - Led development on the AdStage for Google Sheets product, enabling
+- *2018/11 - Present:* Principal Software Engineer [[https://tapclicks.com][TapClicks Inc]]
+  - Led development on the Google Sheets product, enabling
     customers to see all of their cross-network marketing data in
     spreadsheets
   - Implemented high availability as well as improved monitoring and
