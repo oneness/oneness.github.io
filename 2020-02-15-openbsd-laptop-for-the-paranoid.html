@@ -8,35 +8,40 @@
       title="RSS feed for https://www.birkey.co/"/>
 <title>OpenBSD laptop for the paranoid</title>
 <meta name="author" content="Kasim Tuman">
-	       <meta name="referrer" content="no-referrer">
-	       <link href= "static/style.css" rel="stylesheet" type="text/css" />
-	       <link rel="icon" href="static/favicon.ico">
-	       <link rel="apple-touch-icon-precomposed" href="static/birkey_logo.png">
-	       <link rel="msapplication-TitleImage" href="static/birkey_logo.png">
-	       <link rel="msapplication-TitleColor" href="#0141ff">
-	       <link rel="alternate" type="application/rss+xml"  title="RSS Feed for birkey.co" href="/rss.xml"
-	       <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8">
-	       <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1"></head>
+	     <meta name="referrer" content="no-referrer">
+	     <link href= "static/style.css" rel="stylesheet" type="text/css" />
+	     <link rel="icon" href="static/favicon.ico">
+	     <link rel="apple-touch-icon-precomposed" href="static/birkey_logo.png">
+	     <link rel="msapplication-TitleImage" href="static/birkey_logo.png">
+	     <link rel="msapplication-TitleColor" href="#0141ff">
+	     <link rel="alternate" type="application/rss+xml"  title="RSS Feed for birkey.co" href="/rss.xml"
+	     <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8">
+	     <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1"></head>
 <body>
 <div id="preamble" class="status">
 <br><center>
-      <div style="display: inline-block; vertical-align:middle;">
-  <a href="https://www.birkey.co/index.html" style="text-decoration: none;"><b>KASIM TUMAN'S WEBSITE</b><br>
-  </a><hr/><div style="text-align: justify;display: inline-block; width: 100%;">
-  <a class="title" href="https://www.birkey.co/resume/resume.html">ABOUT</a> &nbsp;<a class="title" href="https://github.com/oneness">GITHUB</a> &nbsp;<a class="title" href="https://www.birkey.co/rss.xml">RSS</a> &nbsp;<a class="title" href="https://www.birkey.co/archive.html">ARCHIVE</a> &nbsp;<a class="title" href="https://paypal.me/ktuman">DONATE</a></div></div>
-  </center><br><br>
-  <div style="margin-bottom: 3ch;text-transform: none;">
-  </div>
-  <div class='heading'>Kasim Tuman's Website</div><hr/>
-  <p>This is my personal website. You can find here my codes and ideas about programming. </p></div>
+    <div style="display: inline-block; vertical-align:middle;">
+<a href="https://www.birkey.co/index.html" style="text-decoration: none;"><b>KASIM TUMAN'S WEBSITE</b><br>
+</a><hr/><div style="text-align: justify;display: inline-block; width: 100%;">
+<a class="title" href="https://www.birkey.co/resume/resume.html">ABOUT</a> &nbsp;<a class="title" href="https://github.com/oneness">GITHUB</a> &nbsp;<a class="title" href="https://www.birkey.co/rss.xml">RSS</a> &nbsp;<a class="title" href="https://www.birkey.co/archive.html">ARCHIVE</a> &nbsp;<a class="title" href="https://paypal.me/ktuman">DONATE</a></div></div>
+</center><br><br>
+<div style="margin-bottom: 3ch;text-transform: none;"></div>
+<div class='heading'>Kasim Tuman's Website</div><hr/>
+<p>  I enjoy engineering information systems optimized for end user and
+developer productivity, which can only be achieved by being vigilant
+about keeping IT as simple as IT possibly can be. If you are into
+Clojure, Haskell or other Programming Languages that I should check
+out, drop me a line via ktuman at acm dot org.
+Note: I am NOT currently available for hire and do NOT respond to third-party
+recruiters. </p></div>
 <div id="content">
 <div class="post-date">15 Feb 2020</div><h1 class="post-title"><a href="https://www.birkey.co/2020-02-15-openbsd-laptop-for-the-paranoid.html">OpenBSD laptop for the paranoid</a></h1>
 <p>
 <b>Disclaimer</b>: This is not a post about UNIX variants flame war. It is not my intention to recruit OpenBSD converts either as no one has influenced me to switch to it after 10 years of distro hopping. The main reasons I am using OpenBSD as my daily driver on both of my laptops (Thinkpad X220 and XPS 13 9365) are: <b>Security</b>, <b>Stability</b>, and <b>Frugality</b>.
 </p>
-<div id="outline-container-org1d64a75" class="outline-2">
-<h2 id="org1d64a75">Security</h2>
-<div class="outline-text-2" id="text-org1d64a75">
+<div id="outline-container-org929066f" class="outline-2">
+<h2 id="org929066f">Security</h2>
+<div class="outline-text-2" id="text-org929066f">
 <p>
 I am software generalist who knows enough about system (OS,Network and Application) security to be paranoid not just about online systems, which is far from enough to keep ourselves secure, but also on-prem system such as Operating Systems we all rely on for keeping us safe. While Linux could be made as secure as OpenBSD after much tinkering and tweaking, OpenBSD is more secure by default installation. Following quote from <a href="https://www.openbsd.org/">https://www.openbsd.org/</a> is very telling:
 </p>
@@ -50,17 +55,17 @@ That quote is for what OpenBSD team calls base file set that includes the kernel
 </p>
 </div>
 </div>
-<div id="outline-container-orgef236bd" class="outline-2">
-<h2 id="orgef236bd">Stability</h2>
-<div class="outline-text-2" id="text-orgef236bd">
+<div id="outline-container-org291c819" class="outline-2">
+<h2 id="org291c819">Stability</h2>
+<div class="outline-text-2" id="text-org291c819">
 <p>
 OpenBSD favors stability over new features. Once installed and configured to your liking, it just stays out of your way allowing you focus on your task at hand. You will not see nagging notifications demanding you to click on installing updates. You can just setup a cron to run `syspatch` to bring in security fixes whenever and however you like. Releases are scheduled for every 6 months in a predictable way so you are in control to plan it ahead. I am running 6.6 release and following errata proves my point: <a href="https://www.openbsd.org/errata66.html">https://www.openbsd.org/errata66.html</a>
 </p>
 </div>
 </div>
-<div id="outline-container-org2b9bb12" class="outline-2">
-<h2 id="org2b9bb12">Frugality</h2>
-<div class="outline-text-2" id="text-org2b9bb12">
+<div id="outline-container-orgc5e6129" class="outline-2">
+<h2 id="orgc5e6129">Frugality</h2>
+<div class="outline-text-2" id="text-orgc5e6129">
 <p>
 Wikipedia has the best definition for this and I believe it genuinely applies to the Philosophy of OpenBSD project. `Less is more` is a pretty well known Unix tradition and the command `less` (which is a replacement of early UNIX command `more`) is seen in every UNIX variants. OpenBSD is not the most user friendly Unix out there not even among BSD flavors. It is targeted towards security and resource savvy power users who wants have control over every piece of software running on their system. Every line of code is audited for frugality and not needed code is removed. Development is not driven by any cooperate or financial interest as apposed to the Operating System development from big Corporations such as Microsoft, Apple and Google. You can use your old hardware as long as it meets your needs and will not find yourself at the mercy of them nagging you upgrade your hardware let alone your system so often.
 </p>
@@ -77,6 +82,6 @@ I am currently running OpenBSD 6.6 on Thinkpad X220 (everything work out of the 
 </div>
 <div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-openbsd.html">OpenBSD</a> </div></div>
 <div id="postamble" class="status"><br><center>
-      <div style="display: inline-block; vertical-align:middle;"></div></div>
+    <div style="display: inline-block; vertical-align:middle;"></div></div>
 </body>
 </html>
