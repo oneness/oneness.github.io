@@ -4,7 +4,149 @@
 <title><![CDATA[BirkeyCo]]></title>
 <description><![CDATA[BirkeyCo]]></description>
 <link>https://www.birkey.co/</link>
-<lastBuildDate>Fri, 04 Sep 2020 14:24:21 -0700</lastBuildDate>
+<lastBuildDate>Sun, 27 Dec 2020 21:03:12 -0800</lastBuildDate>
+<item>
+  <title><![CDATA[ETC Principle to ground all]]></title>
+  <description><![CDATA[
+<p>
+If you are just curious about the ETC principle to ground all other
+principles of software engineering, you can scroll all the way down of
+this post to find out what I meant by ETC. If you know what ETC stands
+for and are already grounding your engineering efforts, you can just
+skip this post and go on with your MIT (most important task). However,
+If you are skeptical, which you always should be, you might want to
+read on to learn why.
+</p>
+
+<p>
+As an Engineer, our primary function on daily basis is to come up
+with a working solution to a specific problem that arose out of
+need from our <b>users</b>. I highlight the word user here since the user
+could be our end user, could be our fellow engineers, or could just be
+ourselves. If you have been in the industry for a while, you might
+have been exposed to plethora of must follow principles and practices
+from existing literature, which I categorize as `transmittable`
+knowledge. Apart from that, there is another type of knowledge that I
+would like to classify as `untransmittable` where you have to
+experience it to make it your own. Those two types of knowledge
+corresponds to how we learn new things: 1. We read transmittable
+knowledge from various sources 2. We bring them into our practice to
+form our deep understanding of it. Only then, we are able to utilize
+our newly learned knowledge effectively to achieve our end result,
+which is by the way to meet the needs of our fellow <b>users</b> as apposed
+to the need of certain systems. Now, let us stack ETC principle
+against three of the most well known engineering paradigms so we are
+always grounded in our approach to utilizing them.
+</p>
+
+<div id="outline-container-org16aa545" class="outline-2">
+<h2 id="org16aa545">Monolith vs Microservice</h2>
+<div class="outline-text-2" id="text-org16aa545">
+<p>
+We have come a long way since the 1950s in our approach to different
+design and architectural paradigms. Over the last 10 years or so, we
+all have been preached to about how great Microservice is and have drunk its
+Kool-Aid. It has penetrated engineering organizations to such a degree
+that it has become our new hammer. Now all of a sudden, we start
+waking up to its trade offs and even going back to old monolith
+architecture. What happened? We just did not ground ourselves when
+we made a decision to adopt microservice style. The question we should
+have asked ourselves before committing to microservice or monolith is:
+How it enables us to make whatever we are doing easy to change? Does
+monolith style make our system easy to change? Maybe. Does
+microservice approach enables us easy to change our system? Maybe. So
+the definite answer to both questions is "it depends". So what should
+be the basis of our decision to go with one way or the other? Maybe
+an example in order to drive my point here. Let's say you're
+designing an e-commerce system. It has catalog, checkout and shipping
+components. Does putting all of the components into one service make
+the system easy to change for you? May be it will if you are the only
+person or your team are the only team working on it. Does putting all
+of the components into separate services make the system easy to
+change? May be it will if you have three separate teams working on
+them.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge70908d" class="outline-2">
+<h2 id="orge70908d">Top down vs bottom up design</h2>
+<div class="outline-text-2" id="text-orge70908d">
+<p>
+I have seen teams swear by one way or the other on this matter. From
+time to time, someone comes along to preach one over the other
+declaring the other approach is dead or should just be avoided. Every
+time when I face such a design issue, I always ask myself this
+question over and over again: Does top down or bottom up design
+enables me or my team to respond to change? Most of the time, I end up
+choosing both approaches because it helps me to focus on making the
+system easier to change. I tend to use following rule of thumb. When I
+have clear mental model, I use the bottom up approach so I can create
+layers of abstractions to compose better, which in turn enables me to
+make changes easier. When I have a high level of domain clarity, I
+tend to start with top down design because it helps me to focus on not
+that clear pieces in isolation, which in turn makes changes a lot more
+manageable.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org7360c89" class="outline-2">
+<h2 id="org7360c89">OO vs FP paradigm</h2>
+<div class="outline-text-2" id="text-org7360c89">
+<p>
+I was preached and have been preaching OO style of programming
+paradigm from since my college days and well into the early years of my
+profession. Then FP became the new style (old became new?) and all OO
+programming languages started to add more FP style constructs. Now we
+see debates over why FP is superior over OO and should be used over
+all cost claiming that OO is responsible for all the mess that we
+created over the last 20 years or so. Now, I came to realize that it
+is not this or that paradigm that is responsible for all the issues we
+created. Rather, it is the blind adoption of them by us as
+practitioners. Let us think about a minute what OO have given us when
+we started to adopt it: The ability to structure, reuse and share code
+across systems. Essentially, we were able to build/change information
+systems faster and easier than ever before. However, it did not hold
+up well against ETC principle with its humongous frameworks and so
+called best practices. Now, FP is in its renaissance and being
+preached as the savior at the cost of relegating OO to its
+oblivion. OO is a great tool set in our arsenal for certain types of
+problem domain and SmallTalk is an example of how it should be
+practiced. FP is another excellent way of approaching to engineering
+problem in that it encourages to treat systems as referential data
+transformation pipeline. Does it inherently make the system easy to
+change? Not really. We are quite capable of making a spaghetti mess
+out of FP as much as we have done with OO. See a pattern here? ETC
+principle grounds your choice of paradigm into its proper place: Is
+x helping you to make changes easier? If not, then x most likely not
+best route for you.
+</p>
+
+<p>
+I can go on and on with arguing ETC be the test to pass for all of the
+paradigms and even development approaches such as TDD, BDD and
+DDD. For example, If your code is easy to change, it will most likely
+be easy to test, maps most likely well with your domain and most
+likely models use cases better. You can adopt any approach or
+principles such as SOLID principle if you consistently ask yourself:
+Does this really helps me to make changes easier? If it passes this
+test, adopt it, if not avoid it.
+</p>
+
+<p>
+It is not my intention to make you dogmatic about <b>Easy To Change</b>
+(ETC) principle but rather to convince yourself to have one principle
+to ground all other aspects of your engineering endeavors. Happy
+engineering and never forget to have and share fun coding!
+</p>
+</div>
+</div>
+<div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-engineering.html">engineering</a> </div>]]></description>
+  <category><![CDATA[engineering]]></category>
+  <link>https://www.birkey.co/2020-12-26-ETC-principle-to-ground-all.html</link>
+  <pubDate>Sat, 26 Dec 2020 15:06:00 -0800</pubDate>
+</item>
 <item>
   <title><![CDATA[One command to drive all]]></title>
   <description><![CDATA[

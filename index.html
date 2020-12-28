@@ -5,36 +5,172 @@
 <link rel="alternate"
       type="application/rss+xml"
       href="https://www.birkey.co/rss.xml"
-      title="RSS feed for https://www.birkey.co/"/>
+      title="RSS feed for https://www.birkey.co/">
 <title>BirkeyCo</title>
 <meta name="author" content="Kasim Tuman">
-	     <meta name="referrer" content="no-referrer">
-	     <link href= "static/style.css" rel="stylesheet" type="text/css" />
-	     <link rel="icon" href="static/favicon.ico">
-	     <link rel="apple-touch-icon-precomposed" href="static/birkey_logo.png">
-	     <link rel="msapplication-TitleImage" href="static/birkey_logo.png">
-	     <link rel="msapplication-TitleColor" href="#0141ff">
-	     <link rel="alternate" type="application/rss+xml"  title="RSS Feed for birkey.co" href="/rss.xml"
-	     <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8">
-	     <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1"></head>
+	       <meta name="referrer" content="no-referrer">
+	       <link href= "static/style.css" rel="stylesheet" type="text/css" />
+	       <link rel="icon" href="static/favicon.ico">
+	       <link rel="apple-touch-icon-precomposed" href="static/birkey_logo.png">
+	       <link rel="msapplication-TitleImage" href="static/birkey_logo.png">
+	       <link rel="msapplication-TitleColor" href="#0141ff">
+	       <link rel="alternate" type="application/rss+xml"  title="RSS Feed for birkey.co" href="/rss.xml"
+	       <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8">
+	       <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1"></head>
 <body>
 <div id="preamble" class="status"><br><center>
-    <div style="display: inline-block; vertical-align:middle;">
-<a href="https://www.birkey.co/index.html" style="text-decoration: none;"><b>BIRKEY CONSULTING</b><br>
-</a><hr/><div style="text-align: justify;display: inline-block; width: 100%;">
-<a class="title" href="https://www.birkey.co/resume/resume.html">ABOUT</a> &nbsp;<a class="title" href="https://github.com/oneness">GITHUB</a> &nbsp;<a class="title" href="https://www.birkey.co/rss.xml">RSS</a> &nbsp;<a class="title" href="https://www.birkey.co/archive.html">ARCHIVE</a> &nbsp;<a class="title" href="https://paypal.me/ktuman">DONATE</a></div></div>
-</center><br><br>
-<div style="margin-bottom: 3ch;text-transform: none;"></div>
-<div class='heading'>PREFACE</div><hr/>
-<p>  I enjoy engineering information systems optimized for end user and
-developer productivity, which can only be achieved by being vigilant
-about keeping IT as simple as IT possibly can be. If you are into
-Clojure, Haskell or other Programming Languages that I should check
-out, drop me a line via ktuman at acm dot org.
-<b>Note: I am NOT currently available for hire and do NOT respond to third-party
-recruiters</b>.</p></div>
+      <div style="display: inline-block; vertical-align:middle;">
+  <a href="https://www.birkey.co/index.html" style="text-decoration: none;"><b>BIRKEY CONSULTING</b><br>
+  </a><hr/><div style="text-align: justify;display: inline-block; width: 100%;">
+  <a class="title" href="https://www.birkey.co/resume/resume.html">ABOUT</a> &nbsp;<a class="title" href="https://github.com/oneness">GITHUB</a> &nbsp;<a class="title" href="https://www.birkey.co/rss.xml">RSS</a> &nbsp;<a class="title" href="https://www.birkey.co/archive.html">ARCHIVE</a> &nbsp;<a class="title" href="https://paypal.me/ktuman">DONATE</a></div></div>
+  </center><br><br>
+  <div style="margin-bottom: 3ch;text-transform: none;"></div>
+  <div class='heading'>PREFACE</div><hr/>
+  <p>  I enjoy engineering information systems optimized for end user and
+  developer productivity, which can only be achieved by being vigilant
+  about keeping IT as simple as IT possibly can be. If you are into
+  Clojure, F# or other Programming Languages that I should check
+  out, drop me a line via ktuman at acm dot org.
+  <b>Note: I am NOT currently available for hire and do NOT respond to third-party
+  recruiters</b>.</p></div>
 <div id="content">
 
+<div class="post-date">26 Dec 2020</div><h1 class="post-title"><a href="https://www.birkey.co/2020-12-26-ETC-principle-to-ground-all.html">ETC Principle to ground all</a></h1>
+<p>
+If you are just curious about the ETC principle to ground all other
+principles of software engineering, you can scroll all the way down of
+this post to find out what I meant by ETC. If you know what ETC stands
+for and are already grounding your engineering efforts, you can just
+skip this post and go on with your MIT (most important task). However,
+If you are skeptical, which you always should be, you might want to
+read on to learn why.
+</p>
+
+<p>
+As an Engineer, our primary function on daily basis is to come up
+with a working solution to a specific problem that arose out of
+need from our <b>users</b>. I highlight the word user here since the user
+could be our end user, could be our fellow engineers, or could just be
+ourselves. If you have been in the industry for a while, you might
+have been exposed to plethora of must follow principles and practices
+from existing literature, which I categorize as `transmittable`
+knowledge. Apart from that, there is another type of knowledge that I
+would like to classify as `untransmittable` where you have to
+experience it to make it your own. Those two types of knowledge
+corresponds to how we learn new things: 1. We read transmittable
+knowledge from various sources 2. We bring them into our practice to
+form our deep understanding of it. Only then, we are able to utilize
+our newly learned knowledge effectively to achieve our end result,
+which is by the way to meet the needs of our fellow <b>users</b> as apposed
+to the need of certain systems. Now, let us stack ETC principle
+against three of the most well known engineering paradigms so we are
+always grounded in our approach to utilizing them.
+</p>
+
+<div id="outline-container-org16aa545" class="outline-2">
+<h2 id="org16aa545">Monolith vs Microservice</h2>
+<div class="outline-text-2" id="text-org16aa545">
+<p>
+We have come a long way since the 1950s in our approach to different
+design and architectural paradigms. Over the last 10 years or so, we
+all have been preached to about how great Microservice is and have drunk its
+Kool-Aid. It has penetrated engineering organizations to such a degree
+that it has become our new hammer. Now all of a sudden, we start
+waking up to its trade offs and even going back to old monolith
+architecture. What happened? We just did not ground ourselves when
+we made a decision to adopt microservice style. The question we should
+have asked ourselves before committing to microservice or monolith is:
+How it enables us to make whatever we are doing easy to change? Does
+monolith style make our system easy to change? Maybe. Does
+microservice approach enables us easy to change our system? Maybe. So
+the definite answer to both questions is "it depends". So what should
+be the basis of our decision to go with one way or the other? Maybe
+an example in order to drive my point here. Let's say you're
+designing an e-commerce system. It has catalog, checkout and shipping
+components. Does putting all of the components into one service make
+the system easy to change for you? May be it will if you are the only
+person or your team are the only team working on it. Does putting all
+of the components into separate services make the system easy to
+change? May be it will if you have three separate teams working on
+them.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge70908d" class="outline-2">
+<h2 id="orge70908d">Top down vs bottom up design</h2>
+<div class="outline-text-2" id="text-orge70908d">
+<p>
+I have seen teams swear by one way or the other on this matter. From
+time to time, someone comes along to preach one over the other
+declaring the other approach is dead or should just be avoided. Every
+time when I face such a design issue, I always ask myself this
+question over and over again: Does top down or bottom up design
+enables me or my team to respond to change? Most of the time, I end up
+choosing both approaches because it helps me to focus on making the
+system easier to change. I tend to use following rule of thumb. When I
+have clear mental model, I use the bottom up approach so I can create
+layers of abstractions to compose better, which in turn enables me to
+make changes easier. When I have a high level of domain clarity, I
+tend to start with top down design because it helps me to focus on not
+that clear pieces in isolation, which in turn makes changes a lot more
+manageable.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org7360c89" class="outline-2">
+<h2 id="org7360c89">OO vs FP paradigm</h2>
+<div class="outline-text-2" id="text-org7360c89">
+<p>
+I was preached and have been preaching OO style of programming
+paradigm from since my college days and well into the early years of my
+profession. Then FP became the new style (old became new?) and all OO
+programming languages started to add more FP style constructs. Now we
+see debates over why FP is superior over OO and should be used over
+all cost claiming that OO is responsible for all the mess that we
+created over the last 20 years or so. Now, I came to realize that it
+is not this or that paradigm that is responsible for all the issues we
+created. Rather, it is the blind adoption of them by us as
+practitioners. Let us think about a minute what OO have given us when
+we started to adopt it: The ability to structure, reuse and share code
+across systems. Essentially, we were able to build/change information
+systems faster and easier than ever before. However, it did not hold
+up well against ETC principle with its humongous frameworks and so
+called best practices. Now, FP is in its renaissance and being
+preached as the savior at the cost of relegating OO to its
+oblivion. OO is a great tool set in our arsenal for certain types of
+problem domain and SmallTalk is an example of how it should be
+practiced. FP is another excellent way of approaching to engineering
+problem in that it encourages to treat systems as referential data
+transformation pipeline. Does it inherently make the system easy to
+change? Not really. We are quite capable of making a spaghetti mess
+out of FP as much as we have done with OO. See a pattern here? ETC
+principle grounds your choice of paradigm into its proper place: Is
+x helping you to make changes easier? If not, then x most likely not
+best route for you.
+</p>
+
+<p>
+I can go on and on with arguing ETC be the test to pass for all of the
+paradigms and even development approaches such as TDD, BDD and
+DDD. For example, If your code is easy to change, it will most likely
+be easy to test, maps most likely well with your domain and most
+likely models use cases better. You can adopt any approach or
+principles such as SOLID principle if you consistently ask yourself:
+Does this really helps me to make changes easier? If it passes this
+test, adopt it, if not avoid it.
+</p>
+
+<p>
+It is not my intention to make you dogmatic about <b>Easy To Change</b>
+(ETC) principle but rather to convince yourself to have one principle
+to ground all other aspects of your engineering endeavors. Happy
+engineering and never forget to have and share fun coding!
+</p>
+</div>
+</div>
+<div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-engineering.html">engineering</a> </div>
 <div class="post-date">10 Mar 2020</div><h1 class="post-title"><a href="https://www.birkey.co/2020-03-10-one-command-to-drive-all.html">One command to drive all</a></h1>
 <p>
 Over the years, I got to learn various package managers either due to tinkering with work or home infrastructure. I need to keep remembering if I am on Ubuntu, OSX or on OpenBSD if I want to install/remove/list/update packages. wouldn't it be nice if all I need to remember is just one command <b>pkg</b> with following neumonic options?
@@ -387,167 +523,11 @@ it. You can also version control the keymap files in case you want to
 share or change it later. Here is my layout if you are curious:
 <a href="https://drive.google.com/open?id=1M6x73xg2kAfkL8AvSM31X8MpW3pPlXcX">https://drive.google.com/open?id=1M6x73xg2kAfkL8AvSM31X8MpW3pPlXcX</a>
 </p>
-<div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-keyboard.html">keyboard</a> </div>
-<div class="post-date">04 Aug 2019</div><h1 class="post-title"><a href="https://www.birkey.co/2019-08-04-why-emacs.html">Why Emacs</a></h1>
-<p>
-I have been thinking about writing up my experience of using Emacs and
-its positive influence on me as a Software Craftsman over the last 10
-years or so. Over the weekend, I came across a a blog post by the CTO
-of a company, who put it very well that have really resonated with
-me. It is a great read, not too long not too short, that I strongly
-recommend you go ahead read and come back here to continue with the
-rest of what I had to say. Here is the link: <a href="https://www.fugue.co/blog/2018-08-09-two-years-with-emacs-as-a-cto.html">Two Years With Emacs as a
-CEO (and now CTO)</a>. 
-</p>
-
-<p>
-So I am not going to repeat what he said about Emacs and why he still
-loves to use it to get things done. I am going to add following points
-on top of what he wrote there:
-</p>
-<div id="outline-container-org772d81f" class="outline-2">
-<h2 id="org772d81f">Emacs is a great workbench</h2>
-<div class="outline-text-2" id="text-org772d81f">
-<p>
-I see Emacs as an extremely well designed workbench that will evolve
-with you as your work environment, technology and paradigms
-change. Emacs is a live programming environment where you can change
-every aspects of its functionalities, be it a simple text editing to a
-complex work flow where you can interact with many external
-systems. One of a startup that I worked had a mode where we have
-interacted with our live system written in Clojure via its CLI
-interface using `comint-mode`, which you should really checkout if you
-are not familiar with it. You can use Emacs as the client with uniform
-interface to many of the CLI, API and even for <a href="https://en.wikipedia.org/wiki/Application_binary_interface">ABI</a>. For example `EXWM`,
-which is an Window Manager, is a great example.
-</p>
-</div>
-</div>
-<div id="outline-container-orgbd986d6" class="outline-2">
-<h2 id="orgbd986d6">Emacs is a great structured and unstructured text manipulation library</h2>
-<div class="outline-text-2" id="text-orgbd986d6">
-<p>
-This is what I personally like a lot about Emacs. As a programmer, we
-work with manipulating text all the time. Yes, there are great text
-Editors out there, which by the way I have used all of them myself
-before seeing the light of using Emacs. But I see all other
-editors/IDEs as a framework for the things they set out to do rather
-than a library that I can compose to solve a particular problem at
-hand. For example, I can use `smartparens` package for structured text
-editing of Clojure code.
-</p>
-</div>
-</div>
-<div id="outline-container-org61747c1" class="outline-2">
-<h2 id="org61747c1">Emacs helps you focus</h2>
-<div class="outline-text-2" id="text-org61747c1">
-<p>
-In this day of our age where everything tries to grab your constant
-attention, Emacs stands out as the most distraction free environment
-to be in. One might argue that Emacs user spends way more time
-configuration management, which is definitely true when you are just
-getting started with any new toolbox, I found I spend very little time
-with configuration or keeping it up to date. Once you are familiar with
-Emacs help system and built in Documentation, You can be pretty much
-on your own when it comes to how much you spend on customization. It
-is this freedom you get from using Emacs where you are in charge as to
-how much customization you would like. The reason I say Emacs helps
-you focus is due to the fact that you have the freedom to make it an
-distraction free writing/coding/communication environment to get done
-what matters the most to you and have a lot of fun along the way.
-</p>
-</div>
-</div>
-<div id="outline-container-org76e90eb" class="outline-2">
-<h2 id="org76e90eb">Emacs has a learning curve</h2>
-<div class="outline-text-2" id="text-org76e90eb">
-<p>
-Yes, I do acknowledge that Emacs has a learning curve. However, most
-of it is due to the wrong approach we tend to take when encountering an
-unknown. On hindsight, I wish I had following approach, which I do now
-all the time:
-</p>
-<ol class="org-ol">
-<li>Start with getting familiar with Emacs terminology such as windows,
-buffers and frames etc. The builtin documentation is great for that
-and it is just C-h i (Hit Control and letter `h` at the same time,
-then hit `i`, which stands for info). To read Emacs&rsquo; manual just
-enter `m` and select `Emacs` from minibuffer. Hmm, you might be
-wondering what is minibuffer, let us use this approach to find
-out. Press following C-h i m key sequence and type `Minibuffer` and
-hit enter. Voila, you are reading all about `Minibuffer` from the
-official Emacs manual. No other application that I have used comes
-close to the level of Emacs in terms of self documentation.</li>
-<li>Start with the goal of getting something done. I have two example
-that every programmer will benefit from learning: `Magit` and
-`Org-mode`. While you need to install `magit-mode`, which is a
-Emacs interface to git CLI, `org-mode` is built in. You will be
-surprised to find that it makes your git journey so much fun or
-your note organization so much enjoyable. I made the mistake of
-trying to memorize hot keys as much as I can before learning the
-hard truth of learning one key at a time as needed bases. I
-strongly recommend the only hot key you need at the beginning is
-`M-x`, where you just type a command so Emacs can execute for
-you. For Example, if you would like open (it is `visit` in Emacs
-speak) a file, just type `M-x` and type `file` then press tab key,
-select `find-file` in the completion buffer, now you can choose a
-file name from within the directory that you are in. It is just an
-example but knowing the fact that every action you perform in Emacs
-invokes an command, which is just an elisp function, is a very
-powerful realization. That means you can write an elisp function to
-have Emacs do whatever you like. You can also lookup what a command
-does using C-h f, then typing the name of the command. For example,
-C-h f then, type `org-insert-link` then enter and read on&#x2026;</li>
-<li>I advise against starting with Emacs using other&rsquo;s configuration
-including Emacs that comes with pre-configuration. As I have
-mentioned earlier, Emacs is a great library where you can pick and
-choose to fit your work style. You will loose this great aspects if
-you start with other&rsquo;s way of configuring/composing it. If you had
-to just start with a minimal config, put this in your `init.el`
-file and start changing/adding/organizing configs as you see
-fit. For example:</li>
-</ol>
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #b22222;">;; </span><span style="color: #b22222;">Emacs reads init.el file located in ~/.emacs.d at startup</span>
-<span style="color: #b22222;">;; </span><span style="color: #b22222;">bootstrap el-get</span>
-<span style="color: #7f7f7f;">(</span>add-to-list 'load-path <span style="color: #8b2252;">"~/.emacs.d/el-get/el-get"</span><span style="color: #7f7f7f;">)</span>
-<span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">unless</span> <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">require</span> '<span style="color: #008b8b;">el-get</span> nil 'noerror<span style="color: #7f7f7f;">)</span>
-  <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">with-current-buffer</span>
-      <span style="color: #7f7f7f;">(</span>url-retrieve-synchronously
-       <span style="color: #8b2252;">"https &#59833;/raw.githubusercontent.com/dimitri/el-get/master/el-get-install.el"</span><span style="color: #7f7f7f;">)</span>
-    <span style="color: #7f7f7f;">(</span>goto-char <span style="color: #7f7f7f;">(</span>point-max<span style="color: #7f7f7f;">))</span>
-    <span style="color: #7f7f7f;">(</span>eval-print-last-sexp<span style="color: #7f7f7f;">)))</span>
-
-<span style="color: #b22222;">;; </span><span style="color: #b22222;">Initialize available packages first</span>
-<span style="color: #7f7f7f;">(</span>package-refresh-contents t<span style="color: #7f7f7f;">)</span>
-
-<span style="color: #b22222;">;; </span><span style="color: #b22222;">The only package you need to get started</span>
-<span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">el-get-bundle</span> smex
-  <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">progn</span>
-    <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">require</span> '<span style="color: #008b8b;">smex</span><span style="color: #7f7f7f;">)</span>
-    <span style="color: #7f7f7f;">(</span>global-set-key <span style="color: #7f7f7f;">(</span>kbd <span style="color: #8b2252;">"M-x"</span><span style="color: #7f7f7f;">)</span> 'smex<span style="color: #7f7f7f;">)))</span>
-</pre>
-</div>
-<p>
-Above snippets sets you up to use `El-get`, a great package manager
-that I came to rely over the years and have never failed me. It also
-pulls in the only package you had to have before getting started,
-`smex` that makes the only command `M-x` you need much more
-intuitive. Then say if you want to try `magit`, just type M-x
-el-get-install, then `magit`. El-get will download it and install it
-so you can starting using it in your git projects. Once you can find
-your way around Emacs, you can start your journey of how best
-organize your config/customization as you go along. I use just one
-org file for it and you might or might not like it. Here is the file
-in its entirety if you are interested: <a href="./static/config.html">My config snapshot</a>
-</p>
-</div>
-</div>
-<div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-emacs.html">emacs</a> </div><div id="archive">
+<div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-keyboard.html">keyboard</a> </div><div id="archive">
 <a href="https://www.birkey.co/archive.html">Other posts</a>
 </div>
 </div>
 <div id="postamble" class="status"><br><center>
-           <div style="display: inline-block; vertical-align:middle;"></div></div>
+	     <div style="display: inline-block; vertical-align:middle;"></div></div>
 </body>
 </html>
