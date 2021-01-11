@@ -4,7 +4,137 @@
 <title><![CDATA[BirkeyCo]]></title>
 <description><![CDATA[BirkeyCo]]></description>
 <link>https://www.birkey.co/</link>
-<lastBuildDate>Sun, 27 Dec 2020 21:03:12 -0800</lastBuildDate>
+<lastBuildDate>Sun, 10 Jan 2021 17:26:46 -0800</lastBuildDate>
+<item>
+  <title><![CDATA[cURl to the rescue]]></title>
+  <description><![CDATA[
+<p>
+A web application tinkerer deals with malformed inputs, faulty
+networks, buggy software and everything in between. One tool that
+saved the day on more than one occasion is: <b>cURL</b>, which should be
+under every engineers' arsenal. Following are two examples how it
+proved to be just the right tool to reach for.
+</p>
+
+<p>
+Among many micro services writtent in Clojure, one of them exposed
+following logic via a REST API:
+</p>
+<ul class="org-ul">
+<li>Take a shortened URL, expand it to find the actual
+URL it is pointing to, and parse URL param to generate a JSON object
+of k/v to return to the caller.</li>
+</ul>
+
+<p>
+One of our client reported a bug where their Ad data dashboard did not
+show up one day. Looking at the log trace, I realized that above
+service might be failing. I had a choice of starting a full suite of
+our services to reproduce it or just using cURL from the terminal to
+find out what the Ad URL expanded to. Here is an example:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">curl -ILs https://bit.ly/2MSn9Xm
+</pre>
+</div>
+<p>
+Following is the output:
+</p>
+<pre class="example">
+| HTTP/2                       | 301                                                               |               |     |      |          |     |
+| server:                      | nginx                                                             |               |     |      |          |     |
+| date:                        | Sun,                                                              | 10            | Jan | 2021 | 22:59:35 | GMT |
+| content-type:                | text/html;                                                        | charset=utf-8 |     |      |          |     |
+| content-length:              | 152                                                               |               |     |      |          |     |
+| cache-control:               | private,                                                          | max-age=90    |     |      |          |     |
+| content-security-policy:     | referrer                                                          | always;       |     |      |          |     |
+| location:                    | https://www.birkey.co/2020-12-26-ETC-principle-to-ground-all.html |               |     |      |          |     |
+| referrer-policy:             | unsafe-url                                                        |               |     |      |          |     |
+| via:                         | 1.1                                                               | google        |     |      |          |     |
+| alt-svc:                     | clear                                                             |               |     |      |          |     |
+| HTTP/2                       | 200                                                               |               |     |      |          |     |
+| server:                      | GitHub.com                                                        |               |     |      |          |     |
+| content-type:                | text/html;                                                        | charset=utf-8 |     |      |          |     |
+| last-modified:               | Mon,                                                              | 28            | Dec | 2020 | 05:11:32 | GMT |
+| access-control-allow-origin: | *                                                                 |               |     |      |          |     |
+| etag:                        | 5fe96904-2616                                                     |               |     |      |          |     |
+| expires:                     | Sun,                                                              | 10            | Jan | 2021 | 23:09:36 | GMT |
+| cache-control:               | max-age=600                                                       |               |     |      |          |     |
+| x-proxy-cache:               | MISS                                                              |               |     |      |          |     |
+| x-github-request-id:         | 8A36:98E4:92929:AC1C3:5FFB86D7                                    |               |     |      |          |     |
+| accept-ranges:               | bytes                                                             |               |     |      |          |     |
+| date:                        | Sun,                                                              | 10            | Jan | 2021 | 22:59:36 | GMT |
+| via:                         | 1.1                                                               | varnish       |     |      |          |     |
+| age:                         | 0                                                                 |               |     |      |          |     |
+| x-served-by:                 | cache-pao17466-PAO                                                |               |     |      |          |     |
+| x-cache:                     | MISS                                                              |               |     |      |          |     |
+| x-cache-hits:                | 0                                                                 |               |     |      |          |     |
+| x-timer:                     | S1610319576.187969,VS0,VE28                                       |               |     |      |          |     |
+| vary:                        | Accept-Encoding                                                   |               |     |      |          |     |
+| x-fastly-request-id:         | 64128c1c6f907b66fc189d5c3cbb298b2c7e9eb7                          |               |     |      |          |     |
+| content-length:              | 9750                                                              |               |     |      |          |     |
+</pre>
+
+<p>
+The options <b>-ILs</b> tells cURL to query resource headers with location
+information in silent mode. After seeing the location information of
+the client's Ad URL, I was able to pinpoint the missing url param from
+the source data that our client is expecting. Once I informed this
+info to our client, they are able to fix their own issue with grace.
+</p>
+
+<p>
+Second time cURL came to the rescue is when a developer from
+my team reached out to me for a mysterious bug he was experiencing. An
+API call was failing for 50% of the time with truncated response that
+was causing error on his application. Not knowing anything about the
+application much, I asked him to call the API using cURL to eliminate
+the possibility of OS network related issues. Once I know that the API
+work is working 100% of the time via cURL, I narrowed the issues down
+to the application code. The application is written in Node and
+following are abbreviated version of how the JS code looks like:
+</p>
+<div class="org-src-container">
+<pre class="src src-javascript">function getFoo(){
+  return axios.get(urlFoo)
+}
+
+function getBar(url){
+  return axios.get(url)
+}
+
+function getFooBar(){
+ var foo = getFoo(); //block until we have a result
+ // this line below was failing due to malformed foo becuase it is truncated
+ var url = "magicUrl" //parse `foo`, construct url
+ var bar = getBar(url)
+ return parse(bar)
+}
+
+</pre>
+</div>
+<p>
+My teammate said that he did try increasing the timeout of the `axios`
+library but it did not help. I asked him to see if `axios` have
+some configuration setting related to buffer size or connection, and he
+confirmed that it does have `connection reuse` setting where it is
+default value are `false`. I asked him to try setting it to `true`,
+which he did and voila, API call went through with 100% success
+rate. Now, our problem is solved and we can move on with our
+lives.
+</p>
+
+<p>
+I just want to convince you how usefull <b>cURL</b> command is and you
+should use it whenever you can. I might write a post in the future on
+why the response was getting truncated and why reusing the connection
+helped solve the issue.
+</p>
+<div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-curl.html">curl</a> </div>]]></description>
+  <category><![CDATA[curl]]></category>
+  <link>https://www.birkey.co/2021-01-10-curl-to-the-rescue.html</link>
+  <pubDate>Sun, 10 Jan 2021 12:21:00 -0800</pubDate>
+</item>
 <item>
   <title><![CDATA[ETC Principle to ground all]]></title>
   <description><![CDATA[
@@ -456,7 +586,7 @@ keyboards. Having a good ergonomic keyboard is extremely important to
 avoid RSI. Since I started learning more about mechanical and
 ergonomic keyboards couple of years ago, I have experimented with many
 of them - different models, layouts, and switches. Finally, I settled
-down with following two: 
+down with following two:
 </p>
 <ul class="org-ul">
 <li><a href="https://kinesis-ergo.com/shop/advantage2/">Kinesis Advantage2</a></li>
@@ -506,7 +636,7 @@ folder within the cloned folder.</li>
 
 <p>
 <b>NOTE:</b> Remember to put your keyboard in flash mode by pressing a thin
-paper clip through a tiny hole on the back of the keyboard. 
+paper clip through a tiny hole on the back of the keyboard.
 </p>
 
 <p>
@@ -535,7 +665,7 @@ of a company, who put it very well that have really resonated with
 me. It is a great read, not too long not too short, that I strongly
 recommend you go ahead read and come back here to continue with the
 rest of what I had to say. Here is the link: <a href="https://www.fugue.co/blog/2018-08-09-two-years-with-emacs-as-a-cto.html">Two Years With Emacs as a
-CEO (and now CTO)</a>. 
+CEO (and now CTO)</a>.
 </p>
 
 <p>
@@ -700,7 +830,7 @@ ordering:
 <div class="org-src-container">
 <pre class="src src-clojure"><span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">defn</span> <span style="color: #0000ff;">toggle-order</span> <span style="color: #7f7f7f;">[</span>order<span style="color: #7f7f7f;">]</span>
   <span style="color: #7f7f7f;">(</span>order {<span style="color: #008b8b;">:asc</span> <span style="color: #008b8b;">:desc</span>
-          <span style="color: #008b8b;">:desc</span> <span style="color: #008b8b;">:asc</span>}<span style="color: #7f7f7f;">))</span>
+	  <span style="color: #008b8b;">:desc</span> <span style="color: #008b8b;">:asc</span>}<span style="color: #7f7f7f;">))</span>
 </pre>
 </div>
 <p>
@@ -768,7 +898,7 @@ I hope someone from both community find above helpful.
 <p>
 I noticed couple of new features being added to Clojure 1.10. One is
 <b>tap</b>, which is added to the core ns, and the other is <b>datafy</b>, which
-is added to clojure.datafy ns.  
+is added to clojure.datafy ns.
 </p>
 
 <p>
@@ -791,7 +921,7 @@ following uses cases for tap:
 </ul>
 <p>
 Enough being said, let us see with a simple example to cover first
-uses case I said above. 
+uses case I said above.
 </p>
 <div class="org-src-container">
 <pre class="src src-clojure"><span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">def</span> <span style="color: #a0522d;">context</span> <span style="color: #7f7f7f;">(</span>StringBuilder.<span style="color: #7f7f7f;">))</span>
@@ -938,7 +1068,7 @@ packages and rebuild the cache.</li>
 
 <p>
 If you tried all of the above and your issue still did not get
-resolved, you might want to post it in VoidLinux forum for help. 
+resolved, you might want to post it in VoidLinux forum for help.
 </p>
 <div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-voidlinux.html">VoidLinux</a> </div>]]></description>
   <category><![CDATA[VoidLinux]]></category>
@@ -1035,7 +1165,7 @@ me no time to set it up and start blogging. Below is my setup:
   <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">setq</span> org-export-with-section-numbers nil<span style="color: #7f7f7f;">)</span>
 
   <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">setq</span> org-static-blog-page-header
-        <span style="color: #8b2252;">"&lt;meta name=\"author\" content=\"Kasim Tuman\ &#60048;</span>
+	<span style="color: #8b2252;">"&lt;meta name=\"author\" content=\"Kasim Tuman\ &#60048;</span>
 <span style="color: #8b2252;">&lt;meta name=\"referrer\" content=\"no-referrer\ &#60048;</span>
 <span style="color: #8b2252;">&lt;link href= \"static/style.css\" rel=\"stylesheet\" type=\"text/css\"  &#59810;</span>
 <span style="color: #8b2252;">&lt;link rel=\"icon\" href=\"static/favicon.ico\ &#60048;</span>
@@ -1050,7 +1180,7 @@ me no time to set it up and start blogging. Below is my setup:
 <span style="color: #8b2252;">&lt;meta name=\"viewport\" content=\"initial-scale=1,width=device-width,minimum-scale=1\ &#60048;"</span><span style="color: #7f7f7f;">)</span>
 
   <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">setq</span> org-static-blog-page-preamble
-        <span style="color: #8b2252;">"&lt;div class=\"header\ &#60048;</span>
+	<span style="color: #8b2252;">"&lt;div class=\"header\ &#60048;</span>
 <span style="color: #8b2252;">  &lt;a href=\"https &#59833;/birkey.co\ &#60048;Code, Data and Network &#59883;a&gt;</span>
 <span style="color: #8b2252;">  &lt;div class=\"sitelinks\ &#60048;</span>
 <span style="color: #8b2252;">    &lt;a href=\"https &#59833;/twitter.com/KasimTuman\ &#60048;Twitter &#59883;a&gt; | &lt;a href=\"https &#59833;/github.com/oneness\ &#60048;Github &#59883;a&gt;</span>
@@ -1058,7 +1188,7 @@ me no time to set it up and start blogging. Below is my setup:
  <span style="color: #8b2252;">&#59883;div&gt;"</span><span style="color: #7f7f7f;">)</span>
 
   <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">setq</span> org-static-blog-page-postamble
-        <span style="color: #8b2252;">"&lt;div id=\"archive\ &#60048;</span>
+	<span style="color: #8b2252;">"&lt;div id=\"archive\ &#60048;</span>
 <span style="color: #8b2252;">  &lt;a href=\"https &#59833;/www.birkey.co/archive.html\ &#60048;Other posts &#59883;a&gt;</span>
  <span style="color: #8b2252;">&#59883;div&gt;</span>
 <span style="color: #8b2252;">&lt;center&gt;&lt;a rel=\"license\" href=\"https &#59833;/creativecommons.org/licenses/by-sa/3.0/\ &#60048;&lt;img alt=\"Creative Commons License\" style=\"border-width:0\" src=\"https &#59833;/i.creativecommons.org/l/by-sa/3.0/88x31.png\"  &#59810; &#59883;a&gt;&lt;br  &#59810;&lt;span xmlns:dct=\"https &#59833;/purl.org/dc/terms/\" href=\"https &#59833;/purl.org/dc/dcmitype/Text\" property=\"dct:title\" rel=\"dct:type\ &#60048;birkey.co &#59883;span&gt; by &lt;a xmlns:cc=\"https &#59833;/creativecommons.org/ns#\" href=\"https &#59833;/www.birkey.co\" property=\"cc:attributionName\" rel=\"cc:attributionURL\ &#60048;Kasim Tuman &#59883;a&gt; is licensed under a &lt;a rel=\"license\" href=\"https &#59833;/creativecommons.org/licenses/by-sa/3.0/\ &#60048;Creative Commons Attribution-ShareAlike 3.0 Unported License &#59883;a&gt;. &#59883;center&gt;"</span><span style="color: #7f7f7f;">)</span>

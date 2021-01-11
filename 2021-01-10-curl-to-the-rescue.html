@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="alternate"
+      type="application/rss+xml"
+      href="https://www.birkey.co/rss.xml"
+      title="RSS feed for https://www.birkey.co/">
+<title>cURl to the rescue</title>
+<meta name="author" content="Kasim Tuman">
+	     <meta name="referrer" content="no-referrer">
+	     <link href= "static/style.css" rel="stylesheet" type="text/css" />
+	     <link rel="icon" href="static/favicon.ico">
+	     <link rel="apple-touch-icon-precomposed" href="static/birkey_logo.png">
+	     <link rel="msapplication-TitleImage" href="static/birkey_logo.png">
+	     <link rel="msapplication-TitleColor" href="#0141ff">
+	     <link rel="alternate" type="application/rss+xml"  title="RSS Feed for birkey.co" href="/rss.xml"
+	     <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8">
+	     <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1"></head>
+<body>
+<div id="preamble" class="status"><br><center>
+    <div style="display: inline-block; vertical-align:middle;">
+<a href="https://www.birkey.co/index.html" style="text-decoration: none;"><b>BIRKEY CONSULTING</b><br>
+</a><hr/><div style="text-align: justify;display: inline-block; width: 100%;">
+<a class="title" href="https://www.birkey.co/resume/resume.html">ABOUT</a> &nbsp;<a class="title" href="https://github.com/oneness">GITHUB</a> &nbsp;<a class="title" href="https://www.birkey.co/rss.xml">RSS</a> &nbsp;<a class="title" href="https://www.birkey.co/archive.html">ARCHIVE</a> &nbsp;<a class="title" href="https://paypal.me/ktuman">DONATE</a></div></div>
+</center><br><br>
+<div style="margin-bottom: 3ch;text-transform: none;"></div>
+<div class='heading'>PREFACE</div><hr/>
+<p>  I enjoy engineering information systems optimized for end user and
+developer productivity, which can only be achieved by being vigilant
+about keeping IT as simple as IT possibly can be. If you are into
+Clojure, F# or other Programming Languages that I should check
+out, drop me a line via ktuman at acm dot org.
+<b>Note: I am NOT currently available for hire and do NOT respond to third-party
+recruiters</b>.</p></div>
+<div id="content">
+<div class="post-date">10 Jan 2021</div><h1 class="post-title"><a href="https://www.birkey.co/2021-01-10-curl-to-the-rescue.html">cURl to the rescue</a></h1>
+<p>
+A web application tinkerer deals with malformed inputs, faulty
+networks, buggy software and everything in between. One tool that
+saved the day on more than one occasion is: <b>cURL</b>, which should be
+under every engineers' arsenal. Following are two examples how it
+proved to be just the right tool to reach for.
+</p>
+
+<p>
+Among many micro services writtent in Clojure, one of them exposed
+following logic via a REST API:
+</p>
+<ul class="org-ul">
+<li>Take a shortened URL, expand it to find the actual
+URL it is pointing to, and parse URL param to generate a JSON object
+of k/v to return to the caller.</li>
+</ul>
+
+<p>
+One of our client reported a bug where their Ad data dashboard did not
+show up one day. Looking at the log trace, I realized that above
+service might be failing. I had a choice of starting a full suite of
+our services to reproduce it or just using cURL from the terminal to
+find out what the Ad URL expanded to. Here is an example:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">curl -ILs https://bit.ly/2MSn9Xm
+</pre>
+</div>
+<p>
+Following is the output:
+</p>
+<pre class="example">
+| HTTP/2                       | 301                                                               |               |     |      |          |     |
+| server:                      | nginx                                                             |               |     |      |          |     |
+| date:                        | Sun,                                                              | 10            | Jan | 2021 | 22:59:35 | GMT |
+| content-type:                | text/html;                                                        | charset=utf-8 |     |      |          |     |
+| content-length:              | 152                                                               |               |     |      |          |     |
+| cache-control:               | private,                                                          | max-age=90    |     |      |          |     |
+| content-security-policy:     | referrer                                                          | always;       |     |      |          |     |
+| location:                    | https://www.birkey.co/2020-12-26-ETC-principle-to-ground-all.html |               |     |      |          |     |
+| referrer-policy:             | unsafe-url                                                        |               |     |      |          |     |
+| via:                         | 1.1                                                               | google        |     |      |          |     |
+| alt-svc:                     | clear                                                             |               |     |      |          |     |
+| HTTP/2                       | 200                                                               |               |     |      |          |     |
+| server:                      | GitHub.com                                                        |               |     |      |          |     |
+| content-type:                | text/html;                                                        | charset=utf-8 |     |      |          |     |
+| last-modified:               | Mon,                                                              | 28            | Dec | 2020 | 05:11:32 | GMT |
+| access-control-allow-origin: | *                                                                 |               |     |      |          |     |
+| etag:                        | 5fe96904-2616                                                     |               |     |      |          |     |
+| expires:                     | Sun,                                                              | 10            | Jan | 2021 | 23:09:36 | GMT |
+| cache-control:               | max-age=600                                                       |               |     |      |          |     |
+| x-proxy-cache:               | MISS                                                              |               |     |      |          |     |
+| x-github-request-id:         | 8A36:98E4:92929:AC1C3:5FFB86D7                                    |               |     |      |          |     |
+| accept-ranges:               | bytes                                                             |               |     |      |          |     |
+| date:                        | Sun,                                                              | 10            | Jan | 2021 | 22:59:36 | GMT |
+| via:                         | 1.1                                                               | varnish       |     |      |          |     |
+| age:                         | 0                                                                 |               |     |      |          |     |
+| x-served-by:                 | cache-pao17466-PAO                                                |               |     |      |          |     |
+| x-cache:                     | MISS                                                              |               |     |      |          |     |
+| x-cache-hits:                | 0                                                                 |               |     |      |          |     |
+| x-timer:                     | S1610319576.187969,VS0,VE28                                       |               |     |      |          |     |
+| vary:                        | Accept-Encoding                                                   |               |     |      |          |     |
+| x-fastly-request-id:         | 64128c1c6f907b66fc189d5c3cbb298b2c7e9eb7                          |               |     |      |          |     |
+| content-length:              | 9750                                                              |               |     |      |          |     |
+</pre>
+
+<p>
+The options <b>-ILs</b> tells cURL to query resource headers with location
+information in silent mode. After seeing the location information of
+the client's Ad URL, I was able to pinpoint the missing url param from
+the source data that our client is expecting. Once I informed this
+info to our client, they are able to fix their own issue with grace.
+</p>
+
+<p>
+Second time cURL came to the rescue is when a developer from
+my team reached out to me for a mysterious bug he was experiencing. An
+API call was failing for 50% of the time with truncated response that
+was causing error on his application. Not knowing anything about the
+application much, I asked him to call the API using cURL to eliminate
+the possibility of OS network related issues. Once I know that the API
+work is working 100% of the time via cURL, I narrowed the issues down
+to the application code. The application is written in Node and
+following are abbreviated version of how the JS code looks like:
+</p>
+<div class="org-src-container">
+<pre class="src src-javascript">function getFoo(){
+  return axios.get(urlFoo)
+}
+
+function getBar(url){
+  return axios.get(url)
+}
+
+function getFooBar(){
+ var foo = getFoo(); //block until we have a result
+ // this line below was failing due to malformed foo becuase it is truncated
+ var url = "magicUrl" //parse `foo`, construct url
+ var bar = getBar(url)
+ return parse(bar)
+}
+
+</pre>
+</div>
+<p>
+My teammate said that he did try increasing the timeout of the `axios`
+library but it did not help. I asked him to see if `axios` have
+some configuration setting related to buffer size or connection, and he
+confirmed that it does have `connection reuse` setting where it is
+default value are `false`. I asked him to try setting it to `true`,
+which he did and voila, API call went through with 100% success
+rate. Now, our problem is solved and we can move on with our
+lives.
+</p>
+
+<p>
+I just want to convince you how usefull <b>cURL</b> command is and you
+should use it whenever you can. I might write a post in the future on
+why the response was getting truncated and why reusing the connection
+helped solve the issue.
+</p>
+<div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-curl.html">curl</a> </div></div>
+<div id="postamble" class="status"><br><center>
+	   <div style="display: inline-block; vertical-align:middle;"></div></div>
+</body>
+</html>
