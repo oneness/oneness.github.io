@@ -6,18 +6,17 @@
 * Personal Statement
   I enjoy engineering information systems optimized for end user and
   developer productivity, which can only be achieved by being vigilant
-  about keeping IT as simple as IT possibly can be. If you are into
-  Clojure, Haskell or other Programming Languages that I should check
-  out, drop me a line via ktuman at acm dot org.
-  *Note: I am NOT currently available for hire and do NOT respond to third-party
-  recruiters.*
+  about keeping IT as simple as IT can be. If you are into Clojure,
+  Haskell, F# or other Programming Languages that I should check out,
+  drop me a line via ktuman at acm dot org. *Note: I am NOT currently
+  available for hire and do NOT respond to third-party recruiters.*
 
 * Work Experience
 - *2016/02 - Present:* Owner of [[https://www.birkey.co][Birkey Consulting]]
-  - Coaching, Mentoring and Leading Engineering teams to design,
-    develop and deliver.
+  - Building, Mentoring and Leading Engineering teams at Startups to
+    design, develop and deliver great products.
 
-- *2018/11 - Present:* Principal Software Engineer [[https://tapclicks.com][TapClicks Inc]]
+- *2018/11 - Present:* Director of Engineering [[https://tapclicks.com][TapClicks Inc]]
   - Led development on the Google Sheets product, enabling
     customers to see all of their cross-network marketing data in
     spreadsheets
