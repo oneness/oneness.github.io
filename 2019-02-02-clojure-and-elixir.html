@@ -5,30 +5,26 @@
 <link rel="alternate"
       type="application/rss+xml"
       href="https://www.birkey.co/rss.xml"
-      title="RSS feed for https://www.birkey.co/"/>
+      title="RSS feed for https://www.birkey.co/">
 <title>Thoughts on Elixir Community by a Clojure Developer</title>
 <meta name="author" content="Kasim Tuman">
-	       <meta name="referrer" content="no-referrer">
-	       <link href= "static/style.css" rel="stylesheet" type="text/css" />
-	       <link rel="icon" href="static/favicon.ico">
-	       <link rel="apple-touch-icon-precomposed" href="static/birkey_logo.png">
-	       <link rel="msapplication-TitleImage" href="static/birkey_logo.png">
-	       <link rel="msapplication-TitleColor" href="#0141ff">
-	       <link rel="alternate" type="application/rss+xml"  title="RSS Feed for birkey.co" href="/rss.xml"
-	       <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8">
-	       <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1"></head>
+	     <meta name="referrer" content="no-referrer">
+	     <link href= "static/style.css" rel="stylesheet" type="text/css" />
+	     <link rel="icon" href="static/favicon.ico">
+	     <link rel="apple-touch-icon-precomposed" href="static/birkey_logo.png">
+	     <link rel="msapplication-TitleImage" href="static/birkey_logo.png">
+	     <link rel="msapplication-TitleColor" href="#0141ff">
+	     <link rel="alternate" type="application/rss+xml"  title="RSS Feed for birkey.co" href="/rss.xml"
+	     <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8">
+	     <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1"></head>
 <body>
-<div id="preamble" class="status">
-<br><center>
-      <div style="display: inline-block; vertical-align:middle;">
-  <a href="https://www.birkey.co/index.html" style="text-decoration: none;"><b>KASIM TUMAN'S WEBSITE</b><br>
-  </a><hr/><div style="text-align: justify;display: inline-block; width: 100%;">
-  <a class="title" href="https://www.birkey.co/resume/resume.html">ABOUT</a> &nbsp;<a class="title" href="https://github.com/oneness">GITHUB</a> &nbsp;<a class="title" href="https://www.birkey.co/rss.xml">RSS</a> &nbsp;<a class="title" href="https://www.birkey.co/archive.html">ARCHIVE</a> &nbsp;<a class="title" href="https://paypal.me/ktuman">DONATE</a></div></div>
-  </center><br><br>
-  <div style="margin-bottom: 3ch;text-transform: none;">
-  </div>
-  <div class='heading'>Kasim Tuman's Website</div><hr/>
-  <p>This is my personal website. You can find here my codes and ideas about programming. </p></div>
+<div id="preamble" class="status"><br><center>
+    <div style="display: inline-block; vertical-align:middle;">
+<a href="https://www.birkey.co/index.html" style="text-decoration: none;"><b>BIRKEY CONSULTING</b><br>
+</a><hr/><div style="text-align: justify;display: inline-block; width: 100%;">
+<a class="title" href="https://www.birkey.co/resume/resume.html">ABOUT</a> &nbsp;<a class="title" href="https://github.com/oneness">GITHUB</a> &nbsp;<a class="title" href="https://www.birkey.co/rss.xml">RSS</a> &nbsp;<a class="title" href="https://www.birkey.co/archive.html">ARCHIVE</a> &nbsp;<a class="title" href="https://paypal.me/ktuman">DONATE</a></div></div>
+</center><br><br>
+<div style="margin-bottom: 3ch;text-transform: none;"></div></div>
 <div id="content">
 <div class="post-date">02 Feb 2019</div><h1 class="post-title"><a href="https://www.birkey.co/2019-02-02-clojure-and-elixir.html">Thoughts on Elixir Community by a Clojure Developer</a></h1>
 <p>
@@ -40,9 +36,9 @@ example of this, consider a feature where you need to toggle the sort
 ordering:
 </p>
 <div class="org-src-container">
-<pre class="src src-clojure"><span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">defn</span> <span style="color: #0000ff;">toggle-order</span> <span style="color: #7f7f7f;">[</span>order<span style="color: #7f7f7f;">]</span>
-  <span style="color: #7f7f7f;">(</span>order {<span style="color: #008b8b;">:asc</span> <span style="color: #008b8b;">:desc</span>
-          <span style="color: #008b8b;">:desc</span> <span style="color: #008b8b;">:asc</span>}<span style="color: #7f7f7f;">))</span>
+<pre class="src src-clojure">(defn toggle-order [order]
+  (order {:asc :desc
+	  :desc :asc}))
 </pre>
 </div>
 <p>
@@ -89,7 +85,7 @@ Mix</b>, <b>Pheonix Framework</b>, <b>Nerve</b>, <b>Ecto</b>, and <b>absinthe - 
 GraphQL toolkit for Elixir</b>.</li>
 <li>Elixir community is pretty mature in terms of keeping the core
 language small and extensible, which is abundantly clear from the
-creator of Elixir, Jose Valim&rsquo;s 2018 ElixirConf US keynote.</li>
+creator of Elixir, Jose Valim's 2018 ElixirConf US keynote.</li>
 <li>Elixir community is super focused on Documentation and Developer
 happiness by having great tooling and convention that they all love
 and agreed upon such as <b>mix format</b></li>
@@ -100,6 +96,6 @@ I hope someone from both community find above helpful.
 </p>
 <div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-clojure.html">clojure</a> <a href="https://www.birkey.co/tag-elixir.html">elixir</a> </div></div>
 <div id="postamble" class="status"><br><center>
-      <div style="display: inline-block; vertical-align:middle;"></div></div>
+	   <div style="display: inline-block; vertical-align:middle;"></div></div>
 </body>
 </html>

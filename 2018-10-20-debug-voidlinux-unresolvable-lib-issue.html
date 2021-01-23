@@ -5,30 +5,26 @@
 <link rel="alternate"
       type="application/rss+xml"
       href="https://www.birkey.co/rss.xml"
-      title="RSS feed for https://www.birkey.co/"/>
+      title="RSS feed for https://www.birkey.co/">
 <title>Debug VoidLinux unresolvable lib issue</title>
 <meta name="author" content="Kasim Tuman">
-	       <meta name="referrer" content="no-referrer">
-	       <link href= "static/style.css" rel="stylesheet" type="text/css" />
-	       <link rel="icon" href="static/favicon.ico">
-	       <link rel="apple-touch-icon-precomposed" href="static/birkey_logo.png">
-	       <link rel="msapplication-TitleImage" href="static/birkey_logo.png">
-	       <link rel="msapplication-TitleColor" href="#0141ff">
-	       <link rel="alternate" type="application/rss+xml"  title="RSS Feed for birkey.co" href="/rss.xml"
-	       <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8">
-	       <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1"></head>
+	     <meta name="referrer" content="no-referrer">
+	     <link href= "static/style.css" rel="stylesheet" type="text/css" />
+	     <link rel="icon" href="static/favicon.ico">
+	     <link rel="apple-touch-icon-precomposed" href="static/birkey_logo.png">
+	     <link rel="msapplication-TitleImage" href="static/birkey_logo.png">
+	     <link rel="msapplication-TitleColor" href="#0141ff">
+	     <link rel="alternate" type="application/rss+xml"  title="RSS Feed for birkey.co" href="/rss.xml"
+	     <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8">
+	     <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1"></head>
 <body>
-<div id="preamble" class="status">
-<br><center>
-      <div style="display: inline-block; vertical-align:middle;">
-  <a href="https://www.birkey.co/index.html" style="text-decoration: none;"><b>KASIM TUMAN'S WEBSITE</b><br>
-  </a><hr/><div style="text-align: justify;display: inline-block; width: 100%;">
-  <a class="title" href="https://www.birkey.co/resume/resume.html">ABOUT</a> &nbsp;<a class="title" href="https://github.com/oneness">GITHUB</a> &nbsp;<a class="title" href="https://www.birkey.co/rss.xml">RSS</a> &nbsp;<a class="title" href="https://www.birkey.co/archive.html">ARCHIVE</a> &nbsp;<a class="title" href="https://paypal.me/ktuman">DONATE</a></div></div>
-  </center><br><br>
-  <div style="margin-bottom: 3ch;text-transform: none;">
-  </div>
-  <div class='heading'>Kasim Tuman's Website</div><hr/>
-  <p>This is my personal website. You can find here my codes and ideas about programming. </p></div>
+<div id="preamble" class="status"><br><center>
+    <div style="display: inline-block; vertical-align:middle;">
+<a href="https://www.birkey.co/index.html" style="text-decoration: none;"><b>BIRKEY CONSULTING</b><br>
+</a><hr/><div style="text-align: justify;display: inline-block; width: 100%;">
+<a class="title" href="https://www.birkey.co/resume/resume.html">ABOUT</a> &nbsp;<a class="title" href="https://github.com/oneness">GITHUB</a> &nbsp;<a class="title" href="https://www.birkey.co/rss.xml">RSS</a> &nbsp;<a class="title" href="https://www.birkey.co/archive.html">ARCHIVE</a> &nbsp;<a class="title" href="https://paypal.me/ktuman">DONATE</a></div></div>
+</center><br><br>
+<div style="margin-bottom: 3ch;text-transform: none;"></div></div>
 <div id="content">
 <div class="post-date">20 Oct 2018</div><h1 class="post-title"><a href="https://www.birkey.co/2018-10-20-debug-voidlinux-unresolvable-lib-issue.html">Debug VoidLinux unresolvable lib issue</a></h1>
 <p>
@@ -38,48 +34,48 @@ old version of it installed on one of my spare laptop. The issue started as foll
 </p>
 <div class="org-src-container">
 <pre class="src src-shell">xbps-install -Su
-<span style="color: #b22222;"># </span><span style="color: #b22222;">resulted in following:</span>
-<span style="color: #b22222;"># </span><span style="color: #b22222;">mozjs: broken, unresolvable shlib `libicu.so'</span>
-<span style="color: #b22222;"># </span><span style="color: #b22222;">Transaction aborted due to unresolved shlibs.</span>
+# resulted in following:
+# mozjs: broken, unresolvable shlib `libicu.so'
+# Transaction aborted due to unresolved shlibs.
 </pre>
 </div>
 <p>
 I do not now about you but I usually start with a google search of
 what I think is somewhat general terms in my error message, which is
-<i><b>&ldquo;Transaction aborted due to unresolved shlibs&rdquo;</b></i> in my case. Searching
+<i><b>"Transaction aborted due to unresolved shlibs"</b></i> in my case. Searching
 with the above term came up with number of results and all point to
 the build system is still running. You can check the status of it
 here: <a href="https://build.voidlinux.eu/waterfall">Void Build Status</a>, which I did find that all is green and
 idle. So it did not help me resolve my issue. Then, I decided to do
-one more search with <i><b>&ldquo;mozjs: broken, unresolvable shlib
-`libicu.so&rsquo;&rdquo;</b></i>, which is more specific to the state of my box only but
+one more search with <i><b>"mozjs: broken, unresolvable shlib
+`libicu.so'"</b></i>, which is more specific to the state of my box only but
 that did not help me go anywhere. Then I decided to debug it
 myself. Following is my commandline session how I resolved it:
 </p>
 <div class="org-src-container">
-<pre class="src src-shell"><span style="color: #b22222;"># </span><span style="color: #b22222;">Ran the command again to make sure I have above issue </span>
+<pre class="src src-shell"># Ran the command again to make sure I have above issue 
 xbps-install -Su
-<span style="color: #b22222;"># </span><span style="color: #b22222;">again resulted in following:</span>
-<span style="color: #b22222;"># </span><span style="color: #b22222;">mozjs: broken, unresolvable shlib `libicu.so'</span>
-<span style="color: #b22222;"># </span><span style="color: #b22222;">Transaction aborted due to unresolved shlibs.</span>
-<span style="color: #b22222;"># </span><span style="color: #b22222;">Notice the  &#59808;mozjs &#59746;, which is my clue. Then I did:</span>
+# again resulted in following:
+# mozjs: broken, unresolvable shlib `libicu.so'
+# Transaction aborted due to unresolved shlibs.
+# Notice the /*mozjs*/, which is my clue. Then I did:
 xbps-query -Rs mozjs
-<span style="color: #b22222;"># </span><span style="color: #b22222;">from the output, I confirmed that it was not installed on my box,</span>
-<span style="color: #b22222;"># </span><span style="color: #b22222;">which is my second clue to check if my repos url are</span>
-<span style="color: #b22222;"># </span><span style="color: #b22222;">up-to-date. Remember it is a year old version of VoidLinux.  I</span>
-<span style="color: #b22222;"># </span><span style="color: #b22222;">noticed from the output of xpbs-install -u, that the</span>
-<span style="color: #b22222;"># </span><span style="color: #b22222;">void-repo-nonfree url does indeed point to an old url. So, I did:</span>
-xbps-remove void-repo-nonfree  &#59713; xbps-install void-repo-nonfree
-<span style="color: #b22222;"># </span><span style="color: #b22222;">to make sure my repo url is up-to-date. Then it is time to clean my</span>
-<span style="color: #b22222;"># </span><span style="color: #b22222;">repo cache and remove any packages that might be orphened since my</span>
-<span style="color: #b22222;"># </span><span style="color: #b22222;">repo url is pointing to a different url now. Using manpages for</span>
-<span style="color: #b22222;"># </span><span style="color: #b22222;">xpbs-remove, I can do above with:</span>
+# from the output, I confirmed that it was not installed on my box,
+# which is my second clue to check if my repos url are
+# up-to-date. Remember it is a year old version of VoidLinux.  I
+# noticed from the output of xpbs-install -u, that the
+# void-repo-nonfree url does indeed point to an old url. So, I did:
+xbps-remove void-repo-nonfree &amp;&amp; xbps-install void-repo-nonfree
+# to make sure my repo url is up-to-date. Then it is time to clean my
+# repo cache and remove any packages that might be orphened since my
+# repo url is pointing to a different url now. Using manpages for
+# xpbs-remove, I can do above with:
 xbps-remove -Oo
-<span style="color: #b22222;"># </span><span style="color: #b22222;">Then I ran:</span>
+# Then I ran:
 xbps-install -Su
-<span style="color: #b22222;"># </span><span style="color: #b22222;">Voila!, My one year old box is up-to-date without any issues now.</span>
-<span style="color: #b22222;"># </span><span style="color: #b22222;">After all of this, I just made an one liner alias in my shell config:</span>
-<span style="color: #483d8b;">alias</span> <span style="color: #a0522d;">c</span>=<span style="color: #8b2252;">'xbps-remove void-repo-nonfree  &#59713; xbps-install void-repo-nonfree  &#59713; xbps-install -Su </span>
+# Voila!, My one year old box is up-to-date without any issues now.
+# After all of this, I just made an one liner alias in my shell config:
+alias c='xbps-remove void-repo-nonfree &amp;&amp; xbps-install void-repo-nonfree &amp;&amp; xbps-install -Su 
 </pre>
 </div>
 
@@ -103,6 +99,6 @@ resolved, you might want to post it in VoidLinux forum for help.
 </p>
 <div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-voidlinux.html">VoidLinux</a> </div></div>
 <div id="postamble" class="status"><br><center>
-      <div style="display: inline-block; vertical-align:middle;"></div></div>
+	   <div style="display: inline-block; vertical-align:middle;"></div></div>
 </body>
 </html>

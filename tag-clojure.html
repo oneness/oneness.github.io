@@ -24,15 +24,7 @@
 </a><hr/><div style="text-align: justify;display: inline-block; width: 100%;">
 <a class="title" href="https://www.birkey.co/resume/resume.html">ABOUT</a> &nbsp;<a class="title" href="https://github.com/oneness">GITHUB</a> &nbsp;<a class="title" href="https://www.birkey.co/rss.xml">RSS</a> &nbsp;<a class="title" href="https://www.birkey.co/archive.html">ARCHIVE</a> &nbsp;<a class="title" href="https://paypal.me/ktuman">DONATE</a></div></div>
 </center><br><br>
-<div style="margin-bottom: 3ch;text-transform: none;"></div>
-<div class='heading'>PREFACE</div><hr/>
-<p>  I enjoy engineering information systems optimized for end user and
-developer productivity, which can only be achieved by being vigilant
-about keeping IT as simple as IT possibly can be. If you are into
-Clojure, F# or other Programming Languages that I should check
-out, drop me a line via ktuman at acm dot org.
-<b>Note: I am NOT currently available for hire and do NOT respond to third-party
-recruiters</b>.</p></div>
+<div style="margin-bottom: 3ch;text-transform: none;"></div></div>
 <div id="content">
 <h1 class="title">Posts tagged "clojure":</h1>
 <div class="post-date">02 Feb 2019</div><h1 class="post-title"><a href="https://www.birkey.co/2019-02-02-clojure-and-elixir.html">Thoughts on Elixir Community by a Clojure Developer</a></h1>
@@ -45,9 +37,9 @@ example of this, consider a feature where you need to toggle the sort
 ordering:
 </p>
 <div class="org-src-container">
-<pre class="src src-clojure"><span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">defn</span> <span style="color: #0000ff;">toggle-order</span> <span style="color: #7f7f7f;">[</span>order<span style="color: #7f7f7f;">]</span>
-  <span style="color: #7f7f7f;">(</span>order {<span style="color: #008b8b;">:asc</span> <span style="color: #008b8b;">:desc</span>
-	  <span style="color: #008b8b;">:desc</span> <span style="color: #008b8b;">:asc</span>}<span style="color: #7f7f7f;">))</span>
+<pre class="src src-clojure">(defn toggle-order [order]
+  (order {:asc :desc
+	  :desc :asc}))
 </pre>
 </div>
 <p>
@@ -94,7 +86,7 @@ Mix</b>, <b>Pheonix Framework</b>, <b>Nerve</b>, <b>Ecto</b>, and <b>absinthe - 
 GraphQL toolkit for Elixir</b>.</li>
 <li>Elixir community is pretty mature in terms of keeping the core
 language small and extensible, which is abundantly clear from the
-creator of Elixir, Jose Valim&rsquo;s 2018 ElixirConf US keynote.</li>
+creator of Elixir, Jose Valim's 2018 ElixirConf US keynote.</li>
 <li>Elixir community is super focused on Documentation and Developer
 happiness by having great tooling and convention that they all love
 and agreed upon such as <b>mix format</b></li>
@@ -108,7 +100,7 @@ I hope someone from both community find above helpful.
 <p>
 I noticed couple of new features being added to Clojure 1.10. One is
 <b>tap</b>, which is added to the core ns, and the other is <b>datafy</b>, which
-is added to clojure.datafy ns.
+is added to clojure.datafy ns.  
 </p>
 
 <p>
@@ -131,34 +123,34 @@ following uses cases for tap:
 </ul>
 <p>
 Enough being said, let us see with a simple example to cover first
-uses case I said above.
+uses case I said above. 
 </p>
 <div class="org-src-container">
-<pre class="src src-clojure"><span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">def</span> <span style="color: #a0522d;">context</span> <span style="color: #7f7f7f;">(</span>StringBuilder.<span style="color: #7f7f7f;">))</span>
+<pre class="src src-clojure">(def context (StringBuilder.))
 
-<span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">defn</span>  <span style="color: #0000ff;">&#59780;context</span> <span style="color: #7f7f7f;">[</span>x<span style="color: #7f7f7f;">]</span>
-  <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">doto</span> context
-    <span style="color: #7f7f7f;">(</span>.append x<span style="color: #7f7f7f;">)))</span>
+(defn -&gt;context [x]
+  (doto context
+    (.append x)))
 
-<span style="color: #b22222;">;; </span><span style="color: #b22222;">Then let us add above fn to the tapset</span>
-<span style="color: #7f7f7f;">(</span>add-tap  &#59780;context<span style="color: #7f7f7f;">)</span>
-<span style="color: #b22222;">;; </span><span style="color: #b22222;">Then from any where of our running code, we can do:</span>
-<span style="color: #7f7f7f;">(</span>tap&gt; <span style="color: #8b2252;">"  &#59744;  &#59744;* tap start   &#59744;  &#59744;**</span><span style="color: #8b2252; font-weight: bold;">\n</span><span style="color: #8b2252;"> "</span><span style="color: #7f7f7f;">)</span>
-<span style="color: #7f7f7f;">(</span>tap&gt; <span style="color: #8b2252;">"runing  &#59793;  &#59793;  &#59793;  &#59793;  &#59793;  &#59793;  &#59793; &#59792;</span><span style="color: #8b2252; font-weight: bold;">\n</span><span style="color: #8b2252;">"</span><span style="color: #7f7f7f;">)</span>
-<span style="color: #7f7f7f;">(</span>tap&gt; <span style="color: #8b2252;">"  &#59744;  &#59744;* tap end   &#59744;  &#59744;  &#59744;*</span><span style="color: #8b2252; font-weight: bold;">\n</span><span style="color: #8b2252;"> "</span><span style="color: #7f7f7f;">)</span>
+;; Then let us add above fn to the tapset
+(add-tap -&gt;context)
+;; Then from any where of our running code, we can do:
+(tap&gt; "******* tap start ********\n ")
+(tap&gt; "runing.......................\n")
+(tap&gt; "******* tap end **********\n ")
 
-<span style="color: #b22222;">;; </span><span style="color: #b22222;">It will be executed in a separate dedicated thread and will not</span>
-<span style="color: #b22222;">;; </span><span style="color: #b22222;">block or interfere with our running code. Then we print out the context:</span>
-<span style="color: #7f7f7f;">(</span>str context<span style="color: #7f7f7f;">)</span>
-<span style="color: #b22222;">;; </span><span style="color: #b22222;">which results in:</span>
-<span style="color: #b22222;">;; </span><span style="color: #b22222;"> &#59744;  &#59744;* tap start   &#59744;  &#59744;**</span>
-<span style="color: #b22222;">;; </span><span style="color: #b22222;">runing  &#59793;  &#59793;  &#59793;  &#59793;  &#59793;  &#59793;  &#59793; &#59792;</span>
-<span style="color: #b22222;">;; </span><span style="color: #b22222;"> &#59744;  &#59744;* tap end   &#59744;  &#59744;  &#59744;*</span>
+;; It will be executed in a separate dedicated thread and will not
+;; block or interfere with our running code. Then we print out the context:
+(str context)
+;; which results in:
+;;******* tap start ********
+;; runing.......................
+;;******* tap end **********
 
-<span style="color: #b22222;">;; </span><span style="color: #b22222;">Remember to remove the  &#59780;context fn once you are done with that session:</span>
-<span style="color: #7f7f7f;">(</span>remove-tap  &#59780;context<span style="color: #7f7f7f;">)</span>
-<span style="color: #b22222;">;; </span><span style="color: #b22222;">If there is no fn added to the tap, any values you send to tap will be discarded.</span>
-<span style="color: #7f7f7f;">(</span>tap&gt; <span style="color: #8b2252;">"your magic"</span><span style="color: #7f7f7f;">)</span> <span style="color: #b22222;">;; </span><span style="color: #b22222;">your magic will be discarded.</span>
+;; Remember to remove the -&gt;context fn once you are done with that session:
+(remove-tap -&gt;context)
+;; If there is no fn added to the tap, any values you send to tap will be discarded.
+(tap&gt; "your magic") ;; your magic will be discarded.
 
 </pre>
 </div>
@@ -169,30 +161,30 @@ am already using it to find out about java classes members, methods
 and its object graph. Let us take a java class <b>String</b> as an example.
 </p>
 <div class="org-src-container">
-<pre class="src src-clojure"><span style="color: #7f7f7f;">(</span>require '<span style="color: #7f7f7f;">[</span>clojure.datafy <span style="color: #008b8b;">:as</span> d<span style="color: #7f7f7f;">])</span>
-<span style="color: #7f7f7f;">(</span><span style="color: #228b22;">d</span>/datafy String<span style="color: #7f7f7f;">)</span> <span style="color: #b22222;">;; </span><span style="color: #b22222;">which will print all about its members in a nice clojure ds</span>
+<pre class="src src-clojure">(require '[clojure.datafy :as d])
+(d/datafy String) ;; which will print all about its members in a nice clojure ds
 
-<span style="color: #b22222;">;; </span><span style="color: #b22222;">let us write an fn to give use any member that we would like to find more about:</span>
-<span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">defn</span> <span style="color: #0000ff;">member-lookup</span> <span style="color: #7f7f7f;">[</span>class member<span style="color: #7f7f7f;">]</span>
-  <span style="color: #7f7f7f;">( </span><span style="color: #a020f0;"> &#59781;</span> class
-       <span style="color: #228b22;">d</span>/datafy
-       <span style="color: #008b8b;">:members</span>
-       <span style="color: #7f7f7f;">(</span>filter <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">fn</span>  <span style="color: #7f7f7f;">&#60032;</span>k v <span style="color: #7f7f7f;">&#60033;</span> <span style="color: #7f7f7f;">(</span>= <span style="color: #7f7f7f;">(</span>symbol member<span style="color: #7f7f7f;">)</span> k<span style="color: #7f7f7f;">)))))</span>
-<span style="color: #b22222;">;; </span><span style="color: #b22222;">then use it to find about "intern"</span>
-<span style="color: #7f7f7f;">(</span>member-lookup String <span style="color: #8b2252;">"intern"</span><span style="color: #7f7f7f;">)</span>
-<span style="color: #b22222;">;; </span><span style="color: #b22222;">returns:</span>
-<span style="color: #7f7f7f;">([</span>intern
-  <span style="color: #7f7f7f;">[</span>{<span style="color: #008b8b;">:name</span> intern,
-    <span style="color: #008b8b;">:return-type</span> java.lang.String,
-    <span style="color: #008b8b;">:declaring-class</span> java.lang.String,
-    <span style="color: #008b8b;">:parameter-types</span> <span style="color: #7f7f7f;">[]</span>,
-    <span style="color: #008b8b;">:exception-types</span> <span style="color: #7f7f7f;">[]</span>,
-    <span style="color: #008b8b;">:flags</span>  &#59682;<span style="color: #008b8b;">:public</span> <span style="color: #008b8b;">:native</span>}} <span style="color: #7f7f7f;">&#60033;)</span>
+;; let us write an fn to give use any member that we would like to find more about:
+(defn member-lookup [class member]
+  (-&gt;&gt; class
+       d/datafy
+       :members
+       (filter (fn [[k v]] (= (symbol member) k)))))
+;; then use it to find about "intern"
+(member-lookup String "intern")
+;; returns:
+([intern
+  [{:name intern,
+    :return-type java.lang.String,
+    :declaring-class java.lang.String,
+    :parameter-types [],
+    :exception-types [],
+    :flags #{:public :native}}]])
 
-<span style="color: #b22222;">;; </span><span style="color: #b22222;">One can learn a lot about this method from above ds. "intern" is a</span>
-<span style="color: #b22222;">;; </span><span style="color: #b22222;">public native method that takes no argument, called on string object</span>
-<span style="color: #b22222;">;; </span><span style="color: #b22222;">and returns string like this:</span>
-<span style="color: #7f7f7f;">(</span>.intern <span style="color: #8b2252;">"test"</span><span style="color: #7f7f7f;">)</span> <span style="color: #b22222;">;;  </span><span style="color: #b22222;">&#59908; "test"</span>
+;; One can learn a lot about this method from above ds. "intern" is a
+;; public native method that takes no argument, called on string object
+;; and returns string like this:
+(.intern "test") ;; =&gt; "test"
 
 </pre>
 </div>
@@ -213,14 +205,14 @@ save the bar-chart to a png file. You can checkout the project here:
 going:
 </p>
 <div class="org-src-container">
-<pre class="src src-shell">git clone git@github.com/oneness/gcount.git  &#59713; <span style="color: #483d8b;">cd</span> gcount  &#59713; lein repl
+<pre class="src src-shell">git clone git@github.com/oneness/gcount.git &amp;&amp; cd gcount &amp;&amp; lein repl
 </pre>
 </div>
 <p>
 Once you are in repl, you can type following:
 </p>
 <div class="org-src-container">
-<pre class="src src-clojure"><span style="color: #7f7f7f;">(</span>search-view-terms <span style="color: #7f7f7f;">[</span><span style="color: #8b2252;">"Clojure Programming"</span> <span style="color: #8b2252;">"Elixir Programming"</span> <span style="color: #8b2252;">"Elm Programming"</span><span style="color: #7f7f7f;">])</span>
+<pre class="src src-clojure">(search-view-terms ["Clojure Programming" "Elixir Programming" "Elm Programming"])
 </pre>
 </div>
 <p>
