@@ -4,11 +4,7 @@
 <title><![CDATA[BirkeyCo]]></title>
 <description><![CDATA[BirkeyCo]]></description>
 <link>https://www.birkey.co/</link>
-<<<<<<< HEAD
 <lastBuildDate>Sat, 23 Jan 2021 11:26:45 -0800</lastBuildDate>
-=======
-<lastBuildDate>Sat, 06 Feb 2021 10:45:20 -0800</lastBuildDate>
->>>>>>> Update the title for ETC
 <item>
   <title><![CDATA[cURl to the rescue]]></title>
   <description><![CDATA[
@@ -173,15 +169,9 @@ against three of the most well known engineering paradigms so we are
 always grounded in our approach to utilizing them.
 </p>
 
-<<<<<<< HEAD
 <div id="outline-container-org7665c2a" class="outline-2">
 <h2 id="org7665c2a">Monolith vs Microservice</h2>
 <div class="outline-text-2" id="text-org7665c2a">
-=======
-<div id="outline-container-org41c6003" class="outline-2">
-<h2 id="org41c6003">Monolith vs Microservice</h2>
-<div class="outline-text-2" id="text-org41c6003">
->>>>>>> Update the title for ETC
 <p>
 We have come a long way since the 1950s in our approach to different
 design and architectural paradigms. Over the last 10 years or so, we
@@ -209,15 +199,9 @@ them.
 </div>
 </div>
 
-<<<<<<< HEAD
 <div id="outline-container-orgcf7d58f" class="outline-2">
 <h2 id="orgcf7d58f">Top down vs bottom up design</h2>
 <div class="outline-text-2" id="text-orgcf7d58f">
-=======
-<div id="outline-container-orgcdaca59" class="outline-2">
-<h2 id="orgcdaca59">Top down vs bottom up design</h2>
-<div class="outline-text-2" id="text-orgcdaca59">
->>>>>>> Update the title for ETC
 <p>
 I have seen teams swear by one way or the other on this matter. From
 time to time, someone comes along to preach one over the other
@@ -237,15 +221,9 @@ manageable.
 </div>
 </div>
 
-<<<<<<< HEAD
 <div id="outline-container-org7672d35" class="outline-2">
 <h2 id="org7672d35">OO vs FP paradigm</h2>
 <div class="outline-text-2" id="text-org7672d35">
-=======
-<div id="outline-container-orgf0c43df" class="outline-2">
-<h2 id="orgf0c43df">OO vs FP paradigm</h2>
-<div class="outline-text-2" id="text-orgf0c43df">
->>>>>>> Update the title for ETC
 <p>
 I was preached and have been preaching OO style of programming
 paradigm from since my college days and well into the early years of my
@@ -608,7 +586,7 @@ keyboards. Having a good ergonomic keyboard is extremely important to
 avoid RSI. Since I started learning more about mechanical and
 ergonomic keyboards couple of years ago, I have experimented with many
 of them - different models, layouts, and switches. Finally, I settled
-down with following two: 
+down with following two:
 </p>
 <ul class="org-ul">
 <li><a href="https://kinesis-ergo.com/shop/advantage2/">Kinesis Advantage2</a></li>
@@ -658,7 +636,7 @@ folder within the cloned folder.</li>
 
 <p>
 <b>NOTE:</b> Remember to put your keyboard in flash mode by pressing a thin
-paper clip through a tiny hole on the back of the keyboard. 
+paper clip through a tiny hole on the back of the keyboard.
 </p>
 
 <p>
@@ -687,7 +665,7 @@ of a company, who put it very well that have really resonated with
 me. It is a great read, not too long not too short, that I strongly
 recommend you go ahead read and come back here to continue with the
 rest of what I had to say. Here is the link: <a href="https://www.fugue.co/blog/2018-08-09-two-years-with-emacs-as-a-cto.html">Two Years With Emacs as a
-CEO (and now CTO)</a>. 
+CEO (and now CTO)</a>.
 </p>
 
 <p>
@@ -850,15 +828,9 @@ example of this, consider a feature where you need to toggle the sort
 ordering:
 </p>
 <div class="org-src-container">
-<<<<<<< HEAD
 <pre class="src src-clojure">(defn toggle-order [order]
   (order {:asc :desc
 	  :desc :asc}))
-=======
-<pre class="src src-clojure"><span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">defn</span> <span style="color: #0000ff;">toggle-order</span> <span style="color: #7f7f7f;">[</span>order<span style="color: #7f7f7f;">]</span>
-  <span style="color: #7f7f7f;">(</span>order {<span style="color: #008b8b;">:asc</span> <span style="color: #008b8b;">:desc</span>
-          <span style="color: #008b8b;">:desc</span> <span style="color: #008b8b;">:asc</span>}<span style="color: #7f7f7f;">))</span>
->>>>>>> Update the title for ETC
 </pre>
 </div>
 <p>
@@ -926,7 +898,7 @@ I hope someone from both community find above helpful.
 <p>
 I noticed couple of new features being added to Clojure 1.10. One is
 <b>tap</b>, which is added to the core ns, and the other is <b>datafy</b>, which
-is added to clojure.datafy ns.  
+is added to clojure.datafy ns.
 </p>
 
 <p>
@@ -949,7 +921,7 @@ following uses cases for tap:
 </ul>
 <p>
 Enough being said, let us see with a simple example to cover first
-uses case I said above. 
+uses case I said above.
 </p>
 <div class="org-src-container">
 <pre class="src src-clojure">(def context (StringBuilder.))
@@ -1054,7 +1026,7 @@ that did not help me go anywhere. Then I decided to debug it
 myself. Following is my commandline session how I resolved it:
 </p>
 <div class="org-src-container">
-<pre class="src src-shell"># Ran the command again to make sure I have above issue 
+<pre class="src src-shell"># Ran the command again to make sure I have above issue
 xbps-install -Su
 # again resulted in following:
 # mozjs: broken, unresolvable shlib `libicu.so'
@@ -1076,7 +1048,7 @@ xbps-remove -Oo
 xbps-install -Su
 # Voila!, My one year old box is up-to-date without any issues now.
 # After all of this, I just made an one liner alias in my shell config:
-alias c='xbps-remove void-repo-nonfree &amp;&amp; xbps-install void-repo-nonfree &amp;&amp; xbps-install -Su 
+alias c='xbps-remove void-repo-nonfree &amp;&amp; xbps-install void-repo-nonfree &amp;&amp; xbps-install -Su
 </pre>
 </div>
 
@@ -1096,7 +1068,7 @@ packages and rebuild the cache.</li>
 
 <p>
 If you tried all of the above and your issue still did not get
-resolved, you might want to post it in VoidLinux forum for help. 
+resolved, you might want to post it in VoidLinux forum for help.
 </p>
 <div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-voidlinux.html">VoidLinux</a> </div>]]></description>
   <category><![CDATA[VoidLinux]]></category>
@@ -1192,7 +1164,6 @@ me no time to set it up and start blogging. Below is my setup:
   (setq org-export-with-toc nil)
   (setq org-export-with-section-numbers nil)
 
-<<<<<<< HEAD
   (setq org-static-blog-page-header
 	"&lt;meta name=\"author\" content=\"Kasim Tuman\"&gt;
 &lt;meta name=\"referrer\" content=\"no-referrer\"&gt;
@@ -1221,36 +1192,6 @@ me no time to set it up and start blogging. Below is my setup:
   &lt;a href=\"https://www.birkey.co/archive.html\"&gt;Other posts&lt;/a&gt;
 &lt;/div&gt;
 &lt;center&gt;&lt;a rel=\"license\" href=\"https://creativecommons.org/licenses/by-sa/3.0/\"&gt;&lt;img alt=\"Creative Commons License\" style=\"border-width:0\" src=\"https://i.creativecommons.org/l/by-sa/3.0/88x31.png\" /&gt;&lt;/a&gt;&lt;br /&gt;&lt;span xmlns:dct=\"https://purl.org/dc/terms/\" href=\"https://purl.org/dc/dcmitype/Text\" property=\"dct:title\" rel=\"dct:type\"&gt;birkey.co&lt;/span&gt; by &lt;a xmlns:cc=\"https://creativecommons.org/ns#\" href=\"https://www.birkey.co\" property=\"cc:attributionName\" rel=\"cc:attributionURL\"&gt;Kasim Tuman&lt;/a&gt; is licensed under a &lt;a rel=\"license\" href=\"https://creativecommons.org/licenses/by-sa/3.0/\"&gt;Creative Commons Attribution-ShareAlike 3.0 Unported License&lt;/a&gt;.&lt;/center&gt;")
-=======
-  <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">setq</span> org-static-blog-page-header
-        <span style="color: #8b2252;">"&lt;meta name=\"author\" content=\"Kasim Tuman\ &#60048;</span>
-<span style="color: #8b2252;">&lt;meta name=\"referrer\" content=\"no-referrer\ &#60048;</span>
-<span style="color: #8b2252;">&lt;link href= \"static/style.css\" rel=\"stylesheet\" type=\"text/css\"  &#59810;</span>
-<span style="color: #8b2252;">&lt;link rel=\"icon\" href=\"static/favicon.ico\ &#60048;</span>
-<span style="color: #8b2252;">&lt;link rel=\"apple-touch-icon-precomposed\" href=\"static/birkey_logo.png\ &#60048;</span>
-<span style="color: #8b2252;">&lt;link rel=\"msapplication-TitleImage\" href=\"static/birkey_logo.png\ &#60048;</span>
-<span style="color: #8b2252;">&lt;link rel=\"msapplication-TitleColor\" href=\"#0141ff\ &#60048;</span>
-<span style="color: #8b2252;">&lt;script src=\"static/katex.min.js\ &#60048; &#59883;script&gt;</span>
-<span style="color: #8b2252;">&lt;script src=\"static/auto-render.min.js\ &#60048; &#59883;script&gt;</span>
-<span style="color: #8b2252;">&lt;link rel=\"stylesheet\" href=\"static/katex.min.css\ &#60048;</span>
-<span style="color: #8b2252;">&lt;script&gt;document.addEventListener(\"DOMContentLoaded\", function() { renderMathInElement(document.body); }); &#59883;script&gt;</span>
-<span style="color: #8b2252;">&lt;meta http-equiv=\"content-type\" content=\"application/xhtml+xml; charset=UTF-8\ &#60048;</span>
-<span style="color: #8b2252;">&lt;meta name=\"viewport\" content=\"initial-scale=1,width=device-width,minimum-scale=1\ &#60048;"</span><span style="color: #7f7f7f;">)</span>
-
-  <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">setq</span> org-static-blog-page-preamble
-        <span style="color: #8b2252;">"&lt;div class=\"header\ &#60048;</span>
-<span style="color: #8b2252;">  &lt;a href=\"https &#59833;/birkey.co\ &#60048;Code, Data and Network &#59883;a&gt;</span>
-<span style="color: #8b2252;">  &lt;div class=\"sitelinks\ &#60048;</span>
-<span style="color: #8b2252;">    &lt;a href=\"https &#59833;/twitter.com/KasimTuman\ &#60048;Twitter &#59883;a&gt; | &lt;a href=\"https &#59833;/github.com/oneness\ &#60048;Github &#59883;a&gt;</span>
-<span style="color: #8b2252;">   &#59883;div&gt;</span>
- <span style="color: #8b2252;">&#59883;div&gt;"</span><span style="color: #7f7f7f;">)</span>
-
-  <span style="color: #7f7f7f;">(</span><span style="color: #a020f0;">setq</span> org-static-blog-page-postamble
-        <span style="color: #8b2252;">"&lt;div id=\"archive\ &#60048;</span>
-<span style="color: #8b2252;">  &lt;a href=\"https &#59833;/www.birkey.co/archive.html\ &#60048;Other posts &#59883;a&gt;</span>
- <span style="color: #8b2252;">&#59883;div&gt;</span>
-<span style="color: #8b2252;">&lt;center&gt;&lt;a rel=\"license\" href=\"https &#59833;/creativecommons.org/licenses/by-sa/3.0/\ &#60048;&lt;img alt=\"Creative Commons License\" style=\"border-width:0\" src=\"https &#59833;/i.creativecommons.org/l/by-sa/3.0/88x31.png\"  &#59810; &#59883;a&gt;&lt;br  &#59810;&lt;span xmlns:dct=\"https &#59833;/purl.org/dc/terms/\" href=\"https &#59833;/purl.org/dc/dcmitype/Text\" property=\"dct:title\" rel=\"dct:type\ &#60048;birkey.co &#59883;span&gt; by &lt;a xmlns:cc=\"https &#59833;/creativecommons.org/ns#\" href=\"https &#59833;/www.birkey.co\" property=\"cc:attributionName\" rel=\"cc:attributionURL\ &#60048;Kasim Tuman &#59883;a&gt; is licensed under a &lt;a rel=\"license\" href=\"https &#59833;/creativecommons.org/licenses/by-sa/3.0/\ &#60048;Creative Commons Attribution-ShareAlike 3.0 Unported License &#59883;a&gt;. &#59883;center&gt;"</span><span style="color: #7f7f7f;">)</span>
->>>>>>> Update the title for ETC
 
   ;; This slows down org-publish to a crawl, and it is not needed since
   ;; I use magit anyway.
