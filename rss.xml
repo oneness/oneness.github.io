@@ -4,7 +4,7 @@
 <title><![CDATA[BirkeyCo]]></title>
 <description><![CDATA[BirkeyCo]]></description>
 <link>https://www.birkey.co/</link>
-<lastBuildDate>Sat, 23 Jan 2021 11:26:45 -0800</lastBuildDate>
+<lastBuildDate>Sat, 27 Mar 2021 10:25:41 -0700</lastBuildDate>
 <item>
   <title><![CDATA[cURl to the rescue]]></title>
   <description><![CDATA[
@@ -586,7 +586,7 @@ keyboards. Having a good ergonomic keyboard is extremely important to
 avoid RSI. Since I started learning more about mechanical and
 ergonomic keyboards couple of years ago, I have experimented with many
 of them - different models, layouts, and switches. Finally, I settled
-down with following two:
+down with following two: 
 </p>
 <ul class="org-ul">
 <li><a href="https://kinesis-ergo.com/shop/advantage2/">Kinesis Advantage2</a></li>
@@ -636,7 +636,7 @@ folder within the cloned folder.</li>
 
 <p>
 <b>NOTE:</b> Remember to put your keyboard in flash mode by pressing a thin
-paper clip through a tiny hole on the back of the keyboard.
+paper clip through a tiny hole on the back of the keyboard. 
 </p>
 
 <p>
@@ -665,7 +665,7 @@ of a company, who put it very well that have really resonated with
 me. It is a great read, not too long not too short, that I strongly
 recommend you go ahead read and come back here to continue with the
 rest of what I had to say. Here is the link: <a href="https://www.fugue.co/blog/2018-08-09-two-years-with-emacs-as-a-cto.html">Two Years With Emacs as a
-CEO (and now CTO)</a>.
+CEO (and now CTO)</a>. 
 </p>
 
 <p>
@@ -898,7 +898,7 @@ I hope someone from both community find above helpful.
 <p>
 I noticed couple of new features being added to Clojure 1.10. One is
 <b>tap</b>, which is added to the core ns, and the other is <b>datafy</b>, which
-is added to clojure.datafy ns.
+is added to clojure.datafy ns.  
 </p>
 
 <p>
@@ -921,7 +921,7 @@ following uses cases for tap:
 </ul>
 <p>
 Enough being said, let us see with a simple example to cover first
-uses case I said above.
+uses case I said above. 
 </p>
 <div class="org-src-container">
 <pre class="src src-clojure">(def context (StringBuilder.))
@@ -1026,7 +1026,7 @@ that did not help me go anywhere. Then I decided to debug it
 myself. Following is my commandline session how I resolved it:
 </p>
 <div class="org-src-container">
-<pre class="src src-shell"># Ran the command again to make sure I have above issue
+<pre class="src src-shell"># Ran the command again to make sure I have above issue 
 xbps-install -Su
 # again resulted in following:
 # mozjs: broken, unresolvable shlib `libicu.so'
@@ -1048,7 +1048,7 @@ xbps-remove -Oo
 xbps-install -Su
 # Voila!, My one year old box is up-to-date without any issues now.
 # After all of this, I just made an one liner alias in my shell config:
-alias c='xbps-remove void-repo-nonfree &amp;&amp; xbps-install void-repo-nonfree &amp;&amp; xbps-install -Su
+alias c='xbps-remove void-repo-nonfree &amp;&amp; xbps-install void-repo-nonfree &amp;&amp; xbps-install -Su 
 </pre>
 </div>
 
@@ -1068,7 +1068,7 @@ packages and rebuild the cache.</li>
 
 <p>
 If you tried all of the above and your issue still did not get
-resolved, you might want to post it in VoidLinux forum for help.
+resolved, you might want to post it in VoidLinux forum for help. 
 </p>
 <div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-voidlinux.html">VoidLinux</a> </div>]]></description>
   <category><![CDATA[VoidLinux]]></category>

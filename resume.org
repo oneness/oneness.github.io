@@ -4,12 +4,13 @@
 [[mailto:ktuman@acm.org][Email]]          [[https://github.com/oneness][Github]]          [[https://www.birkey.co][Blog]]
 
 * Personal Statement
-  I enjoy engineering information systems optimized for end user and
-  developer productivity, which can only be achieved by being vigilant
-  about keeping IT as simple as IT can be. If you are into Clojure,
-  Haskell, F# or other Programming Languages that I should check out,
-  drop me a line via ktuman at acm dot org. *Note: I am NOT currently
-  available for hire and do NOT respond to third-party recruiters.*
+  I enjoy engineering information systems just works for end user and
+  optimized for developer productivity, which can only be achieved by
+  being vigilant about keeping IT as simple as IT can be. If you are
+  into Clojure, F#, Ada, Smalltalk or other Programming Languages that
+  I should check out, drop me a line via ktuman at acm dot org.
+  *Note: I am NOT currently available for hire and do NOT respond to
+  third-party recruiters.*
 
 * Work Experience
 - *2016/02 - Present:* Owner of [[https://www.birkey.co][Birkey Consulting]]
