@@ -4,7 +4,47 @@
 <title><![CDATA[BirkeyCo]]></title>
 <description><![CDATA[BirkeyCo]]></description>
 <link>https://www.birkey.co/</link>
-<lastBuildDate>Sat, 27 Mar 2021 10:25:41 -0700</lastBuildDate>
+<lastBuildDate>Sat, 27 Mar 2021 11:11:47 -0700</lastBuildDate>
+<item>
+  <title><![CDATA[less is literally more]]></title>
+  <description><![CDATA[
+<p>
+As an Emacs user, your muscle memories constantly remind you of
+certain behavior of it when you had to use other Unix tools. I was
+recently viewing a large file using <b>less</b> and searched for
+<b>ErrorCode</b> by just typing <b>errorcode</b> and surprised to find that it
+did not find any match. Then, I searched by typing <b>ErrorCode</b> and it
+did find a match containing the word, which reminded me of the fact
+that <b>less</b> by default is case sensitive. I then set out to find if I
+can tell <b>less</b> to ignore case by reading man pages. I am pleasantly
+surprised to read following:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">-i or --ignore-case
+	      Causes searches to ignore case; that is, uppercase and lowercase
+	      are  considered identical.  This option is ignored if any upper-
+	      case letters appear in the search pattern; in other words, if  a
+	      pattern  contains  uppercase  letters, then that search does not
+	      ignore case.
+</pre>
+</div>
+<p>
+That is exactly how Emacs isearch behaves by default. I added
+following alias to my bash config to make above the default for less.
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">alias less='less -i'
+</pre>
+</div>
+
+<p>
+Once again, less is <b>literally</b> more and you could do more using less.
+</p>
+<div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-shell.html">shell</a> </div>]]></description>
+  <category><![CDATA[shell]]></category>
+  <link>https://www.birkey.co/2021-03-27-less-is-more-literally.html</link>
+  <pubDate>Sat, 27 Mar 2021 10:37:00 -0700</pubDate>
+</item>
 <item>
   <title><![CDATA[cURl to the rescue]]></title>
   <description><![CDATA[

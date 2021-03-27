@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="alternate"
+      type="application/rss+xml"
+      href="https://www.birkey.co/rss.xml"
+      title="RSS feed for https://www.birkey.co/">
+<title>less is literally more</title>
+<meta name="author" content="Kasim Tuman">
+	       <meta name="referrer" content="no-referrer">
+	       <link href= "static/style.css" rel="stylesheet" type="text/css" />
+	       <link rel="icon" href="static/favicon.ico">
+	       <link rel="apple-touch-icon-precomposed" href="static/birkey_logo.png">
+	       <link rel="msapplication-TitleImage" href="static/birkey_logo.png">
+	       <link rel="msapplication-TitleColor" href="#0141ff">
+	       <link rel="alternate" type="application/rss+xml"  title="RSS Feed for birkey.co" href="/rss.xml"
+	       <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8">
+	       <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1"></head>
+<body>
+<div id="preamble" class="status"><br><center>
+      <div style="display: inline-block; vertical-align:middle;">
+  <a href="https://www.birkey.co/index.html" style="text-decoration: none;"><b>BIRKEY CONSULTING</b><br>
+  </a><hr/><div style="text-align: justify;display: inline-block; width: 100%;">
+  <a class="title" href="https://www.birkey.co/resume.html">ABOUT</a> &nbsp;<a class="title" href="https://github.com/oneness">GITHUB</a> &nbsp;<a class="title" href="https://www.birkey.co/rss.xml">RSS</a> &nbsp;<a class="title" href="https://www.birkey.co/archive.html">ARCHIVE</a> &nbsp;<a class="title" href="https://paypal.me/ktuman">DONATE</a></div></div>
+  </center><br><br>
+  <div style="margin-bottom: 3ch;text-transform: none;"></div></div>
+<div id="content">
+<div class="post-date">27 Mar 2021</div><h1 class="post-title"><a href="https://www.birkey.co/2021-03-27-less-is-more-literally.html">less is literally more</a></h1>
+<p>
+As an Emacs user, your muscle memories constantly remind you of
+certain behavior of it when you had to use other Unix tools. I was
+recently viewing a large file using <b>less</b> and searched for
+<b>ErrorCode</b> by just typing <b>errorcode</b> and surprised to find that it
+did not find any match. Then, I searched by typing <b>ErrorCode</b> and it
+did find a match containing the word, which reminded me of the fact
+that <b>less</b> by default is case sensitive. I then set out to find if I
+can tell <b>less</b> to ignore case by reading man pages. I am pleasantly
+surprised to read following:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">-i or --ignore-case
+	      Causes searches to ignore case; that is, uppercase and lowercase
+	      are  considered identical.  This option is ignored if any upper-
+	      case letters appear in the search pattern; in other words, if  a
+	      pattern  contains  uppercase  letters, then that search does not
+	      ignore case.
+</pre>
+</div>
+<p>
+That is exactly how Emacs isearch behaves by default. I added
+following alias to my bash config to make above the default for less.
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">alias less='less -i'
+</pre>
+</div>
+
+<p>
+Once again, less is <b>literally</b> more and you could do more using less.
+</p>
+<div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-shell.html">shell</a> </div></div>
+<div id="postamble" class="status"><br><center>
+	     <div style="display: inline-block; vertical-align:middle;"></div></div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+#+title: less is literally more
+#+date: <2021-03-27 10:37>
+#+filetags: shell
+
+As an Emacs user, your muscle memories constantly remind you of
+certain behavior of it when you had to use other Unix tools. I was
+recently viewing a large file using *less* and searched for
+*ErrorCode* by just typing *errorcode* and surprised to find that it
+did not find any match. Then, I searched by typing *ErrorCode* and it
+did find a match containing the word, which reminded me of the fact
+that *less* by default is case sensitive. I then set out to find if I
+can tell *less* to ignore case by reading man pages. I am pleasantly
+surprised to read following:
+#+begin_src bash
+-i or --ignore-case
+	      Causes searches to ignore case; that is, uppercase and lowercase
+	      are  considered identical.  This option is ignored if any upper-
+	      case letters appear in the search pattern; in other words, if  a
+	      pattern  contains  uppercase  letters, then that search does not
+	      ignore case.
+#+end_src
+That is exactly how Emacs isearch behaves by default. I added
+following alias to my bash config to make above the default for less.
+#+begin_src bash
+alias less='less -i'
+#+end_src
+
+Once again, less is *literally* more and you could do more using less.
