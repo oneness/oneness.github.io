@@ -1,11 +1,11 @@
 #+OPTIONS: timestamp:nil
 #+OPTIONS: author:nil
-#+HTML_HEAD: <style type="text/css">body{ max-width:77%;margin:auto;background:#F5F5F0 }</style>
+#+HTML_HEAD: <style type="text/css">body{ max-width:80%;margin:auto;background:#F5F5F0 }</style>
 #+ATTR_HTML: :style text-align:center
-[[mailto:ktuman@acm.org][*CONTACT*]]   \nbsp       [[https://github.com/oneness][*GITHUB*]]    \nbsp     [[https://www.birkey.co][*BLOG*]]
+[[https://www.birkey.co/][*HOME*]]   \nbsp       [[https://github.com/oneness][*GITHUB*]]    \nbsp     [[https://www.birkey.co/archive.html][*BLOG*]]
 
-  I enjoy building systems that just works, which can only be achieved
-  by being vigilant about keeping IT as simple as IT can be.\\
+  I enjoy building information systems that just work, which can only
+  be achieved by keeping IT as simple as IT can be.\\
   If you are into Clojure, F#, Ada or other programming languages that
   jolts your brain to think, shock me via [[https://twitter.com/KasimTuman][Twitter]].\\
 
