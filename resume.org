@@ -1,16 +1,16 @@
 #+OPTIONS: timestamp:nil
 #+OPTIONS: author:nil
+#+HTML_HEAD: <style type="text/css">body{ max-width:77%;margin:auto;background:#F5F5F0 }</style>
 #+ATTR_HTML: :style text-align:center
-[[mailto:ktuman@acm.org][Email]]          [[https://github.com/oneness][Github]]          [[https://www.birkey.co][Blog]]
+[[mailto:ktuman@acm.org][*CONTACT*]]   \nbsp       [[https://github.com/oneness][*GITHUB*]]    \nbsp     [[https://www.birkey.co][*BLOG*]]
 
-* Personal Statement
-  I enjoy engineering information systems just works for end user and
-  optimized for developer productivity, which can only be achieved by
-  being vigilant about keeping IT as simple as IT can be. If you are
-  into Clojure, F#, Ada, Smalltalk or other Programming Languages that
-  I should check out, drop me a line via ktuman at acm dot org.
-  *Note: I am NOT currently available for hire and do NOT respond to
-  third-party recruiters.*
+  I enjoy building systems that just works, which can only be achieved
+  by being vigilant about keeping IT as simple as IT can be.\\
+  If you are into Clojure, F#, Ada or other programming languages that
+  jolts your brain to think, shock me via [[https://twitter.com/KasimTuman][Twitter]].\\
+
+  *Note*: I am *NOT* currently available for hire and do *NOT* respond to
+  third party recruiters.
 
 * Work Experience
 - *2016/02 - Present:* Owner of [[https://www.birkey.co][Birkey Consulting]]
@@ -35,8 +35,8 @@
 
 - *2012/08 - 2017/02:* Runa Inc (Acquired by Staples Inc as Staples Labs)
   - Started as a Clojure Engineer. Later promoted to Engineering Lead,
-    Engineering Manager and Director of Engineering. Responsible for
-    SLA critical web services such as recommendation system, shipping
+    Engineering Manager and Director of Engineering.\\
+    Responsible for SLA critical web services such as recommendation system, shipping
     prediction engine, etc.
   - Tech Stack: Clojure (with some Java where performance is
     critical), PostgreSQL/Redis, RabbitMQ (replaced by Kafka), Protobuf, and all things AWS.
