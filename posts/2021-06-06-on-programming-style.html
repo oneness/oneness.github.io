@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>On programming style</title>
+<meta name="author" content="(Kasim Tuman)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="./reveal.js/css/reveal.css"/>
+
+<link rel="stylesheet" href="./reveal.js/css/theme/moon.css" id="theme"/>
+
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = './reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1 class="title">On programming style</h1><h2 class="author">Kasim Tuman</h2><h2 class="date">2021-06-06 Sun 10:30</h2><p class="date">Created: 2021-06-06 Sun 11:08</p>
+</section>
+<p>
+I am pretty excited to learn that Strange Loop is happening this
+year! It is one of the few technical conference that I always
+recommend to my fellow teammates. What is more exciting are the
+sessions schedule including few keynotes. What this has to do with the
+topic of the blog post, which is on programming style, you say? If you
+squint at the sessions, the author of <b>Exercises in Programming Style</b>
+is the first key speaker. It is one of the best book on programming I
+have ever read in recent years. I am not going to spoil it here with
+summary or gist but I'd like share few take home points I really liked
+about the book.
+</p>
+
+<ul>
+<li>Having a clear, well understood programming problem throughout the
+book: given a text file, we want to display the N (e.g. 25) most
+frequent words and corresponding frequencies ordered by decreasing
+value of frequency. Once the understanding what problem we are
+dealing with out of the way, the remaining is just choosing a style
+to solve it, which the book does fantastic job to explain. It even
+has full source code in the book.</li>
+<li>Concise and clear way of making the reader understand many programming
+techniques that one might otherwise gets really confused. For
+example, Monads, CPS (continuation passing style), FRP and many
+others.</li>
+<li>Have you ever wondered how neural networks (NN) works? Second
+edition have you covered with clear explanation and code as she has
+done with many concepts from the first edition.</li>
+
+</ul>
+
+<p>
+I strongly recommend the book to both novice or pros alike. It is a
+book that you rarely see in terms of style and clarity with full
+working code. We really need this kind of books more to have
+programming accessible and understood by more people. I do believe it
+is a classic. If you are planning to attend Strange Loop, remember to
+say hello and thank her for it.
+</p>
+</div>
+</div>
+<script src="./reveal.js/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: './reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: './reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: './reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: './reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: './reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
+</script>
+</body>
+</html>

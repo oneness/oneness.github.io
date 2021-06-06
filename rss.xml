@@ -4,7 +4,53 @@
 <title><![CDATA[BirkeyCo]]></title>
 <description><![CDATA[BirkeyCo]]></description>
 <link>https://www.birkey.co/</link>
-<lastBuildDate>Sat, 27 Mar 2021 11:11:47 -0700</lastBuildDate>
+<lastBuildDate>Sun, 06 Jun 2021 11:18:14 -0700</lastBuildDate>
+<item>
+  <title><![CDATA[On programming style]]></title>
+  <description><![CDATA[
+<p>
+I am pretty excited to learn that Strange Loop is happening this
+year! It is one of the few technical conference that I always
+recommend to my fellow teammates. What is more exciting are the
+sessions including few keynotes. What this has to do with the
+topic of the blog post, which is on programming style, you say? If you
+squint at the sessions, the author of <b>Exercises in Programming Style</b>
+is the first keynote speaker. It is one of the best book on programming I
+have ever read in recent years. I am not going to spoil it here with
+summary or gist but I'd like share few take home points I really liked
+about the book.
+</p>
+
+<ul class="org-ul">
+<li>Having a clear, well understood programming problem throughout the
+book: given a text file, we want to display the N (e.g. 25) most
+frequent words and corresponding frequencies ordered by decreasing
+value of frequency. Once the understanding what problem we are
+dealing with out of the way, the remaining is just choosing a style
+to solve it, which the book does fantastic job to explain. It even
+has full source code in the book.</li>
+<li>Concise and clear way of making the reader understand many programming
+techniques that one might otherwise gets really confused. For
+example, Monads, CPS (continuation passing style), FRP and many
+others.</li>
+<li>Have you ever wondered how neural networks (NN) works? Second
+edition have you covered with clear explanation and code as she has
+done with many concepts from the first edition.</li>
+</ul>
+
+<p>
+I strongly recommend the book to both novice or pros alike. It is a
+book that you rarely see in terms of style and clarity with full
+working code. We really need this kind of books more to have
+programming accessible and understood by more people. I do believe it
+is a classic. If you are planning to attend Strange Loop, remember to
+say hello and thank her for it.
+</p>
+<div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-books.html">books</a> </div>]]></description>
+  <category><![CDATA[books]]></category>
+  <link>https://www.birkey.co/2021-06-06-on-programming-style.html</link>
+  <pubDate>Sun, 06 Jun 2021 10:30:00 -0700</pubDate>
+</item>
 <item>
   <title><![CDATA[less is literally more]]></title>
   <description><![CDATA[

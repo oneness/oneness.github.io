@@ -1,0 +1,36 @@
+#+title: On programming style
+#+date: <2021-06-06 10:30>
+#+filetags: books
+
+I am pretty excited to learn that Strange Loop is happening this
+year! It is one of the few technical conference that I always
+recommend to my fellow teammates. What is more exciting are the
+sessions including few keynotes. What this has to do with the
+topic of the blog post, which is on programming style, you say? If you
+squint at the sessions, the author of *Exercises in Programming Style*
+is the first keynote speaker. It is one of the best book on programming I
+have ever read in recent years. I am not going to spoil it here with
+summary or gist but I'd like share few take home points I really liked
+about the book.
+
+- Having a clear, well understood programming problem throughout the
+  book: given a text file, we want to display the N (e.g. 25) most
+  frequent words and corresponding frequencies ordered by decreasing
+  value of frequency. Once the understanding what problem we are
+  dealing with out of the way, the remaining is just choosing a style
+  to solve it, which the book does fantastic job to explain. It even
+  has full source code in the book.
+- Concise and clear way of making the reader understand many programming
+  techniques that one might otherwise gets really confused. For
+  example, Monads, CPS (continuation passing style), FRP and many
+  others.
+- Have you ever wondered how neural networks (NN) works? Second
+  edition have you covered with clear explanation and code as she has
+  done with many concepts from the first edition.
+
+I strongly recommend the book to both novice or pros alike. It is a
+book that you rarely see in terms of style and clarity with full
+working code. We really need this kind of books more to have
+programming accessible and understood by more people. I do believe it
+is a classic. If you are planning to attend Strange Loop, remember to
+say hello and thank her for it.

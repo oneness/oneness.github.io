@@ -8,25 +8,65 @@
       title="RSS feed for https://www.birkey.co/">
 <title>BirkeyCo</title>
 <meta name="author" content="Kasim Tuman">
-	       <meta name="referrer" content="no-referrer">
-	       <link href= "static/style.css" rel="stylesheet" type="text/css" />
-	       <link rel="icon" href="static/favicon.ico">
-	       <link rel="apple-touch-icon-precomposed" href="static/birkey_logo.png">
-	       <link rel="msapplication-TitleImage" href="static/birkey_logo.png">
-	       <link rel="msapplication-TitleColor" href="#0141ff">
-	       <link rel="alternate" type="application/rss+xml"  title="RSS Feed for birkey.co" href="/rss.xml"
-	       <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8">
-	       <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1"></head>
+	     <meta name="referrer" content="no-referrer">
+	     <link href= "static/style.css" rel="stylesheet" type="text/css" />
+	     <link rel="icon" href="static/favicon.ico">
+	     <link rel="apple-touch-icon-precomposed" href="static/birkey_logo.png">
+	     <link rel="msapplication-TitleImage" href="static/birkey_logo.png">
+	     <link rel="msapplication-TitleColor" href="#0141ff">
+	     <link rel="alternate" type="application/rss+xml"  title="RSS Feed for birkey.co" href="/rss.xml"
+	     <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8">
+	     <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1"></head>
 <body>
 <div id="preamble" class="status"><br><center>
-      <div style="display: inline-block; vertical-align:middle;">
-  <a href="https://www.birkey.co/index.html" style="text-decoration: none;"><b>BIRKEY CONSULTING</b><br>
-  </a><hr/><div style="text-align: justify;display: inline-block; width: 100%;">
-  <a class="title" href="https://www.birkey.co/resume.html">ABOUT</a> &nbsp;<a class="title" href="https://github.com/oneness">GITHUB</a> &nbsp;<a class="title" href="https://www.birkey.co/rss.xml">RSS</a> &nbsp;<a class="title" href="https://www.birkey.co/archive.html">ARCHIVE</a> &nbsp;<a class="title" href="https://paypal.me/ktuman">DONATE</a></div></div>
-  </center><br><br>
-  <div style="margin-bottom: 3ch;text-transform: none;"></div></div>
+    <div style="display: inline-block; vertical-align:middle;">
+<a href="https://www.birkey.co/index.html" style="text-decoration: none;"><b>BIRKEY CONSULTING</b><br>
+</a><hr/><div style="text-align: justify;display: inline-block; width: 100%;">
+<a class="title" href="https://www.birkey.co/resume.html">ABOUT</a> &nbsp;<a class="title" href="https://github.com/oneness">GITHUB</a> &nbsp;<a class="title" href="https://www.birkey.co/rss.xml">RSS</a> &nbsp;<a class="title" href="https://www.birkey.co/archive.html">ARCHIVE</a> &nbsp;<a class="title" href="https://paypal.me/ktuman">DONATE</a></div></div>
+</center><br><br>
+<div style="margin-bottom: 3ch;text-transform: none;"></div></div>
 <div id="content">
 
+<div class="post-date">06 Jun 2021</div><h1 class="post-title"><a href="https://www.birkey.co/2021-06-06-on-programming-style.html">On programming style</a></h1>
+<p>
+I am pretty excited to learn that Strange Loop is happening this
+year! It is one of the few technical conference that I always
+recommend to my fellow teammates. What is more exciting are the
+sessions including few keynotes. What this has to do with the
+topic of the blog post, which is on programming style, you say? If you
+squint at the sessions, the author of <b>Exercises in Programming Style</b>
+is the first keynote speaker. It is one of the best book on programming I
+have ever read in recent years. I am not going to spoil it here with
+summary or gist but I'd like share few take home points I really liked
+about the book.
+</p>
+
+<ul class="org-ul">
+<li>Having a clear, well understood programming problem throughout the
+book: given a text file, we want to display the N (e.g. 25) most
+frequent words and corresponding frequencies ordered by decreasing
+value of frequency. Once the understanding what problem we are
+dealing with out of the way, the remaining is just choosing a style
+to solve it, which the book does fantastic job to explain. It even
+has full source code in the book.</li>
+<li>Concise and clear way of making the reader understand many programming
+techniques that one might otherwise gets really confused. For
+example, Monads, CPS (continuation passing style), FRP and many
+others.</li>
+<li>Have you ever wondered how neural networks (NN) works? Second
+edition have you covered with clear explanation and code as she has
+done with many concepts from the first edition.</li>
+</ul>
+
+<p>
+I strongly recommend the book to both novice or pros alike. It is a
+book that you rarely see in terms of style and clarity with full
+working code. We really need this kind of books more to have
+programming accessible and understood by more people. I do believe it
+is a classic. If you are planning to attend Strange Loop, remember to
+say hello and thank her for it.
+</p>
+<div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-books.html">books</a> </div>
 <div class="post-date">27 Mar 2021</div><h1 class="post-title"><a href="https://www.birkey.co/2021-03-27-less-is-more-literally.html">less is literally more</a></h1>
 <p>
 As an Emacs user, your muscle memories constantly remind you of
@@ -490,77 +530,11 @@ If you happen to use Emacs and Eshell, you can just use following alias to get g
 <p>
 Eshell aliases are great. You can pass arguments to them just prefixing aliases with '$*' as I did above. Try doing same with bash alias, you are out of luck and you have to write shell functions be able to do that. Enjoy!
 </p>
-<div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-shell.html">shell</a> </div>
-<div class="post-date">05 Mar 2020</div><h1 class="post-title"><a href="https://www.birkey.co/2020-03-05-self-documenting-makefile.html">Self documenting Makefile</a></h1>
-<p>
-One of the pain points of starting a new project or even hacking on existing project is to know where to start. One can start with documentation, test cases or even running it to see the logs and stacktraces (Stracktrace way is one of my favourite and you can tell a lot about code flow, organzation and you can even find un-handled bugs that way, which is a topic of its own for a blog post). Each language brings in its own set of tools that you need to know before you getting familiar with the code base. You might add `README` or some other documents to ease the pain but it might get stale overtime. One convention that I have been using, which has paid off with any project or teams that I have collaborated, are following simple conventions:
-</p>
-<ul class="org-ul">
-<li>Each Project Should have a `Makefile` with following targets:
-<ul class="org-ul">
-<li><b>setup</b> : Should take care of env configs</li>
-<li><b>deps</b>  : Should take care of handling all the project dependencies</li>
-<li><b>unit-test</b> : Should have local tests</li>
-<li><b>integration-test</b> : Should have non local tests</li>
-</ul></li>
-<li>This Makefile should be self documenting:
-<ul class="org-ul">
-<li>It should have <b>help</b> as the default target that explains what the project is about and how to run it</li>
-<li>It should be self documenting, meaning each target should have it is own description as to what it does and possible why it does it the way it is.</li>
-</ul></li>
-</ul>
-
-<p>
-Above might sound a lot to ask but it is really trivial to do those with just following make file:
-</p>
-
-<div class="org-src-container">
-<pre class="src src-Shell">.PHONY: help
-help: ## This is a cool project. It does great things to help humanity move forward.
-	@echo 'usage: make [target] ...'
-	@echo
-	@echo 'Targets Depends Description' | column -t -s ' '
-	@echo '------- ------- -----------' | column -t -s ' '
-	@egrep '^(.+)\:?.+\ ##\ (.+)' ${MAKEFILE_LIST} \
-	| column -t -s ':#' | sed 's/Makefile  //'
-
-setup: ## Sets up all that are needed start working on the project.
-	@echo Setting up...
-	# Put you logic here
-	@echo Setting up done.
-
-deps: setup ## Pulls in all required dependencies
-	@echo Pulling all project dependencies
-
-unit-test: deps ## Runs local tests
-	@echo Running unit-tests...
-	# Put your run unit-tests logic here
-	@echo unit-tests done.
-
-integration-test: deps ## Runs non local tests
-	@echo Running integration-tests...
-	# Put your run integration-tests logic here
-	@echo integration-tests done.
-</pre>
-</div>
-
-<p>
-The presence of above Makefile should not be underestimated. It will allow yourself and your fellow developers to dive into any project with just one liner like this:
-</p>
-
-<div class="org-src-container">
-<pre class="src src-Shell">git clone &lt;project&gt; &amp;&amp; cd project &amp;&amp; make deps
-</pre>
-</div>
-
-<p>
-Would not that be wonderful if every project just follow simple conventions like this so you have less obstacle to start or dive into a project? It has benefited me and my team over the years and hope you see the benefit for yourself.
-</p>
-<div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-makefile.html">Makefile</a> </div><div id="archive">
+<div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-shell.html">shell</a> </div><div id="archive">
 <a href="https://www.birkey.co/archive.html">Other posts</a>
 </div>
 </div>
 <div id="postamble" class="status"><br><center>
-	     <div style="display: inline-block; vertical-align:middle;"></div></div>
+	   <div style="display: inline-block; vertical-align:middle;"></div></div>
 </body>
 </html>
