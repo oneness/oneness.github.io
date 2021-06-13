@@ -1,0 +1,86 @@
+#+title: Let and Binding macros in Clojure
+#+date: <2021-06-13 11:35>
+#+filetags: clojure
+
+Clojure has number special forms. Among them are *let* and
+*binding* that are implemented as macros. For new comers to Clojure,
+above can be confusing to understand, which I hope to address in this
+blog post. If you have read "Programming Clojure" book, you might be
+thinking that it is easy to use them correctly considering following
+straightforward example:
+
+#+begin_src clojure
+(def x 7) ;; bind the var x to the value 7
+(defn print-x [x]
+  (println x))
+
+(let [x 9]
+  (print-x)) ;; prints 7
+
+(binding [x 9]
+  (print-x)) ;; prints 9
+#+end_src
+Why? Because *let* creates a lexical scoped vars, which is local to
+the code block or functions where it is initially defined while *def*
+creates a global var that is visible to all functions under the
+namespace that you are in. Therefore, in the example above, *let* just
+created a new "x" with the value of 9. But it is not local to the
+function "print-x". That is to say, "print-x" have no knowledge of the
+local scoped binding that is created by *let*. *binding* macro instead
+creates a new binding for the already existed var, "x" with the value
+of 9. Since "print-x" is evaluated within the *binding* form, the
+newly bound value is visible to any chained calls within the form. All
+nice and easy. However, it is not that obvious to understand and use
+them correctly. Look at following example:
+#+begin_src clojure
+(def x 7)
+(def y 9)
+
+(let [x 5 y x] y) ;; returns 5
+(binding [x 5 y x] y) ;; returns 7
+#+end_src
+*let* example is just fine. It created a new var "y" with the value of
+5 bound to it. But what is going on with the *binding* example? If we
+dig little deeper to Clojure API doc, we learn that the new bindings
+in *binding* are made in parallel, not sequential as it is in *let*.
+Therefore, existing var "y" gets bound to the root binding of "x" not
+the overshadowed value of "x", which is the case in the *let* example.
+OK, so far so good. Let us look at another example:
+#+begin_src clojure
+(defn print-x [& args]
+  (println "print-x prints: " args))
+(defn print-y [& args]
+  (println "print-y prints: " args))
+(let [print-x print-y] (print-x 123)) ;; print-y prints: (1 2 3)
+(binding [print-x print-y] (print-x 123)) ;; print-y prints: (1 2 3)
+(binding [print-x print-y] #(print-x 123)) ;; prints
+					     ;; cryptic "#<user$eval__28$fn__30
+					     ;; user$eval__28$fn__30@bdb503>"
+((binding [print-x print-y] #(print-x 123))) ;; print-x prints: (1 2 3)
+#+end_src
+All the lines but the last two are pretty straight forward. But how
+about the last line? Shouldn't it call "print-y" function? Not really.
+It is because the anonymous function is evaluated outside of the
+*binding* form. The "#<user$eval__28$fn__30
+user$eval__28$fn__30@bdb503>" is an indication that anonymous function
+did not get evaluated. The extra parens evals above form. Ok,
+now, how do you make sure it evaluates within the *binding* form? Just
+enclose the anonymous function within parenthesis. What do we learn
+from all of the above? Here are the summary that helps one use *let*
+and *binding* correctly:
+
+- Use *binding* only if you are trying to alter a behavior dynamically
+  for special-vars that is already defined. Enclose your special vars
+  within * as recommended by idiomatic clojure to make your intent
+  clear.
+- Use *let* for locally scoped vars and avoid shadowing already
+  defined vars.
+- Remember *let* binding is sequential and *binding* binding is done in parallel.
+- Pay close attention to the scope of the *binding* form. Any
+  expression that is not evaluated inside the form, will not see the
+  binding. That is to say, binding in *binding* form is thread local
+  starting from the *binding* form until it ends including any
+  expression that is chained within the form, which is what the
+  thread-local are all about.
+- Lastly avoid using *binding* as much as possible. I have seen many
+  production bugs related to issues I outlined here.
