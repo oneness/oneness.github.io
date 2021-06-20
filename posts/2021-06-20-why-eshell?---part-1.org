@@ -1,0 +1,60 @@
+#+title: Why Eshell? - Part 1
+#+date: <2021-06-20 14:21>
+#+filetags: emacs, eshell
+
+From time to time, I got asked why I use eshell as my main terminal.
+There are multiple reasons I do so and covering all of them in one
+post would be too long. Instead, I would like to start with a high
+level bullet points and address each one in a separate blog post with
+working code examples where I can point my coworkers and friends to
+them so they can pick and choose as they wish.
+1. *Long running command notification and time*
+2. *Cross session history*
+3. *Interactive ido completion*
+4. *Unified interface (shell prompt buffer as regular emacs buffer)*
+5. *Plan9 Style Shell prompt (Think of it as bash REPL)*
+6. *Multiple terminal management*
+7. *Super charge bash with elisp*
+8. *Eshell aliases that puts bash aliases to shame :)*
+Let us start with how you can accomplish the first item from the list
+above. Following 18 lines of elisp will give you the super power of:
+- How long a command took to run as if you typed in *time <command>*
+- Notify you that the long running command finished in x second even
+   if you switch away from Emacs saving you the trouble of constantly
+   checking back. As a bonus, you can set the notification threshold
+   for long running commands that you want to run async.
+#+begin_src elisp
+    ;; eshell time and notification
+    (defvar-local eshell-current-command-start-time nil)
+
+    (defun eshell-current-command-start ()
+      (setq eshell-current-command-start-time (current-time)))
+
+    (defun eshell-current-command-stop ()
+      (when eshell-current-command-start-time
+	(let ((elapsed-time (float-time
+			     (time-subtract (current-time)
+					    eshell-current-command-start-time))))
+	  (if (> elapsed-time 30)
+	      (tooltip-show (format "Finished in: %.0fs" elapsed-time))
+	    (eshell-interactive-print
+	     (format "Time: %.0fs\n" elapsed-time))))
+	(setq eshell-current-command-start-time nil)))
+
+    (defun eshell-current-command-time-track ()
+      (add-hook 'eshell-pre-command-hook #'eshell-current-command-start nil t)
+      (add-hook 'eshell-post-command-hook #'eshell-current-command-stop nil t))
+
+    ;; This line below installs time tracking and notification
+    (add-hook 'eshell-mode-hook #'eshell-current-command-time-track)
+    ;; Once you eval above snippet in emacs, fire up M-x eshell, and type:
+    sleep 40
+    ;; You can switch away from emacs and will be notified that above
+    ;; command took 40s to run
+    ;; To uninstall
+    ;; (remove-hook 'eshell-mode-hook #'eshell-current-command-time-track)
+#+end_src
+Try doing above with some bashrc voodoo or plug-in that you have no
+control over. I have been there and done that and it is one of many
+reasons why I use eshell now. I hope someone finds it useful to his or
+her command line work flow. Happy eshelling!

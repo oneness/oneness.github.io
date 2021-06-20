@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="alternate"
+      type="application/rss+xml"
+      href="https://www.birkey.co/rss.xml"
+      title="RSS feed for https://www.birkey.co/">
+<title>BirkeyCo</title>
+<meta name="author" content="Kasim Tuman">
+	     <meta name="referrer" content="no-referrer">
+	     <link href= "static/style.css" rel="stylesheet" type="text/css" />
+	     <link rel="icon" href="static/favicon.ico">
+	     <link rel="apple-touch-icon-precomposed" href="static/birkey_logo.png">
+	     <link rel="msapplication-TitleImage" href="static/birkey_logo.png">
+	     <link rel="msapplication-TitleColor" href="#0141ff">
+	     <link rel="alternate" type="application/rss+xml"  title="RSS Feed for birkey.co" href="/rss.xml"
+	     <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8">
+	     <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1"></head>
+<body>
+<div id="preamble" class="status"><br><center>
+    <div style="display: inline-block; vertical-align:middle;">
+<a href="https://www.birkey.co/index.html" style="text-decoration: none;"><b>BIRKEY CONSULTING</b><br>
+</a><hr/><div style="text-align: justify;display: inline-block; width: 100%;">
+<a class="title" href="https://www.birkey.co/resume.html">ABOUT</a> &nbsp;<a class="title" href="https://github.com/oneness">GITHUB</a> &nbsp;<a class="title" href="https://www.birkey.co/rss.xml">RSS</a> &nbsp;<a class="title" href="https://www.birkey.co/archive.html">ARCHIVE</a> &nbsp;<a class="title" href="https://paypal.me/ktuman">DONATE</a></div></div>
+</center><br><br>
+<div style="margin-bottom: 3ch;text-transform: none;"></div></div>
+<div id="content">
+<h1 class="title">Posts tagged "emacs,":</h1>
+<div class="post-date">20 Jun 2021</div><h1 class="post-title"><a href="https://www.birkey.co/2021-06-20-why-eshell?---part-1.html">Why Eshell? - Part 1</a></h1>
+<p>
+From time to time, I got asked why I use eshell as my main terminal.
+There are multiple reasons I do so and covering all of them in one
+post would be too long. Instead, I would like to start with a high
+level bullet points and address each one in a separate blog post with
+working code examples where I can point my coworkers and friends to
+them so they can pick and choose as they wish.
+</p>
+<ol class="org-ol">
+<li><b>Long running command notification and time</b></li>
+<li><b>Cross session history</b></li>
+<li><b>Interactive ido completion</b></li>
+<li><b>Unified interface (shell prompt buffer as regular emacs buffer)</b></li>
+<li><b>Plan9 Style Shell prompt (Think of it as bash REPL)</b></li>
+<li><b>Multiple terminal management</b></li>
+<li><b>Super charge bash with elisp</b></li>
+<li><b>Eshell aliases that puts bash aliases to shame :)</b></li>
+</ol>
+<p>
+Let us start with how you can accomplish the first item from the list
+above. Following 18 lines of elisp will give you the super power of:
+</p>
+<ul class="org-ul">
+<li>How long a command took to run as if you typed in <b>time &lt;command&gt;</b></li>
+<li>Notify you that the long running command finished in x second even
+if you switch away from Emacs saving you the trouble of constantly
+checking back. As a bonus, you can set the notification threshold
+for long running commands that you want to run async.</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-elisp">;; eshell time and notification
+(defvar-local eshell-current-command-start-time nil)
+
+(defun eshell-current-command-start ()
+  (setq eshell-current-command-start-time (current-time)))
+
+(defun eshell-current-command-stop ()
+  (when eshell-current-command-start-time
+    (let ((elapsed-time (float-time
+			 (time-subtract (current-time)
+					eshell-current-command-start-time))))
+      (if (&gt; elapsed-time 30)
+	  (tooltip-show (format "Finished in: %.0fs" elapsed-time))
+	(eshell-interactive-print
+	 (format "Time: %.0fs\n" elapsed-time))))
+    (setq eshell-current-command-start-time nil)))
+
+(defun eshell-current-command-time-track ()
+  (add-hook 'eshell-pre-command-hook #'eshell-current-command-start nil t)
+  (add-hook 'eshell-post-command-hook #'eshell-current-command-stop nil t))
+
+;; This line below installs time tracking and notification
+(add-hook 'eshell-mode-hook #'eshell-current-command-time-track)
+;; Once you eval above snippet in emacs, fire up M-x eshell, and type:
+sleep 40
+;; You can switch away from emacs and will be notified that above
+;; command took 40s to run
+;; To uninstall
+;; (remove-hook 'eshell-mode-hook #'eshell-current-command-time-track)
+</pre>
+</div>
+<p>
+Try doing above with some bashrc voodoo or plug-in that you have no
+control over. I have been there and done that and it is one of many
+reasons why I use eshell now. I hope someone finds it useful to his or
+her command line work flow. Happy eshelling!
+</p>
+<div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-emacs,.html">emacs,</a> <a href="https://www.birkey.co/tag-eshell.html">eshell</a> </div><div id="archive">
+<a href="https://www.birkey.co/archive.html">Other posts</a>
+</div>
+</div>
+<div id="postamble" class="status"><br><center>
+	   <div style="display: inline-block; vertical-align:middle;"></div></div>
+</body>
+</html>

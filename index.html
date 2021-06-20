@@ -27,6 +27,75 @@
 <div style="margin-bottom: 3ch;text-transform: none;"></div></div>
 <div id="content">
 
+<div class="post-date">20 Jun 2021</div><h1 class="post-title"><a href="https://www.birkey.co/2021-06-20-why-eshell?---part-1.html">Why Eshell? - Part 1</a></h1>
+<p>
+From time to time, I got asked why I use eshell as my main terminal.
+There are multiple reasons I do so and covering all of them in one
+post would be too long. Instead, I would like to start with a high
+level bullet points and address each one in a separate blog post with
+working code examples where I can point my coworkers and friends to
+them so they can pick and choose as they wish.
+</p>
+<ol class="org-ol">
+<li><b>Long running command notification and time</b></li>
+<li><b>Cross session history</b></li>
+<li><b>Interactive ido completion</b></li>
+<li><b>Unified interface (shell prompt buffer as regular emacs buffer)</b></li>
+<li><b>Plan9 Style Shell prompt (Think of it as bash REPL)</b></li>
+<li><b>Multiple terminal management</b></li>
+<li><b>Super charge bash with elisp</b></li>
+<li><b>Eshell aliases that puts bash aliases to shame :)</b></li>
+</ol>
+<p>
+Let us start with how you can accomplish the first item from the list
+above. Following 18 lines of elisp will give you the super power of:
+</p>
+<ul class="org-ul">
+<li>How long a command took to run as if you typed in <b>time &lt;command&gt;</b></li>
+<li>Notify you that the long running command finished in x second even
+if you switch away from Emacs saving you the trouble of constantly
+checking back. As a bonus, you can set the notification threshold
+for long running commands that you want to run async.</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-elisp">;; eshell time and notification
+(defvar-local eshell-current-command-start-time nil)
+
+(defun eshell-current-command-start ()
+  (setq eshell-current-command-start-time (current-time)))
+
+(defun eshell-current-command-stop ()
+  (when eshell-current-command-start-time
+    (let ((elapsed-time (float-time
+			 (time-subtract (current-time)
+					eshell-current-command-start-time))))
+      (if (&gt; elapsed-time 30)
+	  (tooltip-show (format "Finished in: %.0fs" elapsed-time))
+	(eshell-interactive-print
+	 (format "Time: %.0fs\n" elapsed-time))))
+    (setq eshell-current-command-start-time nil)))
+
+(defun eshell-current-command-time-track ()
+  (add-hook 'eshell-pre-command-hook #'eshell-current-command-start nil t)
+  (add-hook 'eshell-post-command-hook #'eshell-current-command-stop nil t))
+
+;; This line below installs time tracking and notification
+(add-hook 'eshell-mode-hook #'eshell-current-command-time-track)
+;; Once you eval above snippet in emacs, fire up M-x eshell, and type:
+sleep 40
+;; You can switch away from emacs and will be notified that above
+;; command took 40s to run
+;; To uninstall
+;; (remove-hook 'eshell-mode-hook #'eshell-current-command-time-track)
+</pre>
+</div>
+<p>
+Try doing above with some bashrc voodoo or plug-in that you have no
+control over. I have been there and done that and it is one of many
+reasons why I use eshell now. I hope someone finds it useful to his or
+her command line work flow. Happy eshelling!
+</p>
+<div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-emacs,.html">emacs,</a> <a href="https://www.birkey.co/tag-eshell.html">eshell</a> </div>
 <div class="post-date">13 Jun 2021</div><h1 class="post-title"><a href="https://www.birkey.co/2021-06-13-let-and-binding-macros-in-clojure.html">Let and Binding macros in Clojure</a></h1>
 <p>
 Clojure has number special forms. Among them are <b>let</b> and
@@ -321,143 +390,7 @@ should use it whenever you can. I might write a post in the future on
 why the response was getting truncated and why reusing the connection
 helped solve the issue.
 </p>
-<div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-curl.html">curl</a> </div>
-<div class="post-date">26 Dec 2020</div><h1 class="post-title"><a href="https://www.birkey.co/2020-12-26-ETC-principle-to-ground-all.html">ETC - The principle to guide engineering</a></h1>
-<p>
-If you are just curious about the ETC principle to ground all other
-principles of software engineering, you can scroll all the way down of
-this post to find out what I meant by ETC. If you know what ETC stands
-for and are already grounding your engineering efforts, you can just
-skip this post and go on with your MIT (most important task). However,
-If you are skeptical, which you always should be, you might want to
-read on to learn why.
-</p>
-
-<p>
-As an Engineer, our primary function on daily basis is to come up
-with a working solution to a specific problem that arose out of
-need from our <b>users</b>. I highlight the word user here since the user
-could be our end user, could be our fellow engineers, or could just be
-ourselves. If you have been in the industry for a while, you might
-have been exposed to plethora of must follow principles and practices
-from existing literature, which I categorize as `transmittable`
-knowledge. Apart from that, there is another type of knowledge that I
-would like to classify as `untransmittable` where you have to
-experience it to make it your own. Those two types of knowledge
-corresponds to how we learn new things: 1. We read transmittable
-knowledge from various sources 2. We bring them into our practice to
-form our deep understanding of it. Only then, we are able to utilize
-our newly learned knowledge effectively to achieve our end result,
-which is by the way to meet the needs of our fellow <b>users</b> as apposed
-to the need of certain systems. Now, let us stack ETC principle
-against three of the most well known engineering paradigms so we are
-always grounded in our approach to utilizing them.
-</p>
-
-<div id="outline-container-org7665c2a" class="outline-2">
-<h2 id="org7665c2a">Monolith vs Microservice</h2>
-<div class="outline-text-2" id="text-org7665c2a">
-<p>
-We have come a long way since the 1950s in our approach to different
-design and architectural paradigms. Over the last 10 years or so, we
-all have been preached to about how great Microservice is and have drunk its
-Kool-Aid. It has penetrated engineering organizations to such a degree
-that it has become our new hammer. Now all of a sudden, we start
-waking up to its trade offs and even going back to old monolith
-architecture. What happened? We just did not ground ourselves when
-we made a decision to adopt microservice style. The question we should
-have asked ourselves before committing to microservice or monolith is:
-How it enables us to make whatever we are doing easy to change? Does
-monolith style make our system easy to change? Maybe. Does
-microservice approach enables us easy to change our system? Maybe. So
-the definite answer to both questions is "it depends". So what should
-be the basis of our decision to go with one way or the other? Maybe
-an example in order to drive my point here. Let's say you're
-designing an e-commerce system. It has catalog, checkout and shipping
-components. Does putting all of the components into one service make
-the system easy to change for you? May be it will if you are the only
-person or your team are the only team working on it. Does putting all
-of the components into separate services make the system easy to
-change? May be it will if you have three separate teams working on
-them.
-</p>
-</div>
-</div>
-
-<div id="outline-container-orgcf7d58f" class="outline-2">
-<h2 id="orgcf7d58f">Top down vs bottom up design</h2>
-<div class="outline-text-2" id="text-orgcf7d58f">
-<p>
-I have seen teams swear by one way or the other on this matter. From
-time to time, someone comes along to preach one over the other
-declaring the other approach is dead or should just be avoided. Every
-time when I face such a design issue, I always ask myself this
-question over and over again: Does top down or bottom up design
-enables me or my team to respond to change? Most of the time, I end up
-choosing both approaches because it helps me to focus on making the
-system easier to change. I tend to use following rule of thumb. When I
-have clear mental model, I use the bottom up approach so I can create
-layers of abstractions to compose better, which in turn enables me to
-make changes easier. When I have a high level of domain clarity, I
-tend to start with top down design because it helps me to focus on not
-that clear pieces in isolation, which in turn makes changes a lot more
-manageable.
-</p>
-</div>
-</div>
-
-<div id="outline-container-org7672d35" class="outline-2">
-<h2 id="org7672d35">OO vs FP paradigm</h2>
-<div class="outline-text-2" id="text-org7672d35">
-<p>
-I was preached and have been preaching OO style of programming
-paradigm from since my college days and well into the early years of my
-profession. Then FP became the new style (old became new?) and all OO
-programming languages started to add more FP style constructs. Now we
-see debates over why FP is superior over OO and should be used over
-all cost claiming that OO is responsible for all the mess that we
-created over the last 20 years or so. Now, I came to realize that it
-is not this or that paradigm that is responsible for all the issues we
-created. Rather, it is the blind adoption of them by us as
-practitioners. Let us think about a minute what OO have given us when
-we started to adopt it: The ability to structure, reuse and share code
-across systems. Essentially, we were able to build/change information
-systems faster and easier than ever before. However, it did not hold
-up well against ETC principle with its humongous frameworks and so
-called best practices. Now, FP is in its renaissance and being
-preached as the savior at the cost of relegating OO to its
-oblivion. OO is a great tool set in our arsenal for certain types of
-problem domain and SmallTalk is an example of how it should be
-practiced. FP is another excellent way of approaching to engineering
-problem in that it encourages to treat systems as referential data
-transformation pipeline. Does it inherently make the system easy to
-change? Not really. We are quite capable of making a spaghetti mess
-out of FP as much as we have done with OO. See a pattern here? ETC
-principle grounds your choice of paradigm into its proper place: Is
-x helping you to make changes easier? If not, then x most likely not
-best route for you.
-</p>
-
-<p>
-I can go on and on with arguing ETC be the test to pass for all of the
-paradigms and even development approaches such as TDD, BDD and
-DDD. For example, If your code is easy to change, it will most likely
-be easy to test, maps most likely well with your domain and most
-likely models use cases better. You can adopt any approach or
-principles such as SOLID principle if you consistently ask yourself:
-Does this really helps me to make changes easier? If it passes this
-test, adopt it, if not avoid it.
-</p>
-
-<p>
-It is not my intention to make you dogmatic about <b>Easy To Change</b>
-(ETC) principle but rather to convince yourself to have one principle
-to ground all other aspects of your engineering endeavors. Happy
-engineering and never forget to have and share fun coding!
-</p>
-</div>
-</div>
-<div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-engineering.html">engineering</a> </div><div id="archive">
+<div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-curl.html">curl</a> </div><div id="archive">
 <a href="https://www.birkey.co/archive.html">Other posts</a>
 </div>
 </div>
