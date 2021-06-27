@@ -1,0 +1,42 @@
+#+title: Why Eshell? - Part 2
+#+date: <2021-06-27 08:37>
+#+filetags: eshell emacs
+
+Among many reasons of why I use eshell as my main terminal, I listed
+following in part 1 of my `Why Eshell?` series blog post. I am listing
+it here for posterity:
+1. *Long running command notification and time*
+2. *Cross session history*
+3. *Interactive ido completion*
+4. *Unified interface (shell prompt buffer as regular emacs buffer)*
+5. *Plan9 Style Shell prompt (Think of it as bash REPL)*
+6. *Multiple terminal management*
+7. *Super charge bash with elisp*
+8. *Eshell aliases that puts bash aliases to shame :)*
+I addressed first point here: [[https://www.birkey.co/2021-06-20-why-eshell-part-1.html][notification and time]]. Let me address
+second point, which is sharing eshell history across many terminal
+sessions.
+#+begin_src elisp
+  (defvar keshell-history-global-ring nil
+    "The history ring shared across Eshell sessions.")
+
+  (defun keshell-hist-use-global-history ()
+    "Make Eshell history shared across different sessions."
+    (unless keshell-history-global-ring
+      (when eshell-history-file-name
+	(eshell-read-history nil t))
+      (setq keshell-history-global-ring
+	    (or eshell-history-ring (make-ring eshell-history-size))))
+    (setq eshell-history-ring keshell-history-global-ring))
+  ;; Following hook enables it
+  (add-hook 'eshell-mode-hook 'keshell-hist-use-global-history)
+  ;; Following removes the hook
+  (remove-hook 'eshell-mode-hook 'keshell-hist-use-global-history)
+#+end_src
+After evaluating above 12 lines of elisp, you will have a list that
+holds all the eshell entries across sessions, which you can persist
+into a history file (just uses bash history file) and can even share
+it across machines over network. This opens up a whole new
+possibilities of completions, deduplication and multiple eshell
+buffer management goodness, which I will cover in the next few parts
+of `Why Eshell?` posts. So stay tuned and happy eshelling!

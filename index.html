@@ -27,6 +27,55 @@
 <div style="margin-bottom: 3ch;text-transform: none;"></div></div>
 <div id="content">
 
+<div class="post-date">27 Jun 2021</div><h1 class="post-title"><a href="https://www.birkey.co/2021-06-27-why-eshell-part-2.html">Why Eshell? - Part 2</a></h1>
+<p>
+Among many reasons of why I use eshell as my main terminal, I listed
+following in part 1 of my `Why Eshell?` series blog post. I am listing
+it here for posterity:
+</p>
+<ol class="org-ol">
+<li><b>Long running command notification and time</b></li>
+<li><b>Cross session history</b></li>
+<li><b>Interactive ido completion</b></li>
+<li><b>Unified interface (shell prompt buffer as regular emacs buffer)</b></li>
+<li><b>Plan9 Style Shell prompt (Think of it as bash REPL)</b></li>
+<li><b>Multiple terminal management</b></li>
+<li><b>Super charge bash with elisp</b></li>
+<li><b>Eshell aliases that puts bash aliases to shame :)</b></li>
+</ol>
+<p>
+I addressed first point here: <a href="https://www.birkey.co/2021-06-20-why-eshell-part-1.html">notification and time</a>. Let me address
+second point, which is sharing eshell history across many terminal
+sessions.
+</p>
+<div class="org-src-container">
+<pre class="src src-elisp">(defvar keshell-history-global-ring nil
+  "The history ring shared across Eshell sessions.")
+
+(defun keshell-hist-use-global-history ()
+  "Make Eshell history shared across different sessions."
+  (unless keshell-history-global-ring
+    (when eshell-history-file-name
+      (eshell-read-history nil t))
+    (setq keshell-history-global-ring
+	  (or eshell-history-ring (make-ring eshell-history-size))))
+  (setq eshell-history-ring keshell-history-global-ring))
+;; Following hook enables it
+(add-hook 'eshell-mode-hook 'keshell-hist-use-global-history)
+;; Following removes the hook
+(remove-hook 'eshell-mode-hook 'keshell-hist-use-global-history)
+</pre>
+</div>
+<p>
+After evaluating above 12 lines of elisp, you will have a list that
+holds all the eshell entries across sessions, which you can persist
+into a history file (just uses bash history file) and can even share
+it across machines over network. This opens up a whole new
+possibilities of completions, deduplication and multiple eshell
+buffer management goodness, which I will cover in the next few parts
+of `Why Eshell?` posts. So stay tuned and happy eshelling!
+</p>
+<div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-eshell.html">eshell</a> <a href="https://www.birkey.co/tag-emacs.html">emacs</a> </div>
 <div class="post-date">20 Jun 2021</div><h1 class="post-title"><a href="https://www.birkey.co/2021-06-20-why-eshell-part-1.html">Why Eshell? - Part 1</a></h1>
 <p>
 From time to time, I got asked why I use eshell as my main terminal.
@@ -266,131 +315,7 @@ following alias to my bash config to make above the default for less.
 <p>
 Once again, less is <b>literally</b> more and you could do more using less.
 </p>
-<div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-shell.html">shell</a> </div>
-<div class="post-date">10 Jan 2021</div><h1 class="post-title"><a href="https://www.birkey.co/2021-01-10-curl-to-the-rescue.html">cURl to the rescue</a></h1>
-<p>
-A web application tinkerer deals with malformed inputs, faulty
-networks, buggy software and everything in between. One tool that
-saved the day on more than one occasion is: <b>cURL</b>, which should be
-under every engineers' arsenal. Following are two examples how it
-proved to be just the right tool to reach for.
-</p>
-
-<p>
-Among many micro services writtent in Clojure, one of them exposed
-following logic via a REST API:
-</p>
-<ul class="org-ul">
-<li>Take a shortened URL, expand it to find the actual
-URL it is pointing to, and parse URL param to generate a JSON object
-of k/v to return to the caller.</li>
-</ul>
-
-<p>
-One of our client reported a bug where their Ad data dashboard did not
-show up one day. Looking at the log trace, I realized that above
-service might be failing. I had a choice of starting a full suite of
-our services to reproduce it or just using cURL from the terminal to
-find out what the Ad URL expanded to. Here is an example:
-</p>
-<div class="org-src-container">
-<pre class="src src-bash">curl -ILs https://bit.ly/2MSn9Xm
-</pre>
-</div>
-<p>
-Following is the output:
-</p>
-<pre class="example">
-| HTTP/2                       | 301                                                               |               |     |      |          |     |
-| server:                      | nginx                                                             |               |     |      |          |     |
-| date:                        | Sun,                                                              | 10            | Jan | 2021 | 22:59:35 | GMT |
-| content-type:                | text/html;                                                        | charset=utf-8 |     |      |          |     |
-| content-length:              | 152                                                               |               |     |      |          |     |
-| cache-control:               | private,                                                          | max-age=90    |     |      |          |     |
-| content-security-policy:     | referrer                                                          | always;       |     |      |          |     |
-| location:                    | https://www.birkey.co/2020-12-26-ETC-principle-to-ground-all.html |               |     |      |          |     |
-| referrer-policy:             | unsafe-url                                                        |               |     |      |          |     |
-| via:                         | 1.1                                                               | google        |     |      |          |     |
-| alt-svc:                     | clear                                                             |               |     |      |          |     |
-| HTTP/2                       | 200                                                               |               |     |      |          |     |
-| server:                      | GitHub.com                                                        |               |     |      |          |     |
-| content-type:                | text/html;                                                        | charset=utf-8 |     |      |          |     |
-| last-modified:               | Mon,                                                              | 28            | Dec | 2020 | 05:11:32 | GMT |
-| access-control-allow-origin: | *                                                                 |               |     |      |          |     |
-| etag:                        | 5fe96904-2616                                                     |               |     |      |          |     |
-| expires:                     | Sun,                                                              | 10            | Jan | 2021 | 23:09:36 | GMT |
-| cache-control:               | max-age=600                                                       |               |     |      |          |     |
-| x-proxy-cache:               | MISS                                                              |               |     |      |          |     |
-| x-github-request-id:         | 8A36:98E4:92929:AC1C3:5FFB86D7                                    |               |     |      |          |     |
-| accept-ranges:               | bytes                                                             |               |     |      |          |     |
-| date:                        | Sun,                                                              | 10            | Jan | 2021 | 22:59:36 | GMT |
-| via:                         | 1.1                                                               | varnish       |     |      |          |     |
-| age:                         | 0                                                                 |               |     |      |          |     |
-| x-served-by:                 | cache-pao17466-PAO                                                |               |     |      |          |     |
-| x-cache:                     | MISS                                                              |               |     |      |          |     |
-| x-cache-hits:                | 0                                                                 |               |     |      |          |     |
-| x-timer:                     | S1610319576.187969,VS0,VE28                                       |               |     |      |          |     |
-| vary:                        | Accept-Encoding                                                   |               |     |      |          |     |
-| x-fastly-request-id:         | 64128c1c6f907b66fc189d5c3cbb298b2c7e9eb7                          |               |     |      |          |     |
-| content-length:              | 9750                                                              |               |     |      |          |     |
-</pre>
-
-<p>
-The options <b>-ILs</b> tells cURL to query resource headers with location
-information in silent mode. After seeing the location information of
-the client's Ad URL, I was able to pinpoint the missing url param from
-the source data that our client is expecting. Once I informed this
-info to our client, they are able to fix their own issue with grace.
-</p>
-
-<p>
-Second time cURL came to the rescue is when a developer from
-my team reached out to me for a mysterious bug he was experiencing. An
-API call was failing for 50% of the time with truncated response that
-was causing error on his application. Not knowing anything about the
-application much, I asked him to call the API using cURL to eliminate
-the possibility of OS network related issues. Once I know that the API
-work is working 100% of the time via cURL, I narrowed the issues down
-to the application code. The application is written in Node and
-following are abbreviated version of how the JS code looks like:
-</p>
-<div class="org-src-container">
-<pre class="src src-javascript">function getFoo(){
-  return axios.get(urlFoo)
-}
-
-function getBar(url){
-  return axios.get(url)
-}
-
-function getFooBar(){
- var foo = getFoo(); //block until we have a result
- // this line below was failing due to malformed foo becuase it is truncated
- var url = "magicUrl" //parse `foo`, construct url
- var bar = getBar(url)
- return parse(bar)
-}
-
-</pre>
-</div>
-<p>
-My teammate said that he did try increasing the timeout of the `axios`
-library but it did not help. I asked him to see if `axios` have
-some configuration setting related to buffer size or connection, and he
-confirmed that it does have `connection reuse` setting where it is
-default value are `false`. I asked him to try setting it to `true`,
-which he did and voila, API call went through with 100% success
-rate. Now, our problem is solved and we can move on with our
-lives.
-</p>
-
-<p>
-I just want to convince you how usefull <b>cURL</b> command is and you
-should use it whenever you can. I might write a post in the future on
-why the response was getting truncated and why reusing the connection
-helped solve the issue.
-</p>
-<div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-curl.html">curl</a> </div><div id="archive">
+<div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-shell.html">shell</a> </div><div id="archive">
 <a href="https://www.birkey.co/archive.html">Other posts</a>
 </div>
 </div>
