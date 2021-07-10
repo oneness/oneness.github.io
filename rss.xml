@@ -4,7 +4,87 @@
 <title><![CDATA[BirkeyCo]]></title>
 <description><![CDATA[BirkeyCo]]></description>
 <link>https://www.birkey.co/</link>
-<lastBuildDate>Sun, 27 Jun 2021 08:59:35 -0700</lastBuildDate>
+<lastBuildDate>Sat, 10 Jul 2021 11:16:30 -0700</lastBuildDate>
+<item>
+  <title><![CDATA[Why Eshell - Part 3]]></title>
+  <description><![CDATA[
+<p>
+If you have been following my `Why Eshell` series, you might be
+wondering about interactive ido completion for eshell. Since Eshell
+buffer is just a regular emacs buffer, we can compose few emacs
+builtin functionalities to bend it to our command line work flow.
+Following is all the code you need. Note that it is heavily commented
+so you can understand what is happening.
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(defun kshell-with-name (&amp;optional name)
+  ;; creates an eshell buffer with `kshell' as the default name. Take
+  ;; optional name to override
+  (let ((m (-&gt;&gt; (or name "kshell")
+		(format "*%s*"))))
+    (if (get-buffer m)
+	(pop-to-buffer m)
+      (progn
+	(eshell)
+	(rename-buffer m)))))
+
+(defun kshell (&amp;optional cmd buff-name send-input)
+  ;; interactive fn that you can call via M-x or hotkey. It detects
+  ;; current project root to start eshell buffer if no `buff-name' is
+  ;; given. You can control how the `cmd` gets insert only or insert
+  ;; and executed using `send-input` flag. Ex. Useful for further
+  ;; editing.
+  (interactive)
+  (let ((dir (projectile-project-root))) ;; you need projectile
+    (if buff-name
+	(kshell-with-name buff-name)
+      (kshell-with-name))
+    (eshell/clear-scrollback)
+    (insert (format "cd %s" (or dir "~/")))
+    (eshell-send-input)
+    (insert (format "%s" cmd))
+    (when send-input (eshell-send-input))))
+
+(defun krun (cmd)
+  ;; eshell command history with ido completion. Assign it to a hot
+  ;; key say, F12 and you will get a search-able command history that
+  ;; you can execute just by doing ido interactive search.
+  (interactive
+   (list
+    (ido-completing-read
+     "Enter cmd to run (append ##name for buffer name): "
+     (let ((history nil))
+       ;; We have to build up a list ourselves from the ring vector.
+       (dotimes (index (ring-length keshell-history-global-ring))
+	 (push (ring-ref keshell-history-global-ring index) history))
+       ;; Show them most-recent-first.
+       (setq history (nreverse history))))))
+  (let* ((cmds (split-string cmd "##")) ;; you need s.el lib
+	 (tag (or (-&gt; cmds second)
+		  "kshell"))
+	 (buff-name (-&gt; tag s-chomp s-trim)))
+    (kshell cmd buff-name)))
+</pre>
+</div>
+<p>
+Here is the screen recording in action:
+<img src="https://www.birkey.co/images/eshell-ido-interactive.gif" alt="eshell-ido-interactive.gif">
+</p>
+
+<p>
+I am using F12 to invoke `krun` and my cross session eshell history
+shows up in the minibuffer where I can use ido completion to select a
+command that I can run. As an added benefit, above code allows one to
+bring a eshell buffer with specific name by adding ##name at the end
+of the command if one wants to have the command run in a dedicated
+buffer.
+</p>
+<div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-eshell.html">eshell</a> <a href="https://www.birkey.co/tag-emacs.html">emacs</a> </div>]]></description>
+  <category><![CDATA[eshell]]></category>
+  <category><![CDATA[emacs]]></category>
+  <link>https://www.birkey.co/2021-07-10-why-eshell-part-3.html</link>
+  <pubDate>Sat, 10 Jul 2021 10:18:00 -0700</pubDate>
+</item>
 <item>
   <title><![CDATA[Why Eshell? - Part 2]]></title>
   <description><![CDATA[
