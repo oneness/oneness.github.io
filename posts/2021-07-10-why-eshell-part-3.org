@@ -58,6 +58,7 @@ so you can understand what is happening.
       (kshell cmd buff-name)))
 #+end_src
 Here is the screen recording in action:
+
 https://www.birkey.co/images/eshell-ido-interactive.gif
 
 I am using F12 to invoke `krun` and my cross session eshell history

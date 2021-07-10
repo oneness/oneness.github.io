@@ -4,7 +4,7 @@
 <title><![CDATA[BirkeyCo]]></title>
 <description><![CDATA[BirkeyCo]]></description>
 <link>https://www.birkey.co/</link>
-<lastBuildDate>Sat, 10 Jul 2021 11:16:30 -0700</lastBuildDate>
+<lastBuildDate>Sat, 10 Jul 2021 11:19:14 -0700</lastBuildDate>
 <item>
   <title><![CDATA[Why Eshell - Part 3]]></title>
   <description><![CDATA[
@@ -68,8 +68,13 @@ so you can understand what is happening.
 </div>
 <p>
 Here is the screen recording in action:
-<img src="https://www.birkey.co/images/eshell-ido-interactive.gif" alt="eshell-ido-interactive.gif">
 </p>
+
+
+<figure id="org7736a49">
+<img src="https://www.birkey.co/images/eshell-ido-interactive.gif" alt="eshell-ido-interactive.gif">
+
+</figure>
 
 <p>
 I am using F12 to invoke `krun` and my cross session eshell history
