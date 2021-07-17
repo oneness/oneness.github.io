@@ -4,7 +4,7 @@
 <title><![CDATA[BirkeyCo]]></title>
 <description><![CDATA[BirkeyCo]]></description>
 <link>https://www.birkey.co/</link>
-<lastBuildDate>Sat, 17 Jul 2021 10:18:08 -0700</lastBuildDate>
+<lastBuildDate>Sat, 17 Jul 2021 10:37:23 -0700</lastBuildDate>
 <item>
   <title><![CDATA[Why Eshell? - part 4]]></title>
   <description><![CDATA[
@@ -65,7 +65,7 @@ Following demonstrates above cases I am talking about:
   <pubDate>Sat, 17 Jul 2021 09:43:00 -0700</pubDate>
 </item>
 <item>
-  <title><![CDATA[Why Eshell - Part 3]]></title>
+  <title><![CDATA[Why Eshell? - Part 3]]></title>
   <description><![CDATA[
 <p>
 If you have been following my `Why Eshell` series, you might be
@@ -130,7 +130,7 @@ Here is the screen recording in action:
 </p>
 
 
-<figure id="org7736a49">
+<figure id="org5159e5f">
 <img src="https://www.birkey.co/images/eshell-ido-interactive.gif" alt="eshell-ido-interactive.gif">
 
 </figure>
