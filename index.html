@@ -27,6 +27,58 @@
 <div style="margin-bottom: 3ch;text-transform: none;"></div></div>
 <div id="content">
 
+<div class="post-date">17 Jul 2021</div><h1 class="post-title"><a href="https://www.birkey.co/2021-07-17-why-eshell-part-4.html">Why Eshell? - part 4</a></h1>
+<p>
+Since eshell buffer is just a regular emacs buffer, we have all of the
+emacs power at our disposal. In part 3 of my post, I briefly alluded
+to multiple terminal management by just using few lines of elisp and
+all without using any third party packages. I am posting the main elisp
+function for posterity here:
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(defun krun (cmd)
+  (interactive
+   (list
+    (ido-completing-read
+     "Enter cmd to run (append ##name for buffer name): "
+     (let ((history nil))
+       ;; We have to build up a list ourselves from the ring vector.
+       (dotimes (index (ring-length keshell-history-global-ring))
+	 (push (ring-ref keshell-history-global-ring index) history))
+       ;; Show them most-recent-first.
+       (setq history (nreverse history))))))
+  (let* ((cmds (split-string cmd "##"))
+	 (tag (or (-&gt; cmds second)
+		  "kshell"))
+	 (buff-name (-&gt; tag s-chomp s-trim)))
+    (kshell cmd buff-name)))
+</pre>
+</div>
+<p>
+The above function (along with those from the previous post) will
+allow you to do following:
+</p>
+<ul class="org-ul">
+<li>Start a new shell with a specific name by just appending
+##buffer-name after the command</li>
+<li>Run a command from history or new command in a dedicated eshell
+buffer, which defaults to <b>kshell</b>. You can override as any name you
+want.</li>
+<li>Use all hotkeys, interactive lisp functions as you would for regular
+emacs buffer. For example, you can do buffer switching, ibuffer
+management, isearch, protect a buffer from being killed, etc.</li>
+</ul>
+
+<p>
+Following demonstrates above cases I am talking about:
+</p>
+
+
+<figure id="org7fae62d">
+<img src="https://www.birkey.co/images/eshell-buffer-management.gif" alt="eshell-buffer-management.gif">
+
+</figure>
+<div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-eshell.html">eshell</a> <a href="https://www.birkey.co/tag-emacs.html">emacs</a> </div>
 <div class="post-date">10 Jul 2021</div><h1 class="post-title"><a href="https://www.birkey.co/2021-07-10-why-eshell-part-3.html">Why Eshell - Part 3</a></h1>
 <p>
 If you have been following my `Why Eshell` series, you might be
@@ -319,47 +371,7 @@ thread-local are all about.</li>
 <li>Lastly avoid using <b>binding</b> as much as possible. I have seen many
 production bugs related to issues I outlined here.</li>
 </ul>
-<div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-clojure.html">clojure</a> </div>
-<div class="post-date">06 Jun 2021</div><h1 class="post-title"><a href="https://www.birkey.co/2021-06-06-on-programming-style.html">On programming style</a></h1>
-<p>
-I am pretty excited to learn that Strange Loop is happening this
-year! It is one of the few technical conference that I always
-recommend to my fellow teammates. What is more exciting are the
-sessions including few keynotes. What this has to do with the
-topic of the blog post, which is on programming style, you say? If you
-squint at the sessions, the author of <b>Exercises in Programming Style</b>
-is the first keynote speaker. It is one of the best book on programming I
-have ever read in recent years. I am not going to spoil it here with
-summary or gist but I'd like share few take home points I really liked
-about the book.
-</p>
-
-<ul class="org-ul">
-<li>Having a clear, well understood programming problem throughout the
-book: given a text file, we want to display the N (e.g. 25) most
-frequent words and corresponding frequencies ordered by decreasing
-value of frequency. Once the understanding what problem we are
-dealing with out of the way, the remaining is just choosing a style
-to solve it, which the book does fantastic job to explain. It even
-has full source code in the book.</li>
-<li>Concise and clear way of making the reader understand many programming
-techniques that one might otherwise gets really confused. For
-example, Monads, CPS (continuation passing style), FRP and many
-others.</li>
-<li>Have you ever wondered how neural networks (NN) works? Second
-edition have you covered with clear explanation and code as she has
-done with many concepts from the first edition.</li>
-</ul>
-
-<p>
-I strongly recommend the book to both novice or pros alike. It is a
-book that you rarely see in terms of style and clarity with full
-working code. We really need this kind of books more to have
-programming accessible and understood by more people. I do believe it
-is a classic. If you are planning to attend Strange Loop, remember to
-say hello and thank her for it.
-</p>
-<div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-books.html">books</a> </div><div id="archive">
+<div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-clojure.html">clojure</a> </div><div id="archive">
 <a href="https://www.birkey.co/archive.html">Other posts</a>
 </div>
 </div>

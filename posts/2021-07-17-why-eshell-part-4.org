@@ -1,0 +1,42 @@
+#+title: Why Eshell? - part 4
+#+date: <2021-07-17 09:43>
+#+description:
+#+filetags: eshell emacs
+
+Since eshell buffer is just a regular emacs buffer, we have all of the
+emacs power at our disposal. In part 3 of my post, I briefly alluded
+to multiple terminal management by just using few lines of elisp and
+all without using any third party packages. I am posting the main elisp
+function for posterity here:
+#+begin_src emacs-lisp
+  (defun krun (cmd)
+    (interactive
+     (list
+      (ido-completing-read
+       "Enter cmd to run (append ##name for buffer name): "
+       (let ((history nil))
+	 ;; We have to build up a list ourselves from the ring vector.
+	 (dotimes (index (ring-length keshell-history-global-ring))
+	   (push (ring-ref keshell-history-global-ring index) history))
+	 ;; Show them most-recent-first.
+	 (setq history (nreverse history))))))
+    (let* ((cmds (split-string cmd "##"))
+	   (tag (or (-> cmds second)
+		    "kshell"))
+	   (buff-name (-> tag s-chomp s-trim)))
+      (kshell cmd buff-name)))
+#+end_src
+The above function (along with those from the previous post) will
+allow you to do following:
+- Start a new shell with a specific name by just appending
+  ##buffer-name after the command
+- Run a command from history or new command in a dedicated eshell
+  buffer, which defaults to *kshell*. You can override as any name you
+  want.
+- Use all hotkeys, interactive lisp functions as you would for regular
+  emacs buffer. For example, you can do buffer switching, ibuffer
+  management, isearch, protect a buffer from being killed, etc.
+
+Following demonstrates above cases I am talking about:
+
+https://www.birkey.co/images/eshell-buffer-management.gif

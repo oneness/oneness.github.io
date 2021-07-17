@@ -4,7 +4,66 @@
 <title><![CDATA[BirkeyCo]]></title>
 <description><![CDATA[BirkeyCo]]></description>
 <link>https://www.birkey.co/</link>
-<lastBuildDate>Sat, 10 Jul 2021 11:19:14 -0700</lastBuildDate>
+<lastBuildDate>Sat, 17 Jul 2021 10:18:08 -0700</lastBuildDate>
+<item>
+  <title><![CDATA[Why Eshell? - part 4]]></title>
+  <description><![CDATA[
+<p>
+Since eshell buffer is just a regular emacs buffer, we have all of the
+emacs power at our disposal. In part 3 of my post, I briefly alluded
+to multiple terminal management by just using few lines of elisp and
+all without using any third party packages. I am posting the main elisp
+function for posterity here:
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(defun krun (cmd)
+  (interactive
+   (list
+    (ido-completing-read
+     "Enter cmd to run (append ##name for buffer name): "
+     (let ((history nil))
+       ;; We have to build up a list ourselves from the ring vector.
+       (dotimes (index (ring-length keshell-history-global-ring))
+	 (push (ring-ref keshell-history-global-ring index) history))
+       ;; Show them most-recent-first.
+       (setq history (nreverse history))))))
+  (let* ((cmds (split-string cmd "##"))
+	 (tag (or (-&gt; cmds second)
+		  "kshell"))
+	 (buff-name (-&gt; tag s-chomp s-trim)))
+    (kshell cmd buff-name)))
+</pre>
+</div>
+<p>
+The above function (along with those from the previous post) will
+allow you to do following:
+</p>
+<ul class="org-ul">
+<li>Start a new shell with a specific name by just appending
+##buffer-name after the command</li>
+<li>Run a command from history or new command in a dedicated eshell
+buffer, which defaults to <b>kshell</b>. You can override as any name you
+want.</li>
+<li>Use all hotkeys, interactive lisp functions as you would for regular
+emacs buffer. For example, you can do buffer switching, ibuffer
+management, isearch, protect a buffer from being killed, etc.</li>
+</ul>
+
+<p>
+Following demonstrates above cases I am talking about:
+</p>
+
+
+<figure id="org7fae62d">
+<img src="https://www.birkey.co/images/eshell-buffer-management.gif" alt="eshell-buffer-management.gif">
+
+</figure>
+<div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-eshell.html">eshell</a> <a href="https://www.birkey.co/tag-emacs.html">emacs</a> </div>]]></description>
+  <category><![CDATA[eshell]]></category>
+  <category><![CDATA[emacs]]></category>
+  <link>https://www.birkey.co/2021-07-17-why-eshell-part-4.html</link>
+  <pubDate>Sat, 17 Jul 2021 09:43:00 -0700</pubDate>
+</item>
 <item>
   <title><![CDATA[Why Eshell - Part 3]]></title>
   <description><![CDATA[

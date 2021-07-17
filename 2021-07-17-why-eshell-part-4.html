@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="alternate"
+      type="application/rss+xml"
+      href="https://www.birkey.co/rss.xml"
+      title="RSS feed for https://www.birkey.co/">
+<title>Why Eshell? - part 4</title>
+<meta name="author" content="Kasim Tuman">
+	     <meta name="referrer" content="no-referrer">
+	     <link href= "static/style.css" rel="stylesheet" type="text/css" />
+	     <link rel="icon" href="static/favicon.ico">
+	     <link rel="apple-touch-icon-precomposed" href="static/birkey_logo.png">
+	     <link rel="msapplication-TitleImage" href="static/birkey_logo.png">
+	     <link rel="msapplication-TitleColor" href="#0141ff">
+	     <link rel="alternate" type="application/rss+xml"  title="RSS Feed for birkey.co" href="/rss.xml"
+	     <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8">
+	     <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1"></head>
+<body>
+<div id="preamble" class="status"><br><center>
+    <div style="display: inline-block; vertical-align:middle;">
+<a href="https://www.birkey.co/index.html" style="text-decoration: none;"><b>BIRKEY CONSULTING</b><br>
+</a><hr/><div style="text-align: justify;display: inline-block; width: 100%;">
+<a class="title" href="https://www.birkey.co/resume.html">ABOUT</a> &nbsp;<a class="title" href="https://github.com/oneness">GITHUB</a> &nbsp;<a class="title" href="https://www.birkey.co/rss.xml">RSS</a> &nbsp;<a class="title" href="https://www.birkey.co/archive.html">ARCHIVE</a> &nbsp;<a class="title" href="https://paypal.me/ktuman">DONATE</a></div></div>
+</center><br><br>
+<div style="margin-bottom: 3ch;text-transform: none;"></div></div>
+<div id="content">
+<div class="post-date">17 Jul 2021</div><h1 class="post-title"><a href="https://www.birkey.co/2021-07-17-why-eshell-part-4.html">Why Eshell? - part 4</a></h1>
+<p>
+Since eshell buffer is just a regular emacs buffer, we have all of the
+emacs power at our disposal. In part 3 of my post, I briefly alluded
+to multiple terminal management by just using few lines of elisp and
+all without using any third party packages. I am posting the main elisp
+function for posterity here:
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(defun krun (cmd)
+  (interactive
+   (list
+    (ido-completing-read
+     "Enter cmd to run (append ##name for buffer name): "
+     (let ((history nil))
+       ;; We have to build up a list ourselves from the ring vector.
+       (dotimes (index (ring-length keshell-history-global-ring))
+	 (push (ring-ref keshell-history-global-ring index) history))
+       ;; Show them most-recent-first.
+       (setq history (nreverse history))))))
+  (let* ((cmds (split-string cmd "##"))
+	 (tag (or (-&gt; cmds second)
+		  "kshell"))
+	 (buff-name (-&gt; tag s-chomp s-trim)))
+    (kshell cmd buff-name)))
+</pre>
+</div>
+<p>
+The above function (along with those from the previous post) will
+allow you to do following:
+</p>
+<ul class="org-ul">
+<li>Start a new shell with a specific name by just appending
+##buffer-name after the command</li>
+<li>Run a command from history or new command in a dedicated eshell
+buffer, which defaults to <b>kshell</b>. You can override as any name you
+want.</li>
+<li>Use all hotkeys, interactive lisp functions as you would for regular
+emacs buffer. For example, you can do buffer switching, ibuffer
+management, isearch, protect a buffer from being killed, etc.</li>
+</ul>
+
+<p>
+Following demonstrates above cases I am talking about:
+</p>
+
+
+<figure id="org7fae62d">
+<img src="https://www.birkey.co/images/eshell-buffer-management.gif" alt="eshell-buffer-management.gif">
+
+</figure>
+<div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-eshell.html">eshell</a> <a href="https://www.birkey.co/tag-emacs.html">emacs</a> </div></div>
+<div id="postamble" class="status"><br><center>
+	   <div style="display: inline-block; vertical-align:middle;"></div></div>
+</body>
+</html>
