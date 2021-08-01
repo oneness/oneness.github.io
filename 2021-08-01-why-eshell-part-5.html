@@ -6,7 +6,7 @@
       type="application/rss+xml"
       href="https://www.birkey.co/rss.xml"
       title="RSS feed for https://www.birkey.co/">
-<title>BirkeyCo</title>
+<title>Why Eshell? - Part 5</title>
 <meta name="author" content="Kasim Tuman">
 	       <meta name="referrer" content="no-referrer">
 	       <link href= "static/style.css" rel="stylesheet" type="text/css" />
@@ -26,35 +26,28 @@
   </center><br><br>
   <div style="margin-bottom: 3ch;text-transform: none;"></div></div>
 <div id="content">
-<h1 class="title">Posts tagged "jvm":</h1>
-<div class="post-date">03 Oct 2018</div><h1 class="post-title"><a href="https://www.birkey.co/2018-10-03-vm-flags-from-running-jvm.html">VM flags from running JVM</a></h1>
+<div class="post-date">01 Aug 2021</div><h1 class="post-title"><a href="https://www.birkey.co/2021-08-01-why-eshell-part-5.html">Why Eshell? - Part 5</a></h1>
 <p>
-While I was doing some JVM GC analysis recently, I got curious about the vm flags that `java` command uses by default if you do not specify it when starting your JVM.
-Reading up JDK docs, I found <b>jcmd</b> is exactly what you need:
+One of the feature of Eshell that took me sometime to really
+appreciate is its built-in ability to emulate Plan9 smart Shell. It
+allows you to run a script or a command, run it again by just hitting
+enter key after you modify it, say you made a mistake or want to
+change part of it using Emacs editing power. You might say that you
+can do same thing in any terminal using your up arrow key and command
+line editing. But I challenge you to try it until you fully realize
+the advantage you have vs regular terminal. Below is a simple screen
+recording to show you what I mean:
+<img src="https://www.birkey.co/images/eshell-plan9-smart-shell.gif" alt="eshell-plan9-smart-shell.gif">
+I recommend you read following post to learn more about smart shell
+and more about eshell including aliases:
+<a href="https://masteringemacs.org/article/complete-guide-mastering-eshell">https://masteringemacs.org/article/complete-guide-mastering-eshell</a>.
 </p>
-<div class="org-src-container">
-<pre class="src src-shell">jcmd
-</pre>
-</div>
+
 <p>
-That will list all jvm instances running on your system beginning with
-its pids, which you can pass into <b>jcmd</b> with options to print VM flags like this:
+This concludes my `Why Eshell` series. Hope you find it useful and
+happy Eshelling!
 </p>
-<div class="org-src-container">
-<pre class="src src-shell">jcmd &lt;pid&gt; VM.flags
-</pre>
-</div>
-<p>
-There are many options you can use other than `VM.flags`, which you can get a full list by:
-</p>
-<div class="org-src-container">
-<pre class="src src-shell">jcmd &lt;pid&gt; help
-</pre>
-</div>
-<div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-jvm.html">jvm</a> </div><div id="archive">
-<a href="https://www.birkey.co/archive.html">Other posts</a>
-</div>
-</div>
+<div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-eshell.html">eshell</a> <a href="https://www.birkey.co/tag-emacs.html">emacs</a> </div></div>
 <div id="postamble" class="status"><br><center>
 	     <div style="display: inline-block; vertical-align:middle;"></div></div>
 </body>

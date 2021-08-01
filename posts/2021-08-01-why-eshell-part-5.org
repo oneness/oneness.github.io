@@ -1,0 +1,21 @@
+#+title: Why Eshell? - Part 5
+#+date: <2021-08-01 09:58>
+#+description:
+#+filetags: eshell emacs
+
+One of the feature of Eshell that took me sometime to really
+appreciate is its built-in ability to emulate Plan9 smart Shell. It
+allows you to run a script or a command, run it again by just hitting
+enter key after you modify it, say you made a mistake or want to
+change part of it using Emacs editing power. You might say that you
+can do same thing in any terminal using your up arrow key and command
+line editing. But I challenge you to try it until you fully realize
+the advantage you have vs regular terminal. Below is a simple screen
+recording to show you what I mean:
+https://www.birkey.co/images/eshell-plan9-smart-shell.gif
+I recommend you read following post to learn more about smart shell
+and more about eshell including aliases:
+https://masteringemacs.org/article/complete-guide-mastering-eshell.
+
+This concludes my `Why Eshell` series. Hope you find it useful and
+happy Eshelling!

@@ -4,7 +4,36 @@
 <title><![CDATA[BirkeyCo]]></title>
 <description><![CDATA[BirkeyCo]]></description>
 <link>https://www.birkey.co/</link>
-<lastBuildDate>Sun, 18 Jul 2021 10:32:44 -0700</lastBuildDate>
+<lastBuildDate>Sun, 01 Aug 2021 10:36:40 -0700</lastBuildDate>
+<item>
+  <title><![CDATA[Why Eshell? - Part 5]]></title>
+  <description><![CDATA[
+<p>
+One of the feature of Eshell that took me sometime to really
+appreciate is its built-in ability to emulate Plan9 smart Shell. It
+allows you to run a script or a command, run it again by just hitting
+enter key after you modify it, say you made a mistake or want to
+change part of it using Emacs editing power. You might say that you
+can do same thing in any terminal using your up arrow key and command
+line editing. But I challenge you to try it until you fully realize
+the advantage you have vs regular terminal. Below is a simple screen
+recording to show you what I mean:
+<img src="https://www.birkey.co/images/eshell-plan9-smart-shell.gif" alt="eshell-plan9-smart-shell.gif">
+I recommend you read following post to learn more about smart shell
+and more about eshell including aliases:
+<a href="https://masteringemacs.org/article/complete-guide-mastering-eshell">https://masteringemacs.org/article/complete-guide-mastering-eshell</a>.
+</p>
+
+<p>
+This concludes my `Why Eshell` series. Hope you find it useful and
+happy Eshelling!
+</p>
+<div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-eshell.html">eshell</a> <a href="https://www.birkey.co/tag-emacs.html">emacs</a> </div>]]></description>
+  <category><![CDATA[eshell]]></category>
+  <category><![CDATA[emacs]]></category>
+  <link>https://www.birkey.co/2021-08-01-why-eshell-part-5.html</link>
+  <pubDate>Sun, 01 Aug 2021 09:58:00 -0700</pubDate>
+</item>
 <item>
   <title><![CDATA[Why Eshell? - part 4]]></title>
   <description><![CDATA[
