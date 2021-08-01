@@ -59,6 +59,10 @@ div.heading {
     text-transform: uppercase;
 }
 
+.taglist {
+    display:block;
+}
+
 img.pixel, canvas.pixel {
     image-rendering: pixelated;
     image-rendering: -moz-crisp-edges;
