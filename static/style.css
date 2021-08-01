@@ -59,8 +59,10 @@ div.heading {
     text-transform: uppercase;
 }
 
-.taglist {
-    display:block;
+/* add line above post date */
+.post-date{
+  margin-top: 1em;
+  display: block;
 }
 
 img.pixel, canvas.pixel {
