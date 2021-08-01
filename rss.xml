@@ -4,7 +4,7 @@
 <title><![CDATA[BirkeyCo]]></title>
 <description><![CDATA[BirkeyCo]]></description>
 <link>https://www.birkey.co/</link>
-<lastBuildDate>Sun, 01 Aug 2021 10:36:40 -0700</lastBuildDate>
+<lastBuildDate>Sun, 01 Aug 2021 10:38:56 -0700</lastBuildDate>
 <item>
   <title><![CDATA[Why Eshell? - Part 5]]></title>
   <description><![CDATA[
@@ -18,7 +18,15 @@ can do same thing in any terminal using your up arrow key and command
 line editing. But I challenge you to try it until you fully realize
 the advantage you have vs regular terminal. Below is a simple screen
 recording to show you what I mean:
+</p>
+
+
+<figure id="orgf663aab">
 <img src="https://www.birkey.co/images/eshell-plan9-smart-shell.gif" alt="eshell-plan9-smart-shell.gif">
+
+</figure>
+
+<p>
 I recommend you read following post to learn more about smart shell
 and more about eshell including aliases:
 <a href="https://masteringemacs.org/article/complete-guide-mastering-eshell">https://masteringemacs.org/article/complete-guide-mastering-eshell</a>.
