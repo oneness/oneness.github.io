@@ -1,26 +1,42 @@
+:root {
+  /* Pure CSS variables */
+  --container-width: 800px;
+  --mono-font-stack: "Consolas", monospace;
+  --font-stack: var(--mono-font-stack);
+  /* Fallbacks should be provided, of course */
+}
+
 body {
-    font-family: Consolas,
-		 Monospace, /* Linux = DejaVu Sans Mono */
-		 Courier;   /* MacOSX & Windows = Courier */
-    font-size: 16;
-    max-width: 900px;  /* For Desktop PC (see @media for Tablets/Phones) */
-    padding-left: 2%;
-    padding-right: 3%;
-    margin: 0 auto;
-    background: #F5F5F0;
+  max-width: 800px;
+  max-width: var(--container-width);
+  padding: 0 0.5rem;
+  margin-right: auto;
+  margin-left: auto;
+  line-height: 1.5;
+  font-family: monospace;
+  font-family: var(--font-stack);
+  background: #F5F5F0;
+}
+
+@media all and (min-width: 800px) {
+  ol, ul { /* Hanging punctuation */
+    padding-inline-start: 2.5rem;
+  }
+  nav li {
+    display: inline;
+    margin: 0.5rem;
+  }
+  .form-group {
+    display: inline;
+  }
+  .site-footer__attribution > div {
+    display: inline-block;
+    margin: 0.5rem;
+  }
 }
 
 .title {
     text-decoration: none;
-}
-
-@media (max-width: 500px) { /* For small screen decices */
-    *{
-	font-size: 14px;
-    }
-    pre {
-	font-size: 14px;
-    }
 }
 
 a {
@@ -29,7 +45,13 @@ a {
 }
 
 img {
-    border: none;
+  max-width: 100%;
+  height: auto;
+}
+
+figure {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 p {

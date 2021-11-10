@@ -1,0 +1,120 @@
+:root {
+  /* Pure CSS variables */
+  --container-width: 800px;
+  --mono-font-stack: "Consolas", monospace;
+  --font-stack: var(--mono-font-stack);
+  /* Fallbacks should be provided, of course */
+}
+
+body {
+  max-width: 800px;
+  max-width: var(--container-width);
+  padding: 0 0.5rem;
+  margin-right: auto;
+  margin-left: auto;
+  line-height: 1.5;
+  font-family: monospace;
+  font-family: var(--font-stack);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+figure {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+figcaption {
+  text-align: center;
+  font-size: 0.75rem;
+}
+
+pre {
+  overflow: auto;
+}
+
+nav ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #ccc;
+  margin: 1.5rem 0 1.5rem 0;
+}
+
+/* IMAGE WIDTH STYLES */
+/* ================== */
+
+/* Style at will... */
+/* figure.kg-width-full { } */
+/* figure.kg-width-wide { } */
+/*
+PROTIP:
+Try something like as a starting point for centering images that are wider than their parent container's width:
+
+.full-bleed {
+	  width: 100vw;
+	  position: relative;
+	  left: 50%;
+	  right: 50%;
+	  margin-left: -50vw;
+	  margin-right: -50vw;
+	}
+
+For large images that aren't full width, but are larger than their parent, just replace 100vw with your max width (say, 1000px), and then replace the -50vw margins with -{NUM}px / 2 (in this case, -500px). You can see a version of this techinique in action in the stylesheet of my MNML Ghost theme:
+https://github.com/curiositry/mnml-ghost-theme
+*/
+
+/* IMAGE GALLERY STYLES */
+/* ==================== */
+
+/* Style at will... */
+/* .kg-gallery-card { } */
+/* .kg-gallery-container { } */
+/* .kg-gallery-row { } */
+/* .kg-gallery-image { } */
+
+/*
+Docs can be found here: http://themes.ghost.org/docs/ghost-editor#section-gallery-card
+
+The implementation that Ghost recommends is pretty robust, with one caveat: it needs a few lines of JavaScrpt. Example can be found here:
+https://github.com/TryGhost/Casper/pull/475/files#diff-ce5e030f2e2e2a50f18199464f07ea70
+*/
+
+.inline-block {
+  display: inline-block;
+}
+
+.center-text {
+  text-align: center;
+}
+
+ul {
+  padding-inline-start: 1rem;
+}
+
+ol {
+  padding-inline-start: 1.75rem;
+}
+
+@media all and (min-width: 800px) {
+  ol, ul { /* Hanging punctuation */
+    padding-inline-start: 0;
+  }
+  nav li {
+    display: inline;
+    margin: 0.5rem;
+  }
+  .form-group {
+    display: inline;
+  }
+  .site-footer__attribution > div {
+    display: inline-block;
+    margin: 0.5rem;
+  }
+}
