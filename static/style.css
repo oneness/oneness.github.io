@@ -82,8 +82,13 @@ div.heading {
 }
 
 /* add line above post date */
-.post-date{
+.post-date {
   margin-top: 2em;
+  display: block;
+}
+
+.post-title {
+  margin-top: 0.2em;
   display: block;
 }
 
