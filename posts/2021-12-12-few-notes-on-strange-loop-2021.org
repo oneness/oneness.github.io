@@ -1,0 +1,63 @@
+#+title: Few notes on Strange Loop 2021
+#+date: <2021-12-12 11:49>
+#+description: 
+#+filetags: conference strange-loop
+
+This year's Strange Loop was my 4th and it was as good as it has been
+in the past. One of the main reason I like to go to conferences
+especially Strange Loop was to see beyond the state of the art
+transmittable knowledge, which is the untransimittable one. In this
+age of Google search, Stack Overflow copy/paste and Coding school
+driven programming, which has its own place in our industry, we need
+to be cognizant of the existence and importance of the
+untransimittable part of software engineering knowledge that can only
+be acquired by learning from the masters. And Strange Loop has never
+failed me so far to provide an opportunity to jolt my brain to find
+easier those tacit knowledge that otherwise might have taken me long
+winding road to acquire. I would like to present few of those that I
+have taken notes so it will help my aspiring fellow engineers.
+
+*Domain Driven Design* : There are numerous books/posts/videos about
+ how to do it right and I have been using it with success for the last
+ few years. However, I have always been little bit unclear about how I
+ measure its benefit within my engineering team. I got the `AHA`
+ moment when second day keynote put up a quote on its slide stating
+ that 'Small change in product (Domain), should result in small change
+ in the code (implementation)'. Now, I know how to measure if we are
+ doing it right or wrong in my team.
+
+*API Design* : There is a talk about using Rust's type system in
+ aiding you to design a robust API that does validation and error
+ reporting right. While that talk focus on how Rust type system is
+ tremendously useful to library (API) designer, what I see from that
+ talk is way beyond just helpfulness of a well designed type system,
+ which is a languages ability to allow you to specify your system's
+ interfaces exactly as you intended. If you are not using one of those
+ languages (Rust, F#, Ada and Clojure ... any language that allows you
+ specify interfaces) in your library/API work, you should be checking
+ them out to see what you are missing (also remember to keep an eye
+ for what you are loosing. It is all about trade offs).
+
+*Dependencies* : This is a topic that is very dear to day to day
+ practice considering my current preferred tool of choice (Clojure and
+ ClojureScript). The branchstack talk triggered sort of `AHA` moment
+ for me in treating the entire state of your system (code) vs the
+ state of your outside dependencies. I'd like to think of them as your
+ internal state vs external state. I have been advocating and
+ practicing a sort of convention your system should only be just three steps
+ away from being able to be worked upon, which is:
+ #+begin_src shell
+ git clone <your_system_x> && make deps && make run
+ #+end_src
+ Note that it does not have to be git and make. Any tool of your
+ choice will do. The idea is that as a project owner, it is your
+ responsibility to make sure that your system workflow is easily
+ reproducible and those tools should be treated as first class citizen
+ as your system logic code.
+
+Again, those kind of tacit knowledge can only be learned by being in
+the presence of crafts people and having actually conversation with
+them in close vicinity. I have enjoyed all the talks that I attended
+and even more so the hallway and lunch table conversation. And I am
+looking forward to Strange Loop 2022 already :).
+
