@@ -4,7 +4,7 @@
 <title><![CDATA[BirkeyCo]]></title>
 <description><![CDATA[BirkeyCo]]></description>
 <link>https://www.birkey.co/</link>
-<lastBuildDate>Sat, 29 Jan 2022 20:54:03 -0800</lastBuildDate>
+<lastBuildDate>Sat, 29 Jan 2022 21:00:55 -0800</lastBuildDate>
 <item>
   <title><![CDATA[OpenBSD 7 Xfce Desktop]]></title>
   <description><![CDATA[
@@ -13,9 +13,9 @@ I blogged previously about why one should use OpenBSD and this time I
 would like to document steps to have a fully working Xfce Desktop with
 default installation. My goal is to keep the changes minimal only to
 absolutely required steps, nothing more nothing less. If you find
-steps missing (or did not result it what is expected) or not
-necessary, please drop me a line via k tuman at acm dot org so I can
-address and update this blog if needed.
+steps missing (or did not work as expected) or not necessary, please
+drop me a line via k tuman at acm dot org so I can address and update
+this blog if needed.
 </p>
 
 <ol class="org-ol">

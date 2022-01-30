@@ -7,9 +7,9 @@ I blogged previously about why one should use OpenBSD and this time I
 would like to document steps to have a fully working Xfce Desktop with
 default installation. My goal is to keep the changes minimal only to
 absolutely required steps, nothing more nothing less. If you find
-steps missing (or did not result it what is expected) or not
-necessary, please drop me a line via k tuman at acm dot org so I can
-address and update this blog if needed.
+steps missing (or did not work as expected) or not necessary, please
+drop me a line via k tuman at acm dot org so I can address and update
+this blog if needed.
 
 1. Download the img and make USB boot disk:
    #+begin_src shell
