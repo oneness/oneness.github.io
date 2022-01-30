@@ -4,7 +4,7 @@
 <title><![CDATA[BirkeyCo]]></title>
 <description><![CDATA[BirkeyCo]]></description>
 <link>https://www.birkey.co/</link>
-<lastBuildDate>Sat, 29 Jan 2022 20:25:30 -0800</lastBuildDate>
+<lastBuildDate>Sat, 29 Jan 2022 20:54:03 -0800</lastBuildDate>
 <item>
   <title><![CDATA[OpenBSD 7 Xfce Desktop]]></title>
   <description><![CDATA[
@@ -32,7 +32,7 @@ sudo dd if=~/Downloads/install70.img of=/path/to/usb
 the prompt. It is pretty straightforward. Once it is done, just
 reboot, which will automatically downloads and installs needed
 firmwares for your laptop.
-<b>NOTE</b> You can select whole disk and auto layout if you are not
+--<b>NOTE:</b>&#x2013; You can select whole disk and auto layout if you are not
 sure. Using wired connection for network interface is highly recommended.</li>
 <li><p>
 Once you login, switch to root account, add needed packages and
@@ -71,8 +71,8 @@ dmesg | grep pci | grep &lt;wifi card model&gt; # report if not supported
 doas ifconfig # again to check if your card listed
 doas ifconfig join &lt;Wifi name&gt; wpakey &lt;password&gt; # to join your wifi
 # Run following 2 lines if you want to auto join your wifi:
-doas echo "join wifiname wpakey password" &gt;&gt; /etc/hostname.&lt;wificardnmae&gt;
-doas echo "dhcp" &gt;&gt; /etc/hostname.&lt;wificardnmae&gt;
+doas echo "join wifiname wpakey password" &gt;&gt; /etc/hostname.&lt;wificardname&gt;
+doas echo "dhcp" &gt;&gt; /etc/hostname.&lt;wificardname&gt;
 doas sh /etc/netstart # to restart the network
 ping openbsd.org # to test your network
 </pre>

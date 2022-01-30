@@ -21,7 +21,7 @@ address and update this blog if needed.
    the prompt. It is pretty straightforward. Once it is done, just
    reboot, which will automatically downloads and installs needed
    firmwares for your laptop.
-   *NOTE* You can select whole disk and auto layout if you are not
+   --*NOTE:*-- You can select whole disk and auto layout if you are not
    sure. Using wired connection for network interface is highly recommended.
 3. Once you login, switch to root account, add needed packages and
    needed configs like this:
@@ -51,8 +51,8 @@ address and update this blog if needed.
     doas ifconfig # again to check if your card listed
     doas ifconfig join <Wifi name> wpakey <password> # to join your wifi
     # Run following 2 lines if you want to auto join your wifi:
-    doas echo "join wifiname wpakey password" >> /etc/hostname.<wificardnmae>
-    doas echo "dhcp" >> /etc/hostname.<wificardnmae>
+    doas echo "join wifiname wpakey password" >> /etc/hostname.<wificardname>
+    doas echo "dhcp" >> /etc/hostname.<wificardname>
     doas sh /etc/netstart # to restart the network
     ping openbsd.org # to test your network
   #+end_src
