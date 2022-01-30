@@ -68,7 +68,7 @@ pre {
     font-family: Consolas,
 		 Monospace, /* Linux = DejaVu Sans Mono */
 		 Courier;   /* MacOSX & Windows = Courier */
-    font-size: 16;
+    font-size: 16px;
     background-color: #eeeeff;
     padding-left: 2%;
     padding-top: 1ch;
