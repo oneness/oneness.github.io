@@ -31,6 +31,94 @@
   <div style="margin-bottom: 3ch;text-transform: none;"></div></div>
 <div id="content">
 
+<div class="post-date">29 Jan 2022</div><h1 class="post-title"><a href="https://www.birkey.co/2022-01-29-openbsd-7-xfce-desktop.html">OpenBSD 7 Xfce Desktop</a></h1>
+<p>
+I blogged previously about why one should use OpenBSD and this time I
+would like to document steps to have a fully working Xfce Desktop with
+default installation. My goal is to keep the changes minimal only to
+absolutely required steps, nothing more nothing less. If you find
+steps missing (or did not result it what is expected) or not
+necessary, please drop me a line via k tuman at acm dot org so I can
+address and update this blog if needed.
+</p>
+
+<ol class="org-ol">
+<li><p>
+Download the img and make USB boot disk:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">curl -O https://cdn.openbsd.org/pub/OpenBSD/7.0/amd64/install70.img
+sudo dd if=~/Downloads/install70.img of=/path/to/usb
+</pre>
+</div></li>
+<li>Boot from USB disk. Press <b>I</b> and hit enter when you see the
+`Welcome to the OpenBSD/amd64 7.0 installation program.` and follow
+the prompt. It is pretty straightforward. Once it is done, just
+reboot, which will automatically downloads and installs needed
+firmwares for your laptop.
+<b>NOTE</b> You can select whole disk and auto layout if you are not
+sure. Using wired connection for network interface is highly recommended.</li>
+<li><p>
+Once you login, switch to root account, add needed packages and
+needed configs like this:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">su  ## prompts for root password
+pkg_add xfce xfce-extras ## install xfce desktop
+sed -i 's/xconsole/#xconsole/' /etc/X11/xenodm/Xsetup_0 # no xconcole
+usermod -G operator &lt;user name&gt; # so you can use xfce to log out, reboot etc
+usermod -G wheel &lt;user name&gt; # so you can use doas
+echo "permit persist :wheel" &gt;&gt; /etc/doas.conf # doas = sudo
+rcctl enable messagebus ## enable dbus
+rcctl start messagebus ## start dbus
+rcctl enable apmd ## enable power daemon
+rcctl start apmd  ## start power daemon
+exit # switch to your user account
+echo "exec startxfce4" &gt; ~/.xsession ## auto launchs xfce4 desktop
+doas reboot ## restart to have a xfce default desktop
+</pre>
+</div></li>
+</ol>
+
+<p>
+<b>Bonus Tips and Tricks</b>
+</p>
+<ul class="org-ul">
+<li><p>
+Your wifi most likely will just work. In case if you get unlucky,
+here is how you can get it working:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">doas ifconfig # lists all supported interfaces
+doas fw_update # to install missing driver for your card
+dmesg | grep pci | grep &lt;wifi card model&gt; # report if not supported
+doas ifconfig # again to check if your card listed
+doas ifconfig join &lt;Wifi name&gt; wpakey &lt;password&gt; # to join your wifi
+# Run following 2 lines if you want to auto join your wifi:
+doas echo "join wifiname wpakey password" &gt;&gt; /etc/hostname.&lt;wificardnmae&gt;
+doas echo "dhcp" &gt;&gt; /etc/hostname.&lt;wificardnmae&gt;
+doas sh /etc/netstart # to restart the network
+ping openbsd.org # to test your network
+</pre>
+</div></li>
+<li><p>
+While default Xfce4 desktop is fully functional out of the box, I
+recommend following packages:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">doas pkg_add xfce4-power-manager xfce4-whiskermenu
+ln -s -f yourloginpics ~/.face # profile in whiskermenu and in lock screen
+</pre>
+</div>
+<p>
+Add them to the panel and tweak them to your liking. One setting I
+highly recommend enabling following in `Window Manager Tweaks`:
+</p>
+<ul class="org-ul">
+<li>[✓] <b>Hide title of windows when maximized</b></li>
+</ul></li>
+</ul>
+<div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-openbsd.html">openbsd</a> </div>
 <div class="post-date">12 Dec 2021</div><h1 class="post-title"><a href="https://www.birkey.co/2021-12-12-few-notes-on-strange-loop-2021.html">Few notes on Strange Loop 2021</a></h1>
 <p>
 This year's Strange Loop was my 4th and it was as good as it has been
@@ -261,55 +349,6 @@ command that I can run. As an added benefit, above code allows one to
 bring a eshell buffer with specific name by adding ##name at the end
 of the command if one wants to have the command run in a dedicated
 buffer.
-</p>
-<div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-eshell.html">eshell</a> <a href="https://www.birkey.co/tag-emacs.html">emacs</a> </div>
-<div class="post-date">27 Jun 2021</div><h1 class="post-title"><a href="https://www.birkey.co/2021-06-27-why-eshell-part-2.html">Why Eshell? - Part 2</a></h1>
-<p>
-Among many reasons of why I use eshell as my main terminal, I listed
-following in part 1 of my `Why Eshell?` series blog post. I am listing
-it here for posterity:
-</p>
-<ol class="org-ol">
-<li><b>Long running command notification and time</b></li>
-<li><b>Cross session history</b></li>
-<li><b>Interactive ido completion</b></li>
-<li><b>Unified interface (shell prompt buffer as regular emacs buffer)</b></li>
-<li><b>Plan9 Style Shell prompt (Think of it as bash REPL)</b></li>
-<li><b>Multiple terminal management</b></li>
-<li><b>Super charge bash with elisp</b></li>
-<li><b>Eshell aliases that puts bash aliases to shame :)</b></li>
-</ol>
-<p>
-I addressed first point here: <a href="https://www.birkey.co/2021-06-20-why-eshell-part-1.html">notification and time</a>. Let me address
-second point, which is sharing eshell history across many terminal
-sessions.
-</p>
-<div class="org-src-container">
-<pre class="src src-elisp">(defvar keshell-history-global-ring nil
-  "The history ring shared across Eshell sessions.")
-
-(defun keshell-hist-use-global-history ()
-  "Make Eshell history shared across different sessions."
-  (unless keshell-history-global-ring
-    (when eshell-history-file-name
-      (eshell-read-history nil t))
-    (setq keshell-history-global-ring
-	  (or eshell-history-ring (make-ring eshell-history-size))))
-  (setq eshell-history-ring keshell-history-global-ring))
-;; Following hook enables it
-(add-hook 'eshell-mode-hook 'keshell-hist-use-global-history)
-;; Following removes the hook
-(remove-hook 'eshell-mode-hook 'keshell-hist-use-global-history)
-</pre>
-</div>
-<p>
-After evaluating above 12 lines of elisp, you will have a list that
-holds all the eshell entries across sessions, which you can persist
-into a history file (just uses bash history file) and can even share
-it across machines over network. This opens up a whole new
-possibilities of completions, deduplication and multiple eshell
-buffer management goodness, which I will cover in the next few parts
-of `Why Eshell?` posts. So stay tuned and happy eshelling!
 </p>
 <div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-eshell.html">eshell</a> <a href="https://www.birkey.co/tag-emacs.html">emacs</a> </div><div id="archive">
 <a href="https://www.birkey.co/archive.html">Other posts</a>
