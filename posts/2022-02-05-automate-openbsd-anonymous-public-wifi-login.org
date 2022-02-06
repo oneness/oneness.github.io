@@ -1,0 +1,47 @@
+#+title: Automate OpenBSD anonymous public wifi log in
+#+date: <2022-02-05 19:40>
+#+description: 
+#+filetags: openbsd security
+
+Security is somewhat cat and mouse game. This does not mean however
+you be careless or just live with what you are handed to when it comes
+to protecting yourself from ill-intentioned actors out in the
+wild. Generally, I recommend choosing security over convenience, speed
+or shiny features for your offline and online computing needs. To
+start with, you are much better protected if you start using secure
+defaults of the system you are using. For example, Firefox has
+*HTTPS-Only Mode* that you can enable especially if you find yourself
+using public wifi. If you happen to use OpenBSD, you are in a treat
+:). Below bash script will allow you to log in to public wifi using
+random MAC addresses each time you connect to it: *NOTE:* iwm0 is the
+wireless card name on my laptop and you need to replace it with yours.
+#+begin_src shell
+#!/usr/bin/env bash
+
+ssid="$1"
+pass="$2"
+doas ifconfig iwm0 up
+sleep 3
+echo Wireless card is up
+
+if [[ -z "$pass" ]]; then
+    doas ifconfig iwm0 nwid "$ssid" lladdr random
+    echo Joining public $ssid
+else
+    doas ifconfig iwm0 nwid "$ssid" wpakey "$pass"
+    echo Joining private $ssid
+fi
+
+sleep 3
+
+doas dhcpleasectl iwm0
+
+echo Renewing inet address
+sleep 3
+
+echo Visiting google.com to test connection
+proxy=$(curl -s -L -I -o /dev/null -w '%{url_effective}' google.com)
+
+firefox $proxy
+
+#+end_src

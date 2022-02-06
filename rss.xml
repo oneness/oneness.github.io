@@ -1,10 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
 <title><![CDATA[BirkeyCo]]></title>
 <description><![CDATA[BirkeyCo]]></description>
 <link>https://www.birkey.co/</link>
-<lastBuildDate>Sat, 29 Jan 2022 21:00:55 -0800</lastBuildDate>
+<lastBuildDate>Sat, 05 Feb 2022 20:29:29 -0800</lastBuildDate>
+<item>
+  <title><![CDATA[Automate OpenBSD anonymous public wifi log in]]></title>
+  <description><![CDATA[
+<p>
+Security is somewhat cat and mouse game. This does not mean however
+you be careless or just live with what you are handed to when it comes
+to protecting yourself from ill-intentioned actors out in the
+wild. Generally, I recommend choosing security over convenience, speed
+or shiny features for your offline and online computing needs. To
+start with, you are much better protected if you start using secure
+defaults of the system you are using. For example, Firefox has
+<b>HTTPS-Only Mode</b> that you can enable especially if you find yourself
+using public wifi. If you happen to use OpenBSD, you are in a treat
+:). Below bash script will allow you to log in to public wifi using
+random MAC addresses each time you connect to it: <b>NOTE:</b> iwm0 is the
+wireless card name on my laptop and you need to replace it with yours.
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">#!/usr/bin/env bash
+
+ssid="$1"
+pass="$2"
+doas ifconfig iwm0 up
+sleep 3
+echo Wireless card is up
+
+if [[ -z "$pass" ]]; then
+    doas ifconfig iwm0 nwid "$ssid" lladdr random
+    echo Joining public $ssid
+else
+    doas ifconfig iwm0 nwid "$ssid" wpakey "$pass"
+    echo Joining private $ssid
+fi
+
+sleep 3
+
+doas dhcpleasectl iwm0
+
+echo Renewing inet address
+sleep 3
+
+echo Visiting google.com to test connection
+proxy=$(curl -s -L -I -o /dev/null -w '%{url_effective}' google.com)
+
+firefox $proxy
+
+</pre>
+</div>
+<div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-openbsd.html">openbsd</a> <a href="https://www.birkey.co/tag-security.html">security</a> </div>]]></description>
+  <category><![CDATA[openbsd]]></category>
+  <category><![CDATA[security]]></category>
+  <link>https://www.birkey.co/2022-02-05-automate-openbsd-anonymous-public-wifi-login.html</link>
+  <guid>https://www.birkey.co/2022-02-05-automate-openbsd-anonymous-public-wifi-login.html</guid>
+  <pubDate>Sat, 05 Feb 2022 19:40:00 -0800</pubDate>
+</item>
 <item>
   <title><![CDATA[OpenBSD 7 Xfce Desktop]]></title>
   <description><![CDATA[
@@ -97,6 +152,7 @@ highly recommend enabling following in `Window Manager Tweaks`:
 <div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-openbsd.html">openbsd</a> </div>]]></description>
   <category><![CDATA[openbsd]]></category>
   <link>https://www.birkey.co/2022-01-29-openbsd-7-xfce-desktop.html</link>
+  <guid>https://www.birkey.co/2022-01-29-openbsd-7-xfce-desktop.html</guid>
   <pubDate>Sat, 29 Jan 2022 12:58:00 -0800</pubDate>
 </item>
 <item>
@@ -176,6 +232,7 @@ looking forward to Strange Loop 2022 already :).
   <category><![CDATA[conference]]></category>
   <category><![CDATA[strange-loop]]></category>
   <link>https://www.birkey.co/2021-12-12-few-notes-on-strange-loop-2021.html</link>
+  <guid>https://www.birkey.co/2021-12-12-few-notes-on-strange-loop-2021.html</guid>
   <pubDate>Sun, 12 Dec 2021 11:49:00 -0800</pubDate>
 </item>
 <item>
@@ -213,6 +270,7 @@ happy Eshelling!
   <category><![CDATA[eshell]]></category>
   <category><![CDATA[emacs]]></category>
   <link>https://www.birkey.co/2021-08-01-why-eshell-part-5.html</link>
+  <guid>https://www.birkey.co/2021-08-01-why-eshell-part-5.html</guid>
   <pubDate>Sun, 01 Aug 2021 09:58:00 -0700</pubDate>
 </item>
 <item>
@@ -272,6 +330,7 @@ Following demonstrates above cases I am talking about:
   <category><![CDATA[eshell]]></category>
   <category><![CDATA[emacs]]></category>
   <link>https://www.birkey.co/2021-07-17-why-eshell-part-4.html</link>
+  <guid>https://www.birkey.co/2021-07-17-why-eshell-part-4.html</guid>
   <pubDate>Sat, 17 Jul 2021 09:43:00 -0700</pubDate>
 </item>
 <item>
@@ -357,6 +416,7 @@ buffer.
   <category><![CDATA[eshell]]></category>
   <category><![CDATA[emacs]]></category>
   <link>https://www.birkey.co/2021-07-10-why-eshell-part-3.html</link>
+  <guid>https://www.birkey.co/2021-07-10-why-eshell-part-3.html</guid>
   <pubDate>Sat, 10 Jul 2021 10:18:00 -0700</pubDate>
 </item>
 <item>
@@ -413,6 +473,7 @@ of `Why Eshell?` posts. So stay tuned and happy eshelling!
   <category><![CDATA[eshell]]></category>
   <category><![CDATA[emacs]]></category>
   <link>https://www.birkey.co/2021-06-27-why-eshell-part-2.html</link>
+  <guid>https://www.birkey.co/2021-06-27-why-eshell-part-2.html</guid>
   <pubDate>Sun, 27 Jun 2021 08:37:00 -0700</pubDate>
 </item>
 <item>
@@ -489,6 +550,7 @@ her command line work flow. Happy eshelling!
   <category><![CDATA[emacs]]></category>
   <category><![CDATA[eshell]]></category>
   <link>https://www.birkey.co/2021-06-20-why-eshell-part-1.html</link>
+  <guid>https://www.birkey.co/2021-06-20-why-eshell-part-1.html</guid>
   <pubDate>Sun, 20 Jun 2021 14:21:00 -0700</pubDate>
 </item>
 <item>
@@ -592,6 +654,7 @@ production bugs related to issues I outlined here.</li>
 <div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-clojure.html">clojure</a> </div>]]></description>
   <category><![CDATA[clojure]]></category>
   <link>https://www.birkey.co/2021-06-13-let-and-binding-macros-in-clojure.html</link>
+  <guid>https://www.birkey.co/2021-06-13-let-and-binding-macros-in-clojure.html</guid>
   <pubDate>Sun, 13 Jun 2021 11:35:00 -0700</pubDate>
 </item>
 <item>
@@ -638,6 +701,7 @@ say hello and thank her for it.
 <div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-books.html">books</a> </div>]]></description>
   <category><![CDATA[books]]></category>
   <link>https://www.birkey.co/2021-06-06-on-programming-style.html</link>
+  <guid>https://www.birkey.co/2021-06-06-on-programming-style.html</guid>
   <pubDate>Sun, 06 Jun 2021 10:30:00 -0700</pubDate>
 </item>
 <item>
@@ -678,6 +742,7 @@ Once again, less is <b>literally</b> more and you could do more using less.
 <div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-shell.html">shell</a> </div>]]></description>
   <category><![CDATA[shell]]></category>
   <link>https://www.birkey.co/2021-03-27-less-is-more-literally.html</link>
+  <guid>https://www.birkey.co/2021-03-27-less-is-more-literally.html</guid>
   <pubDate>Sat, 27 Mar 2021 10:37:00 -0700</pubDate>
 </item>
 <item>
@@ -808,6 +873,7 @@ helped solve the issue.
 <div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-curl.html">curl</a> </div>]]></description>
   <category><![CDATA[curl]]></category>
   <link>https://www.birkey.co/2021-01-10-curl-to-the-rescue.html</link>
+  <guid>https://www.birkey.co/2021-01-10-curl-to-the-rescue.html</guid>
   <pubDate>Sun, 10 Jan 2021 12:21:00 -0800</pubDate>
 </item>
 <item>
@@ -950,6 +1016,7 @@ engineering and never forget to have and share fun coding!
 <div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-engineering.html">engineering</a> </div>]]></description>
   <category><![CDATA[engineering]]></category>
   <link>https://www.birkey.co/2020-12-26-ETC-principle-to-ground-all.html</link>
+  <guid>https://www.birkey.co/2020-12-26-ETC-principle-to-ground-all.html</guid>
   <pubDate>Sat, 26 Dec 2020 15:06:00 -0800</pubDate>
 </item>
 <item>
@@ -1126,6 +1193,7 @@ Eshell aliases are great. You can pass arguments to them just prefixing aliases 
 <div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-shell.html">shell</a> </div>]]></description>
   <category><![CDATA[shell]]></category>
   <link>https://www.birkey.co/2020-03-10-one-command-to-drive-all.html</link>
+  <guid>https://www.birkey.co/2020-03-10-one-command-to-drive-all.html</guid>
   <pubDate>Tue, 10 Mar 2020 09:46:00 -0700</pubDate>
 </item>
 <item>
@@ -1198,6 +1266,7 @@ Would not that be wonderful if every project just follow simple conventions like
 <div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-makefile.html">Makefile</a> </div>]]></description>
   <category><![CDATA[Makefile]]></category>
   <link>https://www.birkey.co/2020-03-05-self-documenting-makefile.html</link>
+  <guid>https://www.birkey.co/2020-03-05-self-documenting-makefile.html</guid>
   <pubDate>Thu, 05 Mar 2020 10:52:00 -0800</pubDate>
 </item>
 <item>
@@ -1250,6 +1319,7 @@ I am currently running OpenBSD 6.6 on Thinkpad X220 (everything work out of the 
 <div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-openbsd.html">OpenBSD</a> </div>]]></description>
   <category><![CDATA[OpenBSD]]></category>
   <link>https://www.birkey.co/2020-02-15-openbsd-laptop-for-the-paranoid.html</link>
+  <guid>https://www.birkey.co/2020-02-15-openbsd-laptop-for-the-paranoid.html</guid>
   <pubDate>Sat, 15 Feb 2020 18:12:00 -0800</pubDate>
 </item>
 <item>
@@ -1327,6 +1397,7 @@ share or change it later. Here is my layout if you are curious:
 <div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-keyboard.html">keyboard</a> </div>]]></description>
   <category><![CDATA[keyboard]]></category>
   <link>https://www.birkey.co/2019-09-07-atreus62---best-portable-mechanical-keyboard.html</link>
+  <guid>https://www.birkey.co/2019-09-07-atreus62---best-portable-mechanical-keyboard.html</guid>
   <pubDate>Sat, 07 Sep 2019 13:49:00 -0700</pubDate>
 </item>
 <item>
@@ -1489,6 +1560,7 @@ in its entirety if you are interested: <a href="./static/config.html">My config 
 <div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-emacs.html">emacs</a> </div>]]></description>
   <category><![CDATA[emacs]]></category>
   <link>https://www.birkey.co/2019-08-04-why-emacs.html</link>
+  <guid>https://www.birkey.co/2019-08-04-why-emacs.html</guid>
   <pubDate>Sun, 04 Aug 2019 12:43:00 -0700</pubDate>
 </item>
 <item>
@@ -1565,6 +1637,7 @@ I hope someone from both community find above helpful.
   <category><![CDATA[clojure]]></category>
   <category><![CDATA[elixir]]></category>
   <link>https://www.birkey.co/2019-02-02-clojure-and-elixir.html</link>
+  <guid>https://www.birkey.co/2019-02-02-clojure-and-elixir.html</guid>
   <pubDate>Sat, 02 Feb 2019 10:29:00 -0800</pubDate>
 </item>
 <item>
@@ -1669,7 +1742,8 @@ fns out of AWS Java SDK, which I might do if time permits.
 </p>
 <div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-clojure.html">clojure</a> </div>]]></description>
   <category><![CDATA[clojure]]></category>
-  <link>https://www.birkey.co/2018-10-26-datafy-and-tap>-in-clojure-1.10.html</link>
+  <link>https://www.birkey.co/2018-10-26-datafy-and-tap%3E-in-clojure-1.10.html</link>
+  <guid>https://www.birkey.co/2018-10-26-datafy-and-tap%3E-in-clojure-1.10.html</guid>
   <pubDate>Fri, 26 Oct 2018 11:19:00 -0700</pubDate>
 </item>
 <item>
@@ -1748,6 +1822,7 @@ resolved, you might want to post it in VoidLinux forum for help.
 <div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-voidlinux.html">VoidLinux</a> </div>]]></description>
   <category><![CDATA[VoidLinux]]></category>
   <link>https://www.birkey.co/2018-10-20-debug-voidlinux-unresolvable-lib-issue.html</link>
+  <guid>https://www.birkey.co/2018-10-20-debug-voidlinux-unresolvable-lib-issue.html</guid>
   <pubDate>Sat, 20 Oct 2018 13:53:00 -0700</pubDate>
 </item>
 <item>
@@ -1779,6 +1854,7 @@ Above will produce something like this:
 <div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-clojure.html">clojure</a> </div>]]></description>
   <category><![CDATA[clojure]]></category>
   <link>https://www.birkey.co/2018-10-04-visualize-google-search-results-from-clojure-repl.html</link>
+  <guid>https://www.birkey.co/2018-10-04-visualize-google-search-results-from-clojure-repl.html</guid>
   <pubDate>Thu, 04 Oct 2018 11:21:00 -0700</pubDate>
 </item>
 <item>
@@ -1810,6 +1886,7 @@ There are many options you can use other than `VM.flags`, which you can get a fu
 <div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-jvm.html">jvm</a> </div>]]></description>
   <category><![CDATA[jvm]]></category>
   <link>https://www.birkey.co/2018-10-03-vm-flags-from-running-jvm.html</link>
+  <guid>https://www.birkey.co/2018-10-03-vm-flags-from-running-jvm.html</guid>
   <pubDate>Wed, 03 Oct 2018 12:03:00 -0700</pubDate>
 </item>
 <item>
@@ -1877,6 +1954,7 @@ me no time to set it up and start blogging. Below is my setup:
   <category><![CDATA[emacs]]></category>
   <category><![CDATA[blogging]]></category>
   <link>https://www.birkey.co/2018-9-20-blogging-simpler.html</link>
+  <guid>https://www.birkey.co/2018-9-20-blogging-simpler.html</guid>
   <pubDate>Wed, 19 Sep 2018 17:00:00 -0700</pubDate>
 </item>
 </channel>
