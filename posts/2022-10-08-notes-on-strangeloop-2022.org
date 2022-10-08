@@ -1,0 +1,59 @@
+#+title: Notes on StrangeLoop 2022
+#+date: <2022-10-08 14:30>
+#+description: 
+#+filetags: conference strange-loop
+
+StrangeLoop this year made me feel almost as normal as those during
+pre pandemic times especially in terms of size of participants and
+sponsors. I actually believe it had the most sponsorship so far among
+those I attended over the years. One noticeable company was AWS that a
+friend of mine joined earlier this year. So it was pretty exciting to
+meet up with him there. As always, the breadths of folks and topics
+from all walks of Software Engineering is just excellent this time as
+well. I took few notes on the talks that I am able to attend and would
+summarize them on few categories below.
+
+*Dev Experience* : I consider observability to be an important part of
+ development experience, which is always pushed back as an
+ afterthought for almost all the startups that I worked with and I
+ know of. The talk "Building Observability for 99% Developers" by Jean
+ Yang just resonated with me and I am really glad that her company is
+ building tools to make developer experience better using [[https://ebpf.io][eBPF]] that
+ has matured in the last few years. It was quite and entertaining talk
+ and I highly recommend you check it out. Another talk that I really
+ enjoyed is "Workflows, a new abstraction for distributed systems" by
+ Dominik Tornow. If you are dealing with the chaos of distributed
+ services, the abstraction that he presented make you feel like you
+ are working with monolith (oh the happy times :) again with the
+ advantage of cloud scalibility.
+
+*Programming Languages* : I personally prefer dynamic languages
+ (Clojure to be exact) as my tools of choice for my day to day
+ practice of solving problems for people but I do see the benefit of
+ type system as a guiding rail when designing an API or better yet
+ generating code. You should check out the talk "Codegen with Types,
+ for Humans, by Humans" by Matthew Griffith, where he talks about how
+ to use types to generate code for human consumption. If you are
+ working with (or say fighting with) type system that is complecting
+ your business logic/code execution, you should check out the talk
+ "Monad I Love You Now Get Out Of My Type System" by Gjeta Gjyshinca,
+ where she talks about the platform that helps Scala developer to get
+ their type system out of business logic with just five extra
+ characters, @node, with a compiler plugin.
+
+*Data Centric Problem Solving* : Strange Loop Conf have always been
+ attractive to data centric practices and paradigms and this year was
+ no different. There are many talks related to how to generate,
+ architect and analyze data. The talk titled "Data-driven
+ investigation in defense of human rights" by Christo Buschek is
+ presented with very clear and methodical approaches to solve real
+ problems we face around the world. I really feel like we need more of
+ that type of work where we put technology for the benefit of our
+ fellow human beings. I think he should do another presentation next
+ year titled "Data-driven investigation in defense of peace and
+ opposition of war", which surely makes me sign up for Strange Loop
+ for one last time (Next year will be the last time you can experience
+ Strange Loop and I highly recommend you attend to see what you have
+ been missing).
+
+   
