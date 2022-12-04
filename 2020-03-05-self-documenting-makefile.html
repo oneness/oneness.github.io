@@ -4,34 +4,29 @@
 <meta charset="UTF-8">
 <link rel="alternate"
       type="application/rss+xml"
-      href="https://www.birkey.co/rss.xml"
-      title="RSS feed for https://www.birkey.co/">
+      href="https://example.com/rss.xml"
+      title="RSS feed for https://example.com/">
 <title>Self documenting Makefile</title>
-<meta name="author" content="Kasim Tuman">
-	     <meta name="referrer" content="no-referrer">
-	     <link href= "static/style.css" rel="stylesheet" type="text/css" />
-	     <link rel="icon" href="static/favicon.ico">
-	     <link rel="apple-touch-icon-precomposed" href="static/birkey_logo.png">
-	     <link rel="msapplication-TitleImage" href="static/birkey_logo.png">
-	     <link rel="msapplication-TitleColor" href="#0141ff">
-	     <link rel="alternate" type="application/rss+xml"  title="RSS Feed for birkey.co" href="/rss.xml"
-	     <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8">
-	     <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1"></head>
+</head>
 <body>
-<div id="preamble" class="status"><br><center>
-    <div style="display: inline-block; vertical-align:middle;">
-<a href="https://www.birkey.co/index.html" style="text-decoration: none;"><b>BIRKEY CONSULTING</b><br>
-</a><hr/><div style="text-align: justify;display: inline-block; width: 100%;">
-<a class="title" href="https://www.birkey.co/resume/resume.html">ABOUT</a> &nbsp;<a class="title" href="https://github.com/oneness">GITHUB</a> &nbsp;<a class="title" href="https://www.birkey.co/rss.xml">RSS</a> &nbsp;<a class="title" href="https://www.birkey.co/archive.html">ARCHIVE</a> &nbsp;<a class="title" href="https://paypal.me/ktuman">DONATE</a></div></div>
-</center><br><br>
-<div style="margin-bottom: 3ch;text-transform: none;"></div></div>
+<div id="preamble" class="status"></div>
 <div id="content">
-<div class="post-date">05 Mar 2020</div><h1 class="post-title"><a href="https://www.birkey.co/2020-03-05-self-documenting-makefile.html">Self documenting Makefile</a></h1>
+<div class="post-date">05 Mar 2020</div><h1 class="post-title"><a href="https://example.com/2020-03-05-self-documenting-makefile.html">Self documenting Makefile</a></h1>
 <p>
-One of the pain points of starting a new project or even hacking on existing project is to know where to start. One can start with documentation, test cases or even running it to see the logs and stacktraces (Stracktrace way is one of my favourite and you can tell a lot about code flow, organzation and you can even find un-handled bugs that way, which is a topic of its own for a blog post). Each language brings in its own set of tools that you need to know before you getting familiar with the code base. You might add `README` or some other documents to ease the pain but it might get stale overtime. One convention that I have been using, which has paid off with any project or teams that I have collaborated, are following simple conventions:
+One of the pain points of starting a new project or even hacking on
+existing project is to know where to start. One can start with
+documentation, test cases or even running it to see the logs and
+stacktraces (Stracktrace way is one of my favourite and you can tell a
+lot about code flow, organzation and you can even find un-handled bugs
+that way, which is a topic of its own for a blog post). Each language
+brings in its own set of tools that you need to know before you
+getting familiar with the code base. You might add `README` or some
+other documents to ease the pain but it might get stale overtime. One
+convention that I have been using, which has paid off with any project
+or teams that I have collaborated, are following simple conventions:
 </p>
 <ul class="org-ul">
-<li>Each Project Should have a `Makefile` with following targets:
+<li>A project should have a `Makefile` with following targets:
 <ul class="org-ul">
 <li><b>setup</b> : Should take care of env configs</li>
 <li><b>deps</b>  : Should take care of handling all the project dependencies</li>
@@ -91,8 +86,7 @@ The presence of above Makefile should not be underestimated. It will allow yours
 <p>
 Would not that be wonderful if every project just follow simple conventions like this so you have less obstacle to start or dive into a project? It has benefited me and my team over the years and hope you see the benefit for yourself.
 </p>
-<div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-makefile.html">Makefile</a> </div></div>
-<div id="postamble" class="status"><br><center>
-	   <div style="display: inline-block; vertical-align:middle;"></div></div>
+<div class="taglist"></div></div>
+<div id="postamble" class="status"></div>
 </body>
 </html>

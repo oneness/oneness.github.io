@@ -2,8 +2,18 @@
 #+date: <2020-03-05 10:52>
 #+filetags: Makefile
 
-One of the pain points of starting a new project or even hacking on existing project is to know where to start. One can start with documentation, test cases or even running it to see the logs and stacktraces (Stracktrace way is one of my favourite and you can tell a lot about code flow, organzation and you can even find un-handled bugs that way, which is a topic of its own for a blog post). Each language brings in its own set of tools that you need to know before you getting familiar with the code base. You might add `README` or some other documents to ease the pain but it might get stale overtime. One convention that I have been using, which has paid off with any project or teams that I have collaborated, are following simple conventions:
-- Each Project Should have a `Makefile` with following targets:
+One of the pain points of starting a new project or even hacking on
+existing project is to know where to start. One can start with
+documentation, test cases or even running it to see the logs and
+stacktraces (Stracktrace way is one of my favourite and you can tell a
+lot about code flow, organzation and you can even find un-handled bugs
+that way, which is a topic of its own for a blog post). Each language
+brings in its own set of tools that you need to know before you
+getting familiar with the code base. You might add `README` or some
+other documents to ease the pain but it might get stale overtime. One
+convention that I have been using, which has paid off with any project
+or teams that I have collaborated, are following simple conventions:
+- A project should have a `Makefile` with following targets:
   - *setup* : Should take care of env configs
   - *deps*  : Should take care of handling all the project dependencies
   - *unit-test* : Should have local tests

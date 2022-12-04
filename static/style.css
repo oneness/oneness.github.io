@@ -56,7 +56,6 @@ figure {
 
 p {
     margin-top: 0px;
-    margin-bottom: 4ch;
     text-align: justify;
 }
 sup {
@@ -92,7 +91,7 @@ div.heading {
 }
 
 .org-ul {
-    margin-top: -2em;
+    margin-top: auto;
 }
 
 .post-title {
