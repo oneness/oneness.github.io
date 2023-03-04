@@ -31,6 +31,71 @@
   <div style="margin-bottom: 3ch;text-transform: none;"></div></div>
 <div id="content">
 <h1 class="title">Posts tagged "emacs":</h1>
+<div class="post-date">04 Mar 2023</div><h1 class="post-title"><a href="https://www.birkey.co/2023-03-04-atomic-commits-made-easy.html">Atomic commits made easy</a></h1>
+<p>
+Code complexity is something we all deal with in our daily work. There
+are many tools to helps us manage it. One of the most important one is
+to make incremental changes where each change is about <b>one and one
+context alone</b> , which is a great definition of <b>an atomic commit</b>. I
+do not think I need to convince you about its benefits any further
+than what I already have alluded to above, which is worth repeating
+here: It helps us contain complexity within our code base. In pursuit
+of making it easy for me to do atomic commits, I settled down
+following workflow:
+</p>
+<ul class="org-ul">
+<li>Separate changes by its effects. If a change is immutable, that is
+to say it is simple refactor or restructure that does not change the
+existing behavior, it should be in one commit.</li>
+<li>If changes are mutable, that is to say it changes existing behavior,
+group them further by their logical context where the context is
+about one and one thing alone. This is really crucial since we would
+like to make sure every commit can stand on its own and does not
+depend on later commits. This gives us the linear append only change
+that we can easily keep track of. This might sound a bit strange to
+you, but it means that you should not commit a not finished work at
+least not push up stream. That also does not mean that you should
+not commit your work as often as possible but if you do commit and
+end up violating above convention, you should amend/squash your
+commits.</li>
+</ul>
+
+<p>
+Having armed with above convention, I incorporated following tools to
+help me to make atomic commits easy:
+</p>
+<ul class="org-ul">
+<li><a href="https://www.gnu.org/software/emacs/"><b>Emacs</b></a></li>
+<li><a href="https://github.com/oneness/commit-patch"><b>commit-patch</b></a></li>
+<li><a href="https://github.com/oneness/commit-patch/blob/master/commit-patch-buffer.el"><b>commit-patch-buffer</b></a></li>
+</ul>
+
+<p>
+I am not going to repeat what the excellent <a href="https://porkrind.org/missives/commit-patch-managing-your-mess">blog</a> talked about above
+tools here, but it is worth checking it out, and I highly recommend
+it. If you happen to use Emacs, here is how you add it to your
+config:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">
+;; clone above repo in to ~/repos and eval following code
+(load-file "~/repos/commit-patch/commit-patch-buffer.el")
+(eval-after-load 'diff-mode
+  '(require 'commit-patch-buffer nil 'noerror))
+
+</pre>
+</div>
+
+<p>
+With above configuration, you can M-x vc-diff a file (vc-root-diff for
+whole project) then kill, split or edit the resulting hunks using diff
+mode's built-in commands and to then hit C-c C-c to commit the
+patch. Later if you realized that your commit is not atomic, you can
+make further changes and amend previous commit by C-c C-C (note the
+upper case C). 
+</p>
+<div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-vc.html">vc</a> <a href="https://www.birkey.co/tag-emacs.html">emacs</a> </div>
 <div class="post-date">01 Aug 2021</div><h1 class="post-title"><a href="https://www.birkey.co/2021-08-01-why-eshell-part-5.html">Why Eshell? - Part 5</a></h1>
 <p>
 One of the feature of Eshell that took me sometime to really

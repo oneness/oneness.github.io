@@ -30,6 +30,72 @@
   </center><br><br>
   <div style="margin-bottom: 3ch;text-transform: none;"></div></div>
 <div id="content">
+
+<div class="post-date">04 Mar 2023</div><h1 class="post-title"><a href="https://www.birkey.co/2023-03-04-atomic-commits-made-easy.html">Atomic commits made easy</a></h1>
+<p>
+Code complexity is something we all deal with in our daily work. There
+are many tools to helps us manage it. One of the most important one is
+to make incremental changes where each change is about <b>one and one
+context alone</b> , which is a great definition of <b>an atomic commit</b>. I
+do not think I need to convince you about its benefits any further
+than what I already have alluded to above, which is worth repeating
+here: It helps us contain complexity within our code base. In pursuit
+of making it easy for me to do atomic commits, I settled down
+following workflow:
+</p>
+<ul class="org-ul">
+<li>Separate changes by its effects. If a change is immutable, that is
+to say it is simple refactor or restructure that does not change the
+existing behavior, it should be in one commit.</li>
+<li>If changes are mutable, that is to say it changes existing behavior,
+group them further by their logical context where the context is
+about one and one thing alone. This is really crucial since we would
+like to make sure every commit can stand on its own and does not
+depend on later commits. This gives us the linear append only change
+that we can easily keep track of. This might sound a bit strange to
+you, but it means that you should not commit a not finished work at
+least not push up stream. That also does not mean that you should
+not commit your work as often as possible but if you do commit and
+end up violating above convention, you should amend/squash your
+commits.</li>
+</ul>
+
+<p>
+Having armed with above convention, I incorporated following tools to
+help me to make atomic commits easy:
+</p>
+<ul class="org-ul">
+<li><a href="https://www.gnu.org/software/emacs/"><b>Emacs</b></a></li>
+<li><a href="https://github.com/oneness/commit-patch"><b>commit-patch</b></a></li>
+<li><a href="https://github.com/oneness/commit-patch/blob/master/commit-patch-buffer.el"><b>commit-patch-buffer</b></a></li>
+</ul>
+
+<p>
+I am not going to repeat what the excellent <a href="https://porkrind.org/missives/commit-patch-managing-your-mess">blog</a> talked about above
+tools here, but it is worth checking it out, and I highly recommend
+it. If you happen to use Emacs, here is how you add it to your
+config:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">
+;; clone above repo in to ~/repos and eval following code
+(load-file "~/repos/commit-patch/commit-patch-buffer.el")
+(eval-after-load 'diff-mode
+  '(require 'commit-patch-buffer nil 'noerror))
+
+</pre>
+</div>
+
+<p>
+With above configuration, you can M-x vc-diff a file (vc-root-diff for
+whole project) then kill, split or edit the resulting hunks using diff
+mode's built-in commands and to then hit C-c C-c to commit the
+patch. Later if you realized that your commit is not atomic, you can
+make further changes and amend previous commit by C-c C-C (note the
+upper case C). 
+</p>
+<div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-vc.html">vc</a> <a href="https://www.birkey.co/tag-emacs.html">emacs</a> </div>
 <div class="post-date">08 Oct 2022</div><h1 class="post-title"><a href="https://www.birkey.co/2022-10-08-notes-on-strangeloop-2022.html">Notes on StrangeLoop 2022</a></h1>
 <p>
 StrangeLoop this year made me feel almost as normal as those during
@@ -92,7 +158,6 @@ summarize them on few categories below.
  been missing).
 </p>
 <div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-conference.html">conference</a> <a href="https://www.birkey.co/tag-strange-loop.html">strange-loop</a> </div>
-
 <div class="post-date">05 Feb 2022</div><h1 class="post-title"><a href="https://www.birkey.co/2022-02-05-automate-openbsd-anonymous-public-wifi-login.html">Automate OpenBSD anonymous public wifi log in</a></h1>
 <p>
 Security is somewhat cat and mouse game. This does not mean however
@@ -299,89 +364,7 @@ them in close vicinity. I have enjoyed all the talks that I attended
 and even more so the hallway and lunch table conversation. And I am
 looking forward to Strange Loop 2022 already :).
 </p>
-<div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-conference.html">conference</a> <a href="https://www.birkey.co/tag-strange-loop.html">strange-loop</a> </div>
-<div class="post-date">01 Aug 2021</div><h1 class="post-title"><a href="https://www.birkey.co/2021-08-01-why-eshell-part-5.html">Why Eshell? - Part 5</a></h1>
-<p>
-One of the feature of Eshell that took me sometime to really
-appreciate is its built-in ability to emulate Plan9 smart Shell. It
-allows you to run a script or a command, run it again by just hitting
-enter key after you modify it, say you made a mistake or want to
-change part of it using Emacs editing power. You might say that you
-can do same thing in any terminal using your up arrow key and command
-line editing. But I challenge you to try it until you fully realize
-the advantage you have vs regular terminal. Below is a simple screen
-recording to show you what I mean:
-</p>
-
-
-<figure id="orgf663aab">
-<img src="https://www.birkey.co/images/eshell-plan9-smart-shell.gif" alt="eshell-plan9-smart-shell.gif">
-
-</figure>
-
-<p>
-I recommend you read following post to learn more about smart shell
-and more about eshell including aliases:
-<a href="https://masteringemacs.org/article/complete-guide-mastering-eshell">https://masteringemacs.org/article/complete-guide-mastering-eshell</a>.
-</p>
-
-<p>
-This concludes my `Why Eshell` series. Hope you find it useful and
-happy Eshelling!
-</p>
-<div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-eshell.html">eshell</a> <a href="https://www.birkey.co/tag-emacs.html">emacs</a> </div>
-<div class="post-date">17 Jul 2021</div><h1 class="post-title"><a href="https://www.birkey.co/2021-07-17-why-eshell-part-4.html">Why Eshell? - part 4</a></h1>
-<p>
-Since eshell buffer is just a regular emacs buffer, we have all of the
-emacs power at our disposal. In part 3 of my post, I briefly alluded
-to multiple terminal management by just using few lines of elisp and
-all without using any third party packages. I am posting the main elisp
-function for posterity here:
-</p>
-<div class="org-src-container">
-<pre class="src src-emacs-lisp">(defun krun (cmd)
-  (interactive
-   (list
-    (ido-completing-read
-     "Enter cmd to run (append ##name for buffer name): "
-     (let ((history nil))
-       ;; We have to build up a list ourselves from the ring vector.
-       (dotimes (index (ring-length keshell-history-global-ring))
-	 (push (ring-ref keshell-history-global-ring index) history))
-       ;; Show them most-recent-first.
-       (setq history (nreverse history))))))
-  (let* ((cmds (split-string cmd "##"))
-	 (tag (or (-&gt; cmds second)
-		  "kshell"))
-	 (buff-name (-&gt; tag s-chomp s-trim)))
-    (kshell cmd buff-name)))
-</pre>
-</div>
-<p>
-The above function (along with those from the previous post) will
-allow you to do following:
-</p>
-<ul class="org-ul">
-<li>Start a new shell with a specific name by just appending
-##buffer-name after the command</li>
-<li>Run a command from history or new command in a dedicated eshell
-buffer, which defaults to <b>kshell</b>. You can override as any name you
-want.</li>
-<li>Use all hotkeys, interactive lisp functions as you would for regular
-emacs buffer. For example, you can do buffer switching, ibuffer
-management, isearch, protect a buffer from being killed, etc.</li>
-</ul>
-
-<p>
-Following demonstrates above cases I am talking about:
-</p>
-
-
-<figure id="org7fae62d">
-<img src="https://www.birkey.co/images/eshell-buffer-management.gif" alt="eshell-buffer-management.gif">
-
-</figure>
-<div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-eshell.html">eshell</a> <a href="https://www.birkey.co/tag-emacs.html">emacs</a> </div><div id="archive">
+<div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-conference.html">conference</a> <a href="https://www.birkey.co/tag-strange-loop.html">strange-loop</a> </div><div id="archive">
 <a href="https://www.birkey.co/archive.html">Other posts</a>
 </div>
 </div>

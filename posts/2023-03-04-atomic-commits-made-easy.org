@@ -1,0 +1,55 @@
+#+title: Atomic commits made easy
+#+date: <2023-03-04 13:20>
+#+description: 
+#+filetags: vc emacs
+
+Code complexity is something we all deal with in our daily work. There
+are many tools to helps us manage it. One of the most important one is
+to make incremental changes where each change is about *one and one
+context alone* , which is a great definition of *an atomic commit*. I
+do not think I need to convince you about its benefits any further
+than what I already have alluded to above, which is worth repeating
+here: It helps us contain complexity within our code base. In pursuit
+of making it easy for me to do atomic commits, I settled down
+following workflow:
+- Separate changes by its effects. If a change is immutable, that is
+  to say it is simple refactor or restructure that does not change the
+  existing behavior, it should be in one commit.
+- If changes are mutable, that is to say it changes existing behavior,
+  group them further by their logical context where the context is
+  about one and one thing alone. This is really crucial since we would
+  like to make sure every commit can stand on its own and does not
+  depend on later commits. This gives us the linear append only change
+  that we can easily keep track of. This might sound a bit strange to
+  you, but it means that you should not commit a not finished work at
+  least not push up stream. That also does not mean that you should
+  not commit your work as often as possible but if you do commit and
+  end up violating above convention, you should amend/squash your
+  commits.
+
+Having armed with above convention, I incorporated following tools to
+help me to make atomic commits easy:
+- [[https://www.gnu.org/software/emacs/][*Emacs*]]
+- [[https://github.com/oneness/commit-patch][*commit-patch*]]
+- [[https://github.com/oneness/commit-patch/blob/master/commit-patch-buffer.el][*commit-patch-buffer*]]
+
+I am not going to repeat what the excellent [[https://porkrind.org/missives/commit-patch-managing-your-mess][blog]] talked about above
+tools here, but it is worth checking it out, and I highly recommend
+it. If you happen to use Emacs, here is how you add it to your
+config:
+
+#+begin_src emacs-lisp
+  
+  ;; clone above repo in to ~/repos and eval following code
+  (load-file "~/repos/commit-patch/commit-patch-buffer.el")
+  (eval-after-load 'diff-mode
+    '(require 'commit-patch-buffer nil 'noerror))
+
+#+end_src
+
+With above configuration, you can M-x vc-diff a file (vc-root-diff for
+whole project) then kill, split or edit the resulting hunks using diff
+mode's built-in commands and to then hit C-c C-c to commit the
+patch. Later if you realized that your commit is not atomic, you can
+make further changes and amend previous commit by C-c C-C (note the
+upper case C). 

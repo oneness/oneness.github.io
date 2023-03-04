@@ -66,30 +66,30 @@ Above might sound a lot to ask but it is really trivial to do those with just fo
 <div class="org-src-container">
 <pre class="src src-Shell">.PHONY: help
 help: ## This is a cool project. It does great things to help humanity move forward.
-	@echo 'usage: make [target] ...'
-	@echo
-	@echo 'Targets Depends Description' | column -t -s ' '
-	@echo '------- ------- -----------' | column -t -s ' '
-	@egrep '^(.+)\:?.+\ ##\ (.+)' ${MAKEFILE_LIST} \
-	| column -t -s ':#' | sed 's/Makefile  //'
+        @echo 'usage: make [target] ...'
+        @echo
+        @echo 'Targets Depends Description' | column -t -s ' '
+        @echo '------- ------- -----------' | column -t -s ' '
+        @egrep '^(.+)\:?.+\ ##\ (.+)' ${MAKEFILE_LIST} \
+        | column -t -s ':#' | sed 's/Makefile  //'
 
 setup: ## Sets up all that are needed start working on the project.
-	@echo Setting up...
-	# Put you logic here
-	@echo Setting up done.
+        @echo Setting up...
+        # Put you logic here
+        @echo Setting up done.
 
 deps: setup ## Pulls in all required dependencies
-	@echo Pulling all project dependencies
+        @echo Pulling all project dependencies
 
 unit-test: deps ## Runs local tests
-	@echo Running unit-tests...
-	# Put your run unit-tests logic here
-	@echo unit-tests done.
+        @echo Running unit-tests...
+        # Put your run unit-tests logic here
+        @echo unit-tests done.
 
 integration-test: deps ## Runs non local tests
-	@echo Running integration-tests...
-	# Put your run integration-tests logic here
-	@echo integration-tests done.
+        @echo Running integration-tests...
+        # Put your run integration-tests logic here
+        @echo integration-tests done.
 </pre>
 </div>
 
