@@ -1,0 +1,66 @@
+* feedback
+
+This essay is relatively close to an ideal PTE essay. However, there
+are a few areas of improvement that could be addressed to make it even
+better.
+
+First, there are a few grammar and punctuation issues that should be
+addressed. For example, the sentence "If changes are mutable, that is
+to say it changes existing behavior, group them further by their
+logical context where the context is about one and one thing alone"
+could be rephrased to "If changes are mutable, meaning they change
+existing behavior, group them further by their logical context, which
+should be about one thing alone".
+
+Second, the essay could benefit from some more specific language. For
+example, instead of saying "This is really crucial" it would be better
+to say "This is essential" or "This is absolutely vital".
+
+Third, the essay could be made more cohesive with transitions between
+sentences and paragraphs. For example, a transition sentence such as
+"Having armed with these conventions, I incorporated the following
+tools to help make atomic commits easy" could be added between the
+discussion on conventions and the mention of the tools.
+
+Lastly, the essay could be made more concise by eliminating small
+phrases that don't add much to the overall essay. For example, the
+phrase "I do not think I need to convince you about its benefits any
+further than what I already have alluded to above" could be removed or
+reduced to a single word, such as "benefits".
+
+Making these improvements would greatly enhance the essay and make it
+more suitable for the PTE exam.
+
+* rewrite
+
+With the advent of technology, our lives are becoming more useful and
+interesting than ever before. From a time where our everyday
+activities are done manually to a time where much of these can be
+automated with the help of technology, it is evident that
+technological advancement has had a profound impact on our lives. In
+this essay, I will discuss and explain why technology has allowed us
+to have a more useful and interesting life than in the past.
+
+First, technology has allowed us to gain access to convenient,
+efficient, and cost-effective services. For instance, online shopping,
+banking services, and telemedicine have made our daily lives easier
+and more convenient as we no longer need to be physically present to
+avail of these services. Moreover, technology has allowed us to stay
+connected with the world. Platforms like social media have enabled us
+to build our own community and stay in touch with people we care
+about, thus leading to more interesting lives.
+
+Second, technology has lifted the limits of our creativity and
+imagination. Artificial intelligence and robotics have revolutionized
+the way we traditionally think and approach problems. Now, by
+incorporating these technologies into our lives, we can come up with
+innovative solutions that can significantly improve our quality of
+life in society. For example, renewable energy is a technology that
+has already helped us reduce our carbon footprint and address global
+warming issues.
+
+To conclude, technology has enabled us to have a more useful and
+interesting life than in the past by providing us access to
+convenient, efficient, and cost-effective services, and lifting the
+limits of our creativity and imagination. Through technology we can
+harness the power of the digital revolution for a better tomorrow.

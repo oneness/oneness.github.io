@@ -1,7 +1,7 @@
 :root {
   /* Pure CSS variables */
   --container-width: 800px;
-  --mono-font-stack: "Consolas", monospace;
+  --mono-font-stack: "Palatino", monospace;
   --font-stack: var(--mono-font-stack);
   /* Fallbacks should be provided, of course */
 }
