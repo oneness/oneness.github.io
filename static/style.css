@@ -12,9 +12,10 @@ body {
   padding: 0 0.5rem;
   margin-right: auto;
   margin-left: auto;
-  line-height: 1.5;
+  line-height: 1.7;
   font-family: monospace;
   font-family: var(--font-stack);
+  font-size: 18px;
   background: #F5F5F0;
 }
 
