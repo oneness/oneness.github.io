@@ -31,6 +31,135 @@
   <div style="margin-bottom: 3ch;text-transform: none;"></div></div>
 <div id="content">
 <h1 class="title">Posts tagged "emacs":</h1>
+<div class="post-date">14 May 2023</div><h1 class="post-title"><a href="https://www.birkey.co/2023-05-14-ai-or-not-to-ai.html">AI or not to AI</a></h1>
+<p>
+1913 Webster dictionary gives following definition to Artificial Intelligence:
+<b>Artificial</b> - 1. Made or contrived by art; produced or modified by
+human skill and labor, in opposition to natural; 2. Feigned;
+fictitious; assumed; affected; not genuine. 3. Artful; cunning;
+crafty. 4. Cultivated; not indigenous; not of spontaneous growth;
+<b>Intelligence</b> - 1. The act or state of knowing; the exercise of the
+understanding. 2. The capacity to know or understand; readiness of
+comprehension; the intellect, as a gift or an endowment. 3. Knowledge
+imparted or acquired, whether by study, research, or experience;
+general information. Specifically; (Mil.) Information about an enemy
+or potential enemy, his capacities, and intentions.
+</p>
+
+<p>
+Let us read and re-read above definitions and give it a few minutes to
+sink in. With our skilled labor, we have managed to produce a very
+powerful fictitious software that can understand, produce and reason
+about human generated artifacts such as language, images and
+videos. Our ability to make it more scalable, more accurate and more
+controllable is just a matter of time considering what we have is
+already pretty powerful enough. My following interaction with ChatGPT
+3.5 is already impressive:
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">[ME]: Explain, then add tests and simplify if possible:
+(defun kprompt (&amp;optional p)
+  (interactive "P")
+  (let* ((bname (if p "*org-ai-on-region*" "*scratch*"))
+         (directive "Explain, then add tests and simplify if possible:\n")
+         (prompt (if p
+                     (buffer-substring (region-beginning) (region-end))
+                   (read-string "AI Chat Prompt: "))))
+    (with-current-buffer (pop-to-buffer bname)
+      (when p
+        (erase-buffer)
+        (org-mode)
+        (setq truncate-lines nil)
+        (setq word-wrap t)
+        (org-ai--insert-created-timestamp)
+        (insert "\n")
+        (insert "#+begin_ai\n" "[ME]: " directive prompt "\n" "#+end_ai\n")
+        (forward-line -1)
+        (org-ai-complete-block))
+      (when (not p)
+        (beginning-of-buffer)
+        (open-line 2)
+        (org-ai-prompt prompt)))))
+
+[AI]: This function takes an optional argument, p, which determines whether the user
+will be prompted to enter a text or whether the function will use the text highlighted
+in the buffer. 
+
+If p is provided, it will create a new buffer with the name "*org-ai-on-region*" and
+insert the highlighted text from the current buffer along with a directive. This new
+buffer buffer will be formatted using org-mode to allow for better organization of
+comprehension text. Finally, it will call org-ai-complete-block to add some
+AI-generated text to the prompt.
+
+If p is not provided, it will prompt the user to enter text and then call
+org-ai-prompt org-ai-prompt to add some AI-generated text to the prompt.
+
+Tests:
+
+Input:
+(kprompt)
+Expected Output:
+AI Chat Prompt: 
+
+Input:
+(kprompt t)
+Expected Output:
+*org-ai-on-region* buffer created with prompt
+
+Input:
+(Highlight "This is a test")
+(kprompt t)
+Expected output:
+*org-ai-on-region* buffer created with "This is a test" text and AI-generated text.
+
+Simplified Code:
+The code appears to be relatively straightforward and efficient.
+No simplification is needed.
+</pre>
+</div>
+
+<p>
+It understood and reasoned about a piece of code (simple for now but
+does not matter as it can get pretty powerful in no time) despite the
+fact that it has never seen above code before in its entirety (I am
+pretty sure about that since it is a private code and this is the only
+time I am making the code public). This degree of intelligence
+codified into a software that a few powerful cooperation currently
+dominates should be something that keeps every software engineers
+awake at night. Not because of its inherent danger or tremendous
+productivity boosting ability as folks on the opposite side of
+spectrum of current AI debate claimed, but because of the very fact
+that every aspect of human lives will be effected by a such a
+powerful code like ChatGPT whether we like it or not, and we need
+to do whatever we can to ensure it is used for the good of humanity in
+general. It is created by humans and should serve humans. Make no
+mistake about it. Powerful software systems like that is already used
+by big cooperations and rouge states to cajole people into a state of
+self censorship if not into a state of heedlessness of its future
+implication. Social media, powerful tracking and image recognition
+systems are already pervasive in the lives of millions of people that
+are being controlled by dictators all around the world (and it is
+being exported very actively in the name of economic progress) to
+socially engineer people's behaviors that benefits their agenda in
+the name of social and economic progress at the very expense of
+destroying anyone or anything that is deemed as an obstacle.
+</p>
+
+<p>
+As a software engineer who have seen the worst of what bad actors can
+do with such a powerful systems, I am calling out to all of my fellow
+engineers to start thinking about what kind of world we would like our
+kids to inherit from us regardless of where you are, who you are and
+what is your geopolitical affiliation is. The wave is already there,
+and it takes all of us to make sure we are not being social
+engineered out of our humanity. I believe in the power of our humanity
+to make AI to work for us not the other way around. I registered the
+domain <b>www.codeforhumanrights.org</b> few years ago and this might be a
+good time to start putting it to a good use. If you are reading this
+and feel the need to start doing something, reach out to me via ktuman
+at acm dot org.
+</p>
+<div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-ai.html">AI</a> <a href="https://www.birkey.co/tag-emacs.html">emacs</a> </div>
 <div class="post-date">04 Mar 2023</div><h1 class="post-title"><a href="https://www.birkey.co/2023-03-04-atomic-commits-made-easy.html">Atomic commits made easy</a></h1>
 <p>
 Code complexity is something we all deal with in our daily work. There
