@@ -4,7 +4,79 @@
 <title><![CDATA[BirkeyCo]]></title>
 <description><![CDATA[BirkeyCo]]></description>
 <link>https://www.birkey.co/</link>
-<lastBuildDate>Sun, 14 May 2023 12:45:36 -0700</lastBuildDate>
+<lastBuildDate>Sun, 18 Jun 2023 10:52:42 -0700</lastBuildDate>
+<item>
+  <title><![CDATA[Google Bard and Emacs]]></title>
+  <description><![CDATA[
+<p>
+After reading a Google blog post on Bard's increasing ability for
+reasoning about source code, I thought I would give it a try. The
+issue is that not like OpenAI, Bard currently does not have an http
+API that I can use via curl. I googled around and came across the
+`bard-rs` project here: <a href="https://github.com/Alfex4936/Bard-rs">https://github.com/Alfex4936/Bard-rs</a>. So I
+followed the excellent instruction to get set up using bard from
+command line and its is pretty solid. I used following Elisp to use
+`bard-rs` from Emacs' compilation buffer here:
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(defun kcompilation-start (cmd name &amp;optional mode)
+  (let* ((compile-command nil)
+         (compilation-save-buffers-predicate 'ignore)
+         (compilation-buffer
+          (compilation-start cmd
+                             (if (equal mode 'read-only) nil t)
+                             (lambda (m)
+                               (or (when (boundp 'name)
+                                     (format "*%s*" name))
+                                   (buffer-name))))))
+    (when current-prefix-arg
+      (with-current-buffer compilation-buffer
+        (switch-to-prev-buffer (get-buffer-window (current-buffer)))))
+    (message (format "Running %s in %s ..." cmd name))))
+
+(defun kprompt-bard (&amp;optional p)
+  "Prompts for input to send it to `bard` using `bard-rs` in
+*bard-prompt* buffer. If mark-active, uses the text in the region
+ as the prompt"
+  (interactive "P")
+  (let* ((bs "bard-prompt")
+         (bname (format "*%s*" bs))
+         (bname (if (get-buffer bname)
+                    bname
+                  (progn (kcompilation-start "bard-rs -e ~/.env" bs)
+                         bname)))
+         (prompt (if mark-active
+                     (replace-regexp-in-string
+                      "\n"
+                      ""
+                      (buffer-substring-no-properties (region-beginning) (region-end)))
+                   (read-string "AI Chat Prompt: "))))
+    (with-current-buffer (pop-to-buffer bname)
+      (when p
+        (end-of-buffer)
+        (insert "!reset")
+        (comint-send-input)
+        (end-of-buffer)
+        (insert prompt)
+        (comint-send-input))
+      (when (not p)
+        (end-of-buffer)
+        (insert prompt)
+        (comint-send-input)))))
+</pre>
+</div>
+
+<p>
+You can bind `kprompt-bard` to any key of your choice and start
+interacting with Google bard from the comfort of Emacs' buffer. 
+</p>
+<div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-ai.html">AI</a> <a href="https://www.birkey.co/tag-emacs.html">emacs</a> </div>]]></description>
+  <category><![CDATA[AI]]></category>
+  <category><![CDATA[emacs]]></category>
+  <link>https://www.birkey.co/2023-06-18-google-bard-and-emacs.html</link>
+  <guid>https://www.birkey.co/2023-06-18-google-bard-and-emacs.html</guid>
+  <pubDate>Sun, 18 Jun 2023 10:06:00 -0700</pubDate>
+</item>
 <item>
   <title><![CDATA[AI or not to AI]]></title>
   <description><![CDATA[
@@ -2245,7 +2317,7 @@ me no time to set it up and start blogging. Below is my setup:
   <category><![CDATA[blogging]]></category>
   <link>https://www.birkey.co/2018-9-20-blogging-simpler.html</link>
   <guid>https://www.birkey.co/2018-9-20-blogging-simpler.html</guid>
-  <pubDate>Wed, 19 Sep 2018 17:00:00 -0700</pubDate>
+  <pubDate>Thu, 20 Sep 2018 00:00:00 -0700</pubDate>
 </item>
 </channel>
 </rss>

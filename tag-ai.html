@@ -31,6 +31,70 @@
   <div style="margin-bottom: 3ch;text-transform: none;"></div></div>
 <div id="content">
 <h1 class="title">Posts tagged "AI":</h1>
+<div class="post-date">18 Jun 2023</div><h1 class="post-title"><a href="https://www.birkey.co/2023-06-18-google-bard-and-emacs.html">Google Bard and Emacs</a></h1>
+<p>
+After reading a Google blog post on Bard's increasing ability for
+reasoning about source code, I thought I would give it a try. The
+issue is that not like OpenAI, Bard currently does not have an http
+API that I can use via curl. I googled around and came across the
+`bard-rs` project here: <a href="https://github.com/Alfex4936/Bard-rs">https://github.com/Alfex4936/Bard-rs</a>. So I
+followed the excellent instruction to get set up using bard from
+command line and its is pretty solid. I used following Elisp to use
+`bard-rs` from Emacs' compilation buffer here:
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(defun kcompilation-start (cmd name &amp;optional mode)
+  (let* ((compile-command nil)
+         (compilation-save-buffers-predicate 'ignore)
+         (compilation-buffer
+          (compilation-start cmd
+                             (if (equal mode 'read-only) nil t)
+                             (lambda (m)
+                               (or (when (boundp 'name)
+                                     (format "*%s*" name))
+                                   (buffer-name))))))
+    (when current-prefix-arg
+      (with-current-buffer compilation-buffer
+        (switch-to-prev-buffer (get-buffer-window (current-buffer)))))
+    (message (format "Running %s in %s ..." cmd name))))
+
+(defun kprompt-bard (&amp;optional p)
+  "Prompts for input to send it to `bard` using `bard-rs` in
+*bard-prompt* buffer. If mark-active, uses the text in the region
+ as the prompt"
+  (interactive "P")
+  (let* ((bs "bard-prompt")
+         (bname (format "*%s*" bs))
+         (bname (if (get-buffer bname)
+                    bname
+                  (progn (kcompilation-start "bard-rs -e ~/.env" bs)
+                         bname)))
+         (prompt (if mark-active
+                     (replace-regexp-in-string
+                      "\n"
+                      ""
+                      (buffer-substring-no-properties (region-beginning) (region-end)))
+                   (read-string "AI Chat Prompt: "))))
+    (with-current-buffer (pop-to-buffer bname)
+      (when p
+        (end-of-buffer)
+        (insert "!reset")
+        (comint-send-input)
+        (end-of-buffer)
+        (insert prompt)
+        (comint-send-input))
+      (when (not p)
+        (end-of-buffer)
+        (insert prompt)
+        (comint-send-input)))))
+</pre>
+</div>
+
+<p>
+You can bind `kprompt-bard` to any key of your choice and start
+interacting with Google bard from the comfort of Emacs' buffer. 
+</p>
+<div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-ai.html">AI</a> <a href="https://www.birkey.co/tag-emacs.html">emacs</a> </div>
 <div class="post-date">14 May 2023</div><h1 class="post-title"><a href="https://www.birkey.co/2023-05-14-ai-or-not-to-ai.html">AI or not to AI</a></h1>
 <p>
 1913 Webster dictionary gives following definition to Artificial Intelligence:
