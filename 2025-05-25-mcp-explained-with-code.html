@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="alternate"
+      type="application/rss+xml"
+      href="https://www.birkey.co/rss.xml"
+      title="RSS feed for https://www.birkey.co/">
+<title>MCP explained with code</title>
+<link href="static/style.css" rel="stylesheet" type="text/css" />
+	   <link rel="apple-touch-icon" sizes="180x180" href="static/apple-touch-icon.png">
+	   <link rel="icon" type="image/png" sizes="32x32" href="static/favicon-32x32.png">
+	   <link rel="icon" type="image/png" sizes="16x16" href="static/favicon-16x16.png">
+	   <link rel="manifest" href="/site.webmanifest">
+	   <link rel="mask-icon" href="static/safari-pinned-tab.svg" color="#5bbad5">
+	   <link rel="alternate" type="application/rss+xml" title="RSS Feed for birkey.co" href="/rss.xml">
+	   <meta name="author" content="Kasim Tuman">
+	   <meta name="referrer" content="no-referrer">
+	   <meta name="msapplication-TileColor" content="#da532c">
+	   <meta name="theme-color" content="#ffffff">
+	   <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8">
+	   <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1">
+	  </head>
+<body>
+<div id="preamble" class="status"><br><center>
+       <div style="display: inline-block; vertical-align:middle;">
+  <a href="https://www.birkey.co/index.html" style="text-decoration: none;"><b>BIRKEY CONSULTING</b><br>
+  </a><hr/><div style="text-align: justify;display: inline-block; width: 100%;">
+<a class="title" href="https://github.com/oneness">ABOUT</a> &nbsp;<a class="title" href="https://www.birkey.co/rss.xml">RSS</a> &nbsp;<a class="title" href="https://www.birkey.co/archive.html">ARCHIVE</a></div></div>
+  </center><br><br>
+  <div style="margin-bottom: 3ch;text-transform: none;"></div></div>
+<div id="content">
+<div class="post-date">25 May 2025</div><h1 class="post-title"><a href="https://www.birkey.co/2025-05-25-mcp-explained-with-code.html">MCP explained with code</a></h1>
+<p>
+So you are curios about how Model Context Protocol works as a
+stand-alone client and server, and as a hub to provide context for LLM
+models to do their magic? Then read on.
+</p>
+
+<p>
+In this post, I am going to write about following few points:
+</p>
+<ul class="org-ul">
+<li>Why MCP?</li>
+<li>How does it work?</li>
+<li>What makes it worth learning and excited about?</li>
+</ul>
+
+<p>
+<b>Disclaimer:</b> This blog post is not about making a claim of its merit
+ only without its trade offs, which is a blog post for another day and
+ another time. So take everything you read here with a grain of salt.
+</p>
+<div id="outline-container-orge2a41fa" class="outline-2">
+<h2 id="orge2a41fa">Why MCP?</h2>
+<div class="outline-text-2" id="text-orge2a41fa">
+<p>
+LLMs needs context to narrow its pattern recognitions so it can
+provide more contextual help for the domain you are engaging them
+with. MCP provides a plug and play way to do just that. I am not going
+to repeat the excellent documentation from its web site <a href="https://modelcontextprotocol.io/introduction">here</a> but I'd
+like to drive the point a bit further expanding upon their USB-C
+analogy. USB-C is a universal standard (interface to be exact) that every
+device manufactures uses so their device can be plugged into a USB
+port of a computer. Once a device (think of it as a MCP Server)
+connects to USB-C port, it exchanges information with the host about
+its capabilities using a USB-C subsystem of your PC (think of it as a
+MCP client) so you can communicate with the device. MCP client/server
+behaves just like that and we are ready to the next section to see the
+actual code so you can run to convince yourself.
+</p>
+</div>
+</div>
+<div id="outline-container-org12f4eb8" class="outline-2">
+<h2 id="org12f4eb8">How does it work?</h2>
+<div class="outline-text-2" id="text-org12f4eb8">
+<p>
+To understand any concept, I usually take it apart to its smallest
+logical units to see them in actions. Below are all you need to run a
+stand-alone MCP client and server in TypeScript:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-TypeScript">// Core bits of Server here. See full code:
+// https://github.com/oneness/ts-mcp-client-server/blob/main/src/server.ts
+class MCPServer {
+  ... // omitted boiler plate code
+  private setupToolHandlers() {
+    // Handle list_tools requests
+    this.server.setRequestHandler(ListToolsRequestSchema, async (): Promise&lt;ListToolsResult&gt; =&gt; {
+      return {
+        tools: [
+          {
+            name: "say_hello",
+            description: "Says hello to a person",
+            inputSchema: {
+              type: "object",
+              properties: {
+                name: {
+                  type: "string",
+                  description: "The name of the person to greet",
+                },
+              },
+              required: ["name"],
+            },
+          } as Tool,
+          {
+            name: "get_time",
+            description: "Gets the current time",
+            inputSchema: {
+              type: "object",
+              properties: {},
+            },
+          } as Tool,
+        ],
+      };
+    });
+
+    // Handle call_tool requests
+    this.server.setRequestHandler(CallToolRequestSchema, async (request): Promise&lt;CallToolResult&gt; =&gt; {
+      const { name, arguments: args } = request.params;
+
+      switch (name) {
+        case "say_hello":
+          const personName = args?.name || "World";
+          return {
+            content: [
+              {
+                type: "text",
+                text: `Hello, ${personName}! This is a greeting from the MCP server.`,
+              },
+            ],
+          };
+
+        case "get_time":
+          return {
+            content: [
+              {
+                type: "text",
+                text: `Current time: ${new Date().toISOString()}`,
+              },
+            ],
+          };
+
+        default:
+          throw new Error(`Unknown tool: ${name}`);
+      }
+    });
+  }
+  ... // omitted
+}
+
+// Client
+// https://github.com/oneness/ts-mcp-client-server/blob/main/src/client.ts
+class MCPClient {
+  ... // omitted
+  async listTools() {
+    try {
+      const response = await this.client.listTools() as ListToolsResult;
+
+      console.log("Available tools:");
+      response.tools.forEach((tool) =&gt; {
+        console.log(`- ${tool.name}: ${tool.description}`);
+      });
+
+      return response.tools;
+    } catch (error) {
+      console.error("Error listing tools:", error);
+      return [];
+    }
+  }
+
+  async callTool(name: string, args: any = {}) {
+    try {
+      const response = await this.client.callTool({
+        name,
+        arguments: args,
+      }) as CallToolResult;
+
+      console.log(`Tool '${name}' response:`);
+      response.content.forEach((content) =&gt; {
+        if (content.type === "text") {
+          console.log(content.text);
+        }
+      });
+
+      return response;
+    } catch (error) {
+      console.error(`Error calling tool '${name}':`, error);
+    }
+  }
+ ... //omitted 
+}
+</pre>
+</div>
+
+<p>
+As you have noticed, there are few interfaces (functions with args and
+return schema ) that you need to implement so client and server can
+speak to each other using Request/Response format that they
+understand (JSON2.0 RPC if you are curious).
+</p>
+
+<p>
+Now you understand how a stand-alone MCP client and server communicates
+with each other (I highly recommend you clone the repo and run `npm
+run mcp` to see it in action), Let us see the actual LLM chat that
+uses MCP client to talk to LLM by providing MCP server capabilities as
+a context to it. LLM can use the structured data (MCP capabilities)
+to determine what MCP server tool it can use to answer user's request,
+which in turn MCP client uses to execute the tool. Then the tool
+response is provided back to LLM so it can formulate a final response
+back to the user. Here is the simple ASCII diagram that visualizes the
+flow I am talking about:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-text">+----------+      +------------+      +-----------------+      +-----+
+|   User   |      | MCP Client |      | MCP Server Tool |      | LLM |
++----------+      +------------+      +-----------------+      +-----+
+     |                 |                  |                  |
+     |                 | 0. Connect &amp; Get |                  |
+     |                 |    Capabilities  |                  |
+     |                 +-----------------&gt;|                  |
+     |                 |&lt;-----------------+                  |
+     |                 | (Capabilities now known by Client)  |
+     |                 |                  |                  |
+     |                 | 1. Setup System  |                  |
+     |                 |    Prompt w/ MCP |                  |
+     |                 |    Capabilities  |                  |
+     |                 +------------------------------------&gt;|
+     |                 |                  |                  |
+     |                 |                  | (LLM is now      |
+     |                 |                  |  aware of tools) |
+     |                 |                  |                  |
+     |  2. Chat Req.   |                  |                  |
+     +----------------&gt;|                  |                  |
+     |                 |                  |                  |
+     |                 | 3. User Query    |                  |
+     |                 |  (subsequent)    |                  |
+     |                 +------------------------------------&gt;|
+     |                 |                  |                  |
+     |                 |                  | 4. Process Query |
+     |                 |                  |    &amp; Context     |
+     |                 |                  |                  |
+     |                 |                  |&lt;-----------------| (Tool identified?)
+     |                 |                  | 5. Tool Exec.    |
+     |                 |                  |    Request       |
+     |                 |&lt;------------------------------------|
+     |                 |                  |                  |
+     |                 | 6. Execute Tool  |                  |
+     |                 +-----------------&gt;|                  |
+     |                 |                  |                  |
+     |                 |&lt;-----------------+                  |
+     |                 | 7. Tool Output   |                  |
+     |                 |                  |                  |
+     |                 | 8. Tool Output   |                  |
+     |                 +------------------------------------&gt;|
+     |                 |                  |                  |
+     |                 |                  |                  |
+     |                 |                  |                  |
+     |                 |&lt;------------------------------------|
+     |                 |                  | 9. Final Response|
+     |&lt;----------------+                  |                  |
+     | 10. Chat Resp.  |                  |                  |
+
+
+</pre>
+</div>
+
+<p>
+Here is the code that shows above flow in action:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-TypeScript">// Omitted for brevity. See below link for details
+// https://github.com/oneness/ts-mcp-client-server/blob/main/src/llm.ts#L69
+async processMessage(userMessage: string): Promise&lt;string&gt; {
+  console.log(`\n🤖 Processing: "${userMessage}"`);
+
+  // Add user message to conversation
+  this.conversationHistory.push({
+    role: "user",
+    content: userMessage
+  });
+
+  try {
+    // Prepare tools for Claude
+    const tools = this.convertMCPToolsToAnthropicFormat();
+
+    // Get Claude's response
+    const response = await this.anthropic.messages.create({
+      model: "claude-3-5-sonnet-20241022",
+      max_tokens: 1000,
+      system: this.systemPrompt,
+      messages: this.conversationHistory,
+      tools: tools.length &gt; 0 ? tools : undefined,
+    });
+
+    console.log(`🧠 Claude response:`, JSON.stringify(response, null, 2));
+
+    // Process the response
+    let finalResponse = "";
+    const toolResults: MCPToolResult[] = [];
+
+    // Handle different content types
+    for (const content of response.content) {
+      if (content.type === 'text') {
+        finalResponse += content.text;
+      } else if (content.type === 'tool_use') {
+        console.log(`🔧 Claude wants to use tool: ${content.name} with args:`, content.input);
+
+        // Call the MCP tool
+        const mcpResult = await this.mcpClient.callTool(content.name, content.input);
+
+        let toolResultText = "No result";
+        if (mcpResult &amp;&amp; mcpResult.content) {
+          toolResultText = mcpResult.content
+            .filter(c =&gt; c.type === 'text')
+            .map(c =&gt; c.text)
+            .join('\n');
+        }
+
+        toolResults.push({
+          tool: content.name,
+          result: toolResultText
+        });
+
+        // Add tool result to conversation for Claude's next response
+        this.conversationHistory.push({
+          role: "assistant",
+          content: response.content
+        });
+
+        this.conversationHistory.push({
+          role: "user",
+          content: [
+            {
+              type: "tool_result",
+              tool_use_id: content.id,
+              content: toolResultText
+            }
+          ]
+        });
+      }
+    }
+
+    // If we used tools, get Claude's final response incorporating the results
+    if (toolResults.length &gt; 0) {
+      console.log(`📊 Tool results:`, toolResults);
+
+      const finalCompletion = await this.anthropic.messages.create({
+        model: "claude-3-5-sonnet-20241022",
+        max_tokens: 1000,
+        system: this.systemPrompt,
+        messages: this.conversationHistory,
+        tools: tools.length &gt; 0 ? tools : undefined,
+      });
+
+      // Extract text from final response
+      finalResponse = "";
+      for (const content of finalCompletion.content) {
+        if (content.type === 'text') {
+          finalResponse += content.text;
+        }
+      }
+
+      this.conversationHistory.push({
+        role: "assistant",
+        content: finalCompletion.content
+      });
+    } else {
+      // No tools were used, add the response to history
+      this.conversationHistory.push({
+        role: "assistant",
+        content: response.content
+      });
+    }
+
+    return finalResponse;
+
+  } catch (error) {
+    console.error('Error calling Claude:', error);
+    return "I'm sorry, I encountered an error processing your request.";
+  }
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org0e026ce" class="outline-2">
+<h2 id="org0e026ce">What makes it worth learning and excited about?</h2>
+<div class="outline-text-2" id="text-org0e026ce">
+<p>
+If you have been following LLM landscape, you might have come to a
+realization that most of us (unless you are an AI researcher) are in
+the business of providing the most accurate and up to date context to
+the foundational LLM models. MCP unifies the way LLM models, Consumer
+Applications (clients) and Resource Providers (servers) communicates
+thus reducing M*N integration issues to M+N, which is worth learning,
+implementing and being excited about. Even without the context of LLM,
+I hope more data or service providers exposes their system
+capabilities by implementing MCP server contracts. That would
+dramatically reduce so much wasted time spent on ad-hoc integration
+API glue code.
+</p>
+
+<p>
+Hope you learned a thing or two about MCP. Keep learning and have fun!
+</p>
+</div>
+</div>
+<div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-mcp.html">mcp</a> </div></div>
+<div id="postamble" class="status"><br><center>
+	      <div style="display: inline-block; vertical-align:middle;"></div></div>
+</body>
+</html>
