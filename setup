@@ -3,5 +3,4 @@
 set -euo pipefail
 
 # just one liner to get all my stuff into a box
-git clone https://github.com/oneness/dotfiles ~/.dotfiles \
-    && cd ~/.dotfiles && make setup && echo You are good to go!
+$ sh <(curl -L https://raw.githubusercontent.com/oneness/oneness/refs/heads/main/bootstrap.sh)
