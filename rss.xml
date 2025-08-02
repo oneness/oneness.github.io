@@ -4,7 +4,260 @@
 <title><![CDATA[BirkeyCo]]></title>
 <description><![CDATA[BirkeyCo]]></description>
 <link>https://www.birkey.co/</link>
-<lastBuildDate>Sun, 25 May 2025 14:53:12 -0700</lastBuildDate>
+<lastBuildDate>Sat, 02 Aug 2025 11:34:09 -0700</lastBuildDate>
+<item>
+  <title><![CDATA[Hacker news AI coding experience analysis]]></title>
+  <description><![CDATA[
+<p>
+I have been using and experimenting with AI coding tools heavily for
+the last 3 months or so since joining <a href="https://www.legionhealth.com/">Legion Health</a> as a Founding
+Engineer. I was somewhat skeptical and approached using AI with
+suspicion since ChatGPT came out. I use Emacs as my workbench and
+optimized my workflow around using it as a terminal multiplexer, which
+naturally fits with Claude Code that I use as my main programming
+assistant. Below is my simple setup that might benefit other fellow
+minimalist Emacs users.
+</p>
+<div class="org-src-container">
+<pre class="src src-elisp">(use-package eat :ensure t :config
+  (setq eat-term-name "xterm-256color" eat-kill-buffer-on-exit t
+        process-adaptive-read-buffering nil eat-term-scrollback-size 500000)
+  (define-key eat-semi-char-mode-map [?\s-v] #'eat-yank)
+  (define-key eat-semi-char-mode-map [?\C-c ?\C-r] #'k/eat-redisplay))
+(defun k/eat-redisplay ()
+"Fix eat flicker/flash and display funkiness"
+(interactive)
+(unless (derived-mode-p 'eat-mode)
+  (error "Not in an eat-mode buffer"))
+(when (and (boundp 'eat-mode) eat-mode (boundp 'eat-terminal) eat-terminal)
+  (let* ((process (eat-term-parameter eat-terminal 'eat--process))
+         (window (get-buffer-window (current-buffer))))
+    (if (and process (process-live-p process) window)
+        (eat--adjust-process-window-size process (list window)))))
+(setq-local window-adjust-process-window-size-function
+            'window-adjust-process-window-size-smallest)
+(goto-char (point-min))
+(redisplay)
+(goto-char (point-max))
+(redisplay)
+(setq-local window-adjust-process-window-size-function 'ignore))
+</pre>
+</div>
+
+<p>
+I start an eat shell and run:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">cd ~/repos/project-x &amp;&amp; claude
+</pre>
+</div>
+
+<p>
+This is a fast moving landscape and I find following few points are
+extremely helpful in my workflow:
+</p>
+<ul class="org-ul">
+<li>Spend few minutes to gather up and feed context related to what needs to be
+done to Claude at the start of a session.</li>
+<li>Always ask to show a plan and instruct Claude for guidance if there
+multiple options for a solution.</li>
+<li>Provide a skeleton such as directory structure, file names, function names
+and signatures.</li>
+<li>Provide use case and acceptance criteria testing instructions.</li>
+</ul>
+
+<p>
+On top of that, you need to make sure Claude has access to tools that
+enhances its ability to look up relevant information. To provide more
+balanced overview of the AI coding experience, I used a great data
+analysis tool for Hacker News called <a href="https://camelai.com/">CamelAI</a>. Below are the result
+that more or less resonates with my personal experience.
+</p>
+<div id="outline-container-orgb608789" class="outline-2">
+<h2 id="orgb608789">🏆 Top Stories by Engagement</h2>
+<div class="outline-text-2" id="text-orgb608789">
+<ul class="org-ul">
+<li>Claude 3.7 Sonnet and Claude Code (2,127 points) 🟢
+<ul class="org-ul">
+<li>Overwhelmingly positive reception for AI coding capabilities</li>
+<li>Demonstrates Claude's dominance in the space</li>
+</ul></li>
+<li>Cursor IDE lockout policy problems (1,511 points) 🔴
+<ul class="org-ul">
+<li>Major backlash against policy changes causing user cancellations</li>
+<li>Shows fragility of user trust in AI tools</li>
+</ul></li>
+<li>AlphaEvolve: Gemini coding agent (1,036 points) 🚀
+<ul class="org-ul">
+<li>Google's advanced algorithm design agent</li>
+<li>High interest in autonomous coding capabilities</li>
+</ul></li>
+<li>"Enough AI copilots, we need AI HUDs" (964 points) 🎛️
+<ul class="org-ul">
+<li>Forward-thinking discussion about UI evolution</li>
+<li>Community wants more integrated experiences</li>
+</ul></li>
+<li>Void: Open-source Cursor alternative (948 points) 🔓
+<ul class="org-ul">
+<li>Strong demand for open-source alternatives</li>
+<li>Privacy and control concerns driving adoption</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org0600797" class="outline-2">
+<h2 id="org0600797">📊 Key Trends &amp; Patterns</h2>
+<div class="outline-text-2" id="text-org0600797">
+<ul class="org-ul">
+<li>🎯 Claude Dominance in AI Coding
+<ul class="org-ul">
+<li>Evidence: Claude 3.7 Sonnet (2,127 pts), consistent praise in experience stories</li>
+<li>Insight: Anthropic's Claude has emerged as the clear leader for serious coding work, with developers consistently praising its code quality and reasoning capabilities over competitors</li>
+</ul></li>
+<li>⚡ Tool Fragmentation &amp; User Frustration
+<ul class="org-ul">
+<li>Evidence: Cursor problems (1,511 pts), multiple "stopped using AI" stories (365, 109 pts)</li>
+<li>Insight: Users are jumping between tools due to policy changes, reliability issues, and unmet expectations. No single tool has achieved universal satisfaction, leading to "tool fatigue"</li>
+</ul></li>
+<li>🔄 The Productivity Paradox
+<ul class="org-ul">
+<li>Evidence: "Anyone struggling to get value out of coding LLMs?" (345 pts), productivity studies showing mixed results</li>
+<li>Insight: Despite massive hype, many developers struggle to see concrete productivity gains. The "almost right" code problem creates hidden productivity taxes that offset benefits</li>
+</ul></li>
+<li>🧠 Cognitive Dependency Concerns
+<ul class="org-ul">
+<li>Evidence: "After months of coding with LLMs, I'm going back to using my brain" (365 pts)</li>
+<li>Insight: Growing concern about over-reliance on AI leading to skill atrophy and reduced problem-solving capabilities among developers</li>
+</ul></li>
+<li>🏢 Enterprise vs Individual Experience Gap
+<ul class="org-ul">
+<li>Evidence: Microsoft 365 Copilot disaster (602 pts) vs individual success stories</li>
+<li>Insight: Stark divide between enterprise rollout failures and individual developer successes. Enterprise context adds complexity that current tools struggle with</li>
+</ul></li>
+<li>🔓 Open Source Alternative Movement
+<ul class="org-ul">
+<li>Evidence: Void alternative (948 pts), Tabby self-hosted (366 pts)</li>
+<li>Insight: Strong demand for open-source, self-hosted alternatives driven by privacy concerns, cost considerations, and desire for control</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org1de48b7" class="outline-2">
+<h2 id="org1de48b7">🎯 Engineer Experience Patterns</h2>
+<div class="outline-text-2" id="text-org1de48b7">
+<ul class="org-ul">
+<li>🟢 Positive Experiences
+<ul class="org-ul">
+<li>Who: Experienced developers using AI as an enhancement tool</li>
+<li>Patterns: Claude-based tools getting consistent praise, terminal-based tools popular with power users</li>
+<li>Benefits: Code generation, debugging assistance, learning new patterns</li>
+<li>Key Success Factor: Using AI to amplify existing skills, not replace them</li>
+</ul></li>
+<li>🔴 Negative Experiences
+<ul class="org-ul">
+<li>Who: Beginners over-relying on AI, enterprise users with complex requirements</li>
+<li>Patterns: Policy changes causing churn, productivity promises not materializing, "almost right" code creating more work</li>
+<li>Problems: Skill degradation, tool reliability issues, hidden productivity costs</li>
+<li>Key Failure Factor: Expecting AI to replace fundamental programming knowledge</li>
+</ul></li>
+<li>🟡 Mixed Experiences
+<ul class="org-ul">
+<li>Who: Pragmatic developers experimenting with different approaches</li>
+<li>Patterns: Tools working well for specific use cases, steeper learning curve than expected, context-dependent effectiveness</li>
+<li>Insight: Success heavily depends on matching use case, experience level, and realistic expectations</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org2b66112" class="outline-2">
+<h2 id="org2b66112">📈 Temporal Evolution (2024-2025)</h2>
+<div class="outline-text-2" id="text-org2b66112">
+<ul class="org-ul">
+<li>Early 2024: Initial hype phase - GitHub Copilot going free, new tool launches</li>
+<li>Mid 2024: Reality check phase - limitations becoming apparent, user frustrations mounting</li>
+<li>Late 2024: Maturation phase - Claude emerges as leader, tool fragmentation increases</li>
+<li>Early 2025: Sophistication phase - Claude 3.7/Code dominance, better understanding of limitations</li>
+<li>Mid 2025: Pragmatic phase - Focus on specific use cases, open-source alternatives, realistic expectations</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgf688f98" class="outline-2">
+<h2 id="orgf688f98">🎯 Critical Insights for Engineers</h2>
+<div class="outline-text-2" id="text-orgf688f98">
+<ul class="org-ul">
+<li>💪 Skill Foundation is Critical
+<ul class="org-ul">
+<li>AI tools amplify existing programming skills rather than replace them. Developers who understand fundamentals see the most benefit.</li>
+</ul></li>
+<li>🎯 Context Matters Enormously
+<ul class="org-ul">
+<li>Success depends heavily on use case, project complexity, and domain. There's no universal "AI coding works" or "doesn't work."</li>
+</ul></li>
+<li>🔧 Tool Landscape is Rapidly Changing
+<ul class="org-ul">
+<li>Claude-based tools currently leading, but the landscape shifts quickly. Expect to try multiple approaches.</li>
+</ul></li>
+<li>⚠️ Cognitive Risks are Real
+<ul class="org-ul">
+<li>Over-reliance can lead to skill degradation. Many successful developers use AI selectively while maintaining core problem-solving abilities.</li>
+</ul></li>
+<li>📊 Productivity Benefits are Mixed
+<ul class="org-ul">
+<li>Benefits exist but are often not as dramatic as promised. The "almost right" problem creates hidden costs that offset gains.</li>
+</ul></li>
+<li>🏢 Enterprise Success ≠ Individual Success
+<ul class="org-ul">
+<li>Individual developer success doesn't guarantee organizational success. Enterprise complexity creates additional challenges.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgd5d7cdc" class="outline-2">
+<h2 id="orgd5d7cdc">🔮 Future Outlook</h2>
+<div class="outline-text-2" id="text-orgd5d7cdc">
+<ul class="org-ul">
+<li>🎯 Specialization: Tools becoming more domain-specific and context-aware</li>
+<li>🤝 Hybrid Workflows: Combination of AI assistance and traditional coding becoming the norm</li>
+<li>🔬 Better Metrics: More sophisticated ways to measure actual productivity impact</li>
+<li>🎓 Education Evolution: Teaching AI-assisted development as a core skill</li>
+<li>🔓 Democratization: More open-source and self-hosted options emerging</li>
+<li>🎛️ UI Innovation: Moving beyond copilots to more integrated experiences (AI HUDs)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org36da3cc" class="outline-2">
+<h2 id="org36da3cc">🔍 Specific Tool Performance</h2>
+<div class="outline-text-2" id="text-org36da3cc">
+<ul class="org-ul">
+<li>🥇 Claude: Clear winner for code quality, reasoning, and complex tasks</li>
+<li>🥈 Cursor: Popular but plagued by policy and reliability issues</li>
+<li>🥉 GitHub Copilot: Solid mainstream choice, good accessibility for beginners</li>
+<li>🔓 Open Source (Void/Tabby): Rising alternatives for privacy/control-conscious developers</li>
+<li>⚠️ Enterprise Tools: Microsoft 365 Copilot struggled badly in enterprise rollouts</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org287b962" class="outline-2">
+<h2 id="org287b962">💡 Bottom Line</h2>
+<div class="outline-text-2" id="text-org287b962">
+<ul class="org-ul">
+<li>The AI coding experience is highly polarized - it works exceptionally well for some developers in specific contexts, but fails to deliver promised productivity gains for many others. Success requires:
+<ul class="org-ul">
+<li>Matching the right tool to the right use case</li>
+<li>Maintaining realistic expectations</li>
+<li>Preserving core programming skills</li>
+<li>Understanding tool limitations</li>
+<li>Being prepared to adapt as the landscape evolves</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-ai.html">AI</a> </div>]]></description>
+  <category><![CDATA[AI]]></category>
+  <link>https://www.birkey.co/2025-08-02-hacker-news-ai-coding-experience-analysis.html</link>
+  <guid>https://www.birkey.co/2025-08-02-hacker-news-ai-coding-experience-analysis.html</guid>
+  <pubDate>Sat, 02 Aug 2025 10:26:00 -0700</pubDate>
+</item>
 <item>
   <title><![CDATA[MCP explained with code]]></title>
   <description><![CDATA[

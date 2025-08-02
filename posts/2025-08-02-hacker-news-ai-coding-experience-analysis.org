@@ -1,0 +1,148 @@
+#+title: Hacker news AI coding experience analysis
+#+date: <2025-08-02 10:26>
+#+description: 
+#+filetags: AI
+
+I have been using and experimenting with AI coding tools heavily for
+the last 3 months or so since joining [[https://www.legionhealth.com/][Legion Health]] as a Founding
+Engineer. I was somewhat skeptical and approached using AI with
+suspicion since ChatGPT came out. I use Emacs as my workbench and
+optimized my workflow around using it as a terminal multiplexer, which
+naturally fits with Claude Code that I use as my main programming
+assistant. Below is my simple setup that might benefit other fellow
+minimalist Emacs users.
+#+begin_src elisp
+  (use-package eat :ensure t :config
+    (setq eat-term-name "xterm-256color" eat-kill-buffer-on-exit t
+          process-adaptive-read-buffering nil eat-term-scrollback-size 500000)
+    (define-key eat-semi-char-mode-map [?\s-v] #'eat-yank)
+    (define-key eat-semi-char-mode-map [?\C-c ?\C-r] #'k/eat-redisplay))
+  (defun k/eat-redisplay ()
+  "Fix eat flicker/flash and display funkiness"
+  (interactive)
+  (unless (derived-mode-p 'eat-mode)
+    (error "Not in an eat-mode buffer"))
+  (when (and (boundp 'eat-mode) eat-mode (boundp 'eat-terminal) eat-terminal)
+    (let* ((process (eat-term-parameter eat-terminal 'eat--process))
+           (window (get-buffer-window (current-buffer))))
+      (if (and process (process-live-p process) window)
+          (eat--adjust-process-window-size process (list window)))))
+  (setq-local window-adjust-process-window-size-function
+              'window-adjust-process-window-size-smallest)
+  (goto-char (point-min))
+  (redisplay)
+  (goto-char (point-max))
+  (redisplay)
+  (setq-local window-adjust-process-window-size-function 'ignore))
+#+end_src
+
+I start an eat shell and run:
+#+begin_src bash
+  cd ~/repos/project-x && claude
+#+end_src
+
+This is a fast moving landscape and I find following few points are
+extremely helpful in my workflow:
+- Spend few minutes to gather up and feed context related to what needs to be
+  done to Claude at the start of a session.
+- Always ask to show a plan and instruct Claude for guidance if there
+  multiple options for a solution.
+- Provide a skeleton such as directory structure, file names, function names
+  and signatures.
+- Provide use case and acceptance criteria testing instructions.
+
+On top of that, you need to make sure Claude has access to tools that
+enhances its ability to look up relevant information. To provide more
+balanced overview of the AI coding experience, I used a great data
+analysis tool for Hacker News called [[https://camelai.com/][CamelAI]]. Below are the result
+that more or less resonates with my personal experience.
+
+* 🏆 Top Stories by Engagement
+  - Claude 3.7 Sonnet and Claude Code (2,127 points) 🟢
+    + Overwhelmingly positive reception for AI coding capabilities
+    + Demonstrates Claude's dominance in the space
+  - Cursor IDE lockout policy problems (1,511 points) 🔴
+    + Major backlash against policy changes causing user cancellations
+    + Shows fragility of user trust in AI tools
+  - AlphaEvolve: Gemini coding agent (1,036 points) 🚀
+    + Google's advanced algorithm design agent
+    + High interest in autonomous coding capabilities
+  - "Enough AI copilots, we need AI HUDs" (964 points) 🎛️
+    + Forward-thinking discussion about UI evolution
+    + Community wants more integrated experiences
+  - Void: Open-source Cursor alternative (948 points) 🔓
+    + Strong demand for open-source alternatives
+    + Privacy and control concerns driving adoption
+* 📊 Key Trends & Patterns
+  - 🎯 Claude Dominance in AI Coding
+    + Evidence: Claude 3.7 Sonnet (2,127 pts), consistent praise in experience stories
+    + Insight: Anthropic's Claude has emerged as the clear leader for serious coding work, with developers consistently praising its code quality and reasoning capabilities over competitors
+  - ⚡ Tool Fragmentation & User Frustration
+    + Evidence: Cursor problems (1,511 pts), multiple "stopped using AI" stories (365, 109 pts)
+    + Insight: Users are jumping between tools due to policy changes, reliability issues, and unmet expectations. No single tool has achieved universal satisfaction, leading to "tool fatigue"
+  - 🔄 The Productivity Paradox
+    + Evidence: "Anyone struggling to get value out of coding LLMs?" (345 pts), productivity studies showing mixed results
+    + Insight: Despite massive hype, many developers struggle to see concrete productivity gains. The "almost right" code problem creates hidden productivity taxes that offset benefits
+  - 🧠 Cognitive Dependency Concerns
+    + Evidence: "After months of coding with LLMs, I'm going back to using my brain" (365 pts)
+    + Insight: Growing concern about over-reliance on AI leading to skill atrophy and reduced problem-solving capabilities among developers
+  - 🏢 Enterprise vs Individual Experience Gap
+    + Evidence: Microsoft 365 Copilot disaster (602 pts) vs individual success stories
+    + Insight: Stark divide between enterprise rollout failures and individual developer successes. Enterprise context adds complexity that current tools struggle with
+  - 🔓 Open Source Alternative Movement
+    + Evidence: Void alternative (948 pts), Tabby self-hosted (366 pts)
+    + Insight: Strong demand for open-source, self-hosted alternatives driven by privacy concerns, cost considerations, and desire for control
+* 🎯 Engineer Experience Patterns
+  - 🟢 Positive Experiences
+    + Who: Experienced developers using AI as an enhancement tool
+    + Patterns: Claude-based tools getting consistent praise, terminal-based tools popular with power users
+    + Benefits: Code generation, debugging assistance, learning new patterns
+    + Key Success Factor: Using AI to amplify existing skills, not replace them
+  - 🔴 Negative Experiences
+    + Who: Beginners over-relying on AI, enterprise users with complex requirements
+    + Patterns: Policy changes causing churn, productivity promises not materializing, "almost right" code creating more work
+    + Problems: Skill degradation, tool reliability issues, hidden productivity costs
+    + Key Failure Factor: Expecting AI to replace fundamental programming knowledge
+  - 🟡 Mixed Experiences
+    + Who: Pragmatic developers experimenting with different approaches
+    + Patterns: Tools working well for specific use cases, steeper learning curve than expected, context-dependent effectiveness
+    + Insight: Success heavily depends on matching use case, experience level, and realistic expectations
+* 📈 Temporal Evolution (2024-2025)
+  - Early 2024: Initial hype phase - GitHub Copilot going free, new tool launches
+  - Mid 2024: Reality check phase - limitations becoming apparent, user frustrations mounting
+  - Late 2024: Maturation phase - Claude emerges as leader, tool fragmentation increases
+  - Early 2025: Sophistication phase - Claude 3.7/Code dominance, better understanding of limitations
+  - Mid 2025: Pragmatic phase - Focus on specific use cases, open-source alternatives, realistic expectations
+* 🎯 Critical Insights for Engineers
+  - 💪 Skill Foundation is Critical
+    + AI tools amplify existing programming skills rather than replace them. Developers who understand fundamentals see the most benefit.
+  - 🎯 Context Matters Enormously
+    + Success depends heavily on use case, project complexity, and domain. There's no universal "AI coding works" or "doesn't work."
+  - 🔧 Tool Landscape is Rapidly Changing
+    + Claude-based tools currently leading, but the landscape shifts quickly. Expect to try multiple approaches.
+  - ⚠️ Cognitive Risks are Real
+    + Over-reliance can lead to skill degradation. Many successful developers use AI selectively while maintaining core problem-solving abilities.
+  - 📊 Productivity Benefits are Mixed
+    + Benefits exist but are often not as dramatic as promised. The "almost right" problem creates hidden costs that offset gains.
+  - 🏢 Enterprise Success ≠ Individual Success
+    + Individual developer success doesn't guarantee organizational success. Enterprise complexity creates additional challenges.
+* 🔮 Future Outlook
+  - 🎯 Specialization: Tools becoming more domain-specific and context-aware
+  - 🤝 Hybrid Workflows: Combination of AI assistance and traditional coding becoming the norm
+  - 🔬 Better Metrics: More sophisticated ways to measure actual productivity impact
+  - 🎓 Education Evolution: Teaching AI-assisted development as a core skill
+  - 🔓 Democratization: More open-source and self-hosted options emerging
+  - 🎛️ UI Innovation: Moving beyond copilots to more integrated experiences (AI HUDs)
+* 🔍 Specific Tool Performance
+  - 🥇 Claude: Clear winner for code quality, reasoning, and complex tasks
+  - 🥈 Cursor: Popular but plagued by policy and reliability issues
+  - 🥉 GitHub Copilot: Solid mainstream choice, good accessibility for beginners
+  - 🔓 Open Source (Void/Tabby): Rising alternatives for privacy/control-conscious developers
+  - ⚠️ Enterprise Tools: Microsoft 365 Copilot struggled badly in enterprise rollouts
+* 💡 Bottom Line
+  - The AI coding experience is highly polarized - it works exceptionally well for some developers in specific contexts, but fails to deliver promised productivity gains for many others. Success requires:
+    + Matching the right tool to the right use case
+    + Maintaining realistic expectations
+    + Preserving core programming skills
+    + Understanding tool limitations
+    + Being prepared to adapt as the landscape evolves
