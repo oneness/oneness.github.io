@@ -1,0 +1,20 @@
+#+title: Once csv parser to rule them all
+#+date: <2025-12-28 15:44>
+#+description: 
+#+filetags: Clojure ClojureScript
+
+One would think that parsing CSV files is pretty straightforward until
+you get bitten by all kinds of CSV files exists in the wild. Many
+years ago, I have written a small CSV reader with following
+requirements in mind:
+- Should not depend on any other code other than Clojure
+- Should allow me to control how I tokenize and transform lines
+- Should allow me to have complete controll over delimiting charactor
+  or charactors, file encoding, amount of lines to read and error
+  handling
+
+The result is [[https://github.com/oneness/csvx][csvx]]. I update it to work across Clojure and ClojureScript both in
+NodeJS and browser environment. The entire code is less than 200 lines
+including comments and blank lines. If you find yourself in need of a
+csv reader with above requirements, you are welcome to steal the
+code. Enjoy!

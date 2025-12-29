@@ -4,7 +4,38 @@
 <title><![CDATA[BirkeyCo]]></title>
 <description><![CDATA[BirkeyCo]]></description>
 <link>https://www.birkey.co/</link>
-<lastBuildDate>Sat, 02 Aug 2025 11:34:09 -0700</lastBuildDate>
+<lastBuildDate>Sun, 28 Dec 2025 16:06:23 -0800</lastBuildDate>
+<item>
+  <title><![CDATA[Once csv parser to rule them all]]></title>
+  <description><![CDATA[
+<p>
+One would think that parsing CSV files is pretty straightforward until
+you get bitten by all kinds of CSV files exists in the wild. Many
+years ago, I have written a small CSV reader with following
+requirements in mind:
+</p>
+<ul class="org-ul">
+<li>Should not depend on any other code other than Clojure</li>
+<li>Should allow me to control how I tokenize and transform lines</li>
+<li>Should allow me to have complete controll over delimiting charactor
+or charactors, file encoding, amount of lines to read and error
+handling</li>
+</ul>
+
+<p>
+The result is <a href="https://github.com/oneness/csvx">csvx</a>. I update it to work across Clojure and ClojureScript both in
+NodeJS and browser environment. The entire code is less than 200 lines
+including comments and blank lines. If you find yourself in need of a
+csv reader with above requirements, you are welcome to steal the
+code. Enjoy!
+</p>
+<div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-clojure.html">Clojure</a> <a href="https://www.birkey.co/tag-clojurescript.html">ClojureScript</a> </div>]]></description>
+  <category><![CDATA[Clojure]]></category>
+  <category><![CDATA[ClojureScript]]></category>
+  <link>https://www.birkey.co/2025-12-28-once-csv-parser-to-rule-them-all.html</link>
+  <guid>https://www.birkey.co/2025-12-28-once-csv-parser-to-rule-them-all.html</guid>
+  <pubDate>Sun, 28 Dec 2025 15:44:00 -0800</pubDate>
+</item>
 <item>
   <title><![CDATA[Hacker news AI coding experience analysis]]></title>
   <description><![CDATA[

@@ -31,6 +31,29 @@
   <div style="margin-bottom: 3ch;text-transform: none;"></div></div>
 <div id="content">
 <h1 class="title">Posts tagged "clojure":</h1>
+<div class="post-date">28 Dec 2025</div><h1 class="post-title"><a href="https://www.birkey.co/2025-12-28-once-csv-parser-to-rule-them-all.html">Once csv parser to rule them all</a></h1>
+<p>
+One would think that parsing CSV files is pretty straightforward until
+you get bitten by all kinds of CSV files exists in the wild. Many
+years ago, I have written a small CSV reader with following
+requirements in mind:
+</p>
+<ul class="org-ul">
+<li>Should not depend on any other code other than Clojure</li>
+<li>Should allow me to control how I tokenize and transform lines</li>
+<li>Should allow me to have complete controll over delimiting charactor
+or charactors, file encoding, amount of lines to read and error
+handling</li>
+</ul>
+
+<p>
+The result is <a href="https://github.com/oneness/csvx">csvx</a>. I update it to work across Clojure and ClojureScript both in
+NodeJS and browser environment. The entire code is less than 200 lines
+including comments and blank lines. If you find yourself in need of a
+csv reader with above requirements, you are welcome to steal the
+code. Enjoy!
+</p>
+<div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-clojure.html">Clojure</a> <a href="https://www.birkey.co/tag-clojurescript.html">ClojureScript</a> </div>
 <div class="post-date">13 Jun 2021</div><h1 class="post-title"><a href="https://www.birkey.co/2021-06-13-let-and-binding-macros-in-clojure.html">Let and Binding macros in Clojure</a></h1>
 <p>
 Clojure has number special forms. Among them are <b>let</b> and
