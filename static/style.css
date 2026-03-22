@@ -64,6 +64,53 @@ sup {
     font-size: 0.65em;
 }
 
+sup .footref {
+    color: #1f5fbf;
+    font-size: 1.15em;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+sup .footref::before {
+    content: "[";
+}
+
+sup .footref::after {
+    content: "]";
+}
+
+#footnotes {
+    font-size: 0.9em;
+    color: #5f5a52;
+    border-top: 1px solid #cfc8bb;
+    margin-top: 2.5rem;
+    padding-top: 1rem;
+}
+
+.footnotes {
+    font-size: 1em;
+}
+
+.footdef {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.35rem;
+}
+
+.footdef .footpara {
+    display: inline;
+}
+
+.footdef p.footpara {
+    display: inline;
+    margin: 0;
+    font-style: italic;
+}
+
+.taglist {
+    margin-top: 1.5rem;
+}
+
 pre {
     font-family: Consolas,
 		 Monospace, /* Linux = DejaVu Sans Mono */

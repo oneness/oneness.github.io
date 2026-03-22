@@ -115,8 +115,8 @@ OK, so far so good. Let us look at another example:
 (let [print-x print-y] (print-x 123)) ;; print-y prints: (1 2 3)
 (binding [print-x print-y] (print-x 123)) ;; print-y prints: (1 2 3)
 (binding [print-x print-y] #(print-x 123)) ;; prints
-					     ;; cryptic "#&lt;user$eval__28$fn__30
-					     ;; user$eval__28$fn__30@bdb503&gt;"
+                                             ;; cryptic "#&lt;user$eval__28$fn__30
+                                             ;; user$eval__28$fn__30@bdb503&gt;"
 ((binding [print-x print-y] #(print-x 123))) ;; print-x prints: (1 2 3)
 </pre>
 </div>
@@ -163,7 +163,7 @@ ordering:
 <div class="org-src-container">
 <pre class="src src-clojure">(defn toggle-order [order]
   (order {:asc :desc
-	  :desc :asc}))
+          :desc :asc}))
 </pre>
 </div>
 <p>

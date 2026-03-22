@@ -64,8 +64,8 @@ find out what the Ad URL expanded to. Here is an example:
 <p>
 Following is the output:
 </p>
-<pre class="example">
-| HTTP/2                       | 301                                                               |               |     |      |          |     |
+<div class="org-src-container">
+<pre class="src src-nil">| HTTP/2                       | 301                                                               |               |     |      |          |     |
 | server:                      | nginx                                                             |               |     |      |          |     |
 | date:                        | Sun,                                                              | 10            | Jan | 2021 | 22:59:35 | GMT |
 | content-type:                | text/html;                                                        | charset=utf-8 |     |      |          |     |
@@ -98,6 +98,7 @@ Following is the output:
 | x-fastly-request-id:         | 64128c1c6f907b66fc189d5c3cbb298b2c7e9eb7                          |               |     |      |          |     |
 | content-length:              | 9750                                                              |               |     |      |          |     |
 </pre>
+</div>
 
 <p>
 The options <b>-ILs</b> tells cURL to query resource headers with location

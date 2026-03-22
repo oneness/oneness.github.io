@@ -45,11 +45,11 @@ surprised to read following:
 </p>
 <div class="org-src-container">
 <pre class="src src-bash">-i or --ignore-case
-	      Causes searches to ignore case; that is, uppercase and lowercase
-	      are  considered identical.  This option is ignored if any upper-
-	      case letters appear in the search pattern; in other words, if  a
-	      pattern  contains  uppercase  letters, then that search does not
-	      ignore case.
+              Causes searches to ignore case; that is, uppercase and lowercase
+              are  considered identical.  This option is ignored if any upper-
+              case letters appear in the search pattern; in other words, if  a
+              pattern  contains  uppercase  letters, then that search does not
+              ignore case.
 </pre>
 </div>
 <p>
@@ -92,133 +92,133 @@ else
     command=$1
     shift
     case $os in
-	*OpenBSD*)
-	    case $command in
-		i)
-		    pkg_add $@
-		    ;;
-		r)
-		    pkg_delete $@
-		    ;;
-		s)
-		    pkg_info -Q $@
-		    ;;
-		u)
-		    pkg_add -u $@
-		    ;;
-		l)
-		    pkg_info -mz
-		    ;;
-		c)
-		    pkg_check
-		    ;;
-	    esac
-	    ;;
-	*Arch)
-	    case $command in
-		i)
-		    yay -S $@
-		    ;;
-		r)
-		    yay -Rs $@
-		    ;;
-		s)
-		    yay -Ss $@
-		    ;;
-		u)
-		    yay -Syyu $@
-		    ;;
-		l)
-		    yay -Q $@
-	    esac
-	    ;;
-	*solus*)
+        *OpenBSD*)
+            case $command in
+                i)
+                    pkg_add $@
+                    ;;
+                r)
+                    pkg_delete $@
+                    ;;
+                s)
+                    pkg_info -Q $@
+                    ;;
+                u)
+                    pkg_add -u $@
+                    ;;
+                l)
+                    pkg_info -mz
+                    ;;
+                c)
+                    pkg_check
+                    ;;
+            esac
+            ;;
+        *Arch)
+            case $command in
+                i)
+                    yay -S $@
+                    ;;
+                r)
+                    yay -Rs $@
+                    ;;
+                s)
+                    yay -Ss $@
+                    ;;
+                u)
+                    yay -Syyu $@
+                    ;;
+                l)
+                    yay -Q $@
+            esac
+            ;;
+        *solus*)
 
-	    case $command in
-		i)
-		    sudo eopkg it $@
-		    ;;
-		r)
-		    sudo eopkg remove $@
-		    ;;
-		s)
-		    sudo eopkg search $@
-		    ;;
-		u)
-		    sudo eopkg up
-		    ;;
-		l)
-		    sudo eopkg list-installed
-	    esac
-	    ;;
-	VoidLinux)
-	    case $command in
-		i)
-		    sudo xbps-install $@
-		    ;;
-		r)
-		    sudo xbps-remove -R $@
-		    ;;
-		s)
-		    sudo xbps-query -Rs $@
-		    ;;
-		u)
-		    sudo xbps-install -Su
-		    ;;
-		l)
-		    sudo xbps-query -l
-		    ;;
-		c)
-		    sudo xbps-remove -Oo
-		    ;;
-	    esac
-	    ;;
-	pureos|PureOS|debian|Ubuntu)
-	    case $command in
-		i)
-		    sudo apt-get install $@
-		    ;;
-		r)
-		    sudo apt-get remove $@
-		    ;;
-		s)
-		    apt-cache search $@
-		    ;;
-		u)
-		    sudo apt-get update &amp;&amp; sudo apt-get upgrade
-		    ;;
-		l)
-		    sudo apt list --installed
-		    ;;
-		c)
-		    sudo apt-get autoremove
-		    ;;
-	    esac
-	    ;;
-	darwin*|Darwin*)
-	    case $command in
-		i)
-		    brew install $@
-		    ;;
-		r)
-		    brew remove $@
-		    ;;
-		s)
-		    brew search $@
-		    ;;
-		u)
-		    brew update
-		    ;;
-		l)
-		    brew list
-		    ;;
-		c)
-		    brew cleanup
-		    ;;
-	    esac
-	    ;;
-	*)
-	    echo "Unknown OS. Please add it to $(basename "$0") pkg function"
+            case $command in
+                i)
+                    sudo eopkg it $@
+                    ;;
+                r)
+                    sudo eopkg remove $@
+                    ;;
+                s)
+                    sudo eopkg search $@
+                    ;;
+                u)
+                    sudo eopkg up
+                    ;;
+                l)
+                    sudo eopkg list-installed
+            esac
+            ;;
+        VoidLinux)
+            case $command in
+                i)
+                    sudo xbps-install $@
+                    ;;
+                r)
+                    sudo xbps-remove -R $@
+                    ;;
+                s)
+                    sudo xbps-query -Rs $@
+                    ;;
+                u)
+                    sudo xbps-install -Su
+                    ;;
+                l)
+                    sudo xbps-query -l
+                    ;;
+                c)
+                    sudo xbps-remove -Oo
+                    ;;
+            esac
+            ;;
+        pureos|PureOS|debian|Ubuntu)
+            case $command in
+                i)
+                    sudo apt-get install $@
+                    ;;
+                r)
+                    sudo apt-get remove $@
+                    ;;
+                s)
+                    apt-cache search $@
+                    ;;
+                u)
+                    sudo apt-get update &amp;&amp; sudo apt-get upgrade
+                    ;;
+                l)
+                    sudo apt list --installed
+                    ;;
+                c)
+                    sudo apt-get autoremove
+                    ;;
+            esac
+            ;;
+        darwin*|Darwin*)
+            case $command in
+                i)
+                    brew install $@
+                    ;;
+                r)
+                    brew remove $@
+                    ;;
+                s)
+                    brew search $@
+                    ;;
+                u)
+                    brew update
+                    ;;
+                l)
+                    brew list
+                    ;;
+                c)
+                    brew cleanup
+                    ;;
+            esac
+            ;;
+        *)
+            echo "Unknown OS. Please add it to $(basename "$0") pkg function"
     esac
 fi
 </pre>

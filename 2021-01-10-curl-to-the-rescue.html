@@ -7,24 +7,28 @@
       href="https://www.birkey.co/rss.xml"
       title="RSS feed for https://www.birkey.co/">
 <title>cURl to the rescue</title>
-<meta name="author" content="Kasim Tuman">
-	     <meta name="referrer" content="no-referrer">
-	     <link href= "static/style.css" rel="stylesheet" type="text/css" />
-	     <link rel="icon" href="static/favicon.ico">
-	     <link rel="apple-touch-icon-precomposed" href="static/birkey_logo.png">
-	     <link rel="msapplication-TitleImage" href="static/birkey_logo.png">
-	     <link rel="msapplication-TitleColor" href="#0141ff">
-	     <link rel="alternate" type="application/rss+xml"  title="RSS Feed for birkey.co" href="/rss.xml"
-	     <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8">
-	     <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1"></head>
+<link href="static/style.css" rel="stylesheet" type="text/css" />
+	   <link rel="apple-touch-icon" sizes="180x180" href="static/apple-touch-icon.png">
+	   <link rel="icon" type="image/png" sizes="32x32" href="static/favicon-32x32.png">
+	   <link rel="icon" type="image/png" sizes="16x16" href="static/favicon-16x16.png">
+	   <link rel="manifest" href="/site.webmanifest">
+	   <link rel="mask-icon" href="static/safari-pinned-tab.svg" color="#5bbad5">
+	   <link rel="alternate" type="application/rss+xml" title="RSS Feed for birkey.co" href="/rss.xml">
+	   <meta name="author" content="Kasim Tuman">
+	   <meta name="referrer" content="no-referrer">
+	   <meta name="msapplication-TileColor" content="#da532c">
+	   <meta name="theme-color" content="#ffffff">
+	   <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8">
+	   <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1">
+	  </head>
 <body>
 <div id="preamble" class="status"><br><center>
-    <div style="display: inline-block; vertical-align:middle;">
-<a href="https://www.birkey.co/index.html" style="text-decoration: none;"><b>BIRKEY CONSULTING</b><br>
-</a><hr/><div style="text-align: justify;display: inline-block; width: 100%;">
-<a class="title" href="https://www.birkey.co/resume/resume.html">ABOUT</a> &nbsp;<a class="title" href="https://github.com/oneness">GITHUB</a> &nbsp;<a class="title" href="https://www.birkey.co/rss.xml">RSS</a> &nbsp;<a class="title" href="https://www.birkey.co/archive.html">ARCHIVE</a> &nbsp;<a class="title" href="https://paypal.me/ktuman">DONATE</a></div></div>
-</center><br><br>
-<div style="margin-bottom: 3ch;text-transform: none;"></div></div>
+       <div style="display: inline-block; vertical-align:middle;">
+  <a href="https://www.birkey.co/index.html" style="text-decoration: none;"><b>BIRKEY CONSULTING</b><br>
+  </a><hr/><div style="text-align: justify;display: inline-block; width: 100%;">
+<a class="title" href="https://github.com/oneness">ABOUT</a> &nbsp;<a class="title" href="https://www.birkey.co/rss.xml">RSS</a> &nbsp;<a class="title" href="https://www.birkey.co/archive.html">ARCHIVE</a></div></div>
+  </center><br><br>
+  <div style="margin-bottom: 3ch;text-transform: none;"></div></div>
 <div id="content">
 <div class="post-date">10 Jan 2021</div><h1 class="post-title"><a href="https://www.birkey.co/2021-01-10-curl-to-the-rescue.html">cURl to the rescue</a></h1>
 <p>
@@ -59,8 +63,8 @@ find out what the Ad URL expanded to. Here is an example:
 <p>
 Following is the output:
 </p>
-<pre class="example">
-| HTTP/2                       | 301                                                               |               |     |      |          |     |
+<div class="org-src-container">
+<pre class="src src-nil">| HTTP/2                       | 301                                                               |               |     |      |          |     |
 | server:                      | nginx                                                             |               |     |      |          |     |
 | date:                        | Sun,                                                              | 10            | Jan | 2021 | 22:59:35 | GMT |
 | content-type:                | text/html;                                                        | charset=utf-8 |     |      |          |     |
@@ -93,6 +97,7 @@ Following is the output:
 | x-fastly-request-id:         | 64128c1c6f907b66fc189d5c3cbb298b2c7e9eb7                          |               |     |      |          |     |
 | content-length:              | 9750                                                              |               |     |      |          |     |
 </pre>
+</div>
 
 <p>
 The options <b>-ILs</b> tells cURL to query resource headers with location
@@ -151,6 +156,6 @@ helped solve the issue.
 </p>
 <div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-curl.html">curl</a> </div></div>
 <div id="postamble" class="status"><br><center>
-	   <div style="display: inline-block; vertical-align:middle;"></div></div>
+	      <div style="display: inline-block; vertical-align:middle;"></div></div>
 </body>
 </html>

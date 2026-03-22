@@ -303,7 +303,7 @@ recording to show you what I mean:
 </p>
 
 
-<figure id="orgf663aab">
+<figure id="org22a3440">
 <img src="https://www.birkey.co/images/eshell-plan9-smart-shell.gif" alt="eshell-plan9-smart-shell.gif">
 
 </figure>
@@ -336,13 +336,13 @@ function for posterity here:
      (let ((history nil))
        ;; We have to build up a list ourselves from the ring vector.
        (dotimes (index (ring-length keshell-history-global-ring))
-	 (push (ring-ref keshell-history-global-ring index) history))
+         (push (ring-ref keshell-history-global-ring index) history))
        ;; Show them most-recent-first.
        (setq history (nreverse history))))))
   (let* ((cmds (split-string cmd "##"))
-	 (tag (or (-&gt; cmds second)
-		  "kshell"))
-	 (buff-name (-&gt; tag s-chomp s-trim)))
+         (tag (or (-&gt; cmds second)
+            "kshell"))
+         (buff-name (-&gt; tag s-chomp s-trim)))
     (kshell cmd buff-name)))
 </pre>
 </div>
@@ -366,7 +366,7 @@ Following demonstrates above cases I am talking about:
 </p>
 
 
-<figure id="org7fae62d">
+<figure id="orgf4c0e66">
 <img src="https://www.birkey.co/images/eshell-buffer-management.gif" alt="eshell-buffer-management.gif">
 
 </figure>
@@ -385,12 +385,12 @@ so you can understand what is happening.
   ;; creates an eshell buffer with `kshell' as the default name. Take
   ;; optional name to override
   (let ((m (-&gt;&gt; (or name "kshell")
-		(format "*%s*"))))
+          (format "*%s*"))))
     (if (get-buffer m)
-	(pop-to-buffer m)
+        (pop-to-buffer m)
       (progn
-	(eshell)
-	(rename-buffer m)))))
+        (eshell)
+        (rename-buffer m)))))
 
 (defun kshell (&amp;optional cmd buff-name send-input)
   ;; interactive fn that you can call via M-x or hotkey. It detects
@@ -401,7 +401,7 @@ so you can understand what is happening.
   (interactive)
   (let ((dir (projectile-project-root))) ;; you need projectile
     (if buff-name
-	(kshell-with-name buff-name)
+        (kshell-with-name buff-name)
       (kshell-with-name))
     (eshell/clear-scrollback)
     (insert (format "cd %s" (or dir "~/")))
@@ -420,13 +420,13 @@ so you can understand what is happening.
      (let ((history nil))
        ;; We have to build up a list ourselves from the ring vector.
        (dotimes (index (ring-length keshell-history-global-ring))
-	 (push (ring-ref keshell-history-global-ring index) history))
+         (push (ring-ref keshell-history-global-ring index) history))
        ;; Show them most-recent-first.
        (setq history (nreverse history))))))
   (let* ((cmds (split-string cmd "##")) ;; you need s.el lib
-	 (tag (or (-&gt; cmds second)
-		  "kshell"))
-	 (buff-name (-&gt; tag s-chomp s-trim)))
+         (tag (or (-&gt; cmds second)
+            "kshell"))
+         (buff-name (-&gt; tag s-chomp s-trim)))
     (kshell cmd buff-name)))
 </pre>
 </div>
@@ -435,7 +435,7 @@ Here is the screen recording in action:
 </p>
 
 
-<figure id="org5159e5f">
+<figure id="org486747d">
 <img src="https://www.birkey.co/images/eshell-ido-interactive.gif" alt="eshell-ido-interactive.gif">
 
 </figure>
@@ -480,7 +480,7 @@ sessions.
     (when eshell-history-file-name
       (eshell-read-history nil t))
     (setq keshell-history-global-ring
-	  (or eshell-history-ring (make-ring eshell-history-size))))
+          (or eshell-history-ring (make-ring eshell-history-size))))
   (setq eshell-history-ring keshell-history-global-ring))
 ;; Following hook enables it
 (add-hook 'eshell-mode-hook 'keshell-hist-use-global-history)
@@ -538,12 +538,12 @@ for long running commands that you want to run async.</li>
 (defun eshell-current-command-stop ()
   (when eshell-current-command-start-time
     (let ((elapsed-time (float-time
-			 (time-subtract (current-time)
-					eshell-current-command-start-time))))
+                     (time-subtract (current-time)
+                                    eshell-current-command-start-time))))
       (if (&gt; elapsed-time 30)
-	  (tooltip-show (format "Finished in: %.0fs" elapsed-time))
-	(eshell-interactive-print
-	 (format "Time: %.0fs\n" elapsed-time))))
+          (tooltip-show (format "Finished in: %.0fs" elapsed-time))
+        (eshell-interactive-print
+         (format "Time: %.0fs\n" elapsed-time))))
     (setq eshell-current-command-start-time nil)))
 
 (defun eshell-current-command-time-track ()
@@ -584,9 +584,9 @@ So I am not going to repeat what he said about Emacs and why he still
 loves to use it to get things done. I am going to add following points
 on top of what he wrote there:
 </p>
-<div id="outline-container-orgba850c8" class="outline-2">
-<h2 id="orgba850c8">Emacs is a great workbench</h2>
-<div class="outline-text-2" id="text-orgba850c8">
+<div id="outline-container-orga0b9ec8" class="outline-2">
+<h2 id="orga0b9ec8">Emacs is a great workbench</h2>
+<div class="outline-text-2" id="text-orga0b9ec8">
 <p>
 I see Emacs as an extremely well designed workbench that will evolve
 with you as your work environment, technology and paradigms
@@ -602,9 +602,9 @@ which is an Window Manager, is a great example.
 </p>
 </div>
 </div>
-<div id="outline-container-orge8be3a5" class="outline-2">
-<h2 id="orge8be3a5">Emacs is a great structured and unstructured text manipulation library</h2>
-<div class="outline-text-2" id="text-orge8be3a5">
+<div id="outline-container-orgf3dbc83" class="outline-2">
+<h2 id="orgf3dbc83">Emacs is a great structured and unstructured text manipulation library</h2>
+<div class="outline-text-2" id="text-orgf3dbc83">
 <p>
 This is what I personally like a lot about Emacs. As a programmer, we
 work with manipulating text all the time. Yes, there are great text
@@ -617,9 +617,9 @@ editing of Clojure code.
 </p>
 </div>
 </div>
-<div id="outline-container-org9296094" class="outline-2">
-<h2 id="org9296094">Emacs helps you focus</h2>
-<div class="outline-text-2" id="text-org9296094">
+<div id="outline-container-orgbc1e17d" class="outline-2">
+<h2 id="orgbc1e17d">Emacs helps you focus</h2>
+<div class="outline-text-2" id="text-orgbc1e17d">
 <p>
 In this day of our age where everything tries to grab your constant
 attention, Emacs stands out as the most distraction free environment
@@ -637,9 +637,9 @@ what matters the most to you and have a lot of fun along the way.
 </p>
 </div>
 </div>
-<div id="outline-container-org3a474d0" class="outline-2">
-<h2 id="org3a474d0">Emacs has a learning curve</h2>
-<div class="outline-text-2" id="text-org3a474d0">
+<div id="outline-container-org93c6f82" class="outline-2">
+<h2 id="org93c6f82">Emacs has a learning curve</h2>
+<div class="outline-text-2" id="text-org93c6f82">
 <p>
 Yes, I do acknowledge that Emacs has a learning curve. However, most
 of it is due to the wrong approach we tend to take when encountering an
@@ -723,7 +723,7 @@ in its entirety if you are interested: <a href="./static/config.html">My config 
 </div>
 </div>
 <div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-emacs.html">emacs</a> </div>
-<div class="post-date">19 Sep 2018</div><h1 class="post-title"><a href="https://www.birkey.co/2018-9-20-blogging-simpler.html">Blogging Made Simple</a></h1>
+<div class="post-date">20 Sep 2018</div><h1 class="post-title"><a href="https://www.birkey.co/2018-9-20-blogging-simpler.html">Blogging Made Simple</a></h1>
 <p>
 After taking some time off from work to focus on projects that I like
 to take on, I set out to find a simple way to use git and emacs workflow to
@@ -749,7 +749,7 @@ me no time to set it up and start blogging. Below is my setup:
   (setq org-export-with-section-numbers nil)
 
   (setq org-static-blog-page-header
-	"&lt;meta name=\"author\" content=\"Kasim Tuman\"&gt;
+        "&lt;meta name=\"author\" content=\"Kasim Tuman\"&gt;
 &lt;meta name=\"referrer\" content=\"no-referrer\"&gt;
 &lt;link href= \"static/style.css\" rel=\"stylesheet\" type=\"text/css\" /&gt;
 &lt;link rel=\"icon\" href=\"static/favicon.ico\"&gt;
@@ -764,7 +764,7 @@ me no time to set it up and start blogging. Below is my setup:
 &lt;meta name=\"viewport\" content=\"initial-scale=1,width=device-width,minimum-scale=1\"&gt;")
 
   (setq org-static-blog-page-preamble
-	"&lt;div class=\"header\"&gt;
+        "&lt;div class=\"header\"&gt;
   &lt;a href=\"https://birkey.co\"&gt;Code, Data and Network&lt;/a&gt;
   &lt;div class=\"sitelinks\"&gt;
     &lt;a href=\"https://twitter.com/KasimTuman\"&gt;Twitter&lt;/a&gt; | &lt;a href=\"https://github.com/oneness\"&gt;Github&lt;/a&gt;
@@ -772,7 +772,7 @@ me no time to set it up and start blogging. Below is my setup:
 &lt;/div&gt;")
 
   (setq org-static-blog-page-postamble
-	"&lt;div id=\"archive\"&gt;
+        "&lt;div id=\"archive\"&gt;
   &lt;a href=\"https://www.birkey.co/archive.html\"&gt;Other posts&lt;/a&gt;
 &lt;/div&gt;
 &lt;center&gt;&lt;a rel=\"license\" href=\"https://creativecommons.org/licenses/by-sa/3.0/\"&gt;&lt;img alt=\"Creative Commons License\" style=\"border-width:0\" src=\"https://i.creativecommons.org/l/by-sa/3.0/88x31.png\" /&gt;&lt;/a&gt;&lt;br /&gt;&lt;span xmlns:dct=\"https://purl.org/dc/terms/\" href=\"https://purl.org/dc/dcmitype/Text\" property=\"dct:title\" rel=\"dct:type\"&gt;birkey.co&lt;/span&gt; by &lt;a xmlns:cc=\"https://creativecommons.org/ns#\" href=\"https://www.birkey.co\" property=\"cc:attributionName\" rel=\"cc:attributionURL\"&gt;Kasim Tuman&lt;/a&gt; is licensed under a &lt;a rel=\"license\" href=\"https://creativecommons.org/licenses/by-sa/3.0/\"&gt;Creative Commons Attribution-ShareAlike 3.0 Unported License&lt;/a&gt;.&lt;/center&gt;")
