@@ -4,7 +4,175 @@
 <title><![CDATA[BirkeyCo]]></title>
 <description><![CDATA[BirkeyCo]]></description>
 <link>https://www.birkey.co/</link>
-<lastBuildDate>Sun, 22 Mar 2026 10:12:26 -0700</lastBuildDate>
+<lastBuildDate>Sat, 28 Mar 2026 14:35:09 -0700</lastBuildDate>
+<item>
+  <title><![CDATA[Emacs as a programmable workbench]]></title>
+  <description><![CDATA[
+<p>
+What I care about in Emacs has less to do with editing text and more to
+do with one idea: a stable workbench becomes more valuable as the
+surrounding tool landscape becomes more volatile.
+</p>
+
+<p>
+Software engineering has never been only about typing code into files,
+but that is especially obvious now. More of the job is spent
+coordinating services, processes, tests, logs, prompts, REPLs<sup><a id="fnr.repl" class="footref" href="#fn.repl" role="doc-backlink">1</a></sup>, diffs,
+generated artifacts, and feedback loops. LLMs amplify that change, but
+they do not alter the core of the work. If anything, they expose it
+more clearly. Generated code is abundant. Engineering judgment is not.
+The hard part is still turning tentative output into something
+inspectable, reproducible, composable, and reliable.
+</p>
+
+<p>
+That is why the environment I work in matters. I want one place where
+that whole loop stays visible, and Emacs is best understood as exactly
+that: not a text editor in the narrow sense but a system you can shape
+around how you inspect, compose, verify, and iterate. The key
+abstraction is the buffer.
+</p>
+
+<p>
+A file can live in a buffer. A terminal can live in a buffer. A REPL
+can live in a buffer. A compilation can live in a buffer. The output
+of a command can live in a buffer. A conversation can live in a
+buffer. Notes, prompts, logs, diffs, and half-formed ideas can live
+there too. Not every kind of computing reduces cleanly to a buffer, of
+course, but enough of software work does that the abstraction becomes
+powerful.
+</p>
+
+<p>
+Buffers matter because they are working surfaces. They are
+inspectable, editable, searchable, programmable places where rough
+work can stay rough long enough to become better work.
+</p>
+
+<p>
+That point gets clearer in a real workflow. Suppose I am using a
+coding agent to add a feature to a service. The agent runs in one
+terminal buffer. It proposes a patch. I inspect the diff in another
+buffer, jump to the changed source, and notice that the edge case
+handling is wrong. I run the failing test and keep the output open in
+a compilation buffer. I poke at the behavior in a REPL. I write a
+short note to myself about the invariant that actually matters. I
+refine the prompt, rerun the agent, and compare the new diff against
+the old one. When a command sequence turns out to be useful, I keep
+it. When the note proves durable, I turn it into documentation or
+code. What began as a loose collection of prompts, commands, output,
+guesses, and generated code becomes a more reliable artifact.
+</p>
+
+<p>
+That is the real value of the workbench. The whole path from
+generation to verification to reuse stays visible and inspectable.
+</p>
+
+<p>
+One principle has stayed constant across twenty years of using Emacs:
+I want the tools I depend on to feel native inside my workbench, not
+bolted on from the outside.
+</p>
+
+<p>
+Many code-oriented tools, including coding agents, still do their best
+work through commands, files, patches, tests, and process output. If
+the terminal lives inside Emacs in an <code>eterm</code> buffer<sup><a id="fnr.eterm" class="footref" href="#fn.eterm" role="doc-backlink">2</a></sup>, the
+agent is not working off to the side—it is operating in the same
+workbench where I am reading code, reviewing diffs, checking logs, and
+deciding what to do next.
+</p>
+
+<p>
+Emacs does not magically make the work easy. What it does is keep the
+work inspectable, repeatable, and easier to automate well.
+</p>
+
+<p>
+At this point the obvious objection is: any editor with plugin support
+or a configuration language does most of this. And it does—up to a
+point. But what I value in Emacs is not mere coexistence of tools.
+It is unified manipulation. The same editing model, navigation model, search model,
+history model, and programmability apply across many kinds of work.
+The successful one-off can be promoted into a habit, a function, a
+command, or a workflow without crossing several conceptual boundaries
+first. What Emacs buys me is that the integration is not a plugin I
+configure—it is part of the same environment in which I inspect code,
+review output, capture notes, and shape reusable workflows. And
+because it is Emacs Lisp throughout, nothing is opaque: every behavior
+I depend on can be read, modified, and extended in the same language.
+</p>
+
+<p>
+That same pattern matters even when no agent is involved. A REPL is
+not some foreign object. Compilation output is not a separate world.
+Version control is not exiled to another app. If a tool exposes text,
+process interaction, or a surface that can be inspected and shaped,
+Emacs can often bring it into the same workspace and let you build
+stable habits around it.
+</p>
+
+<p>
+This is also why Emacs has aged unusually well. New tools keep
+appearing: agent shells, chat interfaces, MCP servers and clients<sup><a id="fnr.mcp" class="footref" href="#fn.mcp" role="doc-backlink">3</a></sup>,
+debugging helpers, deployment wrappers, one-off scripts, and whatever
+comes next. The tools change, but the need does not. You still need a
+place to inspect what happened, adjust it, connect it to the rest of
+your workflow, and promote successful patterns into reusable ones.
+</p>
+
+<p>
+Emacs is good at that because its core abstractions are durable. Text,
+buffers, processes, commands, functions, windows, and programmable
+transformation through Emacs Lisp are not fashion-driven ideas. They
+have held up because they map well to real work. When a new tool can speak through those abstractions, I do not
+have to start over mentally just because the industry has a new
+wrapper or a new brand name for the same basic activity.
+</p>
+
+<p>
+For me, Emacs is still the best answer I know to that problem. It
+gives me one programmable place to think, stage, inspect, verify,
+compose, and gradually solidify work that often begins in a messy
+state.
+</p>
+
+<p>
+That, to me, is the enduring value of Emacs.
+</p>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.repl" class="footnum" href="#fnr.repl" role="doc-backlink">1</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+REPL stands for Read-Eval-Print Loop: an interactive environment where
+you enter an expression, the language evaluates it, and the result is
+printed immediately. The idea originated in Lisp and the dynamic Lisp
+family of languages, but most modern languages now offer one in some form.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.eterm" class="footnum" href="#fnr.eterm" role="doc-backlink">2</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+<code>eterm</code> is my fork of <a href="https://codeberg.org/akib/emacs-eat">EAT</a>, a pure Emacs Lisp terminal emulator,
+modified to fit my workflow.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.mcp" class="footnum" href="#fnr.mcp" role="doc-backlink">3</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+By MCP I mean <a href="https://modelcontextprotocol.io/introduction">Model Context Protocol</a>, a standard way for tools
+and applications to expose capabilities to LLM-based clients. I wrote a
+more practical post about it here:
+<a href="https://www.birkey.co/2025-05-25-mcp-explained-with-code.html">MCP explained with code</a>.
+</p></div></div>
+
+
+</div>
+</div><div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-emacs.html">emacs</a> <a href="https://www.birkey.co/tag-ai.html">ai</a> </div>]]></description>
+  <category><![CDATA[emacs]]></category>
+  <category><![CDATA[ai]]></category>
+  <link>https://www.birkey.co/2026-03-28-emacs-as-a-programmable-workbench.html</link>
+  <guid>https://www.birkey.co/2026-03-28-emacs-as-a-programmable-workbench.html</guid>
+  <pubDate>Sat, 28 Mar 2026 10:00:00 -0700</pubDate>
+</item>
 <item>
   <title><![CDATA[Why I love NixOS]]></title>
   <description><![CDATA[
