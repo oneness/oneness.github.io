@@ -31,6 +31,418 @@
   <div style="margin-bottom: 3ch;text-transform: none;"></div></div>
 <div id="content">
 <h1 class="title">Posts tagged "AI":</h1>
+<div class="post-date">05 Apr 2026</div><h1 class="post-title"><a href="https://www.birkey.co/2026-04-05-oneness-is-all-you-need.html">Oneness is All You Need</a></h1>
+<p>
+Tony Hoare put the problem well when he wrote, "I conclude that there
+are two ways of constructing a software design."<sup><a id="fnr.hoare" class="footref" href="#fn.hoare" role="doc-backlink">1</a></sup> One path is
+simplicity. The other is complexity, whose deficiencies are harder to
+see.
+</p>
+
+<p>
+That line has stayed with me for years because it names a real danger
+in our industry. We often mistake the absence of visible flaws for
+actual clarity. We add layers, libraries, frameworks, helper services,
+configuration systems, and alternative paths until the whole thing
+looks sophisticated enough that nobody can easily challenge it. Then
+we call that maturity.
+</p>
+
+<p>
+In the current era of bloated, fast-generated code, that danger feels
+even more immediate. We are producing more software than ever, often
+faster than we can understand, verify, or justify. That makes
+simplicity less of a preference and more of a survival strategy.
+</p>
+
+<p>
+Most projects do not fail because engineers lacked yet another abstraction.
+They fail because complexity compounds faster than the team can reason
+about it. The system becomes harder to inspect, harder to change,
+harder to verify, and eventually harder to trust.
+</p>
+
+<p>
+That is why I keep returning to one design pressure that has become
+more important to me over time: oneness.
+</p>
+
+<p>
+By oneness, I do not mean anything mystical. I mean something very
+operational:
+</p>
+<ul class="org-ul">
+<li>one source of truth where possible</li>
+<li>one obvious way to do a thing</li>
+<li>one clear owner per layer</li>
+<li>one logical responsibility per layer</li>
+<li>one clear mental model per layer</li>
+<li>one place to inspect data integrity</li>
+<li>one coherent workflow through the system</li>
+</ul>
+
+<p>
+The point is not ideological purity. The point is reducing avoidable
+complexity so the system stays legible, easily testable, and
+verifiable by the people building it.
+</p>
+<div id="outline-container-orgd107654" class="outline-2">
+<h2 id="orgd107654">Why this feels harder than it should</h2>
+<div class="outline-text-2" id="text-orgd107654">
+<p>
+Even before the current LLM era, it was difficult to stay simple.
+There were always reasons not to.
+</p>
+
+<p>
+An engineer wants to move fast, so a new library gets introduced
+before its trade-offs are understood. A team wants flexibility, so it
+creates multiple ways to achieve the same outcome. A system outgrows
+its original design, so validation rules get copied into controllers,
+jobs, database constraints, frontend checks, and downstream
+consumers. Another team arrives and adds a second workflow rather than
+cleaning up the first. Then a third team adds a wrapper around both.
+</p>
+
+<p>
+Nothing in that sequence sounds absurd in isolation. That is exactly
+why complexity is dangerous. It rarely arrives as one obviously wrong
+decision. It arrives as a long series of locally reasonable decisions
+that collectively destroy clarity.
+</p>
+
+<p>
+The result is familiar:
+</p>
+<ul class="org-ul">
+<li>New engineers cannot tell where to start.</li>
+<li>Existing engineers cannot tell which layer owns what.</li>
+<li>Bugs become archaeology.</li>
+<li>Data integrity becomes probabilistic.</li>
+<li>Every change carries too much fear.</li>
+</ul>
+
+<p>
+This is why I have long been drawn to ideas like Easy To Change<sup><a id="fnr.etc" class="footref" href="#fn.etc" role="doc-backlink">2</a></sup>,
+declarative systems<sup><a id="fnr.nixos" class="footref" href="#fn.nixos" role="doc-backlink">3</a></sup>, self-documenting tools<sup><a id="fnr.selfdoc" class="footref" href="#fn.selfdoc" role="doc-backlink">4</a></sup>, and
+a programmable workbench<sup><a id="fnr.workbench" class="footref" href="#fn.workbench" role="doc-backlink">5</a></sup> that
+keeps the whole loop visible. They all pull in the same direction.
+They reduce multiplicity. They reduce drift. They give you one place
+to think from.
+</p>
+</div>
+</div>
+<div id="outline-container-org8a194b3" class="outline-2">
+<h2 id="org8a194b3">Why the LLM era changes the economics</h2>
+<div class="outline-text-2" id="text-org8a194b3">
+<p>
+The LLM era does not remove this problem. It sharpens it.
+</p>
+
+<p>
+LLMs lower the cost of producing code. They do not lower the cost of
+ambiguity. If they are not harnessed well, they can compound it so
+quickly that the resulting system becomes almost impossible to reason
+about. That is the danger. The opportunity is that the same tools can
+also help us reduce complexity, but only if we use them with
+discipline.
+</p>
+
+<p>
+In fact, ambiguous systems are exactly where generated code becomes
+most dangerous. If a repository has three ways to configure a service,
+two half-trusted test setups, duplicated validation logic, unclear
+module ownership, and no obvious path through the codebase, an agent
+will happily generate more material inside that ambiguity. It can
+amplify existing confusion faster than a human ever could.
+</p>
+
+<p>
+But I also think the LLM era gives us an opportunity that did not
+exist in quite the same way before. We can now spend less human energy
+on producing boilerplate and more human energy on collapsing
+unnecessary complexity. An agent can help standardize interfaces,
+remove duplicated code paths, migrate scattered logic into one owned
+layer, and push a codebase toward a more coherent shape.
+</p>
+
+<p>
+The principle did not change. The economics did.
+</p>
+
+<p>
+That is why I do not see the current moment as a reason to compromise
+on simplicity. It is one of the first times in my career when I feel I
+can insist on it more aggressively.
+</p>
+</div>
+</div>
+<div id="outline-container-org1e83d07" class="outline-2">
+<h2 id="org1e83d07">Code is abundant, understanding is not</h2>
+<div class="outline-text-2" id="text-org1e83d07">
+<p>
+SICP says that programs must be written for people to read, and later
+adds that readers should know what not to read.<sup><a id="fnr.sicp" class="footref" href="#fn.sicp" role="doc-backlink">6</a></sup>
+I still agree with both points, but I think their practical
+implication changes in the agentic era.
+</p>
+
+<p>
+If generated code becomes abundant, it becomes impossible for a human
+to read all of it with equal depth. That is not a moral failure. It is
+just arithmetic. The surface area grows too quickly.
+</p>
+
+<p>
+So we need to move one level higher.
+</p>
+
+<p>
+Instead of assuming the human must read every line with equal care, we
+should design systems so the core behavior can be reviewed through a
+much smaller surface: tests, invariants, contracts, and executable
+examples.
+</p>
+
+<p>
+I am not claiming tests replace reading code. They do not. Bad tests
+can hide bad systems, just as bad abstractions can. But the essence of
+a system is often much smaller than its total implementation volume.
+</p>
+
+<p>
+A team may generate or write a thousand lines of code, but what the
+system fundamentally does may fit in:
+</p>
+<ul class="org-ul">
+<li>ten invariants</li>
+<li>twenty meaningful examples</li>
+<li>a handful of properties</li>
+<li>a short list of input/output contracts</li>
+</ul>
+
+<p>
+That smaller surface is something a human can actually hold in their
+head. It is something another engineer can review, an agent can
+execute repeatedly, and CI can verify without asking everybody to
+reread the entire implementation every time.
+</p>
+
+<p>
+In other words, the human review surface should get smaller as code
+generation gets cheaper.
+</p>
+
+<p>
+That is not a retreat from engineering rigor. It is an attempt to put
+rigor where it gives us the most leverage.
+</p>
+
+<p>
+In a healthy system, a human reviewer should not need to reread the
+entire generated implementation to regain confidence. They should be
+able to look at a smaller behavioral surface and ask: Are the
+invariants still true? Do the core examples still hold? Did this
+change widen the contract or violate it? That is a far more realistic
+way to supervise generated code than pretending abundance did not
+change the review problem.
+</p>
+</div>
+</div>
+<div id="outline-container-orgb60622e" class="outline-2">
+<h2 id="orgb60622e">Oneness inside layers</h2>
+<div class="outline-text-2" id="text-orgb60622e">
+<p>
+When I say oneness, I am not arguing against layered systems. I am
+arguing that each layer should have one clear responsibility and one
+obvious place where certain truths become real.
+</p>
+
+<p>
+For example:
+</p>
+<ul class="org-ul">
+<li>There should be one place where a piece of data becomes valid.</li>
+<li>One place where a business invariant is enforced.</li>
+<li>One default command that gets a human or an agent into the project.</li>
+<li>One declared artifact that owns environment setup where practical.</li>
+<li>One obvious module that owns a transformation.</li>
+</ul>
+
+<p>
+If the honest answer to those questions is often "it depends," the
+system is usually paying a complexity tax already.
+</p>
+
+<p>
+This is also why I care so much about one source of truth. A scattered
+system forces every engineer to rebuild the same mental model from
+fragments. A coherent system lets them ask a smaller set of questions,
+because the data model and ownership model are clearer. That matters
+for humans and for agents too.
+</p>
+
+<p>
+Sometimes the benefit is almost embarrassingly concrete. One declared
+artifact for environment setup is better than shell scripts, wiki
+instructions, and CI fragments all telling slightly different stories.
+One default project command is better than three nearly equivalent ways
+to run tests. One layer owning a business invariant is better than
+duplicating partial validation in the UI, the handler, the job runner,
+and the database and hoping they never drift apart.
+</p>
+
+<p>
+Take something as ordinary as order creation. In a messy system, the
+shape of an order gets partially validated in the frontend, partially
+checked again in the HTTP handler, partially normalized in a background
+job, and partially constrained in the database. The tests mirror that
+fragmentation, so no single test surface tells you what an order is
+supposed to mean. A more coherent design gives one layer ownership of
+turning input into a valid order, one place where the invariants become
+real, and one test suite that expresses those rules directly. The total
+lines of code may not shrink much, but the number of places you need to
+look in order to trust the system absolutely does.
+</p>
+
+<p>
+This is part of why I like tools and conventions that collapse
+scattered state into one place. A <code>flake.nix</code><sup><a id="fnr.flakes" class="footref" href="#fn.flakes" role="doc-backlink">7</a></sup> can become
+the declared truth for environment setup. A self-documenting
+<code>Makefile</code><sup><a id="fnr.makefile" class="footref" href="#fn.makefile" role="doc-backlink">8</a></sup> can become the obvious entry point into a
+project. A well-owned test suite can become the smallest trustworthy
+surface for reviewing behavioral changes. None of these ideas are
+glamorous. That is precisely why they age well.
+</p>
+
+<p>
+An LLM works much better when there is one obvious command to run, one
+obvious directory to modify, one obvious test suite to extend, one
+obvious place where integrity checks belong, and one obvious owner for
+the relevant behavior. Ambiguity is expensive for humans, and it is
+even more expensive when delegated.
+</p>
+</div>
+</div>
+<div id="outline-container-orgab921d3" class="outline-2">
+<h2 id="orgab921d3">What oneness is not</h2>
+<div class="outline-text-2" id="text-orgab921d3">
+<p>
+Oneness is not:
+</p>
+<ul class="org-ul">
+<li>one giant service</li>
+<li>one giant function</li>
+<li>one person making all decisions</li>
+<li>refusal to use libraries</li>
+<li>denial of layering</li>
+<li>minimalism for its own sake</li>
+</ul>
+
+<p>
+It is a bias. It is a design pressure. It says that unnecessary
+multiplicity should have to justify itself.
+</p>
+
+<p>
+Sometimes reality will justify it. There are cases where multiple
+paths, multiple representations, or multiple deployment forms are the
+right answer. But the burden of proof should be on complexity, not on
+simplicity.
+</p>
+
+<p>
+That is the part our industry often gets backwards.
+</p>
+</div>
+</div>
+<div id="outline-container-orgbcfacdc" class="outline-2">
+<h2 id="orgbcfacdc">What I mean in practice</h2>
+<div class="outline-text-2" id="text-orgbcfacdc">
+<p>
+When I look at a system now, especially in the presence of coding
+agents, I increasingly want to ask very plain questions:
+</p>
+
+<ul class="org-ul">
+<li>What is the one thing this layer owns?</li>
+<li>What is the one mental model for the data in this layer?</li>
+<li>Where is the one place I check whether data is valid?</li>
+<li>What is the one command I should run first?</li>
+<li>What is the one test file or suite that best expresses intended
+behavior?</li>
+<li>What is the smallest reviewable surface that captures the essence of
+this change?</li>
+</ul>
+
+<p>
+Those questions do not solve every design problem. But they keep me
+oriented toward legibility and verification.
+</p>
+
+<p>
+And that, to me, is the real opportunity of the LLM era. We can use
+these tools to generate more code, yes. But a much better use is to
+generate less confusion. We can use them to push systems toward one
+obvious path, one owned responsibility, one executable behavioral
+surface, and one source of truth where possible.
+</p>
+
+<p>
+I do not think software becomes better by becoming more clever. I
+think it becomes better when it becomes more legible, more
+deterministic, and easier to verify.
+</p>
+
+<p>
+In an era of abundant code, that is what I mean by oneness.
+</p>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.hoare" class="footnum" href="#fnr.hoare" role="doc-backlink">1</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+C. A. R. Hoare, <i>The Emperor's Old Clothes</i>, the 1980 ACM Turing Award Lecture, published in <i>Communications of the ACM</i> 24(2), 1981: <a href="https://www.labouseur.com/projects/codeReckon/papers/The-Emperors-Old-Clothes.pdf">https://www.labouseur.com/projects/codeReckon/papers/The-Emperors-Old-Clothes.pdf</a> The "two ways" passage appears on PDF p. 13.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.etc" class="footnum" href="#fnr.etc" role="doc-backlink">2</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+My earlier post on Easy To Change:
+<a href="https://www.birkey.co/2020-12-26-ETC-principle-to-ground-all.html">https://www.birkey.co/2020-12-26-ETC-principle-to-ground-all.html</a>
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.nixos" class="footnum" href="#fnr.nixos" role="doc-backlink">3</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+My post on why declarative systems matter to me:
+<a href="https://www.birkey.co/2026-03-22-why-i-love-nixos.html">https://www.birkey.co/2026-03-22-why-i-love-nixos.html</a>
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.selfdoc" class="footnum" href="#fnr.selfdoc" role="doc-backlink">4</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+The GNU Emacs manual describes Emacs as a "self-documenting" editor and explains that this means you can use help commands at any time to find out what your options are and what commands do: <a href="https://www.gnu.org/software/emacs/manual/html_node/emacs/Intro.html">https://www.gnu.org/software/emacs/manual/html_node/emacs/Intro.html</a>
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.workbench" class="footnum" href="#fnr.workbench" role="doc-backlink">5</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+My earlier post on Emacs as a programmable workbench:
+<a href="https://www.birkey.co/2026-03-28-emacs-as-a-programmable-workbench.html">https://www.birkey.co/2026-03-28-emacs-as-a-programmable-workbench.html</a>
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.sicp" class="footnum" href="#fnr.sicp" role="doc-backlink">6</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Harold Abelson and Gerald Jay Sussman, <i>Structure and Interpretation of Computer Programs</i>, Preface to the first edition: <a href="https://sicp.sourceacademy.org/sicpjs.pdf">https://sicp.sourceacademy.org/sicpjs.pdf</a> The readability passage appears on PDF p. 24, including the line about programs being written for people to read and the follow-on point that readers should know what not to read.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.flakes" class="footnum" href="#fnr.flakes" role="doc-backlink">7</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Official Nix documentation on flakes:
+<a href="https://nix.dev/concepts/flakes.html">https://nix.dev/concepts/flakes.html</a>
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.makefile" class="footnum" href="#fnr.makefile" role="doc-backlink">8</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+My post on self-documenting project entry points:
+<a href="https://www.birkey.co/2020-03-05-self-documenting-makefile.html">https://www.birkey.co/2020-03-05-self-documenting-makefile.html</a>
+</p></div></div>
+
+
+</div>
+</div><div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-engineering.html">engineering</a> <a href="https://www.birkey.co/tag-ai.html">ai</a> </div>
 <div class="post-date">28 Mar 2026</div><h1 class="post-title"><a href="https://www.birkey.co/2026-03-28-emacs-as-a-programmable-workbench.html">Emacs as a programmable workbench</a></h1>
 <p>
 What I care about in Emacs has less to do with editing text and more to

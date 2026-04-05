@@ -1,0 +1,274 @@
+#+title: Oneness is All You Need
+#+date: <2026-04-05 00:00>
+#+description: Complexity compounds faster than teams can reason about it. In the LLM era, one source of truth, one obvious path, and one clear place for integrity matter more than ever.
+#+filetags: engineering ai
+
+Tony Hoare put the problem well when he wrote, "I conclude that there
+are two ways of constructing a software design."[fn:hoare] One path is
+simplicity. The other is complexity, whose deficiencies are harder to
+see.
+
+That line has stayed with me for years because it names a real danger
+in our industry. We often mistake the absence of visible flaws for
+actual clarity. We add layers, libraries, frameworks, helper services,
+configuration systems, and alternative paths until the whole thing
+looks sophisticated enough that nobody can easily challenge it. Then
+we call that maturity.
+
+In the current era of bloated, fast-generated code, that danger feels
+even more immediate. We are producing more software than ever, often
+faster than we can understand, verify, or justify. That makes
+simplicity less of a preference and more of a survival strategy.
+
+Most projects do not fail because engineers lacked yet another abstraction.
+They fail because complexity compounds faster than the team can reason
+about it. The system becomes harder to inspect, harder to change,
+harder to verify, and eventually harder to trust.
+
+That is why I keep returning to one design pressure that has become
+more important to me over time: oneness.
+
+By oneness, I do not mean anything mystical. I mean something very
+operational:
+- one source of truth where possible
+- one obvious way to do a thing
+- one clear owner per layer
+- one logical responsibility per layer
+- one clear mental model per layer
+- one place to inspect data integrity
+- one coherent workflow through the system
+
+The point is not ideological purity. The point is reducing avoidable
+complexity so the system stays legible, easily testable, and
+verifiable by the people building it.
+
+* Why this feels harder than it should
+Even before the current LLM era, it was difficult to stay simple.
+There were always reasons not to.
+
+An engineer wants to move fast, so a new library gets introduced
+before its trade-offs are understood. A team wants flexibility, so it
+creates multiple ways to achieve the same outcome. A system outgrows
+its original design, so validation rules get copied into controllers,
+jobs, database constraints, frontend checks, and downstream
+consumers. Another team arrives and adds a second workflow rather than
+cleaning up the first. Then a third team adds a wrapper around both.
+
+Nothing in that sequence sounds absurd in isolation. That is exactly
+why complexity is dangerous. It rarely arrives as one obviously wrong
+decision. It arrives as a long series of locally reasonable decisions
+that collectively destroy clarity.
+
+The result is familiar:
+- New engineers cannot tell where to start.
+- Existing engineers cannot tell which layer owns what.
+- Bugs become archaeology.
+- Data integrity becomes probabilistic.
+- Every change carries too much fear.
+
+This is why I have long been drawn to ideas like Easy To Change[fn:etc],
+declarative systems[fn:nixos], self-documenting tools[fn:selfdoc], and
+a programmable workbench[fn:workbench] that
+keeps the whole loop visible. They all pull in the same direction.
+They reduce multiplicity. They reduce drift. They give you one place
+to think from.
+
+* Why the LLM era changes the economics
+The LLM era does not remove this problem. It sharpens it.
+
+LLMs lower the cost of producing code. They do not lower the cost of
+ambiguity. If they are not harnessed well, they can compound it so
+quickly that the resulting system becomes almost impossible to reason
+about. That is the danger. The opportunity is that the same tools can
+also help us reduce complexity, but only if we use them with
+discipline.
+
+In fact, ambiguous systems are exactly where generated code becomes
+most dangerous. If a repository has three ways to configure a service,
+two half-trusted test setups, duplicated validation logic, unclear
+module ownership, and no obvious path through the codebase, an agent
+will happily generate more material inside that ambiguity. It can
+amplify existing confusion faster than a human ever could.
+
+But I also think the LLM era gives us an opportunity that did not
+exist in quite the same way before. We can now spend less human energy
+on producing boilerplate and more human energy on collapsing
+unnecessary complexity. An agent can help standardize interfaces,
+remove duplicated code paths, migrate scattered logic into one owned
+layer, and push a codebase toward a more coherent shape.
+
+The principle did not change. The economics did.
+
+That is why I do not see the current moment as a reason to compromise
+on simplicity. It is one of the first times in my career when I feel I
+can insist on it more aggressively.
+
+* Code is abundant, understanding is not
+
+SICP says that programs must be written for people to read, and later
+adds that readers should know what not to read.[fn:sicp]
+I still agree with both points, but I think their practical
+implication changes in the agentic era.
+
+If generated code becomes abundant, it becomes impossible for a human
+to read all of it with equal depth. That is not a moral failure. It is
+just arithmetic. The surface area grows too quickly.
+
+So we need to move one level higher.
+
+Instead of assuming the human must read every line with equal care, we
+should design systems so the core behavior can be reviewed through a
+much smaller surface: tests, invariants, contracts, and executable
+examples.
+
+I am not claiming tests replace reading code. They do not. Bad tests
+can hide bad systems, just as bad abstractions can. But the essence of
+a system is often much smaller than its total implementation volume.
+
+A team may generate or write a thousand lines of code, but what the
+system fundamentally does may fit in:
+- ten invariants
+- twenty meaningful examples
+- a handful of properties
+- a short list of input/output contracts
+
+That smaller surface is something a human can actually hold in their
+head. It is something another engineer can review, an agent can
+execute repeatedly, and CI can verify without asking everybody to
+reread the entire implementation every time.
+
+In other words, the human review surface should get smaller as code
+generation gets cheaper.
+
+That is not a retreat from engineering rigor. It is an attempt to put
+rigor where it gives us the most leverage.
+
+In a healthy system, a human reviewer should not need to reread the
+entire generated implementation to regain confidence. They should be
+able to look at a smaller behavioral surface and ask: Are the
+invariants still true? Do the core examples still hold? Did this
+change widen the contract or violate it? That is a far more realistic
+way to supervise generated code than pretending abundance did not
+change the review problem.
+
+* Oneness inside layers
+When I say oneness, I am not arguing against layered systems. I am
+arguing that each layer should have one clear responsibility and one
+obvious place where certain truths become real.
+
+For example:
+- There should be one place where a piece of data becomes valid.
+- One place where a business invariant is enforced.
+- One default command that gets a human or an agent into the project.
+- One declared artifact that owns environment setup where practical.
+- One obvious module that owns a transformation.
+
+If the honest answer to those questions is often "it depends," the
+system is usually paying a complexity tax already.
+
+This is also why I care so much about one source of truth. A scattered
+system forces every engineer to rebuild the same mental model from
+fragments. A coherent system lets them ask a smaller set of questions,
+because the data model and ownership model are clearer. That matters
+for humans and for agents too.
+
+Sometimes the benefit is almost embarrassingly concrete. One declared
+artifact for environment setup is better than shell scripts, wiki
+instructions, and CI fragments all telling slightly different stories.
+One default project command is better than three nearly equivalent ways
+to run tests. One layer owning a business invariant is better than
+duplicating partial validation in the UI, the handler, the job runner,
+and the database and hoping they never drift apart.
+
+Take something as ordinary as order creation. In a messy system, the
+shape of an order gets partially validated in the frontend, partially
+checked again in the HTTP handler, partially normalized in a background
+job, and partially constrained in the database. The tests mirror that
+fragmentation, so no single test surface tells you what an order is
+supposed to mean. A more coherent design gives one layer ownership of
+turning input into a valid order, one place where the invariants become
+real, and one test suite that expresses those rules directly. The total
+lines of code may not shrink much, but the number of places you need to
+look in order to trust the system absolutely does.
+
+This is part of why I like tools and conventions that collapse
+scattered state into one place. A =flake.nix=[fn:flakes] can become
+the declared truth for environment setup. A self-documenting
+=Makefile=[fn:makefile] can become the obvious entry point into a
+project. A well-owned test suite can become the smallest trustworthy
+surface for reviewing behavioral changes. None of these ideas are
+glamorous. That is precisely why they age well.
+
+An LLM works much better when there is one obvious command to run, one
+obvious directory to modify, one obvious test suite to extend, one
+obvious place where integrity checks belong, and one obvious owner for
+the relevant behavior. Ambiguity is expensive for humans, and it is
+even more expensive when delegated.
+
+* What oneness is not
+Oneness is not:
+- one giant service
+- one giant function
+- one person making all decisions
+- refusal to use libraries
+- denial of layering
+- minimalism for its own sake
+
+It is a bias. It is a design pressure. It says that unnecessary
+multiplicity should have to justify itself.
+
+Sometimes reality will justify it. There are cases where multiple
+paths, multiple representations, or multiple deployment forms are the
+right answer. But the burden of proof should be on complexity, not on
+simplicity.
+
+That is the part our industry often gets backwards.
+
+* What I mean in practice
+When I look at a system now, especially in the presence of coding
+agents, I increasingly want to ask very plain questions:
+
+- What is the one thing this layer owns?
+- What is the one mental model for the data in this layer?
+- Where is the one place I check whether data is valid?
+- What is the one command I should run first?
+- What is the one test file or suite that best expresses intended
+  behavior?
+- What is the smallest reviewable surface that captures the essence of
+  this change?
+
+Those questions do not solve every design problem. But they keep me
+oriented toward legibility and verification.
+
+And that, to me, is the real opportunity of the LLM era. We can use
+these tools to generate more code, yes. But a much better use is to
+generate less confusion. We can use them to push systems toward one
+obvious path, one owned responsibility, one executable behavioral
+surface, and one source of truth where possible.
+
+I do not think software becomes better by becoming more clever. I
+think it becomes better when it becomes more legible, more
+deterministic, and easier to verify.
+
+In an era of abundant code, that is what I mean by oneness.
+
+[fn:hoare] C. A. R. Hoare, /The Emperor's Old Clothes/, the 1980 ACM Turing Award Lecture, published in /Communications of the ACM/ 24(2), 1981: https://www.labouseur.com/projects/codeReckon/papers/The-Emperors-Old-Clothes.pdf The "two ways" passage appears on PDF p. 13.
+
+[fn:sicp] Harold Abelson and Gerald Jay Sussman, /Structure and Interpretation of Computer Programs/, Preface to the first edition: https://sicp.sourceacademy.org/sicpjs.pdf The readability passage appears on PDF p. 24, including the line about programs being written for people to read and the follow-on point that readers should know what not to read.
+
+[fn:etc] My earlier post on Easy To Change:
+https://www.birkey.co/2020-12-26-ETC-principle-to-ground-all.html
+
+[fn:nixos] My post on why declarative systems matter to me:
+https://www.birkey.co/2026-03-22-why-i-love-nixos.html
+
+[fn:selfdoc] The GNU Emacs manual describes Emacs as a "self-documenting" editor and explains that this means you can use help commands at any time to find out what your options are and what commands do: https://www.gnu.org/software/emacs/manual/html_node/emacs/Intro.html
+
+[fn:makefile] My post on self-documenting project entry points:
+https://www.birkey.co/2020-03-05-self-documenting-makefile.html
+
+[fn:workbench] My earlier post on Emacs as a programmable workbench:
+https://www.birkey.co/2026-03-28-emacs-as-a-programmable-workbench.html
+
+[fn:flakes] Official Nix documentation on flakes:
+https://nix.dev/concepts/flakes.html
