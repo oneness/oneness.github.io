@@ -31,6 +31,312 @@
   <div style="margin-bottom: 3ch;text-transform: none;"></div></div>
 <div id="content">
 <h1 class="title">Posts tagged "AI":</h1>
+<div class="post-date">19 Apr 2026</div><h1 class="post-title"><a href="https://www.birkey.co/2026-04-19-why-i-love-pi.html">Why I Love Agent Pi</a></h1>
+<p>
+Pi<sup><a id="fnr.pi" class="footref" href="#fn.pi" role="doc-backlink">1</a></sup> is the first coding agent that really empowered me to
+morph it to fit the way my brain works, and I am genuinely excited
+about how malleable it is on top of a handful of primitives.
+</p>
+
+<p>
+Most coding agents I have tried in the past have grown in
+the same direction. More built-in tools. More opinionated prompts.
+More hidden, opaque decisions with no real visibility or control.
+More assumptions that I will bend my workflow around theirs -
+mandatory hooks here, implicit conventions there - instead of letting
+me configure a few simple things and get on with my work.
+</p>
+
+<p>
+The small stuff gives it away. A recent example: Claude Code animates
+its "thinking" state with a glyph that lives in a font not every
+machine has. If you happen to use a font that does not have extensive
+glyph support, it makes <code>eterm</code><sup><a id="fnr.eterm" class="footref" href="#fn.eterm" role="doc-backlink">2</a></sup> trigger a redraw on every
+tick, resulting in the surrounding text shaking visually. Yes, I can
+switch to a different font, but I did not have the choice to turn it
+off. It is a small thing. It is also exactly the kind of small thing
+you cannot fix from the outside, because the decision is buried
+somewhere you are not invited to touch. You start to succumb to their
+way of doing things. Small things aside, I cannot tell what the agent
+is really doing, I cannot tell why it chose a particular path, and I
+cannot tell how to change its behavior without jumping through the
+hoops they put in place.
+</p>
+
+<p>
+Pi does almost the opposite. Its core is four primitives: <b>read, write,
+edit, and bash</b>. That is roughly it. Everything else is something you
+compose on top, or an extension you opt into. That small surface is
+exactly the thing I keep coming back for.
+</p>
+
+<p>
+If you want a fuller sense of the thinking behind Pi, I would point
+you to a twenty-minute talk by its creator<sup><a id="fnr.mario-talk" class="footref" href="#fn.mario-talk" role="doc-backlink">3</a></sup>. I do not
+often recommend agent-related talks - most of them age badly within a
+week or so - but the way he frames agents, agentic coding, and the
+current landscape is the clearest version of that picture I have
+heard recently. It is worth your time even if you never use Pi.
+</p>
+<div id="outline-container-org25a73da" class="outline-2">
+<h2 id="org25a73da">Small primitives, visible behavior</h2>
+<div class="outline-text-2" id="text-org25a73da">
+<p>
+A coding agent with four primitives is not a limitation in the way it
+first appears. Most of what a coding agent actually needs to do boils
+down to reading a file, writing a file, changing part of a file, or
+running a command. If you can see each of those happen, you can
+reason about what the agent is doing. If you can script around them,
+you can make the agent behave the way your project already behaves.
+</p>
+
+<p>
+This matters to me because I spend a lot of my time with agents
+trying to get clarity - building a clearer mental model of a problem
+before I commit to a direction. That work depends on visibility. What
+did the agent change? What did it run? What did it see? An agent
+whose behavior reduces to a handful of visible primitives is much
+easier to think alongside than one that hides its moves behind a
+thicker abstraction.
+</p>
+
+<p>
+I do not think this is a new insight. Unix made the same bet a long
+time ago. So did Emacs, in its own way, with text, buffers,
+processes, and commands. The bet is that a small number of durable
+primitives plus a programmable substrate will outlast whatever
+feature-of-the-month the industry is currently excited about. Pi
+feels like that bet applied to coding agents.
+</p>
+</div>
+</div>
+<div id="outline-container-org817a1f6" class="outline-2">
+<h2 id="org817a1f6">Where Pi fits in the way I already work</h2>
+<div class="outline-text-2" id="text-org817a1f6">
+<p>
+I did not come to Pi looking for a new philosophy. I came to it
+because it fits two things I already depend on.
+</p>
+
+<p>
+The first is Nix. I have written before about why I lean on it
+heavily<sup><a id="fnr.nixos" class="footref" href="#fn.nixos" role="doc-backlink">4</a></sup>. In short, I do not want coding agents mutating my
+machine. I want them to declare what they need, pull it into an
+isolated shell, use it, and leave no residue. Pi cooperates with this
+model very naturally. Because its only way to reach the outside world
+is the shell primitive, I can point it at <code>nix shell</code> or <code>nix
+develop</code> and it will happily do real work inside a clean environment.
+A Rust toolchain, a specific Python, an odd CLI tool for one task -
+none of it has to touch my base system. When I am done, nothing is
+left behind except, if I want, a <code>flake.nix</code> that captures what
+actually worked.
+</p>
+
+<p>
+The second is Emacs. I have also written about treating Emacs as a
+programmable workbench<sup><a id="fnr.workbench" class="footref" href="#fn.workbench" role="doc-backlink">5</a></sup>. A coding agent that respects
+shell and files, and does not insist on its own fancy UI, drops into
+that workbench without friction. Pi runs in a buffer. As a simple
+example, I can make it interact with Emacs buffers to persist the
+commands it ran, so I can come back to them later if I need to.
+</p>
+
+<p>
+Those two fits are not accidents of Pi's implementation. They fall
+out of the decision to keep the primitives small and the surface
+inspectable. An agent that tried to be a full IDE would not compose
+with Nix or Emacs this cleanly, because it would be busy being its
+own environment.
+</p>
+</div>
+</div>
+<div id="outline-container-org495c656" class="outline-2">
+<h2 id="org495c656">Extensibility I can actually use</h2>
+<div class="outline-text-2" id="text-org495c656">
+<p>
+The other thing I like about Pi is that its extension points are
+honest. When I want the agent to behave differently on a particular
+project, I do not have to reverse-engineer a hidden system prompt or
+wait for a vendor to ship a feature. I can add an extension, adjust a
+skill, or wire in a custom tool, and the change is visible in the
+same place the rest of the behavior lives.
+</p>
+
+<p>
+Here is a concrete example. I wanted a small workflow for myself:
+whenever I ask one model to brainstorm an idea with me, a second
+comparable model should immediately review the response and list pros
+and cons, and optionally a third arbitrator model should weigh in when
+the two disagree. Useful pattern, but not something any agent I know
+ships out of the box. I asked Pi to build it for me as a peer-review
+extension. It did. Now, my brainstorming sessions work exactly as I
+wanted.
+</p>
+
+<p>
+What made that work was not that Pi is clever. It was that Pi ships
+with documentation and code examples for its own extension points,
+and those examples are legible enough that the agent could read them
+and write a correct extension on the first try. I did not
+reverse-engineer anything. I did not hunt down a third-party
+tutorial. I just asked Pi to make the extension and it built the
+thing.
+</p>
+
+<p>
+That is the part I keep thinking about. Pi is self-documenting in
+the same sense that Emacs is self-documenting<sup><a id="fnr.selfdoc" class="footref" href="#fn.selfdoc" role="doc-backlink">6</a></sup> - the
+system knows how to explain itself, to me and to any agent I put in
+front of it. That property sounds almost unremarkable until you
+notice how rare it is in modern tooling, and how much friction its
+absence quietly adds to every customization you try to make.
+</p>
+</div>
+</div>
+<div id="outline-container-org9918854" class="outline-2">
+<h2 id="org9918854">The honest trade-offs</h2>
+<div class="outline-text-2" id="text-org9918854">
+<p>
+Pi is not the right answer for everyone, and I do not want to
+oversell it.
+</p>
+
+<p>
+Out of the box, it is minimal. If you want an agent that arrives
+pre-wired with a dozen integrations and a confident opinion about how
+your project should be structured, Pi will feel underdressed. You are
+expected to bring the way you think, work, and taste yourself. That
+takes some getting used to. It is the same kind of work Nix and
+Emacs ask for, and it pays back in the same way.
+</p>
+
+<p>
+It is also a young project. Rough edges exist. Pi is not the only
+agent in this minimalist neighborhood either - Aider and OpenCode
+share a lot of the same instincts, and I think that is healthy. The
+argument I am making is not that Pi has won. It is that the design
+pressure behind Pi is the one I want more agents to feel.
+</p>
+</div>
+</div>
+<div id="outline-container-org9be203a" class="outline-2">
+<h2 id="org9be203a">Putting my money where my mouth is</h2>
+<div class="outline-text-2" id="text-org9be203a">
+<p>
+At some point I realized I had been talking about Pi's design
+philosophy enough that I should probably just internalize it the hard
+way: by building something that takes the same bet from scratch. So I
+did. I wrote a small coding agent in Rust called
+OneLoop<sup><a id="fnr.oneloop" class="footref" href="#fn.oneloop" role="doc-backlink">7</a></sup>. Its core is exactly what this post has been
+describing: four tools (read, write, edit, bash), one agent loop,
+and a session model that appends linearly to a JSONL file. Nothing
+else.
+</p>
+
+<p>
+I am not bringing this up to announce a project. I am bringing it up
+because it proved something to me. OneLoop is rough, young, and does
+almost nothing compared to any "serious" coding agent on the market.
+And yet I am using it right now - in fact, the <code>flake.nix</code> in the
+OneLoop repo itself was written by OneLoop. The agent is building its
+own infrastructure. It works for real work because the model does the
+heavy lifting, and the agent's only job is to stay out of the way: hand it
+files, hand it a bash shell, and let it run. When your agent is just
+primitives and a loop, you do not need much more than that to be
+productive.
+</p>
+
+<p>
+Building it also taught me something I did not fully appreciate from
+just using Pi. The hard part of a minimalist coding agent is not the
+agent loop - that is genuinely small. The hard part is everything
+around it: truncation heuristics so the model context does not
+explode, sensible output formatting so you can see what happened,
+session persistence so you can pick up where you left off. Those are
+real engineering problems. But they are <i>infrastructure</i> problems,
+not <i>agent design</i> problems, and it is useful to know the difference.
+Pi absorbs those infrastructure decisions so you do not have to think
+about them. OneLoop forced me to confront them directly. Both
+experiences are valuable.
+</p>
+</div>
+</div>
+<div id="outline-container-org5f3411c" class="outline-2">
+<h2 id="org5f3411c">Why this matters beyond Pi</h2>
+<div class="outline-text-2" id="text-org5f3411c">
+<p>
+The reason I wanted to write this down is not really about one tool.
+It is about a pattern I keep noticing in the parts of my setup that
+have aged well.
+</p>
+
+<p>
+The systems I still rely on after many years tend to share a shape. A
+small number of durable primitives. A programmable substrate. Honest
+extension points. A willingness to be boring where boring is the
+right answer. NixOS has that shape at the system level. Emacs has it
+at the workbench level. Pi showed it to me at the agent level.
+OneLoop is my way of making sure I actually understand it.
+</p>
+
+<p>
+I do not know which specific tools I will be using in five years. I
+do know that the ones that survive, for me, will look more like this
+and less like the feature-heavy alternatives that dominate the
+current moment. That is the real reason I love Pi. Not because it is
+the final answer, but because it is built in a shape that can keep
+being useful while the rest of the landscape keeps adding bloated
+features until it works for everyone - maybe not for you or me.
+</p>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.pi" class="footnum" href="#fnr.pi" role="doc-backlink">1</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Pi is a minimal, extensible coding agent by Mario Zechner:
+<a href="https://pi.dev/">https://pi.dev/</a>.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.eterm" class="footnum" href="#fnr.eterm" role="doc-backlink">2</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+<code>eterm</code> is my fork of <a href="https://codeberg.org/akib/emacs-eat">EAT</a>, a pure Emacs Lisp terminal
+emulator, modified to fit my workflow.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.mario-talk" class="footnum" href="#fnr.mario-talk" role="doc-backlink">3</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Mario Zechner's talk on agents and the current
+agentic coding landscape:
+<a href="https://www.youtube.com/watch?v=RjfbvDXpFls">https://www.youtube.com/watch?v=RjfbvDXpFls</a>.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.nixos" class="footnum" href="#fnr.nixos" role="doc-backlink">4</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+My earlier post on why I rely on Nix, especially in the
+LLM coding era: <a href="https://www.birkey.co/2026-03-22-why-i-love-nixos.html">https://www.birkey.co/2026-03-22-why-i-love-nixos.html</a>.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.workbench" class="footnum" href="#fnr.workbench" role="doc-backlink">5</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+My earlier post on Emacs as a programmable workbench:
+<a href="https://www.birkey.co/2026-03-28-emacs-as-a-programmable-workbench.html">https://www.birkey.co/2026-03-28-emacs-as-a-programmable-workbench.html</a>.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.selfdoc" class="footnum" href="#fnr.selfdoc" role="doc-backlink">6</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+The GNU Emacs manual describes Emacs as a
+"self-documenting" editor and explains that this means you can use
+help commands at any time to find out what your options are and what
+commands do:
+<a href="https://www.gnu.org/software/emacs/manual/html_node/emacs/Intro.html">https://www.gnu.org/software/emacs/manual/html_node/emacs/Intro.html</a>.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.oneloop" class="footnum" href="#fnr.oneloop" role="doc-backlink">7</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+OneLoop is a tiny coding agent written in Rust. It is a
+private repo for now. I will open-source it at some point when I
+believe it is ready.
+</p></div></div>
+
+
+</div>
+</div><div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-nix.html">nix</a> <a href="https://www.birkey.co/tag-emacs.html">emacs</a> <a href="https://www.birkey.co/tag-coding-agent.html">coding-agent</a> <a href="https://www.birkey.co/tag-ai.html">ai</a> </div>
 <div class="post-date">05 Apr 2026</div><h1 class="post-title"><a href="https://www.birkey.co/2026-04-05-oneness-is-all-you-need.html">Oneness is All You Need</a></h1>
 <p>
 Tony Hoare put the problem well when he wrote, "I conclude that there
