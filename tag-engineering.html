@@ -31,6 +31,331 @@
   <div style="margin-bottom: 3ch;text-transform: none;"></div></div>
 <div id="content">
 <h1 class="title">Posts tagged "engineering":</h1>
+<div class="post-date">16 May 2026</div><h1 class="post-title"><a href="https://www.birkey.co/2026-05-16-the-agent-is-not-the-point.html">The Agent Is Not the Point</a></h1>
+<p>
+I recently finished building a coding agent<sup><a id="fnr.oneloop" class="footref" href="#fn.oneloop" role="doc-backlink">1</a></sup>. Not a
+wrapper around someone else's. A small one, from scratch, in Rust. Its
+core is four tools: read a file, write a file, edit part of a file,
+and run a shell command. One agent loop. A session that appends
+linearly to a log. That is roughly it.
+</p>
+
+<p>
+The experience taught me something that I think the current
+conversation about AI in software engineering is mostly missing. So I
+want to say it directly:
+</p>
+
+<p>
+The agent is not the point.
+</p>
+
+<p>
+People are the point. Engineering rigor is the point. Being able to
+gain clarity on the actual problem you are trying to solve is the
+point. The agent is a tool that, if harnessed well, can help with
+those things. But the tool itself is not what matters. What matters is
+what it enables the human to do.
+</p>
+<div id="outline-container-orgdec7feb" class="outline-2">
+<h2 id="orgdec7feb">Two camps, both wrong</h2>
+<div class="outline-text-2" id="text-orgdec7feb">
+<p>
+I see two extreme positions dominating the current AI conversation,
+and I think both are mostly emotional reactions to something that
+deserves clearer thinking.
+</p>
+
+<p>
+The first camp says that coding agents will do everything. No more
+coders. No more software engineers. Massive layoffs are coming. Big
+names in the industry are declaring the end of
+programming as we know it. Within this camp, there is a further
+impulse: <i>stop reading code, just let the agent do
+it</i>. Accept the output. Move on. Everyone is suddenly talking about
+"agentic this" and "agentic that" without, in many cases, actually
+understanding what an agent is or how it works under the hood. The
+word has become a branding exercise more than a technical
+description.
+</p>
+
+<p>
+The second camp says that AI is fundamentally bad. It steals work. It
+produces garbage. It makes people dumb. It offloads thinking. It is a
+threat to the profession and to the craft of engineering. This camp
+includes engineers I have learned a great deal from over the years,
+people whose judgment I ordinarily trust. The animosity is real and
+honest, but I think the conclusion is wrong.
+</p>
+
+<p>
+Both camps are having an emotional reaction to a genuine change in the
+landscape. I understand why. The change is real and the pace is fast.
+But the framing on both sides is shortsighted. The question was never
+whether AI will replace you or whether AI makes people stupid. That is
+the wrong question. It was always the wrong question. The question is:
+what is this thing actually good for, what does it need to be useful,
+and how do we harness it in a way that produces verifiable,
+reproducible, deterministic outcomes?
+</p>
+</div>
+</div>
+<div id="outline-container-orgcb7fab0" class="outline-2">
+<h2 id="orgcb7fab0">Having built one</h2>
+<div class="outline-text-2" id="text-orgcb7fab0">
+<p>
+I did not set out to build a coding agent to prove a point. I built
+one because I wanted to understand what was actually happening when I
+used one. I had been using Pi<sup><a id="fnr.pi" class="footref" href="#fn.pi" role="doc-backlink">2</a></sup> and Claude Code in my daily
+work, and I was impressed but also unsatisfied with how much of the
+process stayed opaque. So I built OneLoop<sup><a id="fnr.oneloop.1" class="footref" href="#fn.oneloop" role="doc-backlink">1</a></sup>.
+</p>
+
+<p>
+Here is what OneLoop does: it reads files, it writes files, it edits
+files, and it runs shell commands. There is an agent loop that
+assembles a prompt with the conversation history, sends it to the LLM,
+parses the response, and executes whatever tool the model asks
+for. The session is a JSONL file that grows linearly. That is the
+whole thing.
+</p>
+
+<p>
+What surprised me was not how complex the agent needed to be. It was
+how <i>capable</i> the LLM is with just those few primitives. Given the
+ability to read files and run commands, the model does genuine
+detective work. It gathers evidence. It recognizes patterns across a
+codebase. It follows leads from one file to another, from one log line
+to a stack trace to a root cause. It can narrow a bug from a vague
+symptom to a specific line of code by systematically reading,
+searching, and cross-referencing.
+</p>
+
+<p>
+That is not magic. It is a small number of durable primitives plus a
+very powerful pattern recognition engine. But seeing it up close, from
+the inside, made something click for me. The value is not in the agent
+as a thing. The value is in what those primitives enable the LLM to do
+<i>gather evidence so the human can see more clearly</i>.
+</p>
+</div>
+</div>
+<div id="outline-container-org178240c" class="outline-2">
+<h2 id="org178240c">What the LLM is actually good for</h2>
+<div class="outline-text-2" id="text-org178240c">
+<p>
+The LLM is good at pattern recognition across large surfaces. It is
+good at gathering and synthesizing information. It is good at following
+a trail of evidence when you give it the tools to look around. It is
+good at generating plausible code, yes, but that is almost a side
+effect of a deeper capability: it is good at helping the human gain
+clarity on the problem.
+</p>
+
+<p>
+That is what I keep coming back to. The real value of an LLM in a
+coding workflow is not that it writes code for you. It is that it
+helps you <i>see</i> the problem more clearly. It gathers context you might
+not have the patience to gather. It spots patterns you might miss
+because you are too close. It follows leads you might not have thought
+to chase. The code generation is real and useful, but it flows from
+the clarity, not the other way around.
+</p>
+
+<p>
+This is also why the "just let the agent do everything" camp is wrong.
+If you accept the output without inspecting it, without understanding
+what happened, without building your own mental model of the problem,
+you have gained nothing durable. You have a patch that works right now
+and no understanding of why. That is not engineering. An LLM will happily write and rewrite code
+to fix one thing while breaking another, over and over, and you
+should not just accept that cycle without rigor. If you do, there is
+a term for it: faith-based engineering.
+</p>
+
+<p>
+And it is why the "AI is fundamentally bad" camp is wrong too. The
+pattern recognition is real. The evidence gathering is real. The
+clarity it can produce is real. Throwing that away because the current
+implementations are imperfect, or because some of the surrounding hype
+is ridiculous, is like refusing to use a compiler because you once saw
+it generate a wrong optimization. The tool does not have to be perfect
+to be genuinely useful.
+</p>
+</div>
+</div>
+<div id="outline-container-orge74aaa4" class="outline-2">
+<h2 id="orge74aaa4">The opportunity</h2>
+<div class="outline-text-2" id="text-orge74aaa4">
+<p>
+I do not want this to read as a cautious "be careful with AI" post. I
+am genuinely excited about what this enables.
+</p>
+
+<p>
+There is so much accumulated waste in our industry. Clunky systems
+that evolved through years of locally reasonable decisions into
+globally unreasonable messes. Wrong abstractions that nobody has time
+to fix. Half-baked integrations, scattered validation logic, unclear
+ownership, duplicated effort. We all know these systems. We have all
+worked in them. The problem was never that we lacked the intelligence
+to fix them. The problem was that we lacked the time and the patience
+to gather the evidence needed to see clearly what was actually wrong.
+</p>
+
+<p>
+That is where the LLM changes the economics. It can gather that
+evidence. It can read every file, run every test, trace every
+dependency, and lay it out in front of you. Not so you can blindly
+accept its conclusions, but so you can <i>think</i> more clearly about what
+to do. The human judgment is still the scarce resource. The LLM just
+makes that judgment cheaper to exercise well.
+</p>
+
+<p>
+I see a tremendous opportunity to disrupt waste that has been sitting
+around for years, not because we did not know it was there, but because
+the cost of understanding it was too high relative to everything else
+on the backlog. That cost is dropping fast. The question is whether we
+use that drop to generate more noise or to finally clean things up.
+</p>
+
+<p>
+A concrete example. You inherit a codebase and you know there is
+cruft. It is hazy though. You cannot quite see where the patterns of
+waste begin and end. There is duplicated logic scattered across
+handlers, half of it slightly different from the other half, and you
+are not sure which version is the source of truth. It would take you
+a full day just to trace all the variations, map the dependencies,
+and build a mental model of what the code is actually doing versus
+what the domain needs.
+</p>
+
+<p>
+Instead, you ask the agent to read through the relevant files and
+identify the pattern. It does. It lays out every variation side by
+side, shows you where they diverge, and highlights which ones match
+the domain intent and which ones are just drift. Now you can <i>see</i> it.
+What was hazy is concrete. You did not outsource the thinking — you
+outsourced the gathering. The judgment about what to keep, what to
+collapse, and how to restructure is still yours. But the cost of
+getting to that judgment just dropped from a day to ten minutes.
+</p>
+
+<p>
+That is the economics I am talking about. You still have to think.
+You still have to decide. But you get to do it from a position of
+clarity instead of a position of exhaustion. And once you can see
+the pattern clearly, you can guide the agent to clean it up in a way
+that stays close to the domain — with tests to verify, diffs to
+inspect, and a clear before and after.
+</p>
+
+<p>
+The same applies to building new things. If you can describe what you
+want with enough clarity — invariants, contracts, tests, acceptance
+criteria — the LLM can help you get there faster. Not by replacing
+your thinking, but by amplifying it. The hard part was never the
+typing. The hard part was always the thinking. Nothing about that has
+changed.
+</p>
+</div>
+</div>
+<div id="outline-container-org3265058" class="outline-2">
+<h2 id="org3265058">Where this is heading</h2>
+<div class="outline-text-2" id="text-org3265058">
+<p>
+I think the future of coding agents — and agents in general — looks
+less like a product and more like a library. Small composable building
+blocks. APIs, maybe even ABIs<sup><a id="fnr.abi" class="footref" href="#fn.abi" role="doc-backlink">3</a></sup>, that expose just enough surface
+for people to build on top of. Every major platform will roll out
+their own agent APIs. The winners will be the ones that treat the agent
+as something you compose and extend, not something you adopt wholesale.
+</p>
+
+<p>
+That is the spirit behind OneLoop. It meets my needs because it is
+tailored to the way I work — my tools, my environment, my workflow.
+It is not designed for everybody, and I am not pretending it is. When
+I believe I have hardened the core pieces enough, with clean interfaces
+so that someone else can pick, choose, and compose their own workflow
+on top of it, I will open source it. Until then, I might just release
+it as-is — warts and all — so people can take inspiration, steal what
+is useful, and build something that fits their own brain.
+</p>
+
+<p>
+Because that, I think, is the right shape for an agent. Not a
+monolithic product that tells you how to work. A small set of
+composable primitives that you shape around how you already think.
+</p>
+</div>
+</div>
+<div id="outline-container-orgd30d409" class="outline-2">
+<h2 id="orgd30d409">The agent is not the point</h2>
+<div class="outline-text-2" id="text-orgd30d409">
+<p>
+I keep coming back to the same realization. The agent is not the
+point. It never was.
+</p>
+
+<p>
+The point is people thinking more clearly about the problems they are
+trying to solve. The point is engineering rigor producing verifiable,
+reproducible outcomes. The point is being able to gain clarity on
+the actual problem, make sound judgments, and create real value. The point is
+disrupting the waste and the clunk that has built up over years of
+shortcutting.
+</p>
+
+<p>
+The coding agent is a tool that, built on a handful of small
+primitives and harnessed with discipline, can help with all of that.
+But it is still just a tool. It is a very powerful one, and I am
+excited about what it makes possible, but it is not the thing that
+matters. What matters is what the human does with the clarity the tool
+helps produce.
+</p>
+
+<p>
+The question was never whether AI will replace you or whether AI will
+make you dumb. The question is: will you use this tool to think more
+clearly, build more intentionally, and create more value? That question
+has always been the right one. The tool just changed.
+</p>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.oneloop" class="footnum" href="#fnr.oneloop" role="doc-backlink">1</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+OneLoop is a tiny coding agent I wrote in Rust. Its core
+is four tools (read, write, edit, bash), one agent loop, and a session
+model that appends linearly to a JSONL file. It is a private repo for
+now. I will open-source it at some point when I believe it is ready.
+I highly recommend every engineer who cares about their craft to build
+one from scratch. I guarantee you will have some aha moments.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.pi" class="footnum" href="#fnr.pi" role="doc-backlink">2</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Pi is a minimal, extensible coding agent by Mario Zechner:
+<a href="https://pi.dev/">https://pi.dev/</a>. I wrote about why I love it here:
+<a href="https://www.birkey.co/2026-04-19-why-i-love-pi.html">https://www.birkey.co/2026-04-19-why-i-love-pi.html</a>
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.abi" class="footnum" href="#fnr.abi" role="doc-backlink">3</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+ABI stands for Application Binary Interface — a lower-level
+contract than an API that defines how software components interact at
+the machine level. I use it here to make the point that agent
+interfaces might eventually need to be as stable and well-specified as
+the contracts that operating systems and compilers have provided for
+decades.
+</p></div></div>
+
+
+</div>
+</div><div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-ai.html">AI</a> <a href="https://www.birkey.co/tag-engineering.html">engineering</a> </div>
 <div class="post-date">05 Apr 2026</div><h1 class="post-title"><a href="https://www.birkey.co/2026-04-05-oneness-is-all-you-need.html">Oneness is All You Need</a></h1>
 <p>
 Tony Hoare put the problem well when he wrote, "I conclude that there

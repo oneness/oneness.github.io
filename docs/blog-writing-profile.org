@@ -1,0 +1,126 @@
+#+title: Writing Profile — Birkey.co Blog
+#+description: Living reference for the voice, style, themes, and conventions of blog posts at birkey.co. Used by human and coding agents to draft new posts in the author's voice.
+
+* Author
+
+Kasim Tuman. Software craftsman with ~20 years of experience.
+Founding Engineer at Legion Health. Runs Birkey Consulting.
+GitHub: oneness. Blog: birkey.co.
+
+* Voice and Tone
+
+- **Conversational but deliberate.** Write like talking to a fellow
+  engineer over coffee, not delivering a keynote. Short, clear
+  sentences. No showing off.
+- **Philosophy-driven, practically grounded.** Every post connects an
+  abstract principle to real code, real workflows, real decisions.
+  Never stay in the clouds without landing in something concrete.
+- **Honest and measured.** Acknowledge trade-offs. Say "I don't think"
+  and "in my experience." Avoid dogmatic absolutism. Use disclaimers
+  ("this is not a flame war") when the topic invites them.
+- **First-person, experiential.** Everything comes from what has been
+  actually done, built, or lived through. Share real elisp, real
+  shell scripts, real flake.nix files. No hypothetical examples when
+  real ones exist.
+- **Thematic repetition is a feature.** Return to core ideas
+  (simplicity, one source of truth, inspectability, reproducibility,
+  small primitives) across different domains and let the pattern speak
+  for itself.
+
+* Structure Patterns
+
+- **Short posts** (early era): Hook -> context -> code example -> brief
+  takeaway. Often under 500 words. Example: "less is literally more,"
+  "curl to the rescue."
+- **Tutorial posts**: Motivation -> setup -> working code -> usage tips.
+  Example: "Why Eshell" series, "OpenBSD 7 Xfce Desktop."
+- **Essay posts** (later era): Opening thesis -> layered argument with
+  concrete examples -> broader reflection -> closing that ties back to
+  the opening. Often 1500-3000 words. Example: "Oneness is All You
+  Need," "Why I Love NixOS," "Emacs as a Programmable Workbench,"
+  "Why I Love Agent Pi."
+- **Conference notes**: Category-grouped takeaways with "AHA" moments.
+  Example: Strange Loop notes.
+
+Footnotes are used in essay posts to link sources, prior posts, and
+clarifications without cluttering the main text.
+
+* Formatting Conventions
+
+- Org-mode source files with =#+title=, =#+date=, =#+description=,
+  and =#+filetags=.
+- Date format: =<YYYY-MM-DD Day>=.
+- Code blocks use =#+begin_src <lang>= with language tag.
+- Bold for tool names and key terms on first mention: *Emacs*, *Nix*,
+  *cURL*.
+- Internal cross-links use full birkey.co URLs.
+- External links use Org link syntax: =[[url][description]]=.
+- Quotes use =#+BEGIN_QUOTE= / =#+END_QUOTE=.
+- File naming: =YYYY-MM-DD-slug-with-dashes.org=.
+
+* Recurring Themes
+
+1. **ETC (Easy To Change)** — the grounding principle for engineering
+   decisions.
+2. **Oneness** — one source of truth, one obvious path, one clear
+   owner per layer.
+3. **Reproducibility and determinism** — Nix, declarative systems,
+   pinned inputs.
+4. **Small durable primitives over feature bloat** — Unix, Emacs,
+   Pi/OneLoop. Four tools: read, write, edit, bash.
+5. **Inspectability and visibility** — keeping the work legible,
+   reviewable, verifiable.
+6. **LLM era as amplifier** — generated code is abundant,
+   understanding is not. Agents compound ambiguity if not harnessed
+   with discipline.
+7. **Self-documenting systems** — tools that explain themselves
+   (Emacs, Makefile help targets, Pi extension docs).
+8. **The workbench model** — Emacs as a unified programmable
+   environment. Buffers as working surfaces.
+9. **Security and privacy as defaults** — OpenBSD, random MAC
+   addresses, HTTPS-only, no unnecessary exposure.
+10. **Transmittable vs untransmittable knowledge** — some things can
+    only be learned from masters in close proximity (Strange Loop,
+    craftsmanship).
+
+* Ideas and Drafts
+
+This section tracks potential blog posts. Update as ideas evolve.
+
+** TODO [YYYY-MM-DD] <title>
+   - Status: seed / outline / draft / published
+   - Summary: <one paragraph>
+   - Key points: <bullet list>
+   - Related posts: <links to prior posts that connect>
+
+** TODO [2026-04-XX] The Agent Is Not the Point
+   - Status: outline
+   - Summary: The current AI debate is stuck in two extremes — wholesale
+     reliance vs wholesale rejection — and both miss the point. Having
+     built a coding agent from scratch (OneLoop), I saw firsthand that
+     an agent is just a few primitives handed to an LLM. The real power
+     is not the agent itself but the clarity it can help a human
+     achieve. The point is people, engineering rigor, and verifiable
+     outcomes. The point is being able to think at a higher level,
+     create real value, and disrupt the accumulated waste and clunk in
+     our systems.
+   - Key points:
+     - Two camps: "agents will do everything" vs "AI is theft/stupidity" — both emotional, both shortsighted
+     - Having built OneLoop, the agent is just read/write/edit/bash — few primitives, remarkable capability
+     - The LLM's real strength: detective work, pattern recognition, evidence gathering, helping humans gain clarity
+     - The agent is not the point. People are the point. Engineering rigor is the point.
+     - Clarity, verifiable outcomes, reproducible results — that's the focus
+     - Tremendous opportunity to disrupt waste if harnessed with discipline
+     - The question was never "will AI replace you" or "does AI make you dumb" — that framing is wrong
+   - Related posts:
+     - [[https://www.birkey.co/2026-04-05-oneness-is-all-you-need.html][Oneness is All You Need]]
+     - [[https://www.birkey.co/2026-03-28-emacs-as-a-programmable-workbench.html][Emacs as a Programmable Workbench]]
+     - [[https://www.birkey.co/2026-04-19-why-i-love-pi.html][Why I Love Agent Pi]]
+     - [[https://www.birkey.co/2025-08-02-hacker-news-ai-coding-experience-analysis.html][Hacker News AI Coding Experience Analysis]]
+     - [[https://www.birkey.co/2026-03-22-why-i-love-nixos.html][Why I Love NixOS]]
+     - [[https://www.birkey.co/2020-12-26-ETC-principle-to-ground-all.html][ETC - The Principle to Guide Engineering]]
+
+* Changelog
+
+- [2026-04-20] Initial version created by analyzing all 36 published
+  blog posts in the birkey.co repo.
