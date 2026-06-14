@@ -1,0 +1,111 @@
+#+title: Ten Books That Shaped How I Think
+#+date: <2026-05-18 Sun>
+#+description: The books that shaped how I think.
+#+filetags: books engineering
+
+I was recently asked for book recommendations and realized I have
+never written down the ones that actually changed how I think. Not the
+ones that taught me a language or a framework. The ones that shifted
+something in me as an engineer. Here they are, in no particular order.
+
+** 1. A Philosophy of Software Design — John Ousterhout
+
+Short, opinionated, and right about most things. The core idea is
+/Deep Modules/: hide complexity behind simple interfaces. This is
+ETC from another angle. If your module has a complex surface, every
+consumer pays that tax forever. Make the surface small and the
+internals can evolve freely. I read it in a weekend. I have been
+thinking about it for years.
+
+** 2. Thinking in Systems: A Primer — Donella Meadows
+
+I already thought in systems before reading this. What Meadows gave me
+was the vocabulary. Stocks and flows. Feedback loops. Leverage
+points. The places to intervene in a system, ranked from least to most
+effective. When I write about NixOS or Emacs or OneLoop, I am
+reaching for these ideas even when I do not name them directly. Short
+and elegant.
+
+** 3. The Art of Doing Science and Engineering — Richard Hamming
+
+Hamming spent decades at Bell Labs studying what separates great
+scientists from merely good ones. His central question: why do so few
+people make significant contributions while so many are forgotten? The
+answer is mostly about how you allocate your attention and whether you
+have the courage to work on important problems instead of safe ones.
+This maps directly to what I wrote about transmittable vs.
+untransmittable knowledge. Hamming is rigorous, contrarian, and
+deeply practical.
+
+** 4. Designing Data-Intensive Applications — Martin Kleppmann
+
+The best systems engineering book of the last decade. Kleppmann builds
+from simple primitives (logs, hashes, SSTables) all the way up to
+distributed systems, always grounding abstractions in the physical
+realities they paper over. Even if you never build a distributed
+database, the /way/ Kleppmann thinks will change how you design any
+system. This book is first principles applied to data.
+
+** 5. Programmers at Work — Susan Lammers
+
+Interviews with 19 legendary programmers from the 1980s. Bill Gates,
+Andy Hertzfeld, Charles Simonyi, and others. What makes it timeless
+is the focus on /how/ they think about problems, not what they built.
+You start to see patterns across how these minds approach complexity.
+
+** 6. The UNIX Programming Environment — Kernighan & Pike
+
+I live the Unix philosophy every day. Reading it from the source is
+different than absorbing it osmotically. Kernighan and Pike do not
+just describe the philosophy. They /demonstrate/ it, building real
+tools from shell pipelines, showing how composability creates power
+that no monolith can match. Every time I write =curl | jq= or compose
+tools in Emacs, I am living this book. My OneLoop agent (read, write,
+edit, bash as four primitives) is an example of Unix way of doing things.
+
+** 7. Structure and Interpretation of Computer Programs — Abelson & Sussman
+
+The spiritual ancestor of everything I love about Lisps.
+Homoiconicity. Functions as first-class citizens. Building abstractions
+upward from the smallest possible primitives. SICP teaches you to
+think about computation itself, not any particular language. If you
+are a Clojure programmer and you have not read it cover to cover, fix
+that.
+
+** 8. The Design of Everyday Things — Don Norman
+
+Not a software book, and that is the point. Norman's central idea is
+that good design is invisible and bad design blames the user. This
+applies to everything from Makefile help targets to agent tool
+interfaces. Your self-documenting system? Your one obvious path? Your
+inspectability obsession? Norman gives you the design vocabulary to
+articulate /why/ something feels wrong and /how/ to fix it.
+
+** 9. Computer Power and Human Reason — Joseph Weizenbaum
+
+Weizenbaum wrote ELIZA in 1966, then spent the rest of his career
+warning about delegating human judgment to machines. He is not
+anti-computer. He is pro-human. He argues that some things should not
+be computed, not because they cannot be, but because doing so corrupts
+the thinking. Reading this in 2026, in the middle of the AI hype
+cycle, feels like finding a kindred spirit from fifty years ago. This
+is the philosophical depth behind "the agent is not the point."
+
+** 10. The Mythical Man-Month — Frederick Brooks
+
+The original essay on why adding people to a late project makes it
+later. But it is really about something deeper: the irreducible
+complexity of communication and the necessity of conceptual integrity
+in software. Brooks' concept of conceptual integrity (a system should
+reflect one set of design ideas, not a committee's compromises) is my
+oneness principle by another name. The anniversary edition includes
+"No Silver Bullet," which is even more relevant in the age of "AI will
+solve everything."
+
+---
+
+These are not the only books I have read. They are the ones I keep
+coming back to. The ones where I will catch myself mid-conversation
+reaching for an idea and realizing it came from one of these pages. If
+you have read them, you know what I mean. If you have not, start with
+1, 2, and 9.
