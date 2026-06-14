@@ -1,5 +1,5 @@
 #+title: Ten Books That Shaped How I Think
-#+date: <2026-05-18 Sun>
+#+date: <2026-06-14 Sun>
 #+description: The books that shaped how I think.
 #+filetags: books engineering
 
