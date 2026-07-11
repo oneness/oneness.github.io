@@ -1,0 +1,81 @@
+#+title: Engineered, Not Vibe Coded
+#+date: <2026-07-11 Sat>
+#+description: I used a coding agent to build the voice-to-text tool I now use every day. It was spec'd, structured, and tested — with an engineer driving every step.
+#+filetags: AI engineering coding-agent
+
+People call coding with AI "vibe coding". Sloppy, they say. Not real
+engineering. I am not interested in having that debate. Whether it is
+good or bad in the abstract is not an interesting question to me.
+
+What interests me is what the current advances in AI, especially
+coding agents, actually enable: rigorous engineering. And by rigorous
+I do not mean lines of code. Lines of code matter, but they are not
+the point. I mean being very intentional about the feature set you
+want, starting from a clear spec and a clear direction, and keeping
+things as simple as possible so you get to the core of the problem
+you are solving.
+
+I have a concrete case: a few months ago I started writing
+VoiceToText[fn:vtt], and I used Claude Code to write it. It has been
+my daily driver ever since. Whatever we end up calling this way of
+working, the result is a fairly robust tool that I rely on every day.
+I was in the driver's seat the whole time.
+
+* Why I built my own
+
+Before writing my own, I used [[https://wisprflow.ai][Wispr Flow]] and then the
+[[https://willowvoice.com][Willow Voice]] subscription service. Both work fine. I have nothing against either
+of them functionally. But the frequent updates kept making them more
+clever in ways I really did not want, and the feature set never quite
+met my needs. So I started writing my own.
+
+* A daily driver
+
+I use VoiceToText for far more than I expected when I started. I
+compose messages and emails with it. I talk to coding agents with it.
+I dictate blog post drafts with it.
+
+In fact, this very post started as a dictation. I spoke my raw
+thoughts into VoiceToText, read the transcript, and proofread it over
+and over. Then I asked Claude Code to clean it up, with strict
+instructions: make it idiomatic, give it structure, and do not
+generate anything I did not say. Which is pretty much the same way I
+drove it to write the code in the first place.
+
+* What kind of vibe is this?
+
+I think we have been abusing the word "vibe". It is short for
+vibration, from the Latin /vibrare/, to shake. Somewhere along the
+way it came to mean coding by feel: wave your hands at the model,
+accept whatever comes back, move on.
+
+That is not what I did. This tool was spec'd and engineered, with me
+guiding every step of the way. I chose the features. I wrote the
+spec. I set the direction. I rejected code that did not fit the
+structure and the idiomatic style I wanted, and I drove the AI until
+it did. None of it was autopilot. I was intentional about the specs,
+disciplined about the structure, and disciplined about the tests.
+
+What drives a process like that is not a vibe. It is fundamentals,
+solid understanding, and long years of experience. The engineer is
+the one driving: setting the direction and managing the entire
+process. Call it vibe engineering if you like. Whatever the word, the
+distinction that matters is who is driving.
+
+So is it sloppy? Is it vibe coded? I do not know what those words mean
+anymore. What I know is that I used a coding agent to build a robust
+tool that meets my needs exactly, with just the features that I want
+and none of the distraction or cleverness that I did not ask for. That, to
+me, is intentional planning and engineering.
+
+Along the way I also used OneLoop, the small coding agent I built
+myself[fn:oneloop]. How I used it here is a separate post, and I will
+write about it at some point as a way of showing how I use coding
+agents in real work.
+
+[fn:vtt] VoiceToText: press a hotkey, speak, and the text appears
+where you are typing. Overview: [[https://www.birkey.co/VoiceToText/]],
+source: [[https://github.com/oneness/VoiceToText]].
+
+[fn:oneloop] I wrote about building OneLoop and what it taught me in
+[[https://www.birkey.co/2026-05-16-the-agent-is-not-the-point.html][The Agent Is Not the Point]].

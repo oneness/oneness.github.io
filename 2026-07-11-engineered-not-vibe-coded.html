@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="I used a coding agent to build the voice-to-text tool I now use every day. It was spec'd, structured, and tested — with an engineer driving every step.">
+<link rel="alternate"
+      type="application/rss+xml"
+      href="https://www.birkey.co/rss.xml"
+      title="RSS feed for https://www.birkey.co/">
+<title>Engineered, Not Vibe Coded</title>
+<link href="static/style.css" rel="stylesheet" type="text/css" />
+	   <link rel="apple-touch-icon" sizes="180x180" href="static/apple-touch-icon.png">
+	   <link rel="icon" type="image/png" sizes="32x32" href="static/favicon-32x32.png">
+	   <link rel="icon" type="image/png" sizes="16x16" href="static/favicon-16x16.png">
+	   <link rel="manifest" href="/site.webmanifest">
+	   <link rel="mask-icon" href="static/safari-pinned-tab.svg" color="#5bbad5">
+	   <link rel="alternate" type="application/rss+xml" title="RSS Feed for birkey.co" href="/rss.xml">
+	   <meta name="author" content="Kasim Tuman">
+	   <meta name="referrer" content="no-referrer">
+	   <meta name="msapplication-TileColor" content="#da532c">
+	   <meta name="theme-color" content="#ffffff">
+	   <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8">
+	   <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1">
+	  </head>
+<body>
+<div id="preamble" class="status"><br><center>
+       <div style="display: inline-block; vertical-align:middle;">
+  <a href="https://www.birkey.co/index.html" style="text-decoration: none;"><b>BIRKEY CONSULTING</b><br>
+  </a><hr/><div style="text-align: justify;display: inline-block; width: 100%;">
+<a class="title" href="https://github.com/oneness">ABOUT</a> &nbsp;<a class="title" href="https://www.birkey.co/rss.xml">RSS</a> &nbsp;<a class="title" href="https://www.birkey.co/projects.html">PROJECTS</a> &nbsp;<a class="title" href="https://www.birkey.co/archive.html">ARCHIVE</a></div></div>
+  </center><br><br>
+  <div style="margin-bottom: 3ch;text-transform: none;"></div></div>
+<div id="content">
+<div class="post-date">11 Jul 2026</div><h1 class="post-title"><a href="https://www.birkey.co/2026-07-11-engineered-not-vibe-coded.html">Engineered, Not Vibe Coded</a></h1>
+<p>
+People call coding with AI "vibe coding". Sloppy, they say. Not real
+engineering. I am not interested in having that debate. Whether it is
+good or bad in the abstract is not an interesting question to me.
+</p>
+
+<p>
+What interests me is what the current advances in AI, especially
+coding agents, actually enable: rigorous engineering. And by rigorous
+I do not mean lines of code. Lines of code matter, but they are not
+the point. I mean being very intentional about the feature set you
+want, starting from a clear spec and a clear direction, and keeping
+things as simple as possible so you get to the core of the problem
+you are solving.
+</p>
+
+<p>
+I have a concrete case: a few months ago I started writing
+VoiceToText<sup><a id="fnr.vtt" class="footref" href="#fn.vtt" role="doc-backlink">1</a></sup>, and I used Claude Code to write it. It has been
+my daily driver ever since. Whatever we end up calling this way of
+working, the result is a fairly robust tool that I rely on every day.
+I was in the driver's seat the whole time.
+</p>
+<div id="outline-container-org4d00521" class="outline-2">
+<h2 id="org4d00521">Why I built my own</h2>
+<div class="outline-text-2" id="text-org4d00521">
+<p>
+Before writing my own, I used <a href="https://wisprflow.ai">Wispr Flow</a> and then the
+<a href="https://willowvoice.com">Willow Voice</a> subscription service. Both work fine. I have nothing against either
+of them functionally. But the frequent updates kept making them more
+clever in ways I really did not want, and the feature set never quite
+met my needs. So I started writing my own.
+</p>
+</div>
+</div>
+<div id="outline-container-org3882882" class="outline-2">
+<h2 id="org3882882">A daily driver</h2>
+<div class="outline-text-2" id="text-org3882882">
+<p>
+I use VoiceToText for far more than I expected when I started. I
+compose messages and emails with it. I talk to coding agents with it.
+I dictate blog post drafts with it.
+</p>
+
+<p>
+In fact, this very post started as a dictation. I spoke my raw
+thoughts into VoiceToText, read the transcript, and proofread it over
+and over. Then I asked Claude Code to clean it up, with strict
+instructions: make it idiomatic, give it structure, and do not
+generate anything I did not say. Which is pretty much the same way I
+drove it to write the code in the first place.
+</p>
+</div>
+</div>
+<div id="outline-container-orgdf1a6fb" class="outline-2">
+<h2 id="orgdf1a6fb">What kind of vibe is this?</h2>
+<div class="outline-text-2" id="text-orgdf1a6fb">
+<p>
+I think we have been abusing the word "vibe". It is short for
+vibration, from the Latin <i>vibrare</i>, to shake. Somewhere along the
+way it came to mean coding by feel: wave your hands at the model,
+accept whatever comes back, move on.
+</p>
+
+<p>
+That is not what I did. This tool was spec'd and engineered, with me
+guiding every step of the way. I chose the features. I wrote the
+spec. I set the direction. I rejected code that did not fit the
+structure and the idiomatic style I wanted, and I drove the AI until
+it did. None of it was autopilot. I was intentional about the specs,
+disciplined about the structure, and disciplined about the tests.
+</p>
+
+<p>
+What drives a process like that is not a vibe. It is fundamentals,
+solid understanding, and long years of experience. The engineer is
+the one driving: setting the direction and managing the entire
+process. Call it vibe engineering if you like. Whatever the word, the
+distinction that matters is who is driving.
+</p>
+
+<p>
+So is it sloppy? Is it vibe coded? I do not know what those words mean
+anymore. What I know is that I used a coding agent to build a robust
+tool that meets my needs exactly, with just the features that I want
+and none of the distraction or cleverness that I did not ask for. That, to
+me, is intentional planning and engineering.
+</p>
+
+<p>
+Along the way I also used OneLoop, the small coding agent I built
+myself<sup><a id="fnr.oneloop" class="footref" href="#fn.oneloop" role="doc-backlink">2</a></sup>. How I used it here is a separate post, and I will
+write about it at some point as a way of showing how I use coding
+agents in real work.
+</p>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.vtt" class="footnum" href="#fnr.vtt" role="doc-backlink">1</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+VoiceToText: press a hotkey, speak, and the text appears
+where you are typing. Overview: <a href="https://www.birkey.co/VoiceToText/">https://www.birkey.co/VoiceToText/</a>,
+source: <a href="https://github.com/oneness/VoiceToText">https://github.com/oneness/VoiceToText</a>.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.oneloop" class="footnum" href="#fnr.oneloop" role="doc-backlink">2</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+I wrote about building OneLoop and what it taught me in
+<a href="https://www.birkey.co/2026-05-16-the-agent-is-not-the-point.html">The Agent Is Not the Point</a>.
+</p></div></div>
+
+
+</div>
+</div><div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-ai.html">AI</a> <a href="https://www.birkey.co/tag-engineering.html">engineering</a> <a href="https://www.birkey.co/tag-coding-agent.html">coding-agent</a> </div></div>
+<div id="postamble" class="status"><br><center>
+	      <div style="display: inline-block; vertical-align:middle;"></div></div>
+</body>
+</html>
