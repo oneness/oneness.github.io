@@ -55,7 +55,9 @@
     <div style="color:#5f5a52; margin-bottom:1ch;">
       Press a hotkey, speak, and the text appears where you are typing. No window, no clicks.
       macOS menu bar app written in Swift; Linux tray daemon written in Rust.
-      Transcription via Groq Whisper.
+      On Linux it transcribes on-device by default &mdash; the model downloads itself on first
+      run and the audio never leaves the machine, with transcription streaming live while you
+      speak. macOS uses the Groq Whisper API, which Linux can also be configured to use.
     </div>
     <a class="title" href="https://www.birkey.co/VoiceToText/">Overview</a> &nbsp;
     <a class="title" href="https://github.com/oneness/VoiceToText">Source</a>
