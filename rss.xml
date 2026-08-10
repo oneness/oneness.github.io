@@ -4,7 +4,123 @@
 <title><![CDATA[BirkeyCo]]></title>
 <description><![CDATA[BirkeyCo]]></description>
 <link>https://www.birkey.co/</link>
-<lastBuildDate>Sat, 11 Jul 2026 06:53:00 -0700</lastBuildDate>
+<lastBuildDate>Mon, 10 Aug 2026 09:43:28 -0700</lastBuildDate>
+<item>
+  <title><![CDATA[OneLoop: Local First Coding agent written in Rust with nix tooling]]></title>
+  <description><![CDATA[
+<p>
+I have been working on my own personal coding agent for the last few
+months. As a matter of fact, my initial commit is on 18th of April
+2026 and it went through quite a number of iterations. The git history
+is quite telling about my experimentation of features such as auto
+compacting, memory, and multi-model debate/consensus/judgment etc. It
+supported a few big name model providers on top of <b>OpenRouter</b>
+initially. After using it for real production work for some time, I am
+quite happy with the following state of OneLoop [<a href="https://www.birkey.co/projects.html">Projects</a>]:
+</p>
+
+<ul class="org-ul">
+<li>It defaults to local model (<b>llama.cpp</b> serving <b>Qwen3.6-35B-A3B-Q4<sub>K</sub><sub>M.gguf</sub></b>).</li>
+<li>It features 4 tools, on demand skill loading, append only session
+history with an option to reset via /clear command anytime.</li>
+<li>It has been battle tested, which includes developing OneLoop using
+OneLoop.</li>
+<li>It supports OpenRouter with web/link tools using /model command</li>
+</ul>
+
+<p>
+Please note that this coding agent is designed by me for me and I do
+not recommend you use it for production projects since it lacks any
+security/permission guardrails. However, I'd recommend you clone the
+repo and just have fun hacking it. It is super easy to get going if
+you happen to use Nix on a machine at least with 32GB of ram:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">git clone git@github.com:oneness/OneLoop.git
+./ols # builds llama.cpp for your CPU/GPU, downloads Qwen model
+./ol  # run in another terminal and start interacting with the agent
+echo "Give me a mental model how this code base works" | ./ol
+</pre>
+</div>
+
+<p>
+I'd like to share a few things I learned along the way building a coding
+agent tailored to my own workflow. First let me start with things to
+watch out when you are building your own coding agent, which I highly
+recommend.
+</p>
+<ol class="org-ol">
+<li>Keep your coding agent as dumb/minimal/simple as possible.</li>
+<li>Prompt engineering requires you to have deep knowledge about the
+problem domain. So optimize coding agent to teach you using
+research/learning skills that it can load on demand to instruct
+agent to help you get clarity.</li>
+<li>Context management is hard. I am thinking on this. Please reach out
+if you have novel ideas on how to do this better. I do have a few ideas
+but not settled yet.</li>
+<li>When you are in doubt of a feature you want to add, follow point 1.</li>
+<li>Use local model if possible. It forces you to slow down, be more
+cognizant of ever-growing context so you can breakdown problems for
+better solution.</li>
+</ol>
+
+<p>
+Now, let me talk about how I use OneLoop. Following laws keeps myself
+and coding agent in check. I retrofitted <b>Asimov's Laws of Robotics</b>
+<a href="https://en.wikipedia.org/wiki/Three_Laws_of_Robotics">[Wikipedia link</a>] as follows:
+</p>
+
+<ol class="org-ol">
+<li>A Coding Agent is not allowed to run in auto pilot.</li>
+<li>A Coding Agent must be made to obey the SOLID engineering principles.</li>
+<li>A Coding Agent is allowed to have side effects as long as it does
+not violate the first and the second law.</li>
+</ol>
+
+<p>
+Ok, you might say that above is too vague or hand-wavy but trust
+me, they have served me and OneLoop well. It gave me clarity when I am
+developing OneLoop in terms of adding or removing features. Here are
+basic steps I utilize OneLoop for my day-to-day work now.
+</p>
+<ol class="org-ol">
+<li>Use OneLoop to get clear understanding of the problem I am trying
+to solve. This means that I ask OneLoop things like this: "Give me
+a hello world example of how x y z works". I ask it to generate one
+off scripts that I can run myself to exercise the code. I change
+here and there, add print statement and run it to get an intuition
+of how things work.</li>
+<li>Then I ask OneLoop to read codes from my repo and give me three
+options on how to add or integrate that feature.</li>
+<li>I review all options, ask further questions, ask OneLoop to
+generate one off standalone scripts so I can run them myself and
+iterate again from 1.</li>
+</ol>
+
+<p>
+That is pretty much how I use OneLoop. It supports all I need such as
+clearing context to start new, summaries of long sessions so I can decide to
+use or not use in my ongoing conversation, switch to different model
+if I need (when I am running OneLoop from some low end pocket laptop)
+etc.
+</p>
+
+<p>
+Remember, Coding Agent should serve you, optimize for your
+understanding, and helping you get better at your craft. If you have
+been just pressing `Enter` so far, please do yourself a favor and ask
+your coding agent to ban that command until you confirm that you
+understand what you are doing. Have fun coding!
+</p>
+<div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-rust.html">rust</a> <a href="https://www.birkey.co/tag-nix.html">nix</a> <a href="https://www.birkey.co/tag-handcrafted.html">handcrafted</a> </div>]]></description>
+  <category><![CDATA[rust]]></category>
+  <category><![CDATA[nix]]></category>
+  <category><![CDATA[handcrafted]]></category>
+  <link>https://www.birkey.co/2026-08-09-oneloop:-local-first-coding-agent-written-in-rust-with-nix-tooling.html</link>
+  <guid>https://www.birkey.co/2026-08-09-oneloop:-local-first-coding-agent-written-in-rust-with-nix-tooling.html</guid>
+  <pubDate>Sun, 09 Aug 2026 18:54:00 -0700</pubDate>
+</item>
 <item>
   <title><![CDATA[Engineered, Not Vibe Coded]]></title>
   <description><![CDATA[
