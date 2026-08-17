@@ -4,7 +4,173 @@
 <title><![CDATA[BirkeyCo]]></title>
 <description><![CDATA[BirkeyCo]]></description>
 <link>https://www.birkey.co/</link>
-<lastBuildDate>Mon, 10 Aug 2026 09:43:28 -0700</lastBuildDate>
+<lastBuildDate>Mon, 17 Aug 2026 13:06:45 -0700</lastBuildDate>
+<item>
+  <title><![CDATA[GitHub's Recent Crisis Has a Simple Fix]]></title>
+  <description><![CDATA[
+<div id="outline-container-orgbf8f4f6" class="outline-2">
+<h2 id="orgbf8f4f6">Introduction: The Outages Aren't Bugs; They're Symptoms</h2>
+<div class="outline-text-2" id="text-orgbf8f4f6">
+<p>
+GitHub is down again? Oh boy, it has a scalability issue, you might
+say. I say your coding agent may be to blame, and thus may be you
+should take responsibility? The platform is buckling under a weight it
+wasn't designed to carry. We've seen downtime, API timeouts, and
+"maintenance mode" messages since its inception, but we have not seen
+them as frequently as we have since November 2025. (Does this month
+ring a bell? It is when Anthropic released Claude Opus 4.5, which
+wowed all of us with its complex code generation capabilities.)
+</p>
+
+<p>
+The mainstream narrative blames "infrastructure scaling" or
+"unexpected coding party traffic spikes." But the real culprit is
+staring us in the face: <b>the explosion of agentic AI.</b>
+</p>
+
+<p>
+We are no longer just seeing human-paced code commits. We are seeing
+AI agents generating thousands of API calls per second&#x2014;opening PRs,
+commenting on issues, and pushing commits at machine speed. GitHub,
+the world's primary collaboration tool, is being swamped by a flood of
+low-value, automated noise.
+</p>
+</div>
+</div>
+<div id="outline-container-org6d2fd56" class="outline-2">
+<h2 id="org6d2fd56">The "AI Slop" Problem</h2>
+<div class="outline-text-2" id="text-org6d2fd56">
+<p>
+Before we talk about engineering, we need to talk about quality. "AI
+slop" isn't just a buzzword; it's a systemic degradation of our
+codebases and our learning processes.
+</p>
+
+<p>
+Agentic AI makes it <i>too easy</i> to generate working demos. It's
+incredibly easy to spin up a project that looks impressive in a
+30-second TikTok video. But when that project hits a real codebase, it
+becomes unmaintainable vaporware.
+</p>
+
+<p>
+The internet is clogging up with boilerplate PRs, automated dependency
+updates, and "AI-written" refactorings that no human actually
+reviewed. We are seeing a shift from <b>writing software</b> to
+<b>reviewing AI output</b>, and the latter is a fundamentally passive,
+low-value activity.
+</p>
+</div>
+</div>
+<div id="outline-container-org01bba8c" class="outline-2">
+<h2 id="org01bba8c">The Technical Fix: Intelligent Backoff Queues</h2>
+<div class="outline-text-2" id="text-org01bba8c">
+<p>
+So, how do we fix GitHub's backend crisis?
+</p>
+
+<p>
+A naive solution is simple rate limiting: "You can only make 100 calls
+per hour." But smart AI agents will just hit that limit faster or spin
+up more parallel threads to compensate. Throttling a dumb agent just
+creates a "thundering herd" effect.
+</p>
+
+<p>
+<b>The real solution is organization-level flow control via hard queueing.</b>
+</p>
+
+<p>
+GitHub needs to implement an intelligent queue system per
+organization. Every API call (PR creation, issue comment, commit push)
+should go into a queue that enforces a <b>thinking delay</b>.
+</p>
+
+<ul class="org-ul">
+<li><b>Burst Limits:</b> "Your team just pushed 50 commits. The next 50 must wait 10 seconds."</li>
+<li><b>Exponential Backoff:</b> "You've generated 5 PRs in a minute. The next one must wait 10 minutes."</li>
+</ul>
+
+<p>
+This isn't just about server load; it's about <b>forcing a pause</b>.
+</p>
+
+<p>
+When an AI agent tries to "slop" a project, the queue forces it to sit
+on its hands. It breaks the agentic loop. It turns a 2-second
+generation cycle into an overnight batch process. It forces developers
+to check the logs, read the diffs, and actually <i>collaborate</i> before
+the next burst of commits is allowed through.
+</p>
+</div>
+</div>
+<div id="outline-container-org2ebbf4e" class="outline-2">
+<h2 id="org2ebbf4e">The Philosophical Win: Forcing the "Human Pause"</h2>
+<div class="outline-text-2" id="text-org2ebbf4e">
+<p>
+Here is the counterintuitive truth: <b>We need GitHub to be slower.</b>
+</p>
+
+<p>
+When you write code manually, you understand the architecture. You
+feel the pain points. You learn the library. When AI writes it for
+you, you just review it. Reviewing is passive; writing is active.
+</p>
+
+<p>
+By enforcing hard queues and flow control, GitHub can become the
+"Great Filter." It can force a friction point between <b>generating
+code</b> and <b>shipping code</b>.
+</p>
+
+<ul class="org-ul">
+<li><b>Real Software vs. Demos:</b> Vaporware thrives on speed. Real, maintainable software thrives on deliberate thought. Slowing down the API forces the agent (and its human overseer) to think before they commit.</li>
+<li><b>Learning vs. Generating:</b> If the platform forces you to wait 10 minutes between bursts, you might as well use that time to read the documentation. You might as well write the next function yourself to see where the AI got stuck.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org2a3a7e3" class="outline-2">
+<h2 id="org2a3a7e3">Conclusion: The Library Guardian Metaphor</h2>
+<div class="outline-text-2" id="text-org2a3a7e3">
+<p>
+Let us face it. GitHub is the world's source control. It is the Library
+of Alexandria for the software age. It is supposed to be the place
+where the best ideas in code are preserved, reviewed, and improved.
+</p>
+
+<p>
+When AI floods the platform with generative noise, we aren't just
+filling servers; we are diluting the signal. We are turning a library
+of human knowledge into a warehouse of automated spam.
+</p>
+
+<p>
+We need GitHub to be the library guard. The one who looks at the flood
+of AI-generated PRs and says:
+</p>
+
+<blockquote>
+<p>
+<i>"Slow down. Read this first. Understand what you're doing. And for the love of code, don't push until you've actually thought about it."</i>
+</p>
+</blockquote>
+
+<p>
+By forcing a slowdown, GitHub doesn't just save its infrastructure. It
+saves the soul of software development. It forces us to stop slopping
+and start building maintainable, working software. May be GitHub will
+not do that but someone should then I will migrate.
+</p>
+</div>
+</div>
+<div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-ai.html">AI</a> <a href="https://www.birkey.co/tag-engineering.html">engineering</a> <a href="https://www.birkey.co/tag-github.html">GitHub</a> </div>]]></description>
+  <category><![CDATA[AI]]></category>
+  <category><![CDATA[engineering]]></category>
+  <category><![CDATA[GitHub]]></category>
+  <link>https://www.birkey.co/2026-08-17-githubs-recent-crisis-has-a-simple-fix.html</link>
+  <guid>https://www.birkey.co/2026-08-17-githubs-recent-crisis-has-a-simple-fix.html</guid>
+  <pubDate>Mon, 17 Aug 2026 00:00:00 -0700</pubDate>
+</item>
 <item>
   <title><![CDATA[OneLoop: Local First Coding agent written in Rust with nix tooling]]></title>
   <description><![CDATA[
