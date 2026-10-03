@@ -120,7 +120,80 @@ This section tracks potential blog posts. Update as ideas evolve.
      - [[https://www.birkey.co/2026-03-22-why-i-love-nixos.html][Why I Love NixOS]]
      - [[https://www.birkey.co/2020-12-26-ETC-principle-to-ground-all.html][ETC - The Principle to Guide Engineering]]
 
+** TODO [2026-10-03] Everything I Build Around the LLM Becomes a Distraction
+   - Status: in review (moved to =posts/=, HTML not yet generated)
+   - Summary: Notes from a year of using LLMs for software
+     development, titled for the recurring shape of the experience —
+     every piece of machinery built to work with the model (context
+     engineering, compaction handoff, customizing a third-party agent)
+     kept becoming its own distraction, while what actually helped was
+     smaller and simpler than expected. Underneath that churn, the
+     methodology and strategies keep changing, but the core of the
+     problem and the core mental model of understanding it has stayed
+     the same. Walks the journey in order: confined problems
+     (refactoring, simplifying modules), the context engineering rabbit
+     hole, context management and compaction, trying to understand a
+     third-party coding agent, skills, spec driven development
+     drifting into documentation explosion, scripts instead of prose,
+     and starting with an executable prototype — the single HTML file —
+     as the thing currently paying off best.
+   - Key points:
+     - The landscape changes very fast; a lot of trendy things turned
+       out to be more signal than real entropy (a separate post to
+       come)
+     - The one takeaway: use it, see it, understand the benefit, the
+       trade-offs, and what you are losing — then adapt
+     - LLM helps, but used carelessly it produces more content,
+       features, and code than you have understanding of, with no
+       orthogonal consistency for the complexity of the problem
+     - Confined problems work well: the problem is already solved,
+       refactoring is a well suited shape of task
+     - Context is critical; grab search (syntactic or semantic) was
+       where we started, from the code base, the web, and literature
+     - Context engineering is a dark art: methods degrade on model
+       updates, evals force endless refinement, and the quality does
+       not improve in proportion to the time invested
+     - Ultimately: starting over, no amount of prompting or extra
+       context fixes it
+     - Context compaction: no deterministic way to summarize and
+       hand off; manual summarization plus verification is what
+       actually works now, and on the client side it is a drag on
+       productivity
+     - Third-party coding agents become too complex to understand;
+       you cannot tell what the current prompt or in-memory context
+       is. Master the tool you are using, or write your own
+     - Skills furnish context on demand and are dynamically loaded, so
+       they don't cover the context the whole time. Better ROI than
+       not, and you can turn an ad hoc prompt you've been repeating
+       into a well structured skill and get better results. But they
+       are not a deterministic instruction set, more of an advisory
+       the LLM more or less follows
+     - Spec driven development starts well then drifts; specs should
+       be sparing and high level, with detail in executable code
+     - For repetitive work, ask for an executable script plus a skill
+       that uses its output
+     - Always start with an executable prototype of the actual flow,
+       often a single self-contained HTML file, as a blueprint for the
+       real app
+   - Related posts:
+     - [[https://www.birkey.co/2026-05-16-the-agent-is-not-the-point.html][The Agent Is Not the Point]]
+     - [[https://www.birkey.co/2026-07-11-engineered-not-vibe-coded.html][Engineered, Not Vibe Coded]]
+     - [[https://www.birkey.co/2026-04-19-why-i-love-pi.html][Why I Love Agent Pi]]
+     - [[https://www.birkey.co/2025-08-02-hacker-news-ai-coding-experience-analysis.html][Hacker News AI Coding Experience Analysis]]
+   - Notes: Dictation was captured in ~/Documents/VoiceToText/2026-10-03.md.
+     Roughly half the post was lost to context compaction before being
+     recovered from that file. Always check the VoiceToText transcripts
+     directory when dictating a post.
+
 * Changelog
 
+- [2026-10-03] Moved "Everything I Build Around the LLM Becomes a
+  Distraction" from =drafts/= to =posts/= for HTML generation and
+  author review. Status is in review, not yet published.
+- [2026-10-03] Drafted "Everything I Build Around the LLM Becomes a
+  Distraction" from dictation. Present tense, since the closing
+  sections describe current practice. Title chosen for Hacker News
+  readership over the more general aphoristic option.
+- [2026-10-03] Tracked "A Year of LLM Assisted Development" draft.
 - [2026-04-20] Initial version created by analyzing all 36 published
   blog posts in the birkey.co repo.

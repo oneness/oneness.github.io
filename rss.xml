@@ -4,13 +4,300 @@
 <title><![CDATA[BirkeyCo]]></title>
 <description><![CDATA[BirkeyCo]]></description>
 <link>https://www.birkey.co/</link>
-<lastBuildDate>Mon, 17 Aug 2026 13:06:45 -0700</lastBuildDate>
+<lastBuildDate>Sat, 03 Oct 2026 12:16:03 -0700</lastBuildDate>
+<item>
+  <title><![CDATA[Everything I Build Around the LLM Becomes a Distraction]]></title>
+  <description><![CDATA[
+<p>
+I've been using LLMs for software development for a bit more than a year
+now. One thing I can say for sure: the landscape changes very fast.
+</p>
+
+<p>
+There are a lot of trendy things that, at the time, seemed like a good
+idea. Over time they turned out to be more signal than the real entropy
+underneath. I want to come back to that in a separate post, because it
+deserves more than a few sentences.
+</p>
+<div id="outline-container-orge78e8df" class="outline-2">
+<h2 id="orge78e8df">The one thing that did not change</h2>
+<div class="outline-text-2" id="text-orge78e8df">
+<p>
+If there's a single takeaway, it's this: you have to actually use it, see
+it, and understand it. Understand what the benefit is, what the
+trade-offs are, what you're losing. And then you have to adapt to that.
+</p>
+
+<p>
+Methodologies change. Strategies change. Every few months something new
+comes along and the best practice from last quarter looks naive. But
+underneath all that churn there is one thing I keep coming back to,
+again and again: the core of the problem, and the core mental model of
+understanding it, has always been the same.
+</p>
+
+<p>
+Yes, the LLM helps. But if you don't use it carefully, it actually
+generates more content, more features, more code, more of everything,
+that you have no understanding whatsoever. Even when it seemingly works.
+Even when it's sort of tested and whatnot. There's no orthogonal
+consistency given the complexity of the problem we're solving.
+</p>
+
+<p>
+What I want to do here is walk through the journey itself. What I
+actually did, what worked, what didn't, and where I ended up.
+</p>
+</div>
+</div>
+<div id="outline-container-org2450903" class="outline-2">
+<h2 id="org2450903">Confined problems</h2>
+<div class="outline-text-2" id="text-org2450903">
+<p>
+Early on, I mostly gave it a very confined problem. Refactoring a code
+base. Simplifying a certain module. And they did a pretty good job at
+it. The reason is simple: the problem is already solved. It's just a
+matter of refactoring, which is a well suited shape of task for an LLM.
+That was the early stage of LLM assisted development for me.
+</p>
+</div>
+</div>
+<div id="outline-container-orgff87ac5" class="outline-2">
+<h2 id="orgff87ac5">The context rabbit hole</h2>
+<div class="outline-text-2" id="text-orgff87ac5">
+<p>
+Then, as the models got more powerful and started to get into it, I
+realized how critical the context you give an LLM is. I spent a lot of
+time refining it, trying to get as much relevant information as
+possible in there.
+</p>
+
+<p>
+The way I did it was by experimenting. Starting with a simple grab
+search tool, whether it was syntactic or semantic, to pull more relevant
+information from the code base, or from the web, or from whatever
+literature is relevant. Getting the right context in front of the model.
+That's where we started, and the repository was the first step.
+</p>
+
+<p>
+It was a mixed result overall. The lesson I took from it is that context
+engineering is a kind of dark art. Even refining the context
+engineering, you can get into a deep rabbit hole. The LLM keeps
+changing, and then a seemingly pretty solid methodology just degrades.
+The model updates underneath you. So you start a new eval to refine it.
+And then you keep refining. The more you refine, the more you realize
+the quality doesn't really improve in proportion to the time you put in.
+</p>
+
+<p>
+The amount of time you spend on context engineering versus the benefit
+you actually get back doesn't justify it. Eventually what you end up
+doing is starting over. There's no way of prompting, no way of giving
+more context, that fixes it.
+</p>
+</div>
+</div>
+<div id="outline-container-orga4c4f00" class="outline-2">
+<h2 id="orga4c4f00">Context management and compaction</h2>
+<div class="outline-text-2" id="text-orga4c4f00">
+<p>
+The next issue that hits you immediately is context management, meaning
+compaction and things like that. That also turned out not to be an easy
+problem to solve. There are many different methodologies you can try.
+</p>
+
+<p>
+The easiest would be to just ask an LLM to summarize it and write a
+handoff. But then you have the risk of: how do we compact it, how do
+you summarize it? The more you work on it, in terms of summarizing
+after the context is full versus doing summarization after each
+successful request and response as a background process running async,
+the more you end up creating. You get into a rabbit hole of managing
+different processes and coordinations. At the end of the day, it's more
+about state continuity. And because of the stochastic nature of LLMs,
+there's just no way to consistently, deterministically find a better way
+to do summarization and handoff.
+</p>
+
+<p>
+The best way I've actually been using right now is: no automatic handoff,
+no automatic summarization. You summarize manually. You ask a certain
+model for the conversation history so far, and then you verify it before
+handing it off.
+</p>
+
+<p>
+Which seems to me that maybe in the future this will just be done
+automatically by the model provider on the server side. But on the
+client side, it seems to me that it's a drag on your development
+productivity. Including so-called agentic coding, coding agents. Because
+it distracts you from actually solving the problem, versus actually
+creating a non-deterministic handoff flow that you keep just changing,
+which is never ending. That's also not a good way of managing the
+context problem.
+</p>
+</div>
+</div>
+<div id="outline-container-orgfed0b46" class="outline-2">
+<h2 id="orgfed0b46">Understanding the tool you are using</h2>
+<div class="outline-text-2" id="text-orgfed0b46">
+<p>
+The third thing is using coding agents that are developed by someone
+else. Even though you end up customizing it, you end up putting a lot
+of tools and plugins and things like that in it. Eventually it gets to
+such a complex state that it's just hard to understand the tool you're
+using.
+</p>
+
+<p>
+For example, when I say the tools you're using, it's hard to understand
+what the current context is, what the current prompt is that the LLM is
+seeing, what the actual in-memory instruction set is, the in-memory
+context the coding agent is actually working out of. And yes, there are
+tools to inspect this and that, but it becomes a job of its own. It
+distracts you from the problem you're trying to solve.
+</p>
+
+<p>
+That dictates that you start either using a very bare bone, very minimal
+coding agent, which you can then customize to your workflow. Or, in my
+case, even after experimenting with the Pi coding agent, which had so
+many different choices and plugins and kept evolving so fast, I
+eventually decided to write my own. With a particular constraint that I
+put on it, and the particular workflow I can actually wrap my head
+around.
+</p>
+
+<p>
+Whether you use someone's coding agent or do it your own, the learning
+is: you really have to understand the tools you're using, and be able to
+master them, to take the best advantage of the coding models.
+</p>
+</div>
+</div>
+<div id="outline-container-org1894a93" class="outline-2">
+<h2 id="org1894a93">Skills</h2>
+<div class="outline-text-2" id="text-org1894a93">
+<p>
+Another thing I've changed, another thing I've learned, is using skills.
+I'm still very on board with them, because they have this nice property:
+they furnish the context on demand, only when it's needed. When it's not
+needed, it's not going to be used. That's one of the really nice things
+about it. It's dynamically loaded, so it doesn't cover the context the
+whole time.
+</p>
+
+<p>
+The tradeoff is that it's not a deterministic instruction set. It's more
+of an advisory to the LLM. The LLM more or less follows it, but there's
+no guarantee.
+</p>
+
+<p>
+The nice part, though, is that you can take some ad hoc prompt you've
+been repeating over and over and turn it into a really well structured
+skill. And you get better results. You can express a lot, the majority of
+workflows that you have, with a skills file. I still use them. I don't
+know what the future holds for this, but so far it gives me more ROI
+than not. You can describe them in a very example based approach, and
+then most of the time, almost all of the time, LLMs are pretty good at
+following those instructions exactly, the way you'd like them to approach
+solving a problem.
+</p>
+</div>
+</div>
+<div id="outline-container-org72055f9" class="outline-2">
+<h2 id="org72055f9">Spec driven development</h2>
+<div class="outline-text-2" id="text-org72055f9">
+<p>
+In terms of the other aspects, it's spec driven development. It starts
+out well, especially when you have a well-defined spec, which is in and
+of itself a complicated problem.
+</p>
+
+<p>
+But as time goes by you generate too much documentation. Doc, doc, doc,
+doc. Because of the nature of specs, over time it drifts. It introduces
+contradictory, non-orthogonal ideas. Because you probably forgot the spec
+you wrote about a few days ago, let alone a month ago, and then the LLM
+starts to introduce something else. Eventually the documentation
+explosion is going to be a big problem.
+</p>
+
+<p>
+What I've learned over time is that the spec should be sparingly used. A
+very high level description of how a specific module, or program, or
+feature works. But in terms of the detail, I rely more on executable
+code. That's the direction I landed on.
+</p>
+</div>
+</div>
+<div id="outline-container-org8316c00" class="outline-2">
+<h2 id="org8316c00">Scripts instead of prose</h2>
+<div class="outline-text-2" id="text-org8316c00">
+<p>
+One of the other things that works really well for me is this. When
+there's a certain kind of repetitive thing I always ask it to do,
+instead of writing skills and whatnot, I ask LLM to create a script. An
+executable script. And then combine that with a skill that says: hey,
+this is the script you run to accomplish certain things, and then use
+the output to go on within the problem we're trying to solve.
+</p>
+</div>
+</div>
+<div id="outline-container-org9d0d4cf" class="outline-2">
+<h2 id="org9d0d4cf">Start with an executable prototype</h2>
+<div class="outline-text-2" id="text-org9d0d4cf">
+<p>
+And one last thing. After all of those experiences, one thing I've been
+having good results with is to always start with an executable prototype
+of the actual flow. An actual problem.
+</p>
+
+<p>
+You can even start from the UI. You don't even have to start with the
+database. You don't even have to have all of the server running. It's
+just one executable program. Or, if you're doing more of a web app, a
+consumer facing app, it's more like starting with one HTML file with
+everything just embedded in there. That executable, it is code.
+</p>
+
+<p>
+That's one thing I believe is helping me way more than anything else
+right now. It's still yet to be seen in terms of the results, but so far
+the iteration loop works like this. Say you have a flow, some kind of
+onboarding flow. You can ask the LLM to generate an onboarding flow
+based on whatever your requirement is. You can even simulate it. You can
+even let it test it. And the requirement is just one HTML file,
+everything is embedded, no framework, nothing.
+</p>
+
+<p>
+That gives you a prototype you can actually iterate over until you say
+that this is a fleshed out flow. And then you can use that as a
+blueprint for the actual app. That has been paying pretty well for me.
+</p>
+
+<p>
+I hope some of this rambling is useful.
+</p>
+</div>
+</div>
+<div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-ai.html">AI</a> <a href="https://www.birkey.co/tag-engineering.html">engineering</a> <a href="https://www.birkey.co/tag-coding-agent.html">coding-agent</a> </div>]]></description>
+  <category><![CDATA[AI]]></category>
+  <category><![CDATA[engineering]]></category>
+  <category><![CDATA[coding-agent]]></category>
+  <link>https://www.birkey.co/2026-10-03-everything-i-build-around-the-llm-becomes-a-distraction.html</link>
+  <guid>https://www.birkey.co/2026-10-03-everything-i-build-around-the-llm-becomes-a-distraction.html</guid>
+  <pubDate>Sat, 03 Oct 2026 00:00:00 -0700</pubDate>
+</item>
 <item>
   <title><![CDATA[GitHub's Recent Crisis Has a Simple Fix]]></title>
   <description><![CDATA[
-<div id="outline-container-orgbf8f4f6" class="outline-2">
-<h2 id="orgbf8f4f6">Introduction: The Outages Aren't Bugs; They're Symptoms</h2>
-<div class="outline-text-2" id="text-orgbf8f4f6">
+<div id="outline-container-org4d3817b" class="outline-2">
+<h2 id="org4d3817b">Introduction: The Outages Aren't Bugs; They're Symptoms</h2>
+<div class="outline-text-2" id="text-org4d3817b">
 <p>
 GitHub is down again? Oh boy, it has a scalability issue, you might
 say. I say your coding agent may be to blame, and thus may be you
@@ -30,16 +317,16 @@ staring us in the face: <b>the explosion of agentic AI.</b>
 
 <p>
 We are no longer just seeing human-paced code commits. We are seeing
-AI agents generating thousands of API calls per second&#x2014;opening PRs,
+AI agents generating thousands of API calls per second&mdash;opening PRs,
 commenting on issues, and pushing commits at machine speed. GitHub,
 the world's primary collaboration tool, is being swamped by a flood of
 low-value, automated noise.
 </p>
 </div>
 </div>
-<div id="outline-container-org6d2fd56" class="outline-2">
-<h2 id="org6d2fd56">The "AI Slop" Problem</h2>
-<div class="outline-text-2" id="text-org6d2fd56">
+<div id="outline-container-orgb1907ac" class="outline-2">
+<h2 id="orgb1907ac">The "AI Slop" Problem</h2>
+<div class="outline-text-2" id="text-orgb1907ac">
 <p>
 Before we talk about engineering, we need to talk about quality. "AI
 slop" isn't just a buzzword; it's a systemic degradation of our
@@ -62,9 +349,9 @@ low-value activity.
 </p>
 </div>
 </div>
-<div id="outline-container-org01bba8c" class="outline-2">
-<h2 id="org01bba8c">The Technical Fix: Intelligent Backoff Queues</h2>
-<div class="outline-text-2" id="text-org01bba8c">
+<div id="outline-container-org3915350" class="outline-2">
+<h2 id="org3915350">The Technical Fix: Intelligent Backoff Queues</h2>
+<div class="outline-text-2" id="text-org3915350">
 <p>
 So, how do we fix GitHub's backend crisis?
 </p>
@@ -104,9 +391,9 @@ the next burst of commits is allowed through.
 </p>
 </div>
 </div>
-<div id="outline-container-org2ebbf4e" class="outline-2">
-<h2 id="org2ebbf4e">The Philosophical Win: Forcing the "Human Pause"</h2>
-<div class="outline-text-2" id="text-org2ebbf4e">
+<div id="outline-container-org5bf8a98" class="outline-2">
+<h2 id="org5bf8a98">The Philosophical Win: Forcing the "Human Pause"</h2>
+<div class="outline-text-2" id="text-org5bf8a98">
 <p>
 Here is the counterintuitive truth: <b>We need GitHub to be slower.</b>
 </p>
@@ -129,9 +416,9 @@ code</b> and <b>shipping code</b>.
 </ul>
 </div>
 </div>
-<div id="outline-container-org2a3a7e3" class="outline-2">
-<h2 id="org2a3a7e3">Conclusion: The Library Guardian Metaphor</h2>
-<div class="outline-text-2" id="text-org2a3a7e3">
+<div id="outline-container-orga3397d7" class="outline-2">
+<h2 id="orga3397d7">Conclusion: The Library Guardian Metaphor</h2>
+<div class="outline-text-2" id="text-orga3397d7">
 <p>
 Let us face it. GitHub is the world's source control. It is the Library
 of Alexandria for the software age. It is supposed to be the place
@@ -158,8 +445,8 @@ of AI-generated PRs and says:
 <p>
 By forcing a slowdown, GitHub doesn't just save its infrastructure. It
 saves the soul of software development. It forces us to stop slopping
-and start building maintainable, working software. May be GitHub will
-not do that but someone should then I will migrate.
+and start building maintainable, working software. Maybe GitHub will
+not do that, but someone should. If they do, I will migrate.
 </p>
 </div>
 </div>
