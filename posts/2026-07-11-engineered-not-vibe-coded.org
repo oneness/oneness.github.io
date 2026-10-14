@@ -16,7 +16,7 @@ things as simple as possible so you get to the core of the problem
 you are solving.
 
 I have a concrete case: a few months ago I started writing
-VoiceToText[fn:vtt], and I used Claude Code to write it. It has been
+OneScribe[fn:vtt], and I used Claude Code to write it. It has been
 my daily driver ever since. Whatever we end up calling this way of
 working, the result is a fairly robust tool that I rely on every day.
 I was in the driver's seat the whole time.
@@ -31,12 +31,12 @@ met my needs. So I started writing my own.
 
 * A daily driver
 
-I use VoiceToText for far more than I expected when I started. I
+I use OneScribe for far more than I expected when I started. I
 compose messages and emails with it. I talk to coding agents with it.
 I dictate blog post drafts with it.
 
 In fact, this very post started as a dictation. I spoke my raw
-thoughts into VoiceToText, read the transcript, and proofread it over
+thoughts into OneScribe, read the transcript, and proofread it over
 and over. Then I asked Claude Code to clean it up, with strict
 instructions: make it idiomatic, give it structure, and do not
 generate anything I did not say. Which is pretty much the same way I
@@ -73,9 +73,9 @@ myself[fn:oneloop]. How I used it here is a separate post, and I will
 write about it at some point as a way of showing how I use coding
 agents in real work.
 
-[fn:vtt] VoiceToText: press a hotkey, speak, and the text appears
-where you are typing. Overview: [[https://www.birkey.co/VoiceToText/]],
-source: [[https://github.com/oneness/VoiceToText]].
+[fn:vtt] OneScribe: press a hotkey, speak, and the text appears
+where you are typing. Overview: [[https://www.birkey.co/OneScribe/]],
+source: [[https://github.com/oneness/OneScribe]].
 
 [fn:oneloop] I wrote about building OneLoop and what it taught me in
 [[https://www.birkey.co/2026-05-16-the-agent-is-not-the-point.html][The Agent Is Not the Point]].

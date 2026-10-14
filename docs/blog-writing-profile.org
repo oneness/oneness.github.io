@@ -180,9 +180,9 @@ This section tracks potential blog posts. Update as ideas evolve.
      - [[https://www.birkey.co/2026-07-11-engineered-not-vibe-coded.html][Engineered, Not Vibe Coded]]
      - [[https://www.birkey.co/2026-04-19-why-i-love-pi.html][Why I Love Agent Pi]]
      - [[https://www.birkey.co/2025-08-02-hacker-news-ai-coding-experience-analysis.html][Hacker News AI Coding Experience Analysis]]
-   - Notes: Dictation was captured in ~/Documents/VoiceToText/2026-10-03.md.
+   - Notes: Dictation was captured in ~/Documents/OneScribe/2026-10-03.md.
      Roughly half the post was lost to context compaction before being
-     recovered from that file. Always check the VoiceToText transcripts
+     recovered from that file. Always check the OneScribe transcripts
      directory when dictating a post.
 
 * Changelog
