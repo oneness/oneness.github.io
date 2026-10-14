@@ -13,7 +13,7 @@
   third party recruiters.
 
 * Work Experience
-- *2016/02 - Present:* Owner of [[https://www.birkey.co][Birkey Consulting]]
+- *2016/02 - Present:* Owner of [[https://www.birkey.co][BIRKEY IA]]
   - Building, Mentoring and Leading Engineering teams at Startups to
     design, develop and deliver great products.
 
