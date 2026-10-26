@@ -174,3 +174,101 @@ blockquote div {
     text-align: right;
     width: 100%;
 }
+
+@media print {
+  @page {
+    margin: 0.75in;
+  }
+
+  html,
+  body {
+    color: #000;
+    background: #fff;
+  }
+
+  body {
+    max-width: none;
+    padding: 0;
+    margin: 0;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 11pt;
+    line-height: 1.45;
+  }
+
+  #preamble,
+  #postamble,
+  .taglist {
+    display: none !important;
+  }
+
+  #content {
+    width: 100%;
+    margin: 0;
+  }
+
+  .post-date {
+    margin-top: 0;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    color: #000;
+    page-break-after: avoid;
+    break-after: avoid-page;
+  }
+
+  p,
+  li,
+  blockquote {
+    orphans: 3;
+    widows: 3;
+  }
+
+  a,
+  a:visited {
+    color: #000 !important;
+    font-weight: inherit;
+    text-decoration: underline;
+  }
+
+  #footnotes {
+    color: #000;
+    border-top: 1px solid #888;
+    break-before: auto;
+  }
+
+  pre,
+  .org-src-container {
+    color: #000;
+    background: #fff;
+    border: 1px solid #aaa;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    overflow: visible;
+    break-inside: auto;
+    page-break-inside: auto;
+  }
+
+  pre {
+    font-size: 9pt;
+    padding: 0.5em;
+  }
+
+  blockquote {
+    width: auto;
+    color: #000;
+    background: #fff;
+    border: 1px solid #888;
+    padding: 0.5em 1em;
+    margin: 1em 0;
+  }
+
+  img,
+  figure {
+    max-width: 100%;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}
