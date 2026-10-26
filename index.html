@@ -31,6 +31,167 @@
   <div style="margin-bottom: 3ch;text-transform: none;"></div></div>
 <div id="content">
 
+<div class="post-date">24 Oct 2026</div><h1 class="post-title"><a href="https://www.birkey.co/2026-10-24-why-i-use-my-own-coding-agent.html">Why I Use My Own Coding Agent</a></h1>
+<p>
+The main reason I use my own coding agent is simple: modern LLMs are
+stochastic. They can hallucinate. I cannot change that part of the
+equation.
+</p>
+
+<p>
+But the tools around the model are a different matter. The coding
+agent is a layer I can shape. I want control over how it talks to
+models, what tools it gives them, how sessions work, and where I
+interact with it. I cannot make the model deterministic, but I can
+make the surrounding workflow deterministic, observable and more
+suited to the way I work.
+</p>
+
+<p>
+Below are a few points you might find interesting.
+</p>
+<div id="outline-container-orgac724b7" class="outline-2">
+<h2 id="orgac724b7">I can choose how I use models</h2>
+<div class="outline-text-2" id="text-orgac724b7">
+<p>
+The first benefit is freedom to choose and combine models and
+providers without giving up the coding agent I use day to day. I can
+switch models, use different providers in the same session, or ask a
+one-off question without changing the rest of my workflow.
+</p>
+
+<p>
+I use OneLoop<sup><a id="fnr.oneloop" class="footref" href="#fn.oneloop" role="doc-backlink">1</a></sup> with a Codex subscription via OAuth. It
+also supports OpenRouter via API and the OpenCode subscription (BTW,
+OpenCode Go is great and you should try it).
+</p>
+
+<p>
+Not every provider supports this. Some providers expect you to use
+their own coding agent, such as Claude Code and Antigravity. OneLoop
+lets me use my Claude or Google subscription via a slash command that
+lets me ask about the current conversation, request a critique focused
+on a particular aspect, or send a fresh one-shot question.
+</p>
+
+<p>
+This is very important for me. I do not want my choice of agent to
+dictate how I interact with models, or a provider's subscription to
+dictate which interface I have to live in. Those things can change
+independently.
+</p>
+</div>
+</div>
+<div id="outline-container-org1509f06" class="outline-2">
+<h2 id="org1509f06">I can make the agent work for me, not the other way around</h2>
+<div class="outline-text-2" id="text-org1509f06">
+<p>
+Using somebody else's coding agent means accepting its feature set and
+its assumptions about how you interface with LLMs. It means following
+their release schedule and adapting as the product changes.  That may
+be a good trade for many people. For me, it often means working around
+decisions I would rather make myself.
+</p>
+
+<p>
+Most coding agents seem to assume that I want to work in a particular
+terminal UI or inside a particular IDE. I want the agent to live where
+I already work. I use <b>Emacs</b>, and because I control OneLoop, I can
+make it work naturally with an Emacs <code>comint</code> buffer. I can give my
+coding agent access to Emacs buffers so it can inspect its own output,
+just as I do, and make appropriate adjustments.
+</p>
+
+<p>
+A small example is my OneLoop mode configuration, a file in my
+dotfiles that I wrote to make OneLoop feel at home in an Emacs
+<code>comint</code> buffer. OneLoop reports its state and current model using
+OSC 7501 status messages. A <code>comint</code> filter function intercepts them
+and updates the buffer's mode line accordingly. One thing that really
+bothers me is how other coding agents force their UI state or
+notifications on you and fill your screen with things that are pretty
+much useless to you. OneLoop stays out of the way and is just one
+keystroke away (or a <code>/help</code> command is all you need). As a trivial
+example, I show <b>computing&hellip;</b> in the mode line instead of
+<b>thinking&hellip;</b> when models are busy doing their thing.
+</p>
+</div>
+</div>
+<div id="outline-container-org241ade0" class="outline-2">
+<h2 id="org241ade0">Better tooling grows out of real use</h2>
+<div class="outline-text-2" id="text-org241ade0">
+<p>
+Because I own the agent, I also own the session logging and metrics. I
+started capturing that information early, which gave me historical
+records I could study to understand what helps an agent work
+effectively. That experience led me to build OneSearch: lexical and
+semantic search over code and OneLoop sessions.
+</p>
+
+<p>
+I now use OneSearch with skills to get oriented in unfamiliar
+codebases. It helps me and my coding agent find relevant code and
+session history quickly, so I can build a useful mental model with
+less searching around and less wasted effort. OneSearch is still a
+private project, but I have published a binary distribution for people
+who want to try it<sup><a id="fnr.onesearch" class="footref" href="#fn.onesearch" role="doc-backlink">2</a></sup>.
+</p>
+</div>
+</div>
+<div id="outline-container-orgedb986f" class="outline-2">
+<h2 id="orgedb986f">Leverage comes with cost</h2>
+<div class="outline-text-2" id="text-orgedb986f">
+<p>
+Writing a demo coding agent is easy. Building a robust agent that I
+trust for professional, day-to-day work is not for the faint of heart.
+</p>
+
+<p>
+OneLoop supports different models and providers, each with its own
+protocols, authentication, tool-call behavior, and failure modes.
+Making those integrations reliable takes time. I have spent close to a
+year developing OneLoop, finding bugs, fixing them, and adding test
+coverage so a change in one path does not quietly break another. One
+needs to treat it like real production software: test it, maintain it,
+and keep checking that it still works as the systems around it change.
+</p>
+
+<p>
+There is also a product judgment problem. It is easy to keep adding
+features because a model or provider makes something possible. It is
+harder to decide what belongs in the agent, what should stay outside
+it, and what will turn the tool into a hodgepodge of features I do
+not actually need. Owning the agent means owning those decisions too.
+</p>
+
+<p>
+So the cost is not just the initial development time. It is the
+ongoing attention: engineering discipline, bug fixes, regression
+tests, and judgment about the feature set. I encourage people to build
+a coding agent as an exercise; it is a great way to understand how
+LLMs interact with systems and tools. But using your own agent
+professionally every day is a larger commitment. The leverage is real,
+but it is not free.
+</p>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.oneloop" class="footnum" href="#fnr.oneloop" role="doc-backlink">1</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+OneLoop source repository:
+<a href="https://github.com/oneness/OneLoop">github.com/oneness/OneLoop</a>.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.onesearch" class="footnum" href="#fnr.onesearch" role="doc-backlink">2</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+OneSearch binary distribution:
+<a href="https://github.com/oneness/OneSearch-dist">github.com/oneness/OneSearch-dist</a>.
+</p></div></div>
+
+
+</div>
+</div><div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-ai.html">ai</a> <a href="https://www.birkey.co/tag-coding-agent.html">coding-agent</a> <a href="https://www.birkey.co/tag-emacs.html">emacs</a> </div>
 <div class="post-date">03 Oct 2026</div><h1 class="post-title"><a href="https://www.birkey.co/2026-10-03-everything-i-build-around-the-llm-becomes-a-distraction.html">Everything I Build Around the LLM Becomes a Distraction</a></h1>
 <p>
 I've been using LLMs for software development for a bit more than a year
@@ -688,161 +849,7 @@ I wrote about building OneLoop and what it taught me in
 
 
 </div>
-</div><div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-ai.html">AI</a> <a href="https://www.birkey.co/tag-engineering.html">engineering</a> <a href="https://www.birkey.co/tag-coding-agent.html">coding-agent</a> </div>
-<div class="post-date">14 Jun 2026</div><h1 class="post-title"><a href="https://www.birkey.co/2026-05-18-ten-books-that-shaped-how-i-think.html">Ten Books That Shaped How I Think</a></h1>
-<p>
-I was recently asked for book recommendations and realized I have
-never written down the ones that actually changed how I think. Not the
-ones that taught me a language or a framework. The ones that shifted
-something in me as an engineer. Here they are, in no particular order.
-</p>
-<div id="outline-container-org402193b" class="outline-2">
-<h2 id="org402193b">1. A Philosophy of Software Design — John Ousterhout</h2>
-<div class="outline-text-2" id="text-org402193b">
-<p>
-Short, opinionated, and right about most things. The core idea is
-<i>Deep Modules</i>: hide complexity behind simple interfaces. This is
-ETC from another angle. If your module has a complex surface, every
-consumer pays that tax forever. Make the surface small and the
-internals can evolve freely. I read it in a weekend. I have been
-thinking about it for years.
-</p>
-</div>
-</div>
-<div id="outline-container-orgc9c444c" class="outline-2">
-<h2 id="orgc9c444c">2. Thinking in Systems: A Primer — Donella Meadows</h2>
-<div class="outline-text-2" id="text-orgc9c444c">
-<p>
-I already thought in systems before reading this. What Meadows gave me
-was the vocabulary. Stocks and flows. Feedback loops. Leverage
-points. The places to intervene in a system, ranked from least to most
-effective. When I write about NixOS or Emacs or OneLoop, I am
-reaching for these ideas even when I do not name them directly. Short
-and elegant.
-</p>
-</div>
-</div>
-<div id="outline-container-org1ac8213" class="outline-2">
-<h2 id="org1ac8213">3. The Art of Doing Science and Engineering — Richard Hamming</h2>
-<div class="outline-text-2" id="text-org1ac8213">
-<p>
-Hamming spent decades at Bell Labs studying what separates great
-scientists from merely good ones. His central question: why do so few
-people make significant contributions while so many are forgotten? The
-answer is mostly about how you allocate your attention and whether you
-have the courage to work on important problems instead of safe ones.
-This maps directly to what I wrote about transmittable vs.
-untransmittable knowledge. Hamming is rigorous, contrarian, and
-deeply practical.
-</p>
-</div>
-</div>
-<div id="outline-container-orgf85e296" class="outline-2">
-<h2 id="orgf85e296">4. Designing Data-Intensive Applications — Martin Kleppmann</h2>
-<div class="outline-text-2" id="text-orgf85e296">
-<p>
-The best systems engineering book of the last decade. Kleppmann builds
-from simple primitives (logs, hashes, SSTables) all the way up to
-distributed systems, always grounding abstractions in the physical
-realities they paper over. Even if you never build a distributed
-database, the <i>way</i> Kleppmann thinks will change how you design any
-system. This book is first principles applied to data.
-</p>
-</div>
-</div>
-<div id="outline-container-orgc28005d" class="outline-2">
-<h2 id="orgc28005d">5. Programmers at Work — Susan Lammers</h2>
-<div class="outline-text-2" id="text-orgc28005d">
-<p>
-Interviews with 19 legendary programmers from the 1980s. Bill Gates,
-Andy Hertzfeld, Charles Simonyi, and others. What makes it timeless
-is the focus on <i>how</i> they think about problems, not what they built.
-You start to see patterns across how these minds approach complexity.
-</p>
-</div>
-</div>
-<div id="outline-container-org905d808" class="outline-2">
-<h2 id="org905d808">6. The UNIX Programming Environment — Kernighan &amp; Pike</h2>
-<div class="outline-text-2" id="text-org905d808">
-<p>
-I live the Unix philosophy every day. Reading it from the source is
-different than absorbing it osmotically. Kernighan and Pike do not
-just describe the philosophy. They <i>demonstrate</i> it, building real
-tools from shell pipelines, showing how composability creates power
-that no monolith can match. Every time I write <code>curl | jq</code> or compose
-tools in Emacs, I am living this book. My OneLoop agent (read, write,
-edit, bash as four primitives) is an example of Unix way of doing things.
-</p>
-</div>
-</div>
-<div id="outline-container-orge332cc9" class="outline-2">
-<h2 id="orge332cc9">7. Structure and Interpretation of Computer Programs — Abelson &amp; Sussman</h2>
-<div class="outline-text-2" id="text-orge332cc9">
-<p>
-The spiritual ancestor of everything I love about Lisps.
-Homoiconicity. Functions as first-class citizens. Building abstractions
-upward from the smallest possible primitives. SICP teaches you to
-think about computation itself, not any particular language. If you
-are a Clojure programmer and you have not read it cover to cover, fix
-that.
-</p>
-</div>
-</div>
-<div id="outline-container-orgc8f7b3c" class="outline-2">
-<h2 id="orgc8f7b3c">8. The Design of Everyday Things — Don Norman</h2>
-<div class="outline-text-2" id="text-orgc8f7b3c">
-<p>
-Not a software book, and that is the point. Norman's central idea is
-that good design is invisible and bad design blames the user. This
-applies to everything from Makefile help targets to agent tool
-interfaces. Your self-documenting system? Your one obvious path? Your
-inspectability obsession? Norman gives you the design vocabulary to
-articulate <i>why</i> something feels wrong and <i>how</i> to fix it.
-</p>
-</div>
-</div>
-<div id="outline-container-org225a966" class="outline-2">
-<h2 id="org225a966">9. Computer Power and Human Reason — Joseph Weizenbaum</h2>
-<div class="outline-text-2" id="text-org225a966">
-<p>
-Weizenbaum wrote ELIZA in 1966, then spent the rest of his career
-warning about delegating human judgment to machines. He is not
-anti-computer. He is pro-human. He argues that some things should not
-be computed, not because they cannot be, but because doing so corrupts
-the thinking. Reading this in 2026, in the middle of the AI hype
-cycle, feels like finding a kindred spirit from fifty years ago. This
-is the philosophical depth behind "the agent is not the point."
-</p>
-</div>
-</div>
-<div id="outline-container-orgaa434dd" class="outline-2">
-<h2 id="orgaa434dd">10. The Mythical Man-Month — Frederick Brooks</h2>
-<div class="outline-text-2" id="text-orgaa434dd">
-<p>
-The original essay on why adding people to a late project makes it
-later. But it is really about something deeper: the irreducible
-complexity of communication and the necessity of conceptual integrity
-in software. Brooks' concept of conceptual integrity (a system should
-reflect one set of design ideas, not a committee's compromises) is my
-oneness principle by another name. The anniversary edition includes
-"No Silver Bullet," which is even more relevant in the age of "AI will
-solve everything."
-</p>
-
-<p>
-&#x2014;
-</p>
-
-<p>
-These are not the only books I have read. They are the ones I keep
-coming back to. The ones where I will catch myself mid-conversation
-reaching for an idea and realizing it came from one of these pages. If
-you have read them, you know what I mean. If you have not, start with
-1, 2, and 9.
-</p>
-</div>
-</div>
-<div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-books.html">books</a> <a href="https://www.birkey.co/tag-engineering.html">engineering</a> </div><div id="archive">
+</div><div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-ai.html">AI</a> <a href="https://www.birkey.co/tag-engineering.html">engineering</a> <a href="https://www.birkey.co/tag-coding-agent.html">coding-agent</a> </div><div id="archive">
 <a href="https://www.birkey.co/archive.html">Other posts</a>
 </div>
 </div>

@@ -87,6 +87,22 @@ clarifications without cluttering the main text.
 
 This section tracks potential blog posts. Update as ideas evolve.
 
+** TODO [2026-10-24] Why I Use My Own Coding Agent
+   - Status: in review (moved to =posts/=, HTML not yet generated)
+   - Summary: The main reason for using OneLoop is control in a stochastic LLM landscape. The agent is the layer Kasim can shape: provider and model choice, mixed workflows across subscriptions and APIs, and an interface that fits his Emacs workbench instead of forcing him into a vendor's terminal or IDE. The post will show concrete examples from OneLoop's provider integrations and Emacs mode, while being clear that the model itself remains stochastic and that owning the agent does not eliminate hallucinations. It will also make the cost explicit: close to a year of development, testing, bug fixing, maintenance, and ongoing judgment about feature scope to keep a professional tool robust and useful. Owning the agent's logging and metrics also enabled OneSearch, which helps Kasim get oriented in unfamiliar codebases.
+   - Key points:
+     - Thesis: modern LLMs are stochastic, not functional; they can hallucinate, and the agent layer is one of the parts of the system the author can control.
+     - OneLoop provides leverage to mix and switch providers/models, including supported subscriptions and API providers, and to use multiple models in one session, mid-session, or for one-off questions.
+     - Codex support integrates its subscription workflow with native tool calls and OneLoop's loop/session model; OpenRouter and other API providers leave the agent choice open.
+     - Where a subscription expects its own agent, external commands for Claude Code and Antigravity can ask about the current conversation, request critique focused on an aspect, or run a fresh one-shot question.
+     - Owning the agent avoids being locked to another product's release schedule, feature set, assumptions, and terminal- or IDE-centric interface.
+     - Owning OneLoop from early on means session and interaction data has accumulated over time; that record enabled analysis of what makes agent use effective and motivated OneSearch, which provides lexical and semantic search over code and OneLoop sessions. The OneSearch project is private, but a public binary release is available in the OneSearch-dist repository.
+     - Owning and instrumenting the agent can create a feedback loop: real usage leaves a trail that can be analyzed, leading to tools and improvements grounded in experience.
+   - Related posts:
+     - [[https://www.birkey.co/2026-04-19-why-i-love-pi.html][Why I Love Agent Pi]]
+     - [[https://www.birkey.co/2026-05-16-the-agent-is-not-the-point.html][The Agent Is Not the Point]]
+     - [[https://www.birkey.co/2026-03-28-emacs-as-a-programmable-workbench.html][Emacs as a Programmable Workbench]]
+
 ** TODO [YYYY-MM-DD] <title>
    - Status: seed / outline / draft / published
    - Summary: <one paragraph>

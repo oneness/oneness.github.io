@@ -1,0 +1,114 @@
+#+title: Why I Use My Own Coding Agent
+#+date: <2026-10-24 Sun>
+#+description: LLMs are stochastic. I use my own coding agent because I want control over the layer around them: the models, the workflow, and the place where I work.
+#+filetags: ai coding-agent emacs
+
+The main reason I use my own coding agent is simple: modern LLMs are
+stochastic. They can hallucinate. I cannot change that part of the
+equation.
+
+But the tools around the model are a different matter. The coding
+agent is a layer I can shape. I want control over how it talks to
+models, what tools it gives them, how sessions work, and where I
+interact with it. I cannot make the model deterministic, but I can
+make the surrounding workflow deterministic, observable and more
+suited to the way I work.
+
+Below are a few points you might find interesting.
+
+* I can choose how I use models
+
+The first benefit is freedom to choose and combine models and
+providers without giving up the coding agent I use day to day. I can
+switch models, use different providers in the same session, or ask a
+one-off question without changing the rest of my workflow.
+
+I use OneLoop[fn:oneloop] with a Codex subscription via OAuth. It
+also supports OpenRouter via API and the OpenCode subscription (BTW,
+OpenCode Go is great and you should try it).
+
+Not every provider supports this. Some providers expect you to use
+their own coding agent, such as Claude Code and Antigravity. OneLoop
+lets me use my Claude or Google subscription via a slash command that
+lets me ask about the current conversation, request a critique focused
+on a particular aspect, or send a fresh one-shot question.
+
+This is very important for me. I do not want my choice of agent to
+dictate how I interact with models, or a provider's subscription to
+dictate which interface I have to live in. Those things can change
+independently.
+
+* I can make the agent work for me, not the other way around
+
+Using somebody else's coding agent means accepting its feature set and
+its assumptions about how you interface with LLMs. It means following
+their release schedule and adapting as the product changes.  That may
+be a good trade for many people. For me, it often means working around
+decisions I would rather make myself.
+
+Most coding agents seem to assume that I want to work in a particular
+terminal UI or inside a particular IDE. I want the agent to live where
+I already work. I use *Emacs*, and because I control OneLoop, I can
+make it work naturally with an Emacs =comint= buffer. I can give my
+coding agent access to Emacs buffers so it can inspect its own output,
+just as I do, and make appropriate adjustments.
+
+A small example is my OneLoop mode configuration, a file in my
+dotfiles that I wrote to make OneLoop feel at home in an Emacs
+=comint= buffer. OneLoop reports its state and current model using
+OSC 7501 status messages. A =comint= filter function intercepts them
+and updates the buffer's mode line accordingly. One thing that really
+bothers me is how other coding agents force their UI state or
+notifications on you and fill your screen with things that are pretty
+much useless to you. OneLoop stays out of the way and is just one
+keystroke away (or a =/help= command is all you need). As a trivial
+example, I show *computing...* in the mode line instead of
+*thinking...* when models are busy doing their thing.
+
+* Better tooling grows out of real use
+
+Because I own the agent, I also own the session logging and metrics. I
+started capturing that information early, which gave me historical
+records I could study to understand what helps an agent work
+effectively. That experience led me to build OneSearch: lexical and
+semantic search over code and OneLoop sessions.
+
+I now use OneSearch with skills to get oriented in unfamiliar
+codebases. It helps me and my coding agent find relevant code and
+session history quickly, so I can build a useful mental model with
+less searching around and less wasted effort. OneSearch is still a
+private project, but I have published a binary distribution for people
+who want to try it[fn:onesearch].
+
+[fn:onesearch] OneSearch binary distribution:
+[[https://github.com/oneness/OneSearch-dist][github.com/oneness/OneSearch-dist]].
+
+[fn:oneloop] OneLoop source repository:
+[[https://github.com/oneness/OneLoop][github.com/oneness/OneLoop]].
+
+* Leverage comes with cost
+
+Writing a demo coding agent is easy. Building a robust agent that I
+trust for professional, day-to-day work is not for the faint of heart.
+
+OneLoop supports different models and providers, each with its own
+protocols, authentication, tool-call behavior, and failure modes.
+Making those integrations reliable takes time. I have spent close to a
+year developing OneLoop, finding bugs, fixing them, and adding test
+coverage so a change in one path does not quietly break another. One
+needs to treat it like real production software: test it, maintain it,
+and keep checking that it still works as the systems around it change.
+
+There is also a product judgment problem. It is easy to keep adding
+features because a model or provider makes something possible. It is
+harder to decide what belongs in the agent, what should stay outside
+it, and what will turn the tool into a hodgepodge of features I do
+not actually need. Owning the agent means owning those decisions too.
+
+So the cost is not just the initial development time. It is the
+ongoing attention: engineering discipline, bug fixes, regression
+tests, and judgment about the feature set. I encourage people to build
+a coding agent as an exercise; it is a great way to understand how
+LLMs interact with systems and tools. But using your own agent
+professionally every day is a larger commitment. The leverage is real,
+but it is not free.

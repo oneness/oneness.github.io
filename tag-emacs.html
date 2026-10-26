@@ -31,6 +31,167 @@
   <div style="margin-bottom: 3ch;text-transform: none;"></div></div>
 <div id="content">
 <h1 class="title">Posts tagged "emacs":</h1>
+<div class="post-date">24 Oct 2026</div><h1 class="post-title"><a href="https://www.birkey.co/2026-10-24-why-i-use-my-own-coding-agent.html">Why I Use My Own Coding Agent</a></h1>
+<p>
+The main reason I use my own coding agent is simple: modern LLMs are
+stochastic. They can hallucinate. I cannot change that part of the
+equation.
+</p>
+
+<p>
+But the tools around the model are a different matter. The coding
+agent is a layer I can shape. I want control over how it talks to
+models, what tools it gives them, how sessions work, and where I
+interact with it. I cannot make the model deterministic, but I can
+make the surrounding workflow deterministic, observable and more
+suited to the way I work.
+</p>
+
+<p>
+Below are a few points you might find interesting.
+</p>
+<div id="outline-container-orgac724b7" class="outline-2">
+<h2 id="orgac724b7">I can choose how I use models</h2>
+<div class="outline-text-2" id="text-orgac724b7">
+<p>
+The first benefit is freedom to choose and combine models and
+providers without giving up the coding agent I use day to day. I can
+switch models, use different providers in the same session, or ask a
+one-off question without changing the rest of my workflow.
+</p>
+
+<p>
+I use OneLoop<sup><a id="fnr.oneloop" class="footref" href="#fn.oneloop" role="doc-backlink">1</a></sup> with a Codex subscription via OAuth. It
+also supports OpenRouter via API and the OpenCode subscription (BTW,
+OpenCode Go is great and you should try it).
+</p>
+
+<p>
+Not every provider supports this. Some providers expect you to use
+their own coding agent, such as Claude Code and Antigravity. OneLoop
+lets me use my Claude or Google subscription via a slash command that
+lets me ask about the current conversation, request a critique focused
+on a particular aspect, or send a fresh one-shot question.
+</p>
+
+<p>
+This is very important for me. I do not want my choice of agent to
+dictate how I interact with models, or a provider's subscription to
+dictate which interface I have to live in. Those things can change
+independently.
+</p>
+</div>
+</div>
+<div id="outline-container-org1509f06" class="outline-2">
+<h2 id="org1509f06">I can make the agent work for me, not the other way around</h2>
+<div class="outline-text-2" id="text-org1509f06">
+<p>
+Using somebody else's coding agent means accepting its feature set and
+its assumptions about how you interface with LLMs. It means following
+their release schedule and adapting as the product changes.  That may
+be a good trade for many people. For me, it often means working around
+decisions I would rather make myself.
+</p>
+
+<p>
+Most coding agents seem to assume that I want to work in a particular
+terminal UI or inside a particular IDE. I want the agent to live where
+I already work. I use <b>Emacs</b>, and because I control OneLoop, I can
+make it work naturally with an Emacs <code>comint</code> buffer. I can give my
+coding agent access to Emacs buffers so it can inspect its own output,
+just as I do, and make appropriate adjustments.
+</p>
+
+<p>
+A small example is my OneLoop mode configuration, a file in my
+dotfiles that I wrote to make OneLoop feel at home in an Emacs
+<code>comint</code> buffer. OneLoop reports its state and current model using
+OSC 7501 status messages. A <code>comint</code> filter function intercepts them
+and updates the buffer's mode line accordingly. One thing that really
+bothers me is how other coding agents force their UI state or
+notifications on you and fill your screen with things that are pretty
+much useless to you. OneLoop stays out of the way and is just one
+keystroke away (or a <code>/help</code> command is all you need). As a trivial
+example, I show <b>computing&hellip;</b> in the mode line instead of
+<b>thinking&hellip;</b> when models are busy doing their thing.
+</p>
+</div>
+</div>
+<div id="outline-container-org241ade0" class="outline-2">
+<h2 id="org241ade0">Better tooling grows out of real use</h2>
+<div class="outline-text-2" id="text-org241ade0">
+<p>
+Because I own the agent, I also own the session logging and metrics. I
+started capturing that information early, which gave me historical
+records I could study to understand what helps an agent work
+effectively. That experience led me to build OneSearch: lexical and
+semantic search over code and OneLoop sessions.
+</p>
+
+<p>
+I now use OneSearch with skills to get oriented in unfamiliar
+codebases. It helps me and my coding agent find relevant code and
+session history quickly, so I can build a useful mental model with
+less searching around and less wasted effort. OneSearch is still a
+private project, but I have published a binary distribution for people
+who want to try it<sup><a id="fnr.onesearch" class="footref" href="#fn.onesearch" role="doc-backlink">2</a></sup>.
+</p>
+</div>
+</div>
+<div id="outline-container-orgedb986f" class="outline-2">
+<h2 id="orgedb986f">Leverage comes with cost</h2>
+<div class="outline-text-2" id="text-orgedb986f">
+<p>
+Writing a demo coding agent is easy. Building a robust agent that I
+trust for professional, day-to-day work is not for the faint of heart.
+</p>
+
+<p>
+OneLoop supports different models and providers, each with its own
+protocols, authentication, tool-call behavior, and failure modes.
+Making those integrations reliable takes time. I have spent close to a
+year developing OneLoop, finding bugs, fixing them, and adding test
+coverage so a change in one path does not quietly break another. One
+needs to treat it like real production software: test it, maintain it,
+and keep checking that it still works as the systems around it change.
+</p>
+
+<p>
+There is also a product judgment problem. It is easy to keep adding
+features because a model or provider makes something possible. It is
+harder to decide what belongs in the agent, what should stay outside
+it, and what will turn the tool into a hodgepodge of features I do
+not actually need. Owning the agent means owning those decisions too.
+</p>
+
+<p>
+So the cost is not just the initial development time. It is the
+ongoing attention: engineering discipline, bug fixes, regression
+tests, and judgment about the feature set. I encourage people to build
+a coding agent as an exercise; it is a great way to understand how
+LLMs interact with systems and tools. But using your own agent
+professionally every day is a larger commitment. The leverage is real,
+but it is not free.
+</p>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.oneloop" class="footnum" href="#fnr.oneloop" role="doc-backlink">1</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+OneLoop source repository:
+<a href="https://github.com/oneness/OneLoop">github.com/oneness/OneLoop</a>.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.onesearch" class="footnum" href="#fnr.onesearch" role="doc-backlink">2</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+OneSearch binary distribution:
+<a href="https://github.com/oneness/OneSearch-dist">github.com/oneness/OneSearch-dist</a>.
+</p></div></div>
+
+
+</div>
+</div><div class="taglist"><a href="https://www.birkey.co/tags.html">Tags</a>: <a href="https://www.birkey.co/tag-ai.html">ai</a> <a href="https://www.birkey.co/tag-coding-agent.html">coding-agent</a> <a href="https://www.birkey.co/tag-emacs.html">emacs</a> </div>
 <div class="post-date">19 Apr 2026</div><h1 class="post-title"><a href="https://www.birkey.co/2026-04-19-why-i-love-pi.html">Why I Love Agent Pi</a></h1>
 <p>
 Pi<sup><a id="fnr.pi" class="footref" href="#fn.pi" role="doc-backlink">1</a></sup> is the first coding agent that really empowered me to
